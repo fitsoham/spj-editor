@@ -12,7 +12,10 @@ const Banner: React.FC = () => {
       <div className="container-full">
         <div className="grid">
           <div className="col-12">
-            <div>Season Beckons with our freshest sale. Get 20%Off design packages. Use code: SPRING20 </div>
+            <div>
+              Season Beckons with our freshest sale. Get <strong>20% Off</strong> design packages. Use code:{' '}
+              <strong>SPRING20</strong>
+            </div>
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import Banner from './Banner';
+import Footer from './Footer';
 import Header from './Header';
 
 interface LayoutSubComponents {
@@ -18,6 +19,10 @@ Layout.Header = () => (
   </header>
 );
 Layout.Body = ({ children }) => <main>{children}</main>;
-Layout.Footer = ({ children }) => <footer>{children}</footer>;
+Layout.Footer = () => (
+  <footer>
+    <Footer />
+  </footer>
+);
 
 export default Layout;

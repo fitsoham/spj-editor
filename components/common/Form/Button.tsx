@@ -9,6 +9,8 @@ const ButtonWrapper = styled.button`
   font-size: 0.9rem;
   padding: 0.5rem 1.5rem;
   border-radius: ${({ theme }) => theme.sizes.radius};
+  box-shadow: 0px 0px 10px #ffc6c6;
+  outline: none;
 `;
 
 const Button: React.FC = ({ children }) => {

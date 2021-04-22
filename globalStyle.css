@@ -1,8 +1,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;700&display=swap');
 :root {
   font-size: 16px;
+  --base-space-unit: 1em;
 }
 
 body {
   font-family: 'Manrope', sans-serif;
 }
+
+h1,h2,h3 {
+  font-family: 'Manrope', sans-serif;
+  font-weight:700;
+}
+
+p {
+  line-height:1.65rem;
+}
+
+.left        { float: left; }
+.right       { float: right; }
+
+.text-left   { text-align: left; }
+.text-right  { text-align: right; }
+.text-center { text-align: center; }
+
+.margin-top-none    { margin-top: 0; }
+.margin-top-quarter { margin-top: var(--base-space-unit) / 4; }
+.margin-top-half    { margin-top: var(--base-space-unit) / 2; }
+.margin-top-one     { margin-top: var(--base-space-unit); }
+.margin-top-two     { margin-top: var(--base-space-unit) * 2; }
+
+.m0  { margin:        0 }
+.mt0 { margin-top:    0 }
+.mr0 { margin-right:  0 }
+.mb0 { margin-bottom: 0 }
+.ml0 { margin-left:   0 }
+
+.padding-top-none    { padding-top: 0; }
+.padding-top-quarter { padding-top: var(--base-space-unit) / 4; }
+.padding-top-half    { padding-top: var(--base-space-unit) / 2; }
+.padding-top-one     { padding-top: var(--base-space-unit); }
+.padding-top-two     { padding-top: var(--base-space-unit) * 2; }
+
+.p0  { padding:        0 }
+.pt0 { padding-top:    0 }
+.pr0 { padding-right:  0 }
+.pb0 { padding-bottom: 0 }
+.pl0 { padding-left:   0 }
