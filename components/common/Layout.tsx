@@ -1,11 +1,17 @@
 import React from 'react';
 import Header from './Header';
 
-const Layout = ({ children }) => <div>{children}</div>;
+interface LayoutSubComponents {
+  Header: React.FC;
+  Body: React.FC;
+  Footer: React.FC;
+}
 
-Layout.Header = ({ children }) => (
+const Layout: React.FC & LayoutSubComponents = ({ children }) => <div>{children}</div>;
+
+Layout.Header = () => (
   <header>
-    <Header>{children}</Header>
+    <Header />
   </header>
 );
 Layout.Body = ({ children }) => <main>{children}</main>;

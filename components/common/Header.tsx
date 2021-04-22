@@ -1,7 +1,7 @@
 import React from 'react';
 import { Cell, Grid } from 'styled-css-grid';
 
-const Header = () => {
+const Header: React.FC = () => {
   return (
     <div className="container-full">
       <div className="grid">
