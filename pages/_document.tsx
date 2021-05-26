@@ -31,7 +31,6 @@ export default class MyDocument extends Document {
       <Html lang="en-US">
         <Head>
           <link rel="icon" href="favicon.ico" />
-          <link href="https://cdn.jsdelivr.net/npm/reflex-grid@2.0.7/css/reflex.min.css" as="style" rel="stylesheet" />
           <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js" noModule />
         </Head>
         <body>
