@@ -10,15 +10,14 @@ interface LayoutSubComponents {
   Footer: React.FC;
 }
 
-const Layout: React.FC & LayoutSubComponents = ({ children }) => <>{children}</>;
+const Layout: React.FC & LayoutSubComponents = ({ children }) => <main className="relative">{children}</main>;
 
 Layout.Banner = () => <Banner />;
-Layout.Header = () => (
-  <header>
-    <Header />
-  </header>
-);
+
+Layout.Header = () => <Header />;
+
 Layout.Body = ({ children }) => <main>{children}</main>;
+
 Layout.Footer = () => (
   <footer>
     <Footer />

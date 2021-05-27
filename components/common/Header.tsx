@@ -1,52 +1,35 @@
 import Image from 'next/image';
 import React from 'react';
-import styled from 'styled-components';
-import Button from './Form/Button';
-
-const HeaderLogoAndNavWrapper = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const NavWrapper = styled.nav`
-  font-size: 0.85rem;
-  display: inline-block;
-  margin-left: 2rem;
-  ul {
-    padding: 0;
-    margin: 0;
-    li {
-      list-style: none;
-      display: inline-block;
-      padding: 0 1rem;
-    }
-  }
-`;
 
 const Header: React.FC = () => {
   return (
-    <div className="container-full">
-      <div className="grid align-center">
-        <div className="col-8">
-          <HeaderLogoAndNavWrapper>
+    <header className="bg-white sticky top-0 z-50">
+      <div className="container py-4 mx-auto">
+        <div className="flex items-center">
+          <div className="w-40 mt-2">
             <Image src="/logo.svg" alt="spacejoy Logo" height={'34'} width={'129'} />
-            <NavWrapper>
+          </div>
+          <div className="flex-1">
+            <nav>
               <ul>
-                <li>Ideas</li>
-                <li>Stories</li>
-                <li>Quiz</li>
-                <li>Pricing</li>
+                <li className="inline-block px-2 text-sm text-gray-600 hover:text-red-600">Ideas</li>
+                <li className="inline-block px-2 text-sm text-gray-600 hover:text-red-600">Stories</li>
+                <li className="inline-block px-2 text-sm text-gray-600 hover:text-red-600">Quiz</li>
+                <li className="inline-block px-2 text-sm text-gray-600 hover:text-red-600">Pricing</li>
               </ul>
-            </NavWrapper>
-          </HeaderLogoAndNavWrapper>
-        </div>
-        <div className="col-4">
-          <div className="text-right">
-            <Button>Login</Button>
+            </nav>
+          </div>
+          <div className="flex-auto text-right">
+            <button
+              type="button"
+              className="focus:outline-none text-gray-600 text-xs py-2 px-5 rounded-full border border-gray-600 hover:bg-gray-50"
+            >
+              LOGIN
+            </button>
           </div>
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 
