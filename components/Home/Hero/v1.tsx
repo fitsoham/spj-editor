@@ -26,33 +26,33 @@ const AnimateBox = styled.div`
 
 const v1 = () => {
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto px-4">
       <div className="grid gap-14 grid-cols-4 items-center">
         <div>
           <AnimateBox className="details">
-            <h1 className="text-5xl mb-4">Live in joy</h1>
+            <h1 className="text-5xl mb-4 text-red">Live in joy</h1>
             <p className="text-lg mb-4">Online interior design services by Spacejoy</p>
-            <p className="text-base text-gray-500 mb-6">
+            <p className="text-sm text-gray-700 mb-6">
               Get your room designed by professional interior designer and shop high-quality furniture and decor from
               your favorite brands.
             </p>
             <button
               type="button"
-              className="focus:outline-none shadow-md hover:shadow-xl text-base text-white py-4 px-12 rounded-lg bg-gradient-to-r from-spj-red to-spj-yellow"
+              className="focus:outline-none shadow-xs hover:shadow-md text-base text-white py-3 px-12 rounded-full bg-gradient-to-r from-spj-red to-spj-yellow"
             >
               Start Project
             </button>
-            <p className="text-sm mt-6 text-gray-500">Price starts from $99.00, checkout now</p>
+            <p className="text-sm mt-6 text-gray-700">Price starts from $99.00, checkout now</p>
           </AnimateBox>
         </div>
         <div className="col-start-2 col-end-5">
           <AnimateBox className="banner rounded-xl">
             <Image
               className="rounded-xl"
-              src="https://res.cloudinary.com/spacejoy/image/upload/v1622109948/spj-v2/spj-happy-customer_iw5nbv.jpg"
+              src="https://res.cloudinary.com/spacejoy/image/upload/c_scale,h_1032,w_1835/v1622109948/spj-v2/spj-happy-customer_iw5nbv.jpg"
               alt="spacejoy happy customer"
               height={'688'}
-              width={'1148'}
+              width={'1223'}
             />
           </AnimateBox>
         </div>
