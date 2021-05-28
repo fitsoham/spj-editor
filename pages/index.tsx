@@ -1,6 +1,6 @@
 import Layout from '@components/common/Layout';
 import PreFooter from '@components/common/PreFooter';
-import { ChooseUs, Featured, Hero1, Output, VisualAnimation } from '@components/Home';
+import { Advantage, ChooseUs, Featured, Hero1, Output, VisualAnimation } from '@components/Home';
 import Head from 'next/head';
 import React from 'react';
 import Testimonials from '../components/Home/Testimonials';
@@ -19,6 +19,7 @@ export const Home = (): JSX.Element => (
       <VisualAnimation />
       <ChooseUs />
       <Testimonials />
+      <Advantage />
       <Output />
       <PreFooter />
     </Layout.Body>

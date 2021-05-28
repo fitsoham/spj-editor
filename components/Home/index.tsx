@@ -1,3 +1,4 @@
+import Advantage from './Advantage';
 import ChooseUs from './ChooseUs';
 import Featured from './Featured';
 import Hero1 from './Hero/v1';
@@ -6,4 +7,4 @@ import Output from './Output';
 import Testimonials from './Testimonials';
 import VisualAnimation from './VisualAnimation';
 
-export { Hero1, Hero2, Featured, ChooseUs, VisualAnimation, Output, Testimonials };
+export { Hero1, Advantage, Hero2, Featured, ChooseUs, VisualAnimation, Output, Testimonials };
