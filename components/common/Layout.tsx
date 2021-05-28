@@ -18,10 +18,6 @@ Layout.Header = () => <Header />;
 
 Layout.Body = ({ children }) => <main>{children}</main>;
 
-Layout.Footer = () => (
-  <footer>
-    <Footer />
-  </footer>
-);
+Layout.Footer = () => <Footer />;
 
 export default Layout;
