@@ -9,6 +9,7 @@ const SectionTitle = ({ accent, feature, title, description }) => {
           ${accent === 'indigo' && 'text-indigo-500'}
           ${accent === 'pink' && 'text-pink-500'}
           ${accent === 'yellow' && 'text-yellow-500'} 
+          ${accent === 'green' && 'text-green-500'} 
           text-sm mb-2`}
         >
           {feature}

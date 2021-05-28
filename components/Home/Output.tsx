@@ -55,9 +55,7 @@ const Output = () => {
                   top: '70%',
                   scale: 2,
                 }}
-              >
-                <h2>Das ist ein Titel</h2>
-              </Tween>
+              ></Tween>
             </Timeline>
           </Scene>
           <div className="section" />
