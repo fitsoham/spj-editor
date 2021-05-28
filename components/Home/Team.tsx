@@ -26,10 +26,10 @@ const Team = () => {
             </Controller>
           </div>
           <div className="w-7/12">
-            <div className="h-full grid grid-cols-2 grid-rows-2 md:gap-5 lg:gap:0 8">
+            <div className="h-full grid grid-cols-3 grid-rows-3 md:gap-5 lg:gap:0 8">
               <div className="rounded-xl overflow-hidden">
                 <Image
-                  className="rounded-xl"
+                  className="rounded-xl shadow-lg"
                   src="https://res.cloudinary.com/spacejoy/image/upload/v1621832684/maria_castillero_zzcgvs.png"
                   alt="spacejoy happy customer"
                   height={'500'}
@@ -38,7 +38,7 @@ const Team = () => {
               </div>
               <div className="rounded-xl">
                 <Image
-                  className="rounded-xl"
+                  className="rounded-xl shadow-lg"
                   src="https://res.cloudinary.com/spacejoy/image/upload/v1621927419/nathan_tuosfe.png"
                   alt="spacejoy happy customer"
                   height={'500'}
@@ -47,7 +47,7 @@ const Team = () => {
               </div>
               <div className="rounded-xl">
                 <Image
-                  className="rounded-xl"
+                  className="rounded-xl shadow-lg"
                   src="https://res.cloudinary.com/spacejoy/image/upload/c_crop,g_face,h_827,w_827/v1621841011/lauren_q0btgw.jpg"
                   alt="spacejoy happy customer"
                   height={'500'}
@@ -56,8 +56,53 @@ const Team = () => {
               </div>
               <div className="rounded-xl">
                 <Image
-                  className="rounded-xl"
+                  className="rounded-xl shadow-lg"
                   src="https://res.cloudinary.com/spacejoy/image/upload/c_crop,g_center,h_2477,w_2477/v1621934310/casey_davis_ybo6d4.jpg"
+                  alt="spacejoy happy customer"
+                  height={'500'}
+                  width={'500'}
+                />
+              </div>
+              <div className="rounded-xl">
+                <Image
+                  className="rounded-xl shadow-lg"
+                  src="https://res.cloudinary.com/spacejoy/image/upload/v1621927419/nathan_tuosfe.png"
+                  alt="spacejoy happy customer"
+                  height={'500'}
+                  width={'500'}
+                />
+              </div>
+              <div className="rounded-xl">
+                <Image
+                  className="rounded-xl shadow-lg"
+                  src="https://res.cloudinary.com/spacejoy/image/upload/c_crop,g_face,h_827,w_827/v1621841011/lauren_q0btgw.jpg"
+                  alt="spacejoy happy customer"
+                  height={'500'}
+                  width={'500'}
+                />
+              </div>
+              <div className="rounded-xl">
+                <Image
+                  className="rounded-xl shadow-lg"
+                  src="https://res.cloudinary.com/spacejoy/image/upload/c_crop,g_center,h_2477,w_2477/v1621934310/casey_davis_ybo6d4.jpg"
+                  alt="spacejoy happy customer"
+                  height={'500'}
+                  width={'500'}
+                />
+              </div>
+              <div className="rounded-xl">
+                <Image
+                  className="rounded-xl shadow-lg"
+                  src="https://res.cloudinary.com/spacejoy/image/upload/v1621927419/nathan_tuosfe.png"
+                  alt="spacejoy happy customer"
+                  height={'500'}
+                  width={'500'}
+                />
+              </div>
+              <div className="rounded-xl">
+                <Image
+                  className="rounded-xl shadow-lg"
+                  src="https://res.cloudinary.com/spacejoy/image/upload/c_crop,g_face,h_827,w_827/v1621841011/lauren_q0btgw.jpg"
                   alt="spacejoy happy customer"
                   height={'500'}
                   width={'500'}
