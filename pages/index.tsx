@@ -23,7 +23,7 @@ export const Home = (): JSX.Element => (
       <Output />
       <PreFooter />
     </Layout.Body>
-    <Layout.Footer />
+    {/* <Layout.Footer /> */}
   </Layout>
 );
 

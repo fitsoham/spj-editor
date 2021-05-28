@@ -47,7 +47,7 @@ const ChooseUs = () => {
         title="Why Pick Spacejoy"
         description="Our design experts will transform any room in your home on our smart 3D desktop App. Shop handpicked products within your budget and style, directly from your room design, within Spacejoy."
       />
-      <div className="container mx-auto">
+      <div className="container px-4 mx-auto">
         <Controller>
           <Scene classToggle="entry" triggerHook={0.9} indicators={false} reverse={true}>
             <AnimateBox className="flex items-center justify-center">
