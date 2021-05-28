@@ -23,26 +23,26 @@ const Header: React.FC = () => {
           <div className="flex-auto text-right">
             <button
               type="button"
-              className="focus:outline-none text-gray-700 text-xs py-1.5 px-2 mx-3 rounded-full hover:shadow-md"
+              className="focus:outline-none text-gray-700 text-xs py-1.5 px-2 mx-2 rounded-full hover:shadow-md"
             >
               <SearchIcon className="h-4 w-4" />
             </button>
             <button
               type="button"
-              className="focus:outline-none text-gray-700 text-xs py-1.5 px-2 mx-3 rounded-full hover:shadow-md"
+              className="focus:outline-none text-gray-700 text-xs py-1.5 px-2 mx-2 rounded-full hover:shadow-md"
             >
               <ShoppingBagIcon className="h-4 w-4" />
             </button>
 
             <button
               type="button"
-              className="focus:outline-none text-white text-xs py-1.5 px-5 mx-3 rounded-full border border-gray-600 bg-gray-900 hover:bg-gray-50"
+              className="focus:outline-none text-white text-xs py-1.5 px-5 mx-2 rounded-full border border-gray-900 bg-gray-900 hover:bg-gray-700"
             >
               Start Project
             </button>
             <button
               type="button"
-              className="focus:outline-none text-gray-700 text-xs py-1.5 px-5 ml-3 rounded-full border border-gray-600 hover:bg-gray-50"
+              className="focus:outline-none text-gray-700 text-xs py-1.5 px-5 ml-2 rounded-full border border-gray-600 hover:bg-gray-50"
             >
               LOGIN
             </button>

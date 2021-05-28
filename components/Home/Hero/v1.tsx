@@ -17,7 +17,7 @@ const AnimateBox = styled.div`
   animation: ${entry} 0.8s forwards;
   transform: translateY(20px);
   &.details {
-    animation-delay: 450ms;
+    animation-delay: 550ms;
   }
   &.banner {
     animation-delay: 300ms;
@@ -49,10 +49,10 @@ const v1 = () => {
           <AnimateBox className="banner rounded-xl">
             <Image
               className="rounded-xl"
-              src="https://res.cloudinary.com/spacejoy/image/upload/c_scale,h_1032,w_1835/v1622109948/spj-v2/spj-happy-customer_iw5nbv.jpg"
+              src="https://res.cloudinary.com/spacejoy/image/upload/c_scale,h_1050,w_1671/v1622172527/spj-v2/spj-happy-customer_ahkoxm.jpg"
               alt="spacejoy happy customer"
-              height={'688'}
-              width={'1223'}
+              height={'700'}
+              width={'1114'}
             />
           </AnimateBox>
         </div>
