@@ -54,9 +54,9 @@ const Featured = () => {
         description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis reprehenderit reiciendis officia vero ab nostrum
       asperiores aperiam? Illo vitae recusandae, incidunt quas sapiente quo maxime impedit cum, hic odio temporibus!"
       />
-      <div className="mb-32">
+      <div className="mb-40">
         <Controller>
-          <Scene classToggle="entry" triggerHook={0.9} indicators={false} reverse={true}>
+          <Scene classToggle="entry" triggerHook={1} indicators={false} reverse={true}>
             <AnimateBox className="flex items-center justify-center px-5">
               <div className="shadow-md border border-gray-200 bg-white p-4 h-32 w-64 rounded-xl flex items-center justify-center md:mx-2 xl:mx-3">
                 <Image
