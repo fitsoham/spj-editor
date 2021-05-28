@@ -15,13 +15,13 @@ const BigText = styled.h3`
 
 const Team = () => {
   return (
-    <div className="h-screen bg-red-00 mt-40">
+    <div className="h-screen mt-40">
       <div className="container mx-auto px-4">
         <div className="flex">
           <div className="w-5/12">
             <Controller>
               <Scene duration={200} triggerHook={0.2} pin={true} enabled={true} indicators={false}>
-                <BigText className="text-5xl py-10 text-green-800">Meet Our Team</BigText>
+                <BigText className="text-5xl py-10 text-gray-200">Meet Our Team</BigText>
               </Scene>
             </Controller>
           </div>
