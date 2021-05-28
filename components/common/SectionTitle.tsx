@@ -3,7 +3,7 @@ import React from 'react';
 const SectionTitle = ({ accent, feature, title, description }) => {
   return (
     <div className="bg-gray-0">
-      <div className="container text-center mx-auto py-20">
+      <div className="container text-center mx-auto pt-36 pb-16">
         <p
           className={`
           ${accent === 'indigo' && 'text-indigo-500'}

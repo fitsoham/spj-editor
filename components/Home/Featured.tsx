@@ -44,17 +44,17 @@ const Featured = () => {
   return (
     <>
       <SectionTitle
-        accent="indigo"
+        accent="yellow"
         feature="Media"
         title="We are proud to be Featured in"
         description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis reprehenderit reiciendis officia vero ab nostrum
       asperiores aperiam? Illo vitae recusandae, incidunt quas sapiente quo maxime impedit cum, hic odio temporibus!"
       />
-      <div className="bg-gray-100">
+      <div className="mb-32">
         <Controller>
           <Scene classToggle="entry" triggerHook={0.9} indicators={false} reverse={true}>
-            <AnimateBox className="h-64 flex items-center justify-center">
-              <div className="shadow-sm bg-white p-4 h-32 w-64 rounded-xl flex items-center justify-center mx-5">
+            <AnimateBox className="flex items-center justify-center">
+              <div className="shadow-md border border-gray-200 bg-white p-4 h-32 w-64 rounded-xl flex items-center justify-center mx-5">
                 <Image
                   src="https://res.cloudinary.com/spacejoy/image/upload/v1610014244/shared/Brand%20logos%2007-2021/publication_LOGO-01_fohpe0.svg"
                   alt="spacejoy happy customer"
@@ -62,7 +62,7 @@ const Featured = () => {
                   width={'200'}
                 />
               </div>
-              <div className="shadow-sm bg-white p-4 h-32 w-64 rounded-xl flex items-center justify-center mx-5">
+              <div className="shadow-md border border-gray-200 bg-white p-4 h-32 w-64 rounded-xl flex items-center justify-center mx-5">
                 <Image
                   src="https://res.cloudinary.com/spacejoy/image/upload/v1610014243/shared/Brand%20logos%2007-2021/publication_LOGO-03_obxond.svg"
                   alt="spacejoy happy customer"
@@ -70,7 +70,7 @@ const Featured = () => {
                   width={'200'}
                 />
               </div>
-              <div className="shadow-sm bg-white p-4 h-32 w-64 rounded-xl flex items-center justify-center mx-5">
+              <div className="shadow-md border border-gray-200 bg-white p-4 h-32 w-64 rounded-xl flex items-center justify-center mx-5">
                 <Image
                   src="https://res.cloudinary.com/spacejoy/image/upload/v1610014243/shared/Brand%20logos%2007-2021/publication_LOGO-02_ogxwsc.svg"
                   alt="spacejoy happy customer"
@@ -78,7 +78,7 @@ const Featured = () => {
                   width={'200'}
                 />
               </div>
-              <div className="shadow-sm bg-white p-4 h-32 w-64 rounded-xl flex items-center justify-center mx-5">
+              <div className="shadow-md border border-gray-200 bg-white p-4 h-32 w-64 rounded-xl flex items-center justify-center mx-5">
                 <Image
                   src="https://res.cloudinary.com/spacejoy/image/upload/v1610014242/shared/Brand%20logos%2007-2021/publication_LOGO-04_bj5aqr.svg"
                   alt="spacejoy happy customer"
@@ -86,7 +86,7 @@ const Featured = () => {
                   width={'200'}
                 />
               </div>
-              <div className="shadow-sm bg-white p-4 h-32 w-64 rounded-xl flex items-center justify-center mx-5">
+              <div className="shadow-md border border-gray-200 bg-white p-4 h-32 w-64 rounded-xl flex items-center justify-center mx-5">
                 <Image
                   src="https://res.cloudinary.com/spacejoy/image/upload/v1610014241/shared/Brand%20logos%2007-2021/publication_LOGO-07_odqvkc.svg"
                   alt="spacejoy happy customer"
