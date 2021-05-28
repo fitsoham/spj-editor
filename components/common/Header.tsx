@@ -33,6 +33,13 @@ const Header: React.FC = () => {
             >
               <ShoppingBagIcon className="h-4 w-4" />
             </button>
+
+            <button
+              type="button"
+              className="focus:outline-none text-white text-xs py-1.5 px-5 mx-3 rounded-full border border-gray-600 bg-gray-900 hover:bg-gray-50"
+            >
+              Start Project
+            </button>
             <button
               type="button"
               className="focus:outline-none text-gray-700 text-xs py-1.5 px-5 ml-3 rounded-full border border-gray-600 hover:bg-gray-50"
