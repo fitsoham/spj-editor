@@ -54,6 +54,7 @@ const v1 = () => {
               height={'700'}
               width={'1114'}
             />
+            <div className="absolute shape-1 bottom-0 -ml-14 -mb-14"></div>
           </AnimateBox>
         </div>
       </div>

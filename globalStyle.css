@@ -15,3 +15,17 @@ h3 {
   font-weight: 800;
   line-height: 1.5em;
 }
+
+.shape-1{
+  background-image: url(/images/shapes/3139839-08.svg);
+  width: 100px;
+  height: 100px;
+  background-repeat: no-repeat;
+}
+
+.shape-2{
+  background-image: url(/images/shapes/3139839-25.svg);
+  width: 100px;
+  height: 100px;
+  background-repeat: no-repeat;
+}
