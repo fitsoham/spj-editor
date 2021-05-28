@@ -1,4 +1,4 @@
-import { ChooseUs, Featured, Hero1 } from '@components/Home';
+import { ChooseUs, Featured, Hero1, VisualAnimation } from '@components/Home';
 import Head from 'next/head';
 import React from 'react';
 import Layout from '../components/common/Layout';
@@ -14,6 +14,7 @@ export const Home = (): JSX.Element => (
     <Layout.Body>
       <Hero1 />
       <Featured />
+      <VisualAnimation />
       <ChooseUs />
     </Layout.Body>
     <Layout.Footer />

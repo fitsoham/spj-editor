@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 import { Controller, Scene } from 'react-scrollmagic';
 import styled, { keyframes } from 'styled-components';
@@ -41,7 +42,7 @@ const AnimateBox = styled.div`
 
 const Featured = () => {
   return (
-    <div className="py-10">
+    <>
       <SectionTitle
         accent="indigo"
         feature="Media"
@@ -53,16 +54,51 @@ const Featured = () => {
         <Controller>
           <Scene classToggle="entry" triggerHook={0.9} indicators={false} reverse={true}>
             <AnimateBox className="h-64 flex items-center justify-center">
-              <div className="shadow-sm bg-white h-32 w-32 rounded-xl flex items-center justify-center mx-5">s</div>
-              <div className="shadow-sm bg-white h-32 w-32 rounded-xl flex items-center justify-center mx-5">s</div>
-              <div className="shadow-sm bg-white h-32 w-32 rounded-xl flex items-center justify-center mx-5">s</div>
-              <div className="shadow-sm bg-white h-32 w-32 rounded-xl flex items-center justify-center mx-5">s</div>
-              <div className="shadow-sm bg-white h-32 w-32 rounded-xl flex items-center justify-center mx-5">s</div>
+              <div className="shadow-sm bg-white p-4 h-32 w-64 rounded-xl flex items-center justify-center mx-5">
+                <Image
+                  src="https://res.cloudinary.com/spacejoy/image/upload/v1610014244/shared/Brand%20logos%2007-2021/publication_LOGO-01_fohpe0.svg"
+                  alt="spacejoy happy customer"
+                  height={'130'}
+                  width={'200'}
+                />
+              </div>
+              <div className="shadow-sm bg-white p-4 h-32 w-64 rounded-xl flex items-center justify-center mx-5">
+                <Image
+                  src="https://res.cloudinary.com/spacejoy/image/upload/v1610014243/shared/Brand%20logos%2007-2021/publication_LOGO-03_obxond.svg"
+                  alt="spacejoy happy customer"
+                  height={'130'}
+                  width={'200'}
+                />
+              </div>
+              <div className="shadow-sm bg-white p-4 h-32 w-64 rounded-xl flex items-center justify-center mx-5">
+                <Image
+                  src="https://res.cloudinary.com/spacejoy/image/upload/v1610014243/shared/Brand%20logos%2007-2021/publication_LOGO-02_ogxwsc.svg"
+                  alt="spacejoy happy customer"
+                  height={'130'}
+                  width={'200'}
+                />
+              </div>
+              <div className="shadow-sm bg-white p-4 h-32 w-64 rounded-xl flex items-center justify-center mx-5">
+                <Image
+                  src="https://res.cloudinary.com/spacejoy/image/upload/v1610014242/shared/Brand%20logos%2007-2021/publication_LOGO-04_bj5aqr.svg"
+                  alt="spacejoy happy customer"
+                  height={'130'}
+                  width={'200'}
+                />
+              </div>
+              <div className="shadow-sm bg-white p-4 h-32 w-64 rounded-xl flex items-center justify-center mx-5">
+                <Image
+                  src="https://res.cloudinary.com/spacejoy/image/upload/v1610014241/shared/Brand%20logos%2007-2021/publication_LOGO-07_odqvkc.svg"
+                  alt="spacejoy happy customer"
+                  height={'130'}
+                  width={'200'}
+                />
+              </div>
             </AnimateBox>
           </Scene>
         </Controller>
       </div>
-    </div>
+    </>
   );
 };
 
