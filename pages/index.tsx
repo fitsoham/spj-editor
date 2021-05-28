@@ -3,7 +3,6 @@ import PreFooter from '@components/common/PreFooter';
 import { Advantage, ChooseUs, Featured, Hero1, Output, Team, VisualAnimation } from '@components/Home';
 import Head from 'next/head';
 import React from 'react';
-import Testimonials from '../components/Home/Testimonials';
 
 export const Home = (): JSX.Element => (
   <Layout>
@@ -19,7 +18,7 @@ export const Home = (): JSX.Element => (
       <VisualAnimation />
       <ChooseUs />
       <Team />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <Advantage />
       <Output />
       <PreFooter />
