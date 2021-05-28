@@ -15,27 +15,31 @@ const entry = keyframes`
 `;
 
 const AnimateBox = styled.div`
-  &.entry > div {
-    opacity: 0;
-    animation: ${entry} 0.8s forwards;
-    transform: translateY(50px);
-    &:nth-child(1) {
-      animation-delay: 100ms;
-    }
-    &:nth-child(2) {
-      animation-delay: 200ms;
-    }
-    &:nth-child(3) {
-      animation-delay: 300ms;
-    }
-    &:nth-child(4) {
-      animation-delay: 400ms;
-    }
-    &:nth-child(5) {
-      animation-delay: 500ms;
-    }
-    &:nth-child(6) {
-      animation-delay: 600ms;
+  opacity: 0;
+  &.entry {
+    opacity: 1;
+    & > div {
+      opacity: 0;
+      animation: ${entry} 0.8s forwards;
+      transform: translateY(50px);
+      &:nth-child(1) {
+        animation-delay: 100ms;
+      }
+      &:nth-child(2) {
+        animation-delay: 200ms;
+      }
+      &:nth-child(3) {
+        animation-delay: 300ms;
+      }
+      &:nth-child(4) {
+        animation-delay: 400ms;
+      }
+      &:nth-child(5) {
+        animation-delay: 500ms;
+      }
+      &:nth-child(6) {
+        animation-delay: 600ms;
+      }
     }
   }
 `;

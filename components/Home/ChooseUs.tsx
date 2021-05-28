@@ -15,27 +15,25 @@ const entry = keyframes`
 `;
 
 const AnimateBox = styled.div`
-  &.entry > div {
-    opacity: 0;
-    animation: ${entry} 0.8s forwards;
-    transform: translateY(50px);
-    &:nth-child(1) {
-      animation-delay: 100ms;
-    }
-    &:nth-child(2) {
-      animation-delay: 200ms;
-    }
-    &:nth-child(3) {
-      animation-delay: 300ms;
-    }
-    &:nth-child(4) {
-      animation-delay: 400ms;
-    }
-    &:nth-child(5) {
-      animation-delay: 500ms;
-    }
-    &:nth-child(6) {
-      animation-delay: 600ms;
+  opacity: 0;
+  &.entry {
+    opacity: 1;
+    & > div {
+      opacity: 0;
+      animation: ${entry} 0.8s forwards;
+      transform: translateY(50px);
+      &:nth-child(1) {
+        animation-delay: 300ms;
+      }
+      &:nth-child(2) {
+        animation-delay: 100ms;
+      }
+      &:nth-child(3) {
+        animation-delay: 100ms;
+      }
+      &:nth-child(4) {
+        animation-delay: 300ms;
+      }
     }
   }
 `;
@@ -51,7 +49,7 @@ const ChooseUs = () => {
       />
       <div className="container mx-auto">
         <Controller>
-          <Scene classToggle="entry" triggerHook={1} indicators={false} reverse={true}>
+          <Scene classToggle="entry" triggerHook={0.9} indicators={false} reverse={true}>
             <AnimateBox className="flex items-center justify-center">
               <div className="shadow-lg border border-gray-200 p-10 flex-1 rounded-xl flex items-center justify-center mx-5">
                 <div className="text-center">
