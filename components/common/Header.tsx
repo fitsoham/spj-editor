@@ -1,3 +1,4 @@
+import { SearchIcon, ShoppingBagIcon } from '@heroicons/react/outline';
 import Image from 'next/image';
 import React from 'react';
 
@@ -22,13 +23,19 @@ const Header: React.FC = () => {
           <div className="flex-auto text-right">
             <button
               type="button"
-              className="focus:outline-none text-gray-700 text-xs py-1.5 px-5 mx-5 rounded-full border border-gray-600 hover:bg-gray-50"
+              className="focus:outline-none text-gray-700 text-xs py-1.5 px-2 mx-3 rounded-full hover:shadow-md"
             >
-              Cart
+              <SearchIcon className="h-4 w-4" />
             </button>
             <button
               type="button"
-              className="focus:outline-none text-gray-700 text-xs py-1.5 px-5 rounded-full border border-gray-600 hover:bg-gray-50"
+              className="focus:outline-none text-gray-700 text-xs py-1.5 px-2 mx-3 rounded-full hover:shadow-md"
+            >
+              <ShoppingBagIcon className="h-4 w-4" />
+            </button>
+            <button
+              type="button"
+              className="focus:outline-none text-gray-700 text-xs py-1.5 px-5 ml-3 rounded-full border border-gray-600 hover:bg-gray-50"
             >
               LOGIN
             </button>
