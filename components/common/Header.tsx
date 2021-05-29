@@ -63,13 +63,13 @@ const Header: React.FC = () => {
             <div className="flex-auto text-right">
               <button
                 type="button"
-                className="focus:outline-none text-gray-700 text-xs py-1.5 px-2 mx-2 rounded-full hover:shadow-md"
+                className="focus:outline-none text-gray-700 text-xs py-2 px-2 mx-2 rounded-full hover:shadow-md"
               >
                 <SearchIcon className="h-4 w-4" />
               </button>
               <button
                 type="button"
-                className="focus:outline-none text-gray-700 text-xs py-1.5 px-2 mx-2 rounded-full hover:shadow-md"
+                className="focus:outline-none text-gray-700 text-xs py-2 px-2 mx-2 rounded-full hover:shadow-md"
               >
                 <ShoppingBagIcon className="h-4 w-4" />
               </button>

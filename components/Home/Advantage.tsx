@@ -58,7 +58,7 @@ const Advantage = () => {
                 <div className="flex flex-col">
                   <div className="text-right -mb-4 h-full">
                     <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/v1622188225/spj-v2/3d-icons/spj-7_uqoib6.svg"
+                      src="https://res.cloudinary.com/spacejoy/image/upload/h_300,w_300/v1622188225/spj-v2/3d-icons/spj-7_uqoib6.svg"
                       alt="No markups"
                       height={'150'}
                       width={'150'}
@@ -76,7 +76,7 @@ const Advantage = () => {
                 <div className="flex flex-col">
                   <div className="text-right -mb-4 h-full">
                     <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/v1622188221/spj-v2/3d-icons/spj-4_hhrkhz.svg"
+                      src="https://res.cloudinary.com/spacejoy/image/upload/h_300,w_300/v1622188221/spj-v2/3d-icons/spj-4_hhrkhz.svg"
                       alt="No markups"
                       height={'150'}
                       width={'150'}
@@ -94,7 +94,7 @@ const Advantage = () => {
                 <div className="flex flex-col">
                   <div className="text-right -mb-4 h-full">
                     <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/v1622188241/spj-v2/3d-icons/spj-21_wkxzii.svg"
+                      src="https://res.cloudinary.com/spacejoy/image/upload/h_300,w_300/v1622188241/spj-v2/3d-icons/spj-21_wkxzii.svg"
                       alt="No markups"
                       height={'150'}
                       width={'150'}
@@ -112,7 +112,7 @@ const Advantage = () => {
                 <div className="flex flex-row-reverse items-end">
                   <div className="text-right -mb-4 h-full">
                     <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/v1622188230/spj-v2/3d-icons/spj-11_ievy9p.svg"
+                      src="https://res.cloudinary.com/spacejoy/image/upload/h_300,w_300/v1622188230/spj-v2/3d-icons/spj-11_ievy9p.svg"
                       alt="No markups"
                       height={'450'}
                       width={'450'}
@@ -130,7 +130,7 @@ const Advantage = () => {
                 <div className="flex flex-row-reverse items-end">
                   <div className="text-right h-full">
                     <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/v1622188231/spj-v2/3d-icons/spj-14_jawl1e.svg"
+                      src="https://res.cloudinary.com/spacejoy/image/upload/h_300,w_300/v1622188231/spj-v2/3d-icons/spj-14_jawl1e.svg"
                       alt="No markups"
                       height={'450'}
                       width={'450'}
