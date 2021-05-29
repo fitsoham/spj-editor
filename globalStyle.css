@@ -24,8 +24,15 @@ h3 {
 }
 
 .shape-2{
-  background-image: url(/images/shapes/3139839-25.svg);
+  background-image: url(/images/shapes/shape-2.svg);
   width: 100px;
+  height: 100px;
+  background-repeat: no-repeat;
+}
+
+.shape-3{
+  background-image: url(/images/shapes/3139839-28.svg);
+  width: 40px;
   height: 100px;
   background-repeat: no-repeat;
 }

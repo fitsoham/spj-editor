@@ -5,6 +5,7 @@ const VisualAnimation = () => {
   return (
     <div>
       <Image
+        className="filter contrast-125"
         src="https://res.cloudinary.com/spacejoy/image/upload/v1622186205/spj-v2/spj-living-room_gyepig.jpg"
         alt="spacejoy happy customer"
         height={'759'}

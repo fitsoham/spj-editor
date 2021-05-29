@@ -38,7 +38,7 @@ const v1 = () => {
             </p>
             <button
               type="button"
-              className="focus:outline-none shadow-xs hover:shadow-md text-base text-white py-3 px-12 rounded-full bg-gradient-to-r from-spj-red to-spj-yellow"
+              className="focus:outline-none shadow-xs hover:shadow-md text-base text-white py-3 px-12 rounded-full bg-gradient-to-r from-spj-red to-spj-yellow tracking-wide"
             >
               Start Project
             </button>

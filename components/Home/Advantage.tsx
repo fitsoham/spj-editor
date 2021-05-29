@@ -90,7 +90,7 @@ const Advantage = () => {
                   </div>
                 </div>
               </div>
-              <div className="bg-blue-100 p-10 h-full rounded-xl col-start-5 col-end-7">
+              <div className="bg-gray-100 p-10 h-full rounded-xl col-start-5 col-end-7">
                 <div className="flex flex-col">
                   <div className="text-right -mb-4 h-full">
                     <Image
@@ -101,8 +101,8 @@ const Advantage = () => {
                     />
                   </div>
                   <div>
-                    <p className="text-blue-500">Try Before you buy</p>
-                    <h3 className="text-2xl mt-3 text-blue-800">
+                    <p className="text-gray-500">Try Before you buy</p>
+                    <h3 className="text-2xl mt-3 text-gray-800">
                       Virtually try all the expensive products before making it final
                     </h3>
                   </div>
