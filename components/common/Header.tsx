@@ -16,10 +16,10 @@ const Header: React.FC = () => {
               <div className="flex-1">
                 <nav>
                   <ul>
-                    <li className="inline-block px-2 text-sm text-gray-700 hover:text-red-600">Ideas</li>
-                    <li className="inline-block px-2 text-sm text-gray-700 hover:text-red-600">Stories</li>
-                    <li className="inline-block px-2 text-sm text-gray-700 hover:text-red-600">Quiz</li>
-                    <li className="inline-block px-2 text-sm text-gray-700 hover:text-red-600">Pricing</li>
+                    <li className="inline-block px-4 text-sm text-gray-700 hover:text-red-600">Ideas</li>
+                    <li className="inline-block px-4 text-sm text-gray-700 hover:text-red-600">Stories</li>
+                    <li className="inline-block px-4 text-sm text-gray-700 hover:text-red-600">Quiz</li>
+                    <li className="inline-block px-4 text-sm text-gray-700 hover:text-red-600">Pricing</li>
                   </ul>
                 </nav>
               </div>
@@ -36,7 +36,6 @@ const Header: React.FC = () => {
                 >
                   <ShoppingBagIcon className="h-4 w-4" />
                 </button>
-
                 <button
                   type="button"
                   className="focus:outline-none text-white text-xs py-1.5 px-5 mx-2 rounded-full border border-gray-900 bg-gray-900 hover:bg-gray-700"

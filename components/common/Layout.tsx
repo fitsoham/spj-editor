@@ -16,7 +16,7 @@ Layout.Banner = () => <Banner />;
 
 Layout.Header = () => <Header />;
 
-Layout.Body = ({ children }) => <main>{children}</main>;
+Layout.Body = ({ children }) => <>{children}</>;
 
 Layout.Footer = () => <Footer />;
 

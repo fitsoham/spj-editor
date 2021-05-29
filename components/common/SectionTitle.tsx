@@ -2,8 +2,8 @@ import React from 'react';
 
 const SectionTitle = ({ accent, feature, title, description }) => {
   return (
-    <div className="bg-gray-0">
-      <div className="container text-center mx-auto p-28">
+    <div className="container mx-auto p-28">
+      <div className="text-center max-w-4xl mx-auto">
         <p
           className={`
           ${accent === 'indigo' && 'text-indigo-500'}
@@ -15,7 +15,7 @@ const SectionTitle = ({ accent, feature, title, description }) => {
           {feature}
         </p>
         <h2 className="text-gray-900 text-3xl mb-5">{title}</h2>
-        <p className="text-gray-500 max-w-4xl mx-auto">{description}</p>
+        <p className="text-gray-500">{description}</p>
       </div>
     </div>
   );
