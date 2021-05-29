@@ -2,7 +2,7 @@ import React from 'react';
 
 const Banner: React.FC = () => {
   return (
-    <div className="bg-green-900">
+    <div className="relative bg-green-900 z-10">
       <p className="text-sm py-3 text-white text-center container mx-auto">
         Season Beckons with our freshest sale. Get <strong>20% Off</strong> design packages. Use code:{' '}
         <strong>SPRING20</strong>

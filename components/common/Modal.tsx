@@ -25,11 +25,7 @@ const Modal: React.FC = () => {
       </div>
 
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog
-          as="div"
-          className="fixed top-0 bg-gray-900 bg-opacity-75 inset-0 z-10 overflow-y-auto"
-          onClose={closeModal}
-        >
+        <Dialog as="div" className="fixed  bg-gray-900 bg-opacity-95 inset-0 z-10 overflow-y-auto" onClose={closeModal}>
           <div className="min-h-screen px-4 text-center">
             <Transition.Child
               as={Fragment}
