@@ -8,7 +8,7 @@ const Header: React.FC = () => {
 
   const closeSubNav = () => setIsOpenSubNav(false);
 
-  const openSubNav = () => setIsOpenSubNav(true);
+  const toggleSubNav = () => setIsOpenSubNav((isOpenSubNav) => !isOpenSubNav);
 
   return (
     <>
@@ -25,7 +25,7 @@ const Header: React.FC = () => {
                     <button
                       type="button"
                       className="focus:outline-none text-gray-700 hover:text-red-600 text-sm py-2 px-2.5 rounded-md"
-                      onClick={openSubNav}
+                      onClick={toggleSubNav}
                     >
                       Ideas
                     </button>
@@ -34,7 +34,7 @@ const Header: React.FC = () => {
                     <button
                       type="button"
                       className="focus:outline-none text-gray-700 hover:text-red-600 text-sm py-2 px-2.5 rounded-md"
-                      onClick={openSubNav}
+                      onClick={toggleSubNav}
                     >
                       Stories
                     </button>
@@ -43,7 +43,7 @@ const Header: React.FC = () => {
                     <button
                       type="button"
                       className="focus:outline-none text-gray-700 hover:text-red-600 text-sm py-2 px-2.5 rounded-md"
-                      onClick={openSubNav}
+                      onClick={toggleSubNav}
                     >
                       Quiz
                     </button>
@@ -52,7 +52,7 @@ const Header: React.FC = () => {
                     <button
                       type="button"
                       className="focus:outline-none text-gray-700 hover:text-red-600 text-sm py-2 px-2.5 rounded-md"
-                      onClick={openSubNav}
+                      onClick={toggleSubNav}
                     >
                       Pricing
                     </button>
@@ -75,13 +75,13 @@ const Header: React.FC = () => {
               </button>
               <button
                 type="button"
-                className="focus:outline-none text-white text-xs py-1.5 px-2.5 mx-2 rounded-full border border-gray-900 bg-gray-900 hover:bg-gray-700"
+                className="focus:outline-none text-white text-xs py-1.5 px-3 mx-2 rounded-full border border-gray-900 bg-gray-900 hover:bg-gray-700"
               >
                 Start Project
               </button>
               <button
                 type="button"
-                className="focus:outline-none text-gray-700 text-xs py-1.5 px-2.5 ml-2 rounded-full border border-gray-600 hover:bg-gray-50"
+                className="focus:outline-none text-gray-700 text-xs py-1.5 px-3 ml-2 rounded-full border border-gray-600 hover:bg-gray-50"
               >
                 LOGIN
               </button>
