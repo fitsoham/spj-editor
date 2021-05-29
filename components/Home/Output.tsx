@@ -17,7 +17,7 @@ const ParallaxStyled = styled.div`
   }
 `;
 
-const Output = () => {
+const Output: React.FC = () => {
   return (
     <div>
       <SectionTitle
@@ -45,17 +45,6 @@ const Output = () => {
                   alt="spacejoy Output"
                 />
               </Tween>
-              <Tween
-                position="0"
-                from={{
-                  top: '0%',
-                  scale: 1.5,
-                }}
-                to={{
-                  top: '70%',
-                  scale: 2,
-                }}
-              ></Tween>
             </Timeline>
           </Scene>
           <div className="section" />

@@ -7,7 +7,7 @@ const Header: React.FC = () => {
   return (
     <Controller>
       <Scene classToggle="shadow-md" triggerHook={0} indicators={false} reverse={true}>
-        <header className="bg-white sticky top-0 z-50">
+        <header className="bg-white sticky top-0 z-10">
           <div className="container p-4 mx-auto">
             <div className="flex items-center">
               <div className="w-40 mt-2">
