@@ -1,4 +1,4 @@
-import { SearchIcon, ShoppingBagIcon } from '@heroicons/react/outline';
+import { ChevronDownIcon, SearchIcon, ShoppingBagIcon } from '@heroicons/react/outline';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import SubNav from './SubNav';
@@ -33,10 +33,10 @@ const Header: React.FC = () => {
                   <li className="inline-block">
                     <button
                       type="button"
-                      className="focus:outline-none text-gray-700 hover:text-red-600 text-sm py-2 px-2.5 rounded-md"
+                      className="focus:outline-none text-gray-700 hover:text-red-600 text-sm py-2 px-2.5 rounded-md flex items-center"
                       onClick={toggleSubNav}
                     >
-                      Stories
+                      Stories <ChevronDownIcon className="ml-2 h-4 w-4" />
                     </button>
                   </li>
                   <li className="inline-block">
