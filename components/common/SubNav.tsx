@@ -36,7 +36,7 @@ const SubNav = ({ subNavState, closeSubNav }: { subNavState: boolean; closeSubNa
                 <div className="grid lg:gap-4 xl:gap-8 lg:grid-cols-4 xl:grid-cols-5 max-w-800 max-w-screen-xl">
                   <div className="lg:col-start-1 lg:col-end-3 xl:col-start-1 xl:col-end-3">
                     <div className="grid gap-8 grid-cols-3">
-                      <div className="col-start-1 col-end-2">
+                      <div className="col-start-1 col-end-2 relative">
                         <Image
                           className="rounded-xl filter contrast-125"
                           src="https://res.cloudinary.com/spacejoy/image/upload/c_fill,g_face,h_800,w_800/v1617712377/web/avatars/Final_Edits_To_Headshots-0018_-_elisabeth_populo_kucasa.jpg"
@@ -44,6 +44,7 @@ const SubNav = ({ subNavState, closeSubNav }: { subNavState: boolean; closeSubNa
                           height={'300'}
                           width={'300'}
                         />
+                        <div className="absolute shape-4 bottom-10 -ml-3" />
                       </div>
                       <div className="col-start-2 col-end-4">
                         <h3 className="text-xl mb-2">How Spacejoy has transform Marisa’s Home</h3>
@@ -64,7 +65,7 @@ const SubNav = ({ subNavState, closeSubNav }: { subNavState: boolean; closeSubNa
                   <div className="lg:col-start-3 lg:col-end-4 xl:col-start-4 xl:col-end-5">
                     <div className="shadow-sm rounded-xl bg-red-100 h-full">
                       <div className="flex h-full p-4 flex-col justify-end">
-                        <div className="text-left">
+                        <div>
                           <Image
                             src="https://res.cloudinary.com/spacejoy/image/upload/h_300,w_300/v1622188242/spj-v2/3d-icons/spj-25_dhewua.svg"
                             alt="No markups"
