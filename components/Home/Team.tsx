@@ -4,7 +4,9 @@ import { Controller, Scene } from 'react-scrollmagic';
 import styled from 'styled-components';
 
 const BigText = styled.h3`
+  position: relative;
   font-size: 12rem;
+  z-index: 1;
   @media (max-width: 1536px) {
     font-size: 10rem;
   }
@@ -15,14 +17,16 @@ const BigText = styled.h3`
 
 const Team = () => {
   return (
-    <div className="mt-40 relative">
-      <div className="absolute top-0 left-28 shape-2" />
+    <div className="mt-40">
       <div className="container mx-auto px-4">
         <div className="flex">
           <div className="w-5/12">
             <Controller>
               <Scene duration={200} triggerHook={0.2} pin={true} enabled={true} indicators={false}>
-                <BigText className="text-5xl py-10 text-gray-200">Meet Our Team</BigText>
+                <div>
+                  <div className="absolute top-0 -left-8 shape-2 z-0" />
+                  <BigText className="text-5xl py-10 text-gray-200">Meet Our Team</BigText>
+                </div>
               </Scene>
             </Controller>
           </div>

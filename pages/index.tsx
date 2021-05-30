@@ -7,7 +7,7 @@ import React from 'react';
 export const Home = (): JSX.Element => (
   <Layout>
     <Head>
-      <title>Spacejoy</title>
+      <title>#1 Automated Interior Design Solution by Spacejoy</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <Layout.Banner />

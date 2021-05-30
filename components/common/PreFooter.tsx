@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 const PreFooter = () => {
@@ -10,7 +11,12 @@ const PreFooter = () => {
       >
         Start Project
       </button>
-      <p className="mt-5 text-gray-400 text-sm">Price starts from $99.00, checkout now</p>
+      <p className="mt-5 text-gray-400 text-sm">
+        Price starts from $99.00,{' '}
+        <Link href="/pricing">
+          <a className="text-yellow-500">checkout now</a>
+        </Link>
+      </p>
     </div>
   );
 };

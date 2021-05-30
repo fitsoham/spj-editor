@@ -2,7 +2,7 @@ import Modal from '@components/common/Modal';
 import React from 'react';
 import SectionTitle from '../common/SectionTitle';
 
-const Testimonials = () => {
+const Testimonials = (): JSX.Element => {
   return (
     <div className="relative">
       <SectionTitle
@@ -13,9 +13,7 @@ const Testimonials = () => {
       />
       <div className="bg-gray-50 py-24">
         <div className="container mx-auto">
-          <div className="shadow-sm bg-white p-4 h-32 w-64 rounded-xl flex items-center justify-center mx-5">
-            <Modal />
-          </div>
+          <Modal />
         </div>
       </div>
     </div>
