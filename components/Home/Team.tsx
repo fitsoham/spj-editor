@@ -16,7 +16,7 @@ const BigText = styled.h3`
 const Team = () => {
   return (
     <div className="mt-40 relative">
-      <div className="absolute top-200 left-0 shape-2" />
+      <div className="absolute top-0 left-28 shape-2" />
       <div className="container mx-auto px-4">
         <div className="flex">
           <div className="w-5/12">

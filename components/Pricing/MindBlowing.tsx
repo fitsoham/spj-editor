@@ -42,7 +42,7 @@ const MindBlowing = () => {
               width={'1000'}
               height={'666'}
             />
-            <div className="absolute shape-2 top-0 -ml-14 -mt-10"></div>
+            <div className="absolute shape-2 top-0 -ml-14 -mt-11"></div>
           </AnimateBox>
         </div>
         <div className="relative h-full px-12 max-w-lg justify-center self-center">
