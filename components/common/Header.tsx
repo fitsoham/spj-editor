@@ -1,5 +1,6 @@
 import { ChevronDownIcon, SearchIcon, ShoppingBagIcon } from '@heroicons/react/outline';
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useState } from 'react';
 import SubNav from './SubNav';
 
@@ -22,13 +23,17 @@ const Header: React.FC = () => {
               <nav>
                 <ul>
                   <li className="inline-block">
-                    <button
-                      type="button"
-                      className="focus:outline-none text-gray-700 hover:text-red-600 text-sm py-2 px-2.5 rounded-md"
-                      onClick={toggleSubNav}
-                    >
-                      Ideas
-                    </button>
+                    <Link href="/">
+                      <a href="/">
+                        <button
+                          type="button"
+                          className="focus:outline-none text-gray-700 hover:text-red-600 text-sm py-2 px-2.5 rounded-md"
+                          onClick={toggleSubNav}
+                        >
+                          Ideas
+                        </button>
+                      </a>
+                    </Link>
                   </li>
                   <li className="inline-block">
                     <button
@@ -49,13 +54,16 @@ const Header: React.FC = () => {
                     </button>
                   </li>
                   <li className="inline-block">
-                    <button
-                      type="button"
-                      className="focus:outline-none text-gray-700 hover:text-red-600 text-sm py-2 px-2.5 rounded-md"
-                      onClick={toggleSubNav}
-                    >
-                      Pricing
-                    </button>
+                    <Link href="/pricing">
+                      <a>
+                        <button
+                          type="button"
+                          className="focus:outline-none text-gray-700 hover:text-red-600 text-sm py-2 px-2.5 rounded-md"
+                        >
+                          Pricing
+                        </button>
+                      </a>
+                    </Link>
                   </li>
                 </ul>
               </nav>
