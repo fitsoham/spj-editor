@@ -45,24 +45,20 @@ const MindBlowing = () => {
             <div className="absolute shape-2 top-0 -ml-14 -mt-10"></div>
           </AnimateBox>
         </div>
-        <div className="h-full px-12 max-w-lg justify-center self-center">
+        <div className="relative h-full px-12 max-w-lg justify-center self-center">
           <div>
-            <div className="absolute md:top-80 lg:60 right-36">
+            <div className="absolute md:-top-28 lg:-top-40 left-16">
               <Image
                 src="https://res.cloudinary.com/spacejoy/image/upload/v1622344845/spj-v2/3d-icons/mind-blown_jmrgfx.png"
                 alt="spacejoy happy customer"
-                width={'195'}
-                height={'227'}
+                width={'97'}
+                height={'113'}
               />
             </div>
             <p className="text-sm text-gray-600 leading-6">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum veniam voluptates consequatur ea quae
               vitae impedit sunt labore magnam id cumque, maxime ducimus nobis. Cum quas repellendus animi excepturi
-              minima? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum veniam voluptates consequatur ea
-              quae vitae impedit sunt labore magnam id cumque, maxime ducimus nobis. Cum quas repellendus animi
-              excepturi minima? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum veniam voluptates
-              consequatur ea quae vitae impedit sunt labore magnam id cumque, maxime ducimus nobis. Cum quas repellendus
-              animi excepturi minima?
+              minima? Lorem ipsum, dolor sit amet consectetur adipisicing elit.
             </p>
             <h4 className="mt-4">- Team Spacejoy</h4>
           </div>

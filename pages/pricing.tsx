@@ -4,6 +4,7 @@ import MindBlowing from '@components/Pricing/MindBlowing';
 import Packages from '@components/Pricing/Packages';
 import Head from 'next/head';
 import React from 'react';
+import PackagesAdvantages from '../components/Pricing/PackagesAdvantages';
 
 export const Pricing = (): JSX.Element => (
   <Layout>
@@ -16,6 +17,7 @@ export const Pricing = (): JSX.Element => (
     <Layout.Body>
       <MindBlowing />
       <Packages />
+      <PackagesAdvantages />
       <PreFooter />
     </Layout.Body>
     {/* <Layout.Footer /> */}

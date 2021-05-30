@@ -21,12 +21,14 @@ const SectionTitle = ({
           ${accent === 'pink' && 'text-pink-500'}
           ${accent === 'yellow' && 'text-yellow-500'} 
           ${accent === 'green' && 'text-green-500'} 
-          text-base mb-2`}
+          font-semibold tracking-wide uppercase mb-2`}
           >
             {feature}
           </p>
         )}
-        <h2 className="text-gray-900 text-3xl mb-5">{title}</h2>
+        <h2 className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl mb-5">
+          {title}
+        </h2>
         {description && <p className="text-gray-500">{description}</p>}
       </div>
     </div>

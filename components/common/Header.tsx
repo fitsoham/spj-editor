@@ -17,7 +17,11 @@ const Header: React.FC = () => {
         <div className="container p-4 mx-auto">
           <div className="flex items-center">
             <div className="w-40 mt-2">
-              <Image src="/logo.svg" alt="spacejoy Logo" height={'34'} width={'129'} />
+              <Link href="/">
+                <a href="/">
+                  <Image src="/logo.svg" alt="spacejoy Logo" height={'34'} width={'129'} />
+                </a>
+              </Link>
             </div>
             <div className="flex-1">
               <nav>
@@ -28,7 +32,6 @@ const Header: React.FC = () => {
                         <button
                           type="button"
                           className="focus:outline-none text-gray-700 hover:text-red-600 text-sm py-2 px-2.5 rounded-md"
-                          onClick={toggleSubNav}
                         >
                           Ideas
                         </button>
@@ -48,7 +51,6 @@ const Header: React.FC = () => {
                     <button
                       type="button"
                       className="focus:outline-none text-gray-700 hover:text-red-600 text-sm py-2 px-2.5 rounded-md"
-                      onClick={toggleSubNav}
                     >
                       Quiz
                     </button>
