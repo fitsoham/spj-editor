@@ -52,7 +52,7 @@ const ChooseUs = (): JSX.Element => {
         <Controller>
           <Scene classToggle="entry" triggerHook={0.9} indicators={false} reverse={true}>
             <AnimateBox className="flex items-center justify-center">
-              <div className="shadow-sm border border-gray-200 p-10 flex-1 rounded-xl flex items-center justify-center md:mx-2 xl:mx-3">
+              <div className="border border-gray-200 p-10 flex-1 rounded-xl flex items-center justify-center md:mx-2 xl:mx-3">
                 <div className="text-center">
                   <div className="rounded-full h-28 w-28 mb-5 mx-auto bg-red-100 flex justify-center items-center">
                     <Image
@@ -68,7 +68,7 @@ const ChooseUs = (): JSX.Element => {
                   </p>
                 </div>
               </div>
-              <div className="shadow-sm border border-gray-200 p-10 flex-1 rounded-xl flex items-center justify-center md:mx-2 xl:mx-3">
+              <div className="border border-gray-200 p-10 flex-1 rounded-xl flex items-center justify-center md:mx-2 xl:mx-3">
                 <div className="text-center">
                   <div className="rounded-full h-28 w-28 mb-5 mx-auto bg-yellow-100 flex justify-center items-center">
                     <Image
@@ -84,7 +84,7 @@ const ChooseUs = (): JSX.Element => {
                   </p>
                 </div>
               </div>
-              <div className="shadow-sm border border-gray-200 p-10 flex-1 rounded-xl flex items-center justify-center md:mx-2 xl:mx-3">
+              <div className="border border-gray-200 p-10 flex-1 rounded-xl flex items-center justify-center md:mx-2 xl:mx-3">
                 <div className="text-center">
                   <div className="rounded-full h-28 w-28 mb-5 mx-auto bg-green-100 flex justify-center items-center">
                     <Image
@@ -100,7 +100,7 @@ const ChooseUs = (): JSX.Element => {
                   </p>
                 </div>
               </div>
-              <div className="shadow-sm border border-gray-200 p-10 flex-1 rounded-xl flex items-center justify-center md:mx-2 xl:mx-3">
+              <div className="border border-gray-200 p-10 flex-1 rounded-xl flex items-center justify-center md:mx-2 xl:mx-3">
                 <div className="text-center">
                   <div className="rounded-full h-28 w-28 mb-5 mx-auto bg-indigo-100 flex justify-center items-center">
                     <Image
