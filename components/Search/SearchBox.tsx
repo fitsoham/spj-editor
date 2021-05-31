@@ -3,48 +3,23 @@ import React from 'react';
 const SearchBox = () => {
   return (
     <div className="relative h-screen bg-gray-100">
-      <div className="container px-4 py-48 mx-auto">
-        <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
-          <p className="text-center text-base font-semibold uppercase text-gray-600 tracking-wider">
-            Trusted by over 5 very average small businesses
-          </p>
-          <div className="mt-6 grid grid-cols-2 gap-0.5 md:grid-cols-3 lg:mt-8">
-            <div className="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
-              <img
-                className="max-h-12"
-                src="https://tailwindui.com/img/logos/transistor-logo-gray-400.svg"
-                alt="Workcation"
-              />
-            </div>
-            <div className="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
-              <img className="max-h-12" src="https://tailwindui.com/img/logos/mirage-logo-gray-400.svg" alt="Mirage" />
-            </div>
-            <div className="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
-              <img className="max-h-12" src="https://tailwindui.com/img/logos/tuple-logo-gray-400.svg" alt="Tuple" />
-            </div>
-            <div className="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
-              <img
-                className="max-h-12"
-                src="https://tailwindui.com/img/logos/laravel-logo-gray-400.svg"
-                alt="Laravel"
-              />
-            </div>
-            <div className="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
-              <img
-                className="max-h-12"
-                src="https://tailwindui.com/img/logos/statickit-logo-gray-400.svg"
-                alt="StaticKit"
-              />
-            </div>
-            <div className="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
-              <img
-                className="max-h-12"
-                src="https://tailwindui.com/img/logos/statamic-logo-gray-400.svg"
-                alt="Statamic"
-              />
+      <div className="container max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+        <form action="#" method="POST" className="shadow-lg">
+          <div className="relative">
+            <input
+              type="text"
+              name="first_name"
+              id="first_name"
+              autoComplete="none"
+              placeholder="search"
+              className="py-5 pl-5 pr-20 outline-none block w-full shadow-sm focus:ring-transparent border border-gray-100 focus:border-gray-100 rounded-sm"
+            />
+            <div className="absolute right-0 top-0 bottom-0 w-16 bg-gray-50 flex justify-center text-center items-center border border-gray-100">
+              <span className="text-xs text-yellow-500">clear</span>
             </div>
           </div>
-        </div>
+          <div className="w-full p-5 bg-white border border-gray-100">hi</div>
+        </form>
       </div>
     </div>
   );
