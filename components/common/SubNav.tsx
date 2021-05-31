@@ -54,10 +54,17 @@ const SubNav = ({ subNavState, closeSubNav }: { subNavState: boolean; closeSubNa
                         </p>
                         <button
                           type="button"
-                          className="focus:outline-none shadow-xs hover:shadow-md text-sm text-white py-2 px-5 rounded-full bg-gradient-to-r from-spj-red to-spj-yellow tracking-wide"
+                          className="focus:outline-none shadow-xs hover:shadow-md text-xs text-white py-2 px-5 rounded-full bg-gradient-to-r from-spj-red to-spj-yellow tracking-wide"
                           onClick={closeSubNav}
                         >
-                          Read my Success Story
+                          Read my story
+                        </button>
+                        <button
+                          type="button"
+                          className="focus:outline-none text-gray-700 text-xs py-2 px-5 ml-2 rounded-full border border-gray-600 hover:bg-gray-50 tracking-wide"
+                          onClick={closeSubNav}
+                        >
+                          Read all stories
                         </button>
                       </div>
                     </div>
