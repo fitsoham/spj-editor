@@ -2,7 +2,7 @@ import React from 'react';
 import { Timeline, Tween } from 'react-gsap';
 import { Controller, Scene } from 'react-scrollmagic';
 import styled from 'styled-components';
-import SectionTitle from '../common/SectionTitle';
+import SectionTitle from '../Common/SectionTitle';
 
 const ParallaxStyled = styled.div`
   .parallax {

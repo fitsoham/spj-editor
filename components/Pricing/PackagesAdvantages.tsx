@@ -1,4 +1,4 @@
-import SectionTitle from '@components/common/SectionTitle';
+import SectionTitle from '@components/Common/SectionTitle';
 import React from 'react';
 
 const PackagesAdvantages = () => {

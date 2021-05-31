@@ -1,6 +1,6 @@
-import Modal from '@components/common/Modal';
+import Modal from '@components/Common/Modal';
 import React from 'react';
-import SectionTitle from '../common/SectionTitle';
+import SectionTitle from '../Common/SectionTitle';
 
 const Testimonials = (): JSX.Element => {
   return (

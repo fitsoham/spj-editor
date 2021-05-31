@@ -1,5 +1,5 @@
-import Layout from '@components/common/Layout';
-import PreFooter from '@components/common/PreFooter';
+import Layout from '@components/Common/Layout';
+import PreFooter from '@components/Common/PreFooter';
 import { Output } from '@components/Home';
 import MindBlowing from '@components/Pricing/MindBlowing';
 import Packages from '@components/Pricing/Packages';
@@ -7,7 +7,7 @@ import Head from 'next/head';
 import React from 'react';
 import PackagesAdvantages from '../components/Pricing/PackagesAdvantages';
 
-export const Pricing = (): JSX.Element => (
+export const pricing = (): JSX.Element => (
   <Layout>
     <Head>
       <title>Pricing | Spacejoy</title>
@@ -26,4 +26,4 @@ export const Pricing = (): JSX.Element => (
   </Layout>
 );
 
-export default Pricing;
+export default pricing;

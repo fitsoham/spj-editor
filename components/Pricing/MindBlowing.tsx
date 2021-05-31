@@ -1,4 +1,4 @@
-import SectionTitle from '@components/common/SectionTitle';
+import SectionTitle from '@components/Common/SectionTitle';
 import Image from 'next/image';
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
