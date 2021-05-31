@@ -61,7 +61,7 @@ const SubNav = ({ subNavState, closeSubNav }: { subNavState: boolean; closeSubNa
                         </button>
                         <button
                           type="button"
-                          className="focus:outline-none text-gray-700 text-xs py-2 px-5 ml-2 rounded-full border border-gray-600 hover:bg-gray-50 tracking-wide"
+                          className="focus:outline-none text-gray-700 text-xs py-2 px-5 ml-4 rounded-full border border-gray-600 hover:bg-gray-50 tracking-wide"
                           onClick={closeSubNav}
                         >
                           Read all stories
