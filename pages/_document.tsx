@@ -31,6 +31,12 @@ export default class MyDocument extends Document {
       <Html lang="en-US">
         <Head>
           <link rel="icon" href="favicon.ico" />
+          <link rel="prefetch" href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+          />
           <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js" noModule />
         </Head>
         <body>

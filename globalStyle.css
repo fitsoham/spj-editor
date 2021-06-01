@@ -4,7 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
-body,button,p {
+body,
+button,
+p {
   font-family: 'Poppins', sans-serif;
 }
 
@@ -15,28 +17,28 @@ h3 {
   font-weight: 600;
 }
 
-.shape-1{
+.shape-1 {
   background-image: url(/images/shapes/3139839-08.svg);
   width: 100px;
   height: 100px;
   background-repeat: no-repeat;
 }
 
-.shape-2{
+.shape-2 {
   background-image: url(/images/shapes/shape-2.svg);
   width: 100px;
   height: 100px;
   background-repeat: no-repeat;
 }
 
-.shape-3{
+.shape-3 {
   background-image: url(/images/shapes/3139839-28.svg);
   width: 40px;
   height: 100px;
   background-repeat: no-repeat;
 }
 
-.shape-4{
+.shape-4 {
   background-image: url(/images/shapes/3139839-02.svg);
   width: 30px;
   height: 30px;

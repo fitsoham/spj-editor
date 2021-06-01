@@ -24,7 +24,7 @@ const AnimateBox = styled.div`
   }
 `;
 
-const v1 = () => {
+const v1: React.FC = () => {
   return (
     <div className="container mx-auto px-4">
       <div className="grid gap-14 grid-cols-4 items-center">
