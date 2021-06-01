@@ -31,6 +31,7 @@ export default class MyDocument extends Document {
       <Html lang="en-US">
         <Head>
           <link rel="icon" href="favicon.ico" />
+          <link rel="manifest" href="/manifest.json" />
           <link rel="prefetch" href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
           <link
             rel="stylesheet"
