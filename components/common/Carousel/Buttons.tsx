@@ -1,7 +1,12 @@
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/outline';
 import React from 'react';
 
-const CarouselNavButton = ({ onClick, flow }: { onClick: () => void; flow: string }): JSX.Element => {
+interface CarouselNavButton {
+  onClick: () => void;
+  flow: string;
+}
+
+const CarouselNavButton: React.FC<CarouselNavButton> = ({ onClick, flow }) => {
   return (
     <button
       className={`h-28 w-28 bg-white shadow-md border border-bg-50 transition hover:shadow-xl rounded-2xl flex items-center justify-center focus:outline-none hover:text-yellow-500 ${

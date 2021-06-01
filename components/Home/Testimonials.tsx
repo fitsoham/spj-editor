@@ -1,10 +1,10 @@
 import Carousel from '@components/Common/Carousel';
+import SectionTitle from '@components/Common/SectionTitle';
 import { ArrowRightIcon } from '@heroicons/react/outline';
 import { StarIcon } from '@heroicons/react/solid';
 import TestimonialData from '@utils/constants';
 import Image from 'next/image';
 import React from 'react';
-import SectionTitle from '../Common/SectionTitle';
 
 const Slide = ({ testimonial }) => (
   <div className="max-w-md mx-auto bg-white rounded-xl shadow-lg md:max-w-3xl py-5">
@@ -45,7 +45,7 @@ const Testimonials = (): JSX.Element => (
       description="Our design experts will transform any room in your home on our smart 3D desktop App. Shop handpicked products within your budget and style, directly from your room design, within Spacejoy."
     />
     <div className="bg-yellow-50 py-24 relative">
-      <Carousel slidesToShow={1} centerPadding="25%" centerMode customButtons position="top">
+      <Carousel centerPadding="25%" centerMode customButtons position="top">
         {TestimonialData.map((testimonial) => (
           <Slide key={testimonial.id} testimonial={testimonial} />
         ))}

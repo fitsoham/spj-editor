@@ -34,8 +34,22 @@ const settings = {
   ],
 };
 
-const Carousel = ({ children, centerPadding, centerMode, buttonsTop, customButtons }): JSX.Element => {
-  const sliderRef = useRef();
+enum position {
+  top = 'top',
+  bottom = 'bottom',
+  right = 'right',
+  left = 'left',
+}
+
+interface CarouselInterface {
+  centerPadding: string;
+  centerMode: boolean;
+  position: position;
+  customButtons: boolean;
+}
+
+const Carousel: React.FC<CarouselInterface> = ({ children, centerPadding, centerMode, position, customButtons }) => {
+  const sliderRef = useRef<Slider>(null);
 
   const renderButtons = () => (
     <div className="grid gap-8 grid-cols-2 mx-auto w-full absolute -top-14">
@@ -46,7 +60,7 @@ const Carousel = ({ children, centerPadding, centerMode, buttonsTop, customButto
 
   return (
     <>
-      {buttonsTop && customButtons && renderButtons()}
+      {position === 'top' && customButtons && renderButtons()}
       <SliderWrapper className="overflow-hidden py-4">
         <Slider
           {...settings}
@@ -58,9 +72,9 @@ const Carousel = ({ children, centerPadding, centerMode, buttonsTop, customButto
           {children}
         </Slider>
       </SliderWrapper>
-      {!buttonsTop && customButtons && renderButtons()}
+      {position !== 'top' && customButtons && renderButtons()}
     </>
   );
 };
 
-export default Carousel;
+export default React.memo(Carousel);
