@@ -1,5 +1,5 @@
-import Layout from '@components/Common/Layout';
 import SearchBox from '@components/Search/SearchBox';
+import Layout from '@components/Shared/Layout';
 import Head from 'next/head';
 import React from 'react';
 

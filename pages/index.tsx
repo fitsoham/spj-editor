@@ -1,6 +1,6 @@
-import Layout from '@components/Common/Layout';
-import PreFooter from '@components/Common/PreFooter';
 import { Advantage, ChooseUs, Featured, Hero1, Output, Team, Testimonials, VisualAnimation } from '@components/Home';
+import Layout from '@components/Shared/Layout';
+import PreFooter from '@components/Shared/PreFooter';
 import Head from 'next/head';
 import React from 'react';
 

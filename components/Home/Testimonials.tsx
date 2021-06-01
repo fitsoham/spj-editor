@@ -1,5 +1,5 @@
-import Carousel, { position } from '@components/Common/Carousel';
-import SectionTitle from '@components/Common/SectionTitle';
+import Carousel, { position } from '@components/Shared/Carousel';
+import SectionTitle from '@components/Shared/SectionTitle';
 import { ArrowRightIcon } from '@heroicons/react/outline';
 import { StarIcon } from '@heroicons/react/solid';
 import TestimonialData from '@utils/constants';

@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 import { Controller, Scene } from 'react-scrollmagic';
 import styled, { keyframes } from 'styled-components';
-import SectionTitle from '../Common/SectionTitle';
+import SectionTitle from '../Shared/SectionTitle';
 
 const entry = keyframes`
 	from { 

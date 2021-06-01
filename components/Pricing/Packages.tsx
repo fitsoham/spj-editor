@@ -1,4 +1,4 @@
-import SectionTitle from '@components/Common/SectionTitle';
+import SectionTitle from '@components/Shared/SectionTitle';
 import React from 'react';
 
 const Packages = (): JSX.Element => {

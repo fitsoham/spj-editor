@@ -1,4 +1,4 @@
-import SectionTitle from '@components/Common/SectionTitle';
+import SectionTitle from '@components/Shared/SectionTitle';
 import Image from 'next/image';
 import React from 'react';
 import { Controller, Scene } from 'react-scrollmagic';

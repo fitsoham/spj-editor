@@ -1,4 +1,4 @@
-import SectionTitle from '@components/Common/SectionTitle';
+import SectionTitle from '@components/Shared/SectionTitle';
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
