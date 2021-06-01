@@ -34,7 +34,7 @@ const settings = {
   ],
 };
 
-enum position {
+export enum position {
   top = 'top',
   bottom = 'bottom',
   right = 'right',
@@ -77,4 +77,4 @@ const Carousel: React.FC<CarouselInterface> = ({ children, centerPadding, center
   );
 };
 
-export default React.memo(Carousel);
+export default Carousel;

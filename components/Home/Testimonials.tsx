@@ -1,4 +1,4 @@
-import Carousel from '@components/Common/Carousel';
+import Carousel, { position } from '@components/Common/Carousel';
 import SectionTitle from '@components/Common/SectionTitle';
 import { ArrowRightIcon } from '@heroicons/react/outline';
 import { StarIcon } from '@heroicons/react/solid';
@@ -45,7 +45,7 @@ const Testimonials = (): JSX.Element => (
       description="Our design experts will transform any room in your home on our smart 3D desktop App. Shop handpicked products within your budget and style, directly from your room design, within Spacejoy."
     />
     <div className="bg-yellow-50 py-24 relative">
-      <Carousel centerPadding="25%" centerMode customButtons position="top">
+      <Carousel centerPadding="25%" centerMode customButtons position={position.top}>
         {TestimonialData.map((testimonial) => (
           <Slide key={testimonial.id} testimonial={testimonial} />
         ))}
