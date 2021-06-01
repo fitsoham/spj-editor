@@ -47,6 +47,7 @@ const v1: React.FC = () => {
         </div>
         <div className="col-start-2 col-end-5">
           <AnimateBox className="banner rounded-xl">
+            <div className="absolute shape-1 bottom-0 -ml-14 -mb-14" />
             <Image
               className="rounded-xl"
               src="https://res.cloudinary.com/spacejoy/image/upload/c_scale,h_1050,w_1671/v1622172527/spj-v2/spj-happy-customer_ahkoxm.jpg"
@@ -54,7 +55,6 @@ const v1: React.FC = () => {
               height={'700'}
               width={'1114'}
             />
-            <div className="absolute shape-1 bottom-0 -ml-14 -mb-14"></div>
           </AnimateBox>
         </div>
       </div>

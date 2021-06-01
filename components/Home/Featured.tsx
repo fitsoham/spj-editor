@@ -58,8 +58,8 @@ const Featured = () => {
         <div className="mb-40 max-w-7xl mx-auto">
           <Controller>
             <Scene classToggle="entry" triggerHook={1} indicators={false} reverse={true}>
-              <AnimateBox className="mt-6 grid grid-cols-2 lg:gap-4 xl:gap-8 md:grid-cols-3 lg:mt-8">
-                <div className="col-span-1 flex justify-center py-0 px-8 rounded-xl border border-gray-200">
+              <AnimateBox className="mt-6 grid gap-1 md:grid-cols-3 lg:mt-8">
+                <div className="col-span-1 flex justify-center py-0 px-8 rounded-xl bg-gray-50">
                   <Image
                     src="https://res.cloudinary.com/spacejoy/image/upload/v1610014244/shared/Brand%20logos%2007-2021/publication_LOGO-01_fohpe0.svg"
                     alt="spacejoy happy customer"
@@ -67,7 +67,7 @@ const Featured = () => {
                     width={'200'}
                   />
                 </div>
-                <div className="col-span-1 flex justify-center py-0 px-8 rounded-xl border border-gray-200">
+                <div className="col-span-1 flex justify-center py-0 px-8 rounded-xl bg-gray-50">
                   <Image
                     src="https://res.cloudinary.com/spacejoy/image/upload/v1610014243/shared/Brand%20logos%2007-2021/publication_LOGO-03_obxond.svg"
                     alt="spacejoy happy customer"
@@ -75,7 +75,7 @@ const Featured = () => {
                     width={'200'}
                   />
                 </div>
-                <div className="col-span-1 flex justify-center py-0 px-8 rounded-xl border border-gray-200">
+                <div className="col-span-1 flex justify-center py-0 px-8 rounded-xl bg-gray-50">
                   <Image
                     src="https://res.cloudinary.com/spacejoy/image/upload/v1610014243/shared/Brand%20logos%2007-2021/publication_LOGO-02_ogxwsc.svg"
                     alt="spacejoy happy customer"
@@ -83,7 +83,7 @@ const Featured = () => {
                     width={'200'}
                   />
                 </div>
-                <div className="col-span-1 flex justify-center py-0 px-8 rounded-xl border border-gray-200">
+                <div className="col-span-1 flex justify-center py-0 px-8 rounded-xl bg-gray-50">
                   <Image
                     src="https://res.cloudinary.com/spacejoy/image/upload/v1610014242/shared/Brand%20logos%2007-2021/publication_LOGO-04_bj5aqr.svg"
                     alt="spacejoy happy customer"
@@ -91,7 +91,7 @@ const Featured = () => {
                     width={'200'}
                   />
                 </div>
-                <div className="col-span-1 flex justify-center py-0 px-8 rounded-xl border border-gray-200">
+                <div className="col-span-1 flex justify-center py-0 px-8 rounded-xl bg-gray-50">
                   <Image
                     src="https://res.cloudinary.com/spacejoy/image/upload/v1610014241/shared/Brand%20logos%2007-2021/publication_LOGO-07_odqvkc.svg"
                     alt="spacejoy happy customer"
@@ -99,7 +99,7 @@ const Featured = () => {
                     width={'200'}
                   />
                 </div>
-                <div className="col-span-1 flex justify-center py-0 px-8 rounded-xl border border-gray-200">
+                <div className="col-span-1 flex justify-center py-0 px-8 rounded-xl bg-gray-50">
                   <Image
                     src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1610014241/shared/Brand%20logos%2007-2021/publication_LOGO-09_dodwjx.svg"
                     alt="spacejoy happy customer"

@@ -6,7 +6,6 @@ import styled from 'styled-components';
 const BigText = styled.h3`
   position: relative;
   font-size: 12rem;
-  z-index: 1;
   @media (max-width: 1536px) {
     font-size: 10rem;
   }

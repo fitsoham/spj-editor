@@ -1,38 +1,47 @@
 import Carousel, { position } from '@components/Shared/Carousel';
 import SectionTitle from '@components/Shared/SectionTitle';
-import { ArrowRightIcon } from '@heroicons/react/outline';
 import { StarIcon } from '@heroicons/react/solid';
 import TestimonialData from '@utils/constants';
 import Image from 'next/image';
 import React from 'react';
 
 const Slide = ({ testimonial }) => (
-  <div className="max-w-md mx-auto bg-white rounded-xl shadow-lg md:max-w-3xl py-5">
-    <div className="flex items-center">
-      <div className="md:flex-shrink-0 -ml-16">
-        <Image
-          className="h-48 w-48 rounded-xl object-cover filter contrast-125"
-          src={`https://res.cloudinary.com/spacejoy/${testimonial.dp}`}
-          alt={testimonial.name}
-          height={'120'}
-          width={'120'}
-        />
+  <div className="py-12 border-r border-white px-16">
+    <div className="md:flex-shrink-0">
+      {[...new Array(5)].map((_d, i) => (
+        <StarIcon key={`star-${i}`} className="w-5 h-5 text-yellow-500" />
+      ))}
+    </div>
+    <blockquote className="mt-6 md:flex-grow md:flex md:flex-col">
+      <div className="relative text-lg font-medium text-white md:flex-grow">
+        <svg
+          className="absolute top-0 left-0 transform -translate-x-3 -translate-y-2 h-8 w-8 text-yellow-600"
+          fill="currentColor"
+          viewBox="0 0 32 32"
+          aria-hidden="true"
+        >
+          <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+        </svg>
+        <p className="pl-8">{testimonial.shortDescription}</p>
       </div>
-      <div className="p-6 bg-white-400">
-        <div className="flex">
-          <h3 className="text-2xl">{testimonial.name}</h3>
-          <div className="flex ml-4 items-center ">
-            {[...new Array(5)].map((_d, i) => (
-              <StarIcon key={`star-${i}`} className="w-5 h-5 text-yellow-500" />
-            ))}
+      <footer className="mt-8">
+        <div className="flex items-start">
+          <div className="flex-shrink-0 inline-flex rounded-full border-2 border-white">
+            <Image
+              className="h-50 w-50 rounded-full object-cover filter contrast-125"
+              src={`https://res.cloudinary.com/spacejoy/${testimonial.dp}`}
+              alt={testimonial.name}
+              height={'40'}
+              width={'40'}
+            />
+          </div>
+          <div className="ml-4">
+            <div className="text-base font-medium text-white">Judith Black</div>
+            <div className="text-base font-medium text-yellow-200">CEO, Tuple</div>
           </div>
         </div>
-        <p className="mt-2 text-gray-500">{testimonial.shortDescription}</p>
-        <a href="#" className="inline-block mt-2 text-semibold leading-tight text-red-500">
-          Read full story <ArrowRightIcon className="inline-block ml-2 w-4 h-4" />
-        </a>
-      </div>
-    </div>
+      </footer>
+    </blockquote>
   </div>
 );
 
@@ -44,7 +53,7 @@ const Testimonials = (): JSX.Element => (
       title="Hear it from our customers"
       description="Our design experts will transform any room in your home on our smart 3D desktop App. Shop handpicked products within your budget and style, directly from your room design, within Spacejoy."
     />
-    <div className="bg-yellow-50 py-24 relative">
+    <div className="bg-yellow-500 relative">
       <Carousel centerPadding="25%" centerMode customButtons position={position.top}>
         {TestimonialData.map((testimonial) => (
           <Slide key={testimonial.id} testimonial={testimonial} />

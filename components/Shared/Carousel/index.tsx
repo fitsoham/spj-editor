@@ -61,7 +61,7 @@ const Carousel: React.FC<CarouselInterface> = ({ children, centerPadding, center
   return (
     <>
       {position === 'top' && customButtons && renderButtons()}
-      <SliderWrapper className="overflow-hidden py-4">
+      <SliderWrapper className="overflow-hidden">
         <Slider
           {...settings}
           arrows={!customButtons}
