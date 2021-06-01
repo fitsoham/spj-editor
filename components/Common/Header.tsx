@@ -9,7 +9,7 @@ const Header: React.FC = () => {
 
   const closeSubNav = () => setIsOpenSubNav(false);
 
-  const toggleSubNav = () => setIsOpenSubNav((isOpenSubNav) => !isOpenSubNav);
+  const openSubNav = () => setIsOpenSubNav(true);
 
   return (
     <>
@@ -41,10 +41,17 @@ const Header: React.FC = () => {
                   <li className="inline-block">
                     <button
                       type="button"
-                      className="focus:outline-none text-gray-700 hover:text-red-600 text-sm py-2 px-2.5 rounded-md flex items-center"
-                      onClick={toggleSubNav}
+                      className={`focus:outline-none hover:text-red-600 text-sm py-2 px-2.5 rounded-md flex items-center ${
+                        isOpenSubNav ? 'text-red-600' : 'text-gray-700'
+                      }`}
+                      onClick={isOpenSubNav ? closeSubNav : openSubNav}
                     >
-                      Stories <ChevronDownIcon className="ml-2 h-4 w-4" />
+                      Stories{' '}
+                      <ChevronDownIcon
+                        className={`ml-1 h-4 w-4 transition-transform delay-75 duration-300 ease-in-out transform ${
+                          isOpenSubNav ? 'rotate-180' : ''
+                        }`}
+                      />
                     </button>
                   </li>
                   <li className="inline-block">
