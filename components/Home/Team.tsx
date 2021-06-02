@@ -14,7 +14,7 @@ const BigText = styled.h3`
   }
 `;
 
-const Team = () => {
+const Team: React.FC = () => {
   return (
     <div className="mt-40">
       <div className="container mx-auto px-4">
