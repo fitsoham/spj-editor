@@ -9,7 +9,7 @@ interface CarouselNavButton {
 const CarouselNavButton: React.FC<CarouselNavButton> = ({ onClick, flow }) => {
   return (
     <button
-      className={`relative z-10 h-28 w-28 bg-white shadow-md border border-bg-50 transition hover:shadow-xl rounded-2xl flex items-center justify-center focus:outline-none hover:text-red-500 ${
+      className={`relative z-10 h-28 w-28 bg-white shadow-lg border border-bg-50 transition hover:shadow-sm rounded-2xl flex items-center justify-center focus:outline-none hover:text-red-500 ${
         flow === 'left' ? 'justify-self-end' : 'justify-self-start'
       }`}
       onClick={onClick}

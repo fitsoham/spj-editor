@@ -1,6 +1,7 @@
 import { Advantage, ChooseUs, Featured, Hero1, Output, Team, Testimonials, VisualAnimation } from '@components/Home';
 import Layout from '@components/Shared/Layout';
 import PreFooter from '@components/Shared/PreFooter';
+import Subscription from '@components/Shared/Subscription';
 import Head from 'next/head';
 import React from 'react';
 
@@ -22,6 +23,7 @@ export const Home = (): JSX.Element => (
       <Advantage />
       <Output />
       <PreFooter />
+      <Subscription />
     </Layout.Body>
     <Layout.Footer />
   </Layout>

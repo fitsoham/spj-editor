@@ -2,9 +2,9 @@ import React from 'react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="relative bg-gray-50 py-20">
+    <footer className="relative">
       <div className="absolute -top-12 right-0 shape-2" />
-      <div className="container relative mx-auto px-4">
+      <div className="container relative py-16 mx-auto px-4">
         <div className="flex flex-wrap">
           <div className="w-full md:w-6/12 lg:w-4/12 px-4">
             <h4 className="text-xl mb-2">Let&apos;s keep in touch!</h4>

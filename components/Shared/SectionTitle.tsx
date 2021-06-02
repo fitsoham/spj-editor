@@ -21,6 +21,7 @@ const SectionTitle = ({
           ${accent === 'pink' && 'text-pink-500'}
           ${accent === 'yellow' && 'text-yellow-500'} 
           ${accent === 'green' && 'text-green-500'} 
+          ${accent === 'red' && 'text-red-500'} 
           font-semibold tracking-wide uppercase mb-2`}
           >
             {feature}

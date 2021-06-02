@@ -1,6 +1,10 @@
 const withOffline = require('next-offline');
+const prod = process.env.NODE_ENV === 'production';
 
 module.exports = withOffline({
+  poweredByHeader: false,
+  crossOrigin: 'anonymous',
+  assetPrefix: prod ? '' : '',
   images: {
     domains: ['res.cloudinary.com'],
   },
