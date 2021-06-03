@@ -22,8 +22,8 @@ const PreFooter = () => {
             <rect width="404" height="392" fill="url(#8228f071-bcee-4ec8-905a-2a059a2cc4fb)" />
           </svg>
         </div>
-        <div className="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
-          <div className="relative rounded-2xl px-6 py-10 bg-white overflow-hidden shadow-xl sm:px-12 sm:py-20 border border-gray-100">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative rounded-2xl px-6 py-10 bg-white overflow-hidden shadow-sm sm:px-12 sm:py-20 border border-gray-100">
             <div aria-hidden="true" className="absolute inset-0 -mt-72 sm:-mt-32 md:mt-0">
               <svg
                 className="absolute inset-0 h-full w-full"
