@@ -4,15 +4,21 @@ import React from 'react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 // import 'tailwindcss/tailwind.css';
 import '../globalStyle.css';
+import { DefaultSeo } from 'next-seo';
+import { defaultSEO } from '@utils/seoConfig';
 
 const GlobalStyle = createGlobalStyle``;
 
 const MyApp = ({ Component, pageProps }: AppProps): React.ReactElement => {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <>
+      <DefaultSeo {...defaultSEO} />
+
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </>
   );
 };
 
