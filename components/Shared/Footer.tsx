@@ -32,7 +32,24 @@ const Footer: React.FC = () => {
                     </Link>
                   </li>
                   <li>
-                    <a className="text-gray-700 hover:text-gray-900 block pb-2 text-sm">Free Products</a>
+                    <Link href="/cookies">
+                      <a className="text-gray-700 hover:text-gray-900 block pb-2 text-sm">Cookies</a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/terms">
+                      <a className="text-gray-700 hover:text-gray-900 block pb-2 text-sm">Privacy Policy</a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/terms">
+                      <a className="text-gray-700 hover:text-gray-900 block pb-2 text-sm">Terms and Conditions</a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/sitemap">
+                      <a className="text-gray-700 hover:text-gray-900 block pb-2 text-sm">Sitemap</a>
+                    </Link>
                   </li>
                 </ul>
               </div>

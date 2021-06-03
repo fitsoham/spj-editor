@@ -7,6 +7,13 @@ module.exports = {
       display: ['Poppins', 'system-ui', 'sans-serif'],
       body: ['Poppins', 'system-ui', 'sans-serif'],
     },
+    listStyleType: {
+      none: 'none',
+      disc: 'disc',
+      decimal: 'decimal',
+      square: 'square',
+      roman: 'upper-roman',
+    },
     extend: {
       colors: {
         'spj-red': '#F5296E',

@@ -1,0 +1,67 @@
+const company = {
+  logo: 'w_200/v1578101355/shared/spacejoy-logo_ase39m.svg',
+  name: 'Neo Design Labs Inc',
+  product: 'Spacejoy',
+  productWithTM: 'Spacejoy™',
+  tagLine: 'Designing your imagination',
+  url: '//spacejoy.com',
+  country: 'us',
+  subject: 'Design your room online. Spacejoy, online home interior design software ',
+  description:
+    'Get online home interior designs in 3D of your living room, bedroom, home office room, dining room, nursery & kids room',
+  Keywords: [
+    '3d home design',
+    'online interior design',
+    'room design',
+    'interior designers',
+    'home decor',
+    'interior design software',
+    'home design app',
+    'living room design',
+    'bedroom design',
+    'dining room design',
+    'kids room design',
+    'nursery design',
+    'home interior design app',
+    'Living room design ideas',
+    'Bedroom design ideas',
+    'Interior Design Ideas',
+    'Small Apartment Design Ideas',
+  ],
+  email: {
+    support: 'hello@spacejoy.com',
+    connect: '',
+  },
+  phone: {
+    support: '+1 (310) 483-7722',
+    connect: '',
+  },
+  address: [
+    {
+      location1: '1450 2nd Street',
+      location2: '155 Santa Monica',
+      city: 'LA',
+      state: 'California',
+      country: 'USA',
+      pin: '90401',
+      latitude: '',
+      longitude: '',
+      plusCode: '2G73+GH Santa Monica, California, USA',
+    },
+  ],
+  social: {
+    facebook: 'https://www.facebook.com/spacejoyapp/',
+    linkedin: 'https://www.linkedin.com/company/spacejoy/',
+    twitter: 'https://twitter.com/spacejoyapp/',
+    instagram: 'https://www.instagram.com/spacejoyapp/',
+    pinterest: 'https://in.pinterest.com/spacejoyapp/',
+  },
+  app: {
+    android: 'https://play.google.com/store/apps/details?id=com.homefuly.idsuite.retail',
+    ios: 'https://apps.apple.com/us/app/spacejoy-home-design-makeover/id1484078338',
+    mac: 'https://apps.apple.com/us/app/spacejoy/id1489951014',
+    windows: 'https://www.microsoft.com/en-us/p/spacejoy/9n954dnxj4zx',
+  },
+};
+
+export { company };
