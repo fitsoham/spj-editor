@@ -1,8 +1,8 @@
-import React from 'react';
 import Layout from '@components/Shared/Layout';
 import PreFooter from '@components/Shared/PreFooter';
 import SiteMapData from '@utils/Mocks/siteMapConfig';
 import Link from 'next/link';
+import React from 'react';
 
 const getExternalLinks = () => {
   return (
@@ -41,16 +41,16 @@ const SiteMap: React.FC = () => {
           <div className="grid grid-cols-4 gap-4">
             {SiteMapData.data.map((item, index) => (
               <div key={item?.title} className="py-4">
-                <h3>
+                <h3 className="text-lg">
                   <Link href={item.href} as={item.as}>
-                    <a className="hover:underline">{item.title}</a>
+                    <a className="text-gray-700 hover:text-red-500 block pb-2">{item.title}</a>
                   </Link>
                 </h3>
                 <ul>
                   {item.links.map((link) => (
                     <li key={`${link?.as}-${link?.title}`}>
                       <Link href={link?.href} as={link?.as}>
-                        <a className="hover:underline">{link?.title}</a>
+                        <a className="text-gray-700 hover:text-red-500 block pb-1 text-sm">{link?.title}</a>
                       </Link>
                     </li>
                   ))}

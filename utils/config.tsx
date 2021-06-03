@@ -61,6 +61,7 @@ const company = {
     ios: 'https://apps.apple.com/us/app/spacejoy-home-design-makeover/id1484078338',
     mac: 'https://apps.apple.com/us/app/spacejoy/id1489951014',
     windows: 'https://www.microsoft.com/en-us/p/spacejoy/9n954dnxj4zx',
+    appStore: 'https://apps.apple.com/in/app/home-design-makeover-spacejoy/id1562072588',
   },
 };
 
