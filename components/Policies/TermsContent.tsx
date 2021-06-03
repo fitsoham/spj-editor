@@ -36,22 +36,24 @@ const TermsContent: React.FC = () => {
       <div className="relative sm:px-6 lg:px-8">
         <div>
           <div className="my-4">
-            This End User License Agreement and Terms of Service (the “EULA”) apply to the beta version of the Spacejoy
-            software and services provided by Spacejoy Design Solutions Pvt Ltd (“us” or “we”). This is a binding
-            contract between you, an individual user (“you”) and us governing your use of Spacejoy services (the
-            “Service”) using the Spacejoy website (the “Website”) and the Spacejoy desktop/mobile application (the
-            “App”). By registering to use the Spacejoy and/or installing/accessing any portions of the Spacejoy, you
-            agree that you have read, understood, and agree to be bound by the EULA. If you do not agree, then you may
-            not use the service. To have a copy of the EULA and the Spacejoy Privacy Policy (the “Privacy Policy”) sent
-            to you, contact Spacejoy at{' '}
-            <a className="text-red-400 hover:underline" href={`mailto:${company.email.support}`}>
-              {company.email.support}
-            </a>
+            <p className="text-base text-gray-500">
+              This End User License Agreement and Terms of Service (the “EULA”) apply to the beta version of the
+              Spacejoy software and services provided by Spacejoy Design Solutions Pvt Ltd (“us” or “we”). This is a
+              binding contract between you, an individual user (“you”) and us governing your use of Spacejoy services
+              (the “Service”) using the Spacejoy website (the “Website”) and the Spacejoy desktop/mobile application
+              (the “App”). By registering to use the Spacejoy and/or installing/accessing any portions of the Spacejoy,
+              you agree that you have read, understood, and agree to be bound by the EULA. If you do not agree, then you
+              may not use the service. To have a copy of the EULA and the Spacejoy Privacy Policy (the “Privacy Policy”)
+              sent to you, contact Spacejoy at{' '}
+              <a className="text-red-400 hover:underline" href={`mailto:${company.email.support}`}>
+                {company.email.support}
+              </a>
+            </p>
           </div>
           <div className="flex mt-6">
             <div className="flex-1 pr-12">
               <h2 className="text-lg mb-2">Summary of Material Terms.</h2>
-              <p>
+              <p className="text-base text-gray-500">
                 As provided in greater detail in the EULA (and without limiting the express language of the EULA), you
                 acknowledge the following: you consent to the collection, use, and disclosure of your personally
                 identifiable information in accordance with the privacy policy, including with respect to the collection
@@ -62,7 +64,7 @@ const TermsContent: React.FC = () => {
             </div>
             <div className="flex-1">
               <h2 className="text-lg mb-2">General</h2>
-              <p>
+              <p className="text-base text-gray-500">
                 The Service is a platform enabling people seeking interior design services (&ldquo;Clients&rdquo; or
                 &ldquo;Users&rdquo;) to get a custom interior design ideas, including two design concepts, one final
                 design rendering, and one revision of the final design rendering based on User comments. After placing
@@ -76,7 +78,7 @@ const TermsContent: React.FC = () => {
           </div>
           <div className="mt-6">
             <h2 className="text-lg mb-2">Description of Services</h2>
-            <p>
+            <p className="text-base text-gray-500">
               {company.product} provides interior design services that allow its Clients to visualise beautiful
               furniture, furnishings and decors within the context of their own homes/spaces. {company.product} helps
               homeowners, renters, home stagers and commercial property owners in creating customized designs online. As
@@ -89,7 +91,7 @@ const TermsContent: React.FC = () => {
           </div>
           <div className="mt-6">
             <h2 className="text-lg mb-2">Acceptance of Privacy Policy</h2>
-            <p>
+            <p className="text-base text-gray-500">
               Your use of the Service is subject to the Privacy Policy, which is available by email and is hereby
               incorporated by reference into the EULA. By using the Service you agree that you have read, understood,
               and agree to the data collection, use, and disclosure provisions set forth in the Privacy Policy.
@@ -98,7 +100,7 @@ const TermsContent: React.FC = () => {
           <div className="flex mt-6">
             <div className="flex-1 pr-12">
               <h2 className="text-lg mb-2">Right to Change/Update the EULA.</h2>
-              <p>
+              <p className="text-base text-gray-500">
                 We may revise the EULA at any time to ensure that they comply with applicable law and remain consistent
                 with our services and operations, by posting an updated version. We therefore reserve the right to
                 update and revise these Terms at any time without specific or direct notice to You. You should visit
@@ -108,7 +110,7 @@ const TermsContent: React.FC = () => {
             </div>
             <div className="flex-1">
               <h2 className="text-lg mb-2">Third Party Fees.</h2>
-              <p>
+              <p className="text-base text-gray-500">
                 Your may incur third party fees through use of the Service, such as fees charged by your Carrier for
                 data usage. In addition, you may be subject to third party terms, through your use of the Service, such
                 as your Carrier&#39;s terms of service. You acknowledge and agree that you are solely responsible for
@@ -119,7 +121,7 @@ const TermsContent: React.FC = () => {
           </div>
           <div className="mt-6">
             <h2 className="text-lg mb-2">Eligibility</h2>
-            <p>
+            <p className="text-base text-gray-500">
               If you are using or opening an account on the Service on behalf of a company, entity, or organization
               (each a &quot;Subscribing Entity&quot;), then you represent and warrant that you: (i) are an authorized
               representative of that Subscribing Entity with the authority to bind such entity to the EULA and (ii)
@@ -133,7 +135,7 @@ const TermsContent: React.FC = () => {
           <h2 className="text-2xl font-extrabold tracking-tight mt-6">Scope of License to Users</h2>
           <div className="mt-6">
             <h2 className="text-lg mb-2">License Grant to You.</h2>
-            <p>
+            <p className="text-base text-gray-500">
               The Service is licensed, not sold, to you for use only under the terms of the EULA. Subject to your
               complete and ongoing compliance with the terms and conditions of the EULA, {company.product} hereby grants
               you a personal, limited, revocable, non-transferable license to access and use the Website and the App, in
@@ -143,7 +145,7 @@ const TermsContent: React.FC = () => {
           </div>
           <div className="mt-6">
             <h2 className="text-lg mb-2">Limited License and Site Access.</h2>
-            <p>
+            <p className="text-base text-gray-500">
               You are allowed to use the Site and applications only for Your lawful personal use (or personal use on
               behalf of a third party). You may not use the Site to do or to facilitate any of the following things (or
               otherwise to violate any laws or legal rights of anyone else):
@@ -196,14 +198,14 @@ const TermsContent: React.FC = () => {
           </div>
           <div className="mt-6">
             <h2 className="text-lg mb-2">Registration and Eligibility.</h2>
-            <p>
+            <p className="text-base text-gray-500">
               Anyone may browse the public-facing pages of the Service and take the style profile, but in order to start
               and access the custom design plan, the client must register.
             </p>
           </div>
           <div className="mt-6">
             <h2 className="text-lg mb-2">Client.</h2>
-            <p>
+            <p className="text-base text-gray-500">
               To become a {company.product} Design Client, you must provide your zip code, phone number, email address,
               name and password. You will also take a style quiz (to help us determine your preferred design styles),
               provide us photos of your space, and provide us additional information about your room and project. You
@@ -215,7 +217,7 @@ const TermsContent: React.FC = () => {
           </div>
           <div className="mt-6">
             <h2 className="text-lg mb-2">Account Security.</h2>
-            <p>
+            <p className="text-base text-gray-500">
               Your account is personal to you, and you may not share your account information with, or allow access to
               your account by, any third party. As you will be responsible for all activity that occurs under your
               access credentials, you agree to use reasonable efforts to prevent unauthorized access to or use of the
@@ -233,7 +235,7 @@ const TermsContent: React.FC = () => {
           <h2 className="text-2xl font-extrabold tracking-tight mt-6">Content You Submit; License Grants from You.</h2>
           <div className="mt-6">
             <h2 className="text-lg mb-2">Your Content</h2>
-            <p>
+            <p className="text-base text-gray-500">
               If you are a Client, you may be able to create, post, or share content, such as pictures of your space,
               floor plans and household objects (&#34;Client Content&#34;) {company.product} claims no ownership or
               control over Your Content You or a third-party licensor, as appropriate, retain all copyright, patent, and
@@ -243,7 +245,7 @@ const TermsContent: React.FC = () => {
           </div>
           <div className="mt-6">
             <h2 className="text-lg mb-2">License Grants to {company.product}.</h2>
-            <p>
+            <p className="text-base text-gray-500">
               By creating, posting, or sharing Your Content on or through the Service, and subject to {company.product}
               &#39;s Privacy Policy, you grant {company.product} a world-wide, non-exclusive, sub-licensable,
               royalty-free, transferable license to use, modify, remove, publish, transmit, or display Your Content in
@@ -256,7 +258,7 @@ const TermsContent: React.FC = () => {
           </div>
           <div className="mt-6">
             <h2 className="text-lg mb-2">You Must Have Rights to the Content You Post.</h2>
-            <p>
+            <p className="text-base text-gray-500">
               You represent and warrant that:
               <ol type="i" className="pl-10 my-4 list-inside list-roman">
                 <li>you own Your Content or otherwise have the right to grant the license set forth in the EULA.</li>
@@ -276,7 +278,7 @@ const TermsContent: React.FC = () => {
           </div>
           <div className="mt-6">
             <h2 className="text-lg mb-2">Fees; Payments.</h2>
-            <p>
+            <p className="text-base text-gray-500">
               <ol type="i" className="pl-10 my-4 list-inside list-roman">
                 <li>
                   Fees. The fee (the &#34;Fee&#34;) to be charged to Clients for each Custom Room Design will be set
@@ -325,7 +327,7 @@ const TermsContent: React.FC = () => {
           </div>
           <div className="mt-6">
             <h2 className="text-lg mb-2">Third Party Materials; {company.product} Content.</h2>
-            <p>
+            <p className="text-base text-gray-500">
               You understand that by using the Service, you may encounter data, information, applications, materials and
               other content from third parties, including other users (collectively, &#34;Third Party Materials&#34;),
               and data, information, applications, materials and other content from {company.product} (collectively,
@@ -344,7 +346,7 @@ const TermsContent: React.FC = () => {
           </div>
           <div className="mt-6">
             <h2 className="text-lg mb-2">Your Use of the Service and Service Content.</h2>
-            <p>
+            <p className="text-base text-gray-500">
               Your right to use the Service is a privilege, not a right, and is expressly conditioned on the following:
               <br />
               You may access the Service solely as intended through the provided functionality of the Service and as
@@ -423,7 +425,7 @@ const TermsContent: React.FC = () => {
           </div>
           <div className="mt-6">
             <h2 className="text-lg mb-2">Consent to Use of Data.</h2>
-            <p>
+            <p className="text-base text-gray-500">
               You agree that {company.product} may collect and use technical data and related information, including,
               but not limited to, UDID, contacts, usage data, location and other technical information about your
               device, system and application software, and peripherals, that is gathered periodically to facilitate the
@@ -434,7 +436,7 @@ const TermsContent: React.FC = () => {
           </div>
           <div className="mt-6">
             <h2 className="text-lg mb-2">Content and Intellectual Property Ownership.</h2>
-            <p>
+            <p className="text-base text-gray-500">
               You may not copy or use any of the Content or Intellectual Property of or on the Site without our prior
               written authorization. “Content” means all of the visual, audio-visual, and written information displayed
               on the Site, including all graphics, photographs, drawings, designs, iconography, animation, videos, and
@@ -451,7 +453,7 @@ const TermsContent: React.FC = () => {
           </div>
           <div className="mt-6">
             <h2 className="text-lg mb-2">Feedback.</h2>
-            <p>
+            <p className="text-base text-gray-500">
               We appreciate hearing from our users and welcome your comments regarding the Service Please be advised,
               however, that if you send us creative ideas, suggestions, inventions, or materials (&#34;Creative
               Ideas&#34;), we will:
@@ -464,7 +466,7 @@ const TermsContent: React.FC = () => {
           </div>
           <div className="mt-6">
             <h2 className="text-lg mb-2">Consequences of Violating These Terms.</h2>
-            <p>
+            <p className="text-base text-gray-500">
               We reserve the right to suspend or terminate your account and prevent access to the Service for any
               reason, at our discretion We reserve the right to refuse to provide the Service to you in the future
               {company.product} may review and remove any of Your Content at any time for any reason, including activity
@@ -476,7 +478,7 @@ const TermsContent: React.FC = () => {
           </div>
           <div className="mt-6">
             <h2 className="text-lg mb-2">{company.product}&#39;s Liability.</h2>
-            <p>
+            <p className="text-base text-gray-500">
               Changes to the Service. We may change, suspend, or discontinue any aspect of the Service at any time,
               including hours of operation or availability of the Service or any feature, without notice or liability.
               <br />
@@ -522,7 +524,7 @@ const TermsContent: React.FC = () => {
           </div>
           <div className="mt-6">
             <h2 className="text-lg mb-2">Termination.</h2>
-            <p>
+            <p className="text-base text-gray-500">
               The EULA is effective until terminated by you or {company.product} Your rights under the EULA will
               terminate automatically without notice from {company.product} if you fail to comply with any term(s) of
               the EULA (including by violating any license restriction provided herein). You may terminate the EULA by
@@ -531,7 +533,7 @@ const TermsContent: React.FC = () => {
               Package, you may not be allowed to use the Service in the future.
             </p>
             <h2 className="text-lg mb-2">Disclaimer.</h2>
-            <p>
+            <p className="text-base text-gray-500">
               &#34;Released Parties&#34; include {company.product} and its affiliates, officers, employees, agents,
               partners, and licensors <br /> YOU EXPRESSLY UNDERSTAND AND AGREE THAT:
               <ol type="A" className="pl-10 my-4 list-inside list-decimal">
@@ -568,7 +570,7 @@ const TermsContent: React.FC = () => {
           </div>
           <div className="mt-6">
             <h2 className="text-lg mb-2">Limitation of Liability.</h2>
-            <p>
+            <p className="text-base text-gray-500">
               YOU EXPRESSLY UNDERSTAND AND AGREE THAT THE RELEASED PARTIES WILL NOT BE LIABLE TO YOU FOR ANY DIRECT,
               INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR EXEMPLARY DAMAGES, INCLUDING, BUT NOT LIMITED TO, DAMAGES
               FOR LOSS OF PROFITS, GOODWILL, USE, DATA OR OTHER INTANGIBLE LOSSES (EVEN IF {company.product} HAS BEEN
@@ -600,7 +602,7 @@ const TermsContent: React.FC = () => {
             </p>
           </div>
           <h2 className="text-lg mb-2">Indemnity.</h2>
-          <p>
+          <p className="text-base text-gray-500">
             You agree to defend, indemnify, and hold harmless the Released Parties and their respective officers,
             directors, employees, contractors, agents, licensors, and suppliers from and against any claims, actions,
             liabilities, damages, judgments, losses, expenses or demands, including without limitation reasonable legal
@@ -618,7 +620,7 @@ const TermsContent: React.FC = () => {
           </p>
           <div className="mt-6">
             <h2 className="text-lg mb-2">Third Party Disputes.</h2>
-            <p>
+            <p className="text-base text-gray-500">
               {company.product} IS NOT AFFILIATED WITH ANY CARRIER, SERVICE PROVIDER, OR THIRD PARTY SERVICE, AND ANY
               DISPUTE YOU HAVE WITH ANY CARRIER, SERVICE PROVIDER, THIRD PARTY SERVICE OR OTHER THIRD PARTY, INCLUDING,
               WITHOUT LIMITATION, ANY OTHER USER OF THE SERVICE, IS DIRECTLY BETWEEN YOU AND SUCH THIRD PARTY, AND YOU
@@ -629,7 +631,7 @@ const TermsContent: React.FC = () => {
           </div>
           <div className="mt-6">
             <h2 className="text-lg mb-2">Copyright Policy.</h2>
-            <p>
+            <p className="text-base text-gray-500">
               The Digital Millennium Copyright Act of 1998 (the &#34;DMCA&#34;) provides recourse for copyright owners
               who believe that material appearing on the Internet infringes their rights under U.S. copyright law. If
               you believe in good faith that materials posted on the Service infringe your copyright, you (or your
@@ -674,7 +676,7 @@ const TermsContent: React.FC = () => {
           </div>
           <div className="mt-6">
             <h2 className="text-lg mb-2">Dispute Resolution.</h2>
-            <p>
+            <p className="text-base text-gray-500">
               The EULA and the relationship between you and {company.product} will be governed by the laws of the State
               of California without regard to its conflict of law provisions You and {company.product} agree to submit
               to the personal and exclusive arbitration of any disputes relating to your use of the Service under the
@@ -701,7 +703,7 @@ const TermsContent: React.FC = () => {
           </div>
           <div className="mt-6">
             <h2 className="text-lg mb-2">Miscellaneous.</h2>
-            <p>
+            <p className="text-base text-gray-500">
               Assignment You may not assign this EULA or any of the rights or licenses granted hereunder, directly or
               indirectly, including by sale, merger, change of control, operation of law or otherwise, without the prior
               written consent of {company.product}. {company.product} may assign the EULA, including all its rights
@@ -741,7 +743,7 @@ const TermsContent: React.FC = () => {
           </div>
           <div className="mt-6">
             <h2 className="text-lg mb-2">Gift Card Terms</h2>
-            <p>
+            <p className="text-base text-gray-500">
               This card is issued by Neo Design Labs Inc (“Spacejoy”) and and is redeemable only for online purchases at
               www.spacejoy.com The card may not be used to purchase another gift card or toward previously purchased
               merchandise. Funds on these cards do not expire and can not be refunded or exchanged, redeemed for cash or
@@ -759,7 +761,7 @@ const TermsContent: React.FC = () => {
           </div>
           <div className="mt-6">
             <h2 className="text-lg mb-2">Termination of your Spacejoy account </h2>
-            <p>
+            <p className="text-base text-gray-500">
               You have the right to terminate your Spacejoy account at any time by contacting us at hello@spacejoy.com.
               Upon termination of your account, your user profile will be removed from Spacejoy and your user content
               may be removed from the site, and your user content will not be available to you. However, you understand
@@ -772,7 +774,7 @@ const TermsContent: React.FC = () => {
           </div>
           <div className="mt-6">
             <h2 className="text-lg mb-2">Mobile Application Terms</h2>
-            <p>
+            <p className="text-base text-gray-500">
               Neo Design Labs (Spacejoy) may make certain mobile applications available to you. The use of these mobile
               applications either alone or in connection with the Services is governed by these Terms. In addition, you
               must comply with all applicable third party terms of agreement when using the mobile applications (for

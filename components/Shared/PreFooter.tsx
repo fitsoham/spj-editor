@@ -23,7 +23,7 @@ const PreFooter = () => {
           </svg>
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative rounded-2xl px-6 py-10 bg-white overflow-hidden shadow-sm sm:px-12 sm:py-20 border border-gray-100">
+          <div className="relative rounded-2xl px-6 py-10 bg-white overflow-hidden shadow-md sm:px-12 sm:py-20 border border-gray-100">
             <div aria-hidden="true" className="absolute inset-0 -mt-72 sm:-mt-32 md:mt-0">
               <svg
                 className="absolute inset-0 h-full w-full"
