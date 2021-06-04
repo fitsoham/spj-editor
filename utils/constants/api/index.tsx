@@ -1,3 +1,3 @@
 import publicRoutes from './publicRoutes';
 
-export {publicRoutes};
+export { publicRoutes };

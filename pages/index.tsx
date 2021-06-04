@@ -3,9 +3,7 @@ import Layout from '@components/Shared/Layout';
 import PreFooter from '@components/Shared/PreFooter';
 import React from 'react';
 import SEOWrapper from '@components/Shared/SEO/SEOWrapper';
-import {HomePageSEO} from '@utils/SEO'; // can also have jsonLD config
-
-
+import { HomePageSEO } from '@utils/SEO'; // can also have jsonLD config
 
 export const Home = (): JSX.Element => (
   <>
