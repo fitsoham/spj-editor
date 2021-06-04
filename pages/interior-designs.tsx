@@ -1,4 +1,5 @@
 import InteriorDesignsList from '@components/Shared/InteriorDesigns/InteriorDesignsList';
+import ListFilter from '@components/Shared/InteriorDesigns/ListFilter';
 import Layout from '@components/Shared/Layout';
 import PreFooter from '@components/Shared/PreFooter';
 import Head from 'next/head';
@@ -14,6 +15,7 @@ export const InteriorDesigns = (): JSX.Element => (
     <Layout.Header />
     <Layout.Body>
       <InteriorDesignsList />
+      <ListFilter />
       <PreFooter />
     </Layout.Body>
     <Layout.Footer />
