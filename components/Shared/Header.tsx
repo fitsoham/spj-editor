@@ -27,8 +27,8 @@ const Header: React.FC = () => {
               <nav>
                 <ul>
                   <li className="inline-block">
-                    <Link href="/">
-                      <a href="/">
+                    <Link href="/interior-designs">
+                      <a>
                         <button
                           type="button"
                           className="focus:outline-none text-gray-700 hover:text-red-600 text-sm py-2 px-2.5 rounded-md"
