@@ -53,8 +53,8 @@ const CollectionList: React.FC = () => {
             </h1>
           </div>
           <div className="text-right flex-1">
-            <Link href="">
-              <a>
+            <Link href="/">
+              <a className="text-sm hover:text-red-500">
                 See All <ArrowRightIcon className="inline w-4 h-4" />
               </a>
             </Link>

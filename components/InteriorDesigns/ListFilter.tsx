@@ -1,4 +1,4 @@
-import { FilterIcon } from '@heroicons/react/outline';
+import Modal from '@components/Shared/Modal';
 import React from 'react';
 
 const ListFilter: React.FC = () => {
@@ -10,13 +10,7 @@ const ListFilter: React.FC = () => {
           <h2 className="mt-2 text-3xl leading-8 font-bold tracking-tight text-gray-900">Interior Design Ideas</h2>
         </div>
         <div className="text-right flex-1">
-          <button
-            type="button"
-            className="focus:outline-none text-gray-700 text-xs py-2 px-2 mx-2 rounded-full hover:shadow-md border border-gray-200"
-          >
-            <span className="sr-only">Filter</span>
-            <FilterIcon className="inline w-4 h-4" />
-          </button>
+          <Modal />
         </div>
       </div>
     </div>

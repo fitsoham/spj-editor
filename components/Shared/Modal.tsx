@@ -1,4 +1,5 @@
 import { Dialog, Transition } from '@headlessui/react';
+import { FilterIcon } from '@heroicons/react/outline';
 import React, { Fragment, useState } from 'react';
 
 const Modal: React.FC = () => {
@@ -14,16 +15,14 @@ const Modal: React.FC = () => {
 
   return (
     <>
-      <div className="inset-0 flex items-center justify-center">
-        <button
-          type="button"
-          onClick={openModal}
-          className="px-4 py-2 text-sm font-medium text-white bg-black rounded-md bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
-        >
-          Message from developer
-        </button>
-      </div>
-
+      <button
+        type="button"
+        onClick={openModal}
+        className="focus:outline-none text-gray-700 hover:text-red-500 text-xs py-2 px-4 rounded-full hover:shadow-md border border-gray-700 hover:border-red-500"
+      >
+        <span className="sr-only">Filter</span>
+        Filter <FilterIcon className="inline w-4 h-4" />
+      </button>
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="fixed  bg-gray-900 bg-opacity-95 inset-0 z-20 overflow-y-auto" onClose={closeModal}>
           <div className="min-h-screen px-4 text-center">
@@ -38,7 +37,6 @@ const Modal: React.FC = () => {
             >
               <Dialog.Overlay className="fixed inset-0" />
             </Transition.Child>
-
             {/* This element is to trick the browser into centering the modal contents. */}
             <span className="inline-block h-screen align-middle" aria-hidden="true">
               &#8203;

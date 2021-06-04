@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
-const PreFooter = () => {
+const PreFooter: React.FC = () => {
   return (
     <div className="bg-white mt-14">
       <div className="relative sm:py-16">
@@ -22,7 +22,7 @@ const PreFooter = () => {
             <rect width="404" height="392" fill="url(#8228f071-bcee-4ec8-905a-2a059a2cc4fb)" />
           </svg>
         </div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-4">
           <div className="relative rounded-2xl px-6 py-10 bg-white overflow-hidden shadow-md sm:px-12 sm:py-20 border border-gray-100">
             <div aria-hidden="true" className="absolute inset-0 -mt-72 sm:-mt-32 md:mt-0">
               <svg
