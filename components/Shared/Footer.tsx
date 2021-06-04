@@ -38,7 +38,7 @@ const Footer: React.FC = () => {
           </div>
         </nav>
         <div className="mt-8 flex justify-center space-x-6">
-          <a href={company.social.facebook} className="text-gray-400 hover:text-red-500">
+          <a href={company.social.sites.facebook} className="text-gray-400 hover:text-red-500">
             <span className="sr-only">Facebook</span>
             <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path
@@ -48,7 +48,7 @@ const Footer: React.FC = () => {
               />
             </svg>
           </a>
-          <a href={company.social.instagram} className="text-gray-400 hover:text-red-500">
+          <a href={company.social.sites.instagram} className="text-gray-400 hover:text-red-500">
             <span className="sr-only">Instagram</span>
             <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path
@@ -58,13 +58,13 @@ const Footer: React.FC = () => {
               />
             </svg>
           </a>
-          <a href={company.social.twitter} className="text-gray-400 hover:text-red-500">
+          <a href={company.social.sites.twitter} className="text-gray-400 hover:text-red-500">
             <span className="sr-only">Twitter</span>
             <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
             </svg>
           </a>
-          <a href={company.social.linkedin} className="text-gray-400 hover:text-red-500">
+          <a href={company.social.sites.linkedin} className="text-gray-400 hover:text-red-500">
             <span className="sr-only">LinkedIn</span>
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path
@@ -74,7 +74,7 @@ const Footer: React.FC = () => {
               />
             </svg>
           </a>
-          <a href={company.social.pinterest} className="text-gray-400 hover:text-red-500">
+          <a href={company.social.sites.pinterest} className="text-gray-400 hover:text-red-500">
             <span className="sr-only">Pinterest</span>
             <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 512 512" aria-hidden="true">
               <path d="M256.05 32c-123.7 0-224 100.3-224 224 0 91.7 55.2 170.5 134.1 205.2-.6-15.6-.1-34.4 3.9-51.4 4.3-18.2 28.8-122.1 28.8-122.1s-7.2-14.3-7.2-35.4c0-33.2 19.2-58 43.2-58 20.4 0 30.2 15.3 30.2 33.6 0 20.5-13.1 51.1-19.8 79.5-5.6 23.8 11.9 43.1 35.4 43.1 42.4 0 71-54.5 71-119.1 0-49.1-33.1-85.8-93.2-85.8-67.9 0-110.3 50.7-110.3 107.3 0 19.5 5.8 33.3 14.8 43.9 4.1 4.9 4.7 6.9 3.2 12.5-1.1 4.1-3.5 14-4.6 18-1.5 5.7-6.1 7.7-11.2 5.6-31.3-12.8-45.9-47-45.9-85.6 0-63.6 53.7-139.9 160.1-139.9 85.5 0 141.8 61.9 141.8 128.3 0 87.9-48.9 153.5-120.9 153.5-24.2 0-46.9-13.1-54.7-27.9 0 0-13 51.6-15.8 61.6-4.7 17.3-14 34.5-22.5 48a225.13 225.13 0 0063.5 9.2c123.7 0 224-100.3 224-224S379.75 32 256.05 32z" />

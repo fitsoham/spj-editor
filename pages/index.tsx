@@ -1,13 +1,15 @@
 import { Advantage, ChooseUs, Featured, Hero1, Output, Team, Testimonials, VisualAnimation } from '@components/Home';
 import Layout from '@components/Shared/Layout';
 import PreFooter from '@components/Shared/PreFooter';
-import { HomePageSEO } from '@utils/seoConfig';
-import { NextSeo } from 'next-seo';
 import React from 'react';
+import SEOWrapper from '@components/Shared/SEO/SEOWrapper';
+import {HomePageSEO} from '@utils/SEO'; // can also have jsonLD config
+
+
 
 export const Home = (): JSX.Element => (
   <>
-    <NextSeo {...HomePageSEO} />
+    <SEOWrapper seoProps={HomePageSEO.HomeSEO} />
     <Layout>
       <Layout.Banner />
       <Layout.Header />

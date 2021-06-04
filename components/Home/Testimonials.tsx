@@ -1,7 +1,7 @@
 import Carousel, { position } from '@components/Shared/Carousel';
 import SectionTitle from '@components/Shared/SectionTitle';
 import { StarIcon } from '@heroicons/react/solid';
-import TestimonialData from '@utils/constants';
+import TestimonialData from '@utils/Mocks/Testimonials';
 import Image from 'next/image';
 import React from 'react';
 
