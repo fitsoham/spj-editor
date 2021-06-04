@@ -39,7 +39,7 @@ const AnimateBox = styled.ul`
   }
 `;
 
-const InteriorDesignsList: React.FC = () => {
+const CollectionList: React.FC = () => {
   return (
     <div className="py-6 bg-white">
       <div className="container mx-auto px-4">
@@ -146,4 +146,4 @@ const InteriorDesignsList: React.FC = () => {
   );
 };
 
-export default InteriorDesignsList;
+export default CollectionList;
