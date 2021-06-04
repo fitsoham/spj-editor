@@ -72,7 +72,9 @@ const CollectionList: React.FC = () => {
                   width="225"
                 />
                 <div className="absolute bottom-0 right-0 left-0 bg-gradient-to-t from-gray-900 to-transparent pb-4 pt-10 px-4">
-                  <p className="text-lg font-semibold text-white">Bedroom</p>
+                  <p className="text-lg font-semibold text-white">
+                    Bedroom <ArrowRightIcon className="inline w-4 h-4" />
+                  </p>
                   <p className="text-indigo-400 text-sm">2000+ 3D Renders</p>
                 </div>
               </div>
@@ -102,7 +104,9 @@ const CollectionList: React.FC = () => {
                   width="225"
                 />
                 <div className="absolute bottom-0 right-0 left-0 bg-gradient-to-t from-gray-900 to-transparent pb-4 pt-10 px-4">
-                  <p className="text-lg font-semibold text-white">Entryway</p>
+                  <p className="text-lg font-semibold text-white">
+                    Entryway <ArrowRightIcon className="inline w-4 h-4" />
+                  </p>
                   <p className="text-yellow-400 text-sm">2000+ 3D Renders</p>
                 </div>
               </div>
@@ -117,7 +121,9 @@ const CollectionList: React.FC = () => {
                   width="225"
                 />
                 <div className="absolute bottom-0 right-0 left-0 bg-gradient-to-t from-gray-900 to-transparent pb-4 pt-10 px-4">
-                  <p className="text-lg font-semibold text-white">Home Office</p>
+                  <p className="text-lg font-semibold text-white">
+                    Home Office <ArrowRightIcon className="inline w-4 h-4" />
+                  </p>
                   <p className="text-green-400 text-sm">2000+ 3D Renders</p>
                 </div>
               </div>
@@ -132,7 +138,9 @@ const CollectionList: React.FC = () => {
                   width="225"
                 />
                 <div className="absolute bottom-0 right-0 left-0 bg-gradient-to-t from-gray-900 to-transparent pb-4 pt-10 px-4">
-                  <p className="text-lg font-semibold text-white">Work Station</p>
+                  <p className="text-lg font-semibold text-white">
+                    Work Station <ArrowRightIcon className="inline w-4 h-4" />
+                  </p>
                   <p className="text-blue-400 text-sm">2000+ 3D Renders</p>
                 </div>
               </div>
@@ -147,7 +155,9 @@ const CollectionList: React.FC = () => {
                   width="225"
                 />
                 <div className="absolute bottom-0 right-0 left-0 bg-gradient-to-t from-gray-900 to-transparent pb-4 pt-10 px-4">
-                  <p className="text-lg font-semibold text-white">Kis&apos;s Room</p>
+                  <p className="text-lg font-semibold text-white">
+                    Kis&apos;s Room <ArrowRightIcon className="inline w-4 h-4" />
+                  </p>
                   <p className="text-pink-400 text-sm">2000+ 3D Renders</p>
                 </div>
               </div>

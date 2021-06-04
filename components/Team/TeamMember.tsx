@@ -6,7 +6,7 @@ import styled, { keyframes } from 'styled-components';
 const entry = keyframes`
 	from { 
         opacity: 0;
-        transform: translateY(50px);
+        transform: translateY(100px);
 	}
 	to {
         opacity: 1;
@@ -16,6 +16,7 @@ const entry = keyframes`
 
 const AnimateBox = styled.div`
   opacity: 0;
+  transform: translateY(100px);
   &.entry {
     animation: ${entry} 0.4s forwards;
   }
