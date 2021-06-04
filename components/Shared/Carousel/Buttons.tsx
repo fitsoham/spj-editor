@@ -42,8 +42,18 @@ const CarouselNavButton: React.FC<CarouselNavButton> = ({ onClick, flow }) => {
             className="relative z-10 lg:h-28 lg:w-28 md:h-20 md:w-20 bg-white shadow-lg border border-bg-50 transition hover:shadow-sm rounded-2xl flex items-center justify-center focus:outline-none hover:text-red-500"
             onClick={onClick}
           >
-            {flow === 'left' && <ArrowLeftIcon className="w-6 h-6" />}
-            {flow === 'right' && <ArrowRightIcon className="w-6 h-6" />}
+            {flow === 'left' && (
+              <>
+                <span className="sr-only">Left</span>
+                <ArrowLeftIcon className="w-6 h-6" />
+              </>
+            )}
+            {flow === 'right' && (
+              <>
+                <span className="sr-only">Right</span>
+                <ArrowRightIcon className="w-6 h-6" />
+              </>
+            )}
           </button>
         </AnimateBox>
       </Scene>

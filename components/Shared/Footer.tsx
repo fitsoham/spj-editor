@@ -81,7 +81,7 @@ const Footer: React.FC = () => {
             </svg>
           </a>
         </div>
-        <p className="mt-8 text-center text-base text-gray-400">
+        <p className="mt-8 text-center text-gray-600 text-sm">
           &copy; {currentYear} Neo Design Labs Inc. All rights reserved.
         </p>
       </div>

@@ -58,7 +58,7 @@ const PreFooter = () => {
                 <p className="mt-5 text-gray-500 text-sm">
                   Price starts from $99.00,{' '}
                   <Link href="/pricing">
-                    <a className="text-yellow-500">checkout now</a>
+                    <a className="text-yellow-700">checkout now</a>
                   </Link>
                 </p>
               </div>

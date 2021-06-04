@@ -82,7 +82,7 @@ const MindBlowing = () => {
               vitae impedit sunt labore magnam id cumque, maxime ducimus nobis. Cum quas repellendus animi excepturi
               minima? Lorem ipsum, dolor sit amet consectetur adipisicing elit.
             </p>
-            <h4 className="mt-4">- Team Spacejoy</h4>
+            <p className="mt-4 font-semibold">- Team Spacejoy</p>
           </div>
         </div>
       </div>

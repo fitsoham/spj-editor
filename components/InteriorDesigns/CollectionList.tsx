@@ -1,4 +1,6 @@
+import { ArrowRightIcon } from '@heroicons/react/outline';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
@@ -41,12 +43,23 @@ const AnimateBox = styled.ul`
 
 const CollectionList: React.FC = () => {
   return (
-    <div className="py-6 bg-white">
-      <div className="container mx-auto px-4">
-        <p className="text-gray-500">Largest collection of 3D rendered images</p>
-        <h1 className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-          Hand Picked Collections
-        </h1>
+    <div className="py-6 bg-gray-100">
+      <div className="container mx-auto px-4 pt-8">
+        <div className="flex items-center">
+          <div className="flex-1">
+            <p className="text-gray-500">Largest collection of 3D rendered images</p>
+            <h1 className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+              Hand Picked Collections
+            </h1>
+          </div>
+          <div className="text-right flex-1">
+            <Link href="">
+              <a>
+                See All <ArrowRightIcon className="inline w-4 h-4" />
+              </a>
+            </Link>
+          </div>
+        </div>
         <div className="relative">
           <AnimateBox className="grid grid-cols-6 gap-8 my-6">
             <li>
@@ -59,7 +72,7 @@ const CollectionList: React.FC = () => {
                   width="225"
                 />
                 <div className="absolute bottom-0 right-0 left-0 bg-gradient-to-t from-gray-900 to-transparent pb-6 pt-20 px-4">
-                  <h4 className="text-lg text-bold text-white">Bedroom</h4>
+                  <p className="text-lg font-semibold text-white">Bedroom</p>
                   <p className="text-indigo-400 text-sm">2000+ 3D Renders</p>
                 </div>
               </div>
@@ -74,7 +87,7 @@ const CollectionList: React.FC = () => {
                   width="225"
                 />
                 <div className="absolute bottom-0 right-0 left-0 bg-gradient-to-t from-gray-900 to-transparent pb-6 pt-20 px-4">
-                  <h4 className="text-lg text-bold text-white">Living Room</h4>
+                  <p className="text-lg font-semibold text-white">Living Room</p>
                   <p className="text-red-400 text-sm">2000+ 3D Renders</p>
                 </div>
               </div>
@@ -89,7 +102,7 @@ const CollectionList: React.FC = () => {
                   width="225"
                 />
                 <div className="absolute bottom-0 right-0 left-0 bg-gradient-to-t from-gray-900 to-transparent pb-6 pt-20 px-4">
-                  <h4 className="text-lg text-bold text-white">Entryway</h4>
+                  <p className="text-lg font-semibold text-white">Entryway</p>
                   <p className="text-yellow-400 text-sm">2000+ 3D Renders</p>
                 </div>
               </div>
@@ -104,7 +117,7 @@ const CollectionList: React.FC = () => {
                   width="225"
                 />
                 <div className="absolute bottom-0 right-0 left-0 bg-gradient-to-t from-gray-900 to-transparent pb-6 pt-20 px-4">
-                  <h4 className="text-lg text-bold text-white">Home Office</h4>
+                  <p className="text-lg font-semibold text-white">Home Office</p>
                   <p className="text-green-400 text-sm">2000+ 3D Renders</p>
                 </div>
               </div>
@@ -119,7 +132,7 @@ const CollectionList: React.FC = () => {
                   width="225"
                 />
                 <div className="absolute bottom-0 right-0 left-0 bg-gradient-to-t from-gray-900 to-transparent pb-6 pt-20 px-4">
-                  <h4 className="text-lg text-bold text-white">Work Station</h4>
+                  <p className="text-lg font-semibold text-white">Work Station</p>
                   <p className="text-blue-400 text-sm">2000+ 3D Renders</p>
                 </div>
               </div>
@@ -134,7 +147,7 @@ const CollectionList: React.FC = () => {
                   width="225"
                 />
                 <div className="absolute bottom-0 right-0 left-0 bg-gradient-to-t from-gray-900 to-transparent pb-6 pt-20 px-4">
-                  <h4 className="text-lg text-bold text-white">Kis&apos;s Room</h4>
+                  <p className="text-lg font-semibold text-white">Kis&apos;s Room</p>
                   <p className="text-pink-400 text-sm">2000+ 3D Renders</p>
                 </div>
               </div>

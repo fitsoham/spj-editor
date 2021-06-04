@@ -1,4 +1,5 @@
 import CollectionList from '@components/InteriorDesigns/CollectionList';
+import DesignList from '@components/InteriorDesigns/DesignList';
 import ListFilter from '@components/InteriorDesigns/ListFilter';
 import Layout from '@components/Shared/Layout';
 import PreFooter from '@components/Shared/PreFooter';
@@ -18,6 +19,7 @@ export const InteriorDesigns = (): JSX.Element => {
       <Layout.Body>
         <CollectionList />
         <ListFilter />
+        <DesignList />
         <PreFooter />
       </Layout.Body>
       <Layout.Footer />

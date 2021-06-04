@@ -96,6 +96,7 @@ const Header: React.FC = () => {
                     type="button"
                     className="focus:outline-none text-gray-700 text-xs py-2 px-2 mx-2 rounded-full hover:shadow-md"
                   >
+                    <span className="sr-only">Search</span>
                     <SearchIcon className="h-4 w-4" />
                   </button>
                 </a>
@@ -104,6 +105,7 @@ const Header: React.FC = () => {
                 type="button"
                 className="focus:outline-none text-gray-700 text-xs py-2 px-2 mx-2 rounded-full hover:shadow-md"
               >
+                <span className="sr-only">Shopping</span>
                 <ShoppingBagIcon className="h-4 w-4" />
               </button>
               <button
