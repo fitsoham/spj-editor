@@ -43,7 +43,7 @@ const AnimateBox = styled.ul`
 
 const CollectionList: React.FC = () => {
   return (
-    <div className="py-6 bg-gray-100">
+    <div className="py-4 bg-gray-100">
       <div className="container mx-auto px-4 pt-8">
         <div className="flex items-center">
           <div className="flex-1">
@@ -63,90 +63,90 @@ const CollectionList: React.FC = () => {
         <div className="relative">
           <AnimateBox className="grid grid-cols-6 gap-8 my-6">
             <li>
-              <div className="relative rounded-lg overflow-hidden">
+              <div className="relative rounded-sm overflow-hidden shadow-md border border-gray-200">
                 <Image
-                  className="rounded-lg object-cover"
+                  className="rounded-sm object-cover"
                   alt="tmp"
                   src="https://images.unsplash.com/photo-1562663474-6cbb3eaa4d14?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
                   height="300"
                   width="225"
                 />
-                <div className="absolute bottom-0 right-0 left-0 bg-gradient-to-t from-gray-900 to-transparent pb-6 pt-20 px-4">
+                <div className="absolute bottom-0 right-0 left-0 bg-gradient-to-t from-gray-900 to-transparent pb-4 pt-10 px-4">
                   <p className="text-lg font-semibold text-white">Bedroom</p>
                   <p className="text-indigo-400 text-sm">2000+ 3D Renders</p>
                 </div>
               </div>
             </li>
             <li>
-              <div className="relative rounded-lg overflow-hidden">
+              <div className="relative rounded-sm overflow-hidden shadow-md border border-gray-200">
                 <Image
-                  className="rounded-lg object-cover"
+                  className="rounded-sm object-cover"
                   alt="tmp"
                   src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=934&q=80"
                   height="300"
                   width="225"
                 />
-                <div className="absolute bottom-0 right-0 left-0 bg-gradient-to-t from-gray-900 to-transparent pb-6 pt-20 px-4">
+                <div className="absolute bottom-0 right-0 left-0 bg-gradient-to-t from-gray-900 to-transparent pb-4 pt-10 px-4">
                   <p className="text-lg font-semibold text-white">Living Room</p>
                   <p className="text-red-400 text-sm">2000+ 3D Renders</p>
                 </div>
               </div>
             </li>
             <li>
-              <div className="relative rounded-lg overflow-hidden">
+              <div className="relative rounded-sm overflow-hidden shadow-md border border-gray-200">
                 <Image
-                  className="rounded-lg object-cover"
+                  className="rounded-sm object-cover"
                   alt="tmp"
                   src="https://images.unsplash.com/photo-1605351720698-6cfec9eb9b5e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
                   height="300"
                   width="225"
                 />
-                <div className="absolute bottom-0 right-0 left-0 bg-gradient-to-t from-gray-900 to-transparent pb-6 pt-20 px-4">
+                <div className="absolute bottom-0 right-0 left-0 bg-gradient-to-t from-gray-900 to-transparent pb-4 pt-10 px-4">
                   <p className="text-lg font-semibold text-white">Entryway</p>
                   <p className="text-yellow-400 text-sm">2000+ 3D Renders</p>
                 </div>
               </div>
             </li>
             <li>
-              <div className="relative rounded-lg overflow-hidden">
+              <div className="relative rounded-sm overflow-hidden shadow-md border border-gray-200">
                 <Image
-                  className="rounded-lg object-cover"
+                  className="rounded-sm object-cover"
                   alt="tmp"
                   src="https://images.unsplash.com/photo-1607522783211-cb0d1ffdab8a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
                   height="300"
                   width="225"
                 />
-                <div className="absolute bottom-0 right-0 left-0 bg-gradient-to-t from-gray-900 to-transparent pb-6 pt-20 px-4">
+                <div className="absolute bottom-0 right-0 left-0 bg-gradient-to-t from-gray-900 to-transparent pb-4 pt-10 px-4">
                   <p className="text-lg font-semibold text-white">Home Office</p>
                   <p className="text-green-400 text-sm">2000+ 3D Renders</p>
                 </div>
               </div>
             </li>
             <li>
-              <div className="relative rounded-lg overflow-hidden">
+              <div className="relative rounded-sm overflow-hidden shadow-md border border-gray-200">
                 <Image
-                  className="rounded-lg object-cover"
+                  className="rounded-sm object-cover"
                   alt="tmp"
                   src="https://images.unsplash.com/photo-1519974719765-e6559eac2575?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
                   height="300"
                   width="225"
                 />
-                <div className="absolute bottom-0 right-0 left-0 bg-gradient-to-t from-gray-900 to-transparent pb-6 pt-20 px-4">
+                <div className="absolute bottom-0 right-0 left-0 bg-gradient-to-t from-gray-900 to-transparent pb-4 pt-10 px-4">
                   <p className="text-lg font-semibold text-white">Work Station</p>
                   <p className="text-blue-400 text-sm">2000+ 3D Renders</p>
                 </div>
               </div>
             </li>
             <li>
-              <div className="relative rounded-lg overflow-hidden">
+              <div className="relative rounded-sm overflow-hidden shadow-md border border-gray-200">
                 <Image
-                  className="rounded-lg object-cover"
+                  className="rounded-sm object-cover"
                   alt="tmp"
                   src="https://images.unsplash.com/photo-1594113768745-aa11bdc68b47?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=975&q=80"
                   height="300"
                   width="225"
                 />
-                <div className="absolute bottom-0 right-0 left-0 bg-gradient-to-t from-gray-900 to-transparent pb-6 pt-20 px-4">
+                <div className="absolute bottom-0 right-0 left-0 bg-gradient-to-t from-gray-900 to-transparent pb-4 pt-10 px-4">
                   <p className="text-lg font-semibold text-white">Kis&apos;s Room</p>
                   <p className="text-pink-400 text-sm">2000+ 3D Renders</p>
                 </div>
