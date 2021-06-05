@@ -49,7 +49,7 @@ const v1: React.FC = () => {
           <AnimateBox className="banner rounded-xl">
             <div className="absolute shape-1 bottom-0 -ml-14 -mb-14" />
             <Image
-              className="rounded-xl"
+              className="object-cover"
               src="https://res.cloudinary.com/spacejoy/image/upload/c_scale,h_1050,w_1671/v1622172527/spj-v2/spj-happy-customer_ahkoxm.jpg"
               alt="spacejoy happy customer"
               height={'700'}
