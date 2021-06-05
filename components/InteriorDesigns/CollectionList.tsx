@@ -38,10 +38,32 @@ const AnimateBox = styled.ul`
     &:nth-child(6) {
       animation-delay: 350ms;
     }
+    &:nth-child(7) {
+      animation-delay: 400ms;
+    }
+    &:nth-child(8) {
+      animation-delay: 450ms;
+    }
+    &:nth-child(9) {
+      animation-delay: 500ms;
+    }
+    &:nth-child(10) {
+      animation-delay: 550ms;
+    }
+    &:nth-child(11) {
+      animation-delay: 600ms;
+    }
+    &:nth-child(12) {
+      animation-delay: 650ms;
+    }
   }
 `;
 
-const CollectionList: React.FC = () => {
+interface CollectionListInterface {
+  count: number;
+}
+
+const CollectionList: React.FC<CollectionListInterface> = ({ count }) => {
   return (
     <section className="interior-design-section">
       <div className="py-4 bg-gray-100">
@@ -53,13 +75,15 @@ const CollectionList: React.FC = () => {
                 Hand Picked Collections
               </h1>
             </div>
-            <div className="text-right flex-1">
-              <Link href="/collection/bedroom">
-                <a className="text-sm hover:text-red-500">
-                  See All <ArrowRightIcon className="inline w-4 h-4" />
-                </a>
-              </Link>
-            </div>
+            {count !== 0 && (
+              <div className="text-right flex-1">
+                <Link href="/collection">
+                  <a className="text-sm hover:text-red-500">
+                    See All <ArrowRightIcon className="inline w-4 h-4" />
+                  </a>
+                </Link>
+              </div>
+            )}
           </div>
           <div className="relative">
             <AnimateBox className="grid grid-cols-6 gap-8 my-6">
@@ -189,6 +213,30 @@ const CollectionList: React.FC = () => {
                   </a>
                 </Link>
               </li>
+              {count === 0 &&
+                [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6].map((i) => (
+                  <li key={`${i}`}>
+                    <Link href="/collection/bedroom">
+                      <a>
+                        <div className="relative rounded-sm overflow-hidden transition-shadow transition-transform transform shadow-xl hover:shadow-sm hover:-translate-y-1 border border-gray-200">
+                          <Image
+                            className="rounded-sm object-cover"
+                            alt="tmp"
+                            src="https://images.unsplash.com/photo-1562663474-6cbb3eaa4d14?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
+                            height="300"
+                            width="225"
+                          />
+                          <div className="absolute bottom-0 right-0 left-0 bg-gradient-to-t from-gray-900 to-transparent pb-4 pt-10 px-4">
+                            <p className="text-lg font-semibold text-white">
+                              Bedroom <ArrowRightIcon className="inline w-4 h-4" />
+                            </p>
+                            <p className="text-indigo-400 text-sm">2000+ 3D Renders</p>
+                          </div>
+                        </div>
+                      </a>
+                    </Link>
+                  </li>
+                ))}
             </AnimateBox>
           </div>
         </div>

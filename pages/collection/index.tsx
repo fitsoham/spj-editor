@@ -1,6 +1,4 @@
-import CollectionBanner from '@components/Collection/Banner';
-import DesignList from '@components/InteriorDesigns/DesignList';
-import ListFilter from '@components/InteriorDesigns/ListFilter';
+import CollectionList from '@components/InteriorDesigns/CollectionList';
 import Layout from '@components/Shared/Layout';
 import PreFooter from '@components/Shared/PreFooter';
 import React from 'react';
@@ -11,9 +9,7 @@ const collection: React.FC = () => {
       <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
-        <CollectionBanner />
-        <ListFilter />
-        <DesignList />
+        <CollectionList count={0} />
         <PreFooter />
       </Layout.Body>
       <Layout.Footer />
