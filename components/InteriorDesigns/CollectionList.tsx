@@ -54,7 +54,7 @@ const CollectionList: React.FC = () => {
               </h1>
             </div>
             <div className="text-right flex-1">
-              <Link href="/">
+              <Link href="/collection/bedroom">
                 <a className="text-sm hover:text-red-500">
                   See All <ArrowRightIcon className="inline w-4 h-4" />
                 </a>
@@ -64,7 +64,7 @@ const CollectionList: React.FC = () => {
           <div className="relative">
             <AnimateBox className="grid grid-cols-6 gap-8 my-6">
               <li>
-                <Link href="/">
+                <Link href="/collection/bedroom">
                   <a>
                     <div className="relative rounded-sm overflow-hidden transition-shadow transition-transform transform shadow-xl hover:shadow-sm hover:-translate-y-1 border border-gray-200">
                       <Image
@@ -85,7 +85,7 @@ const CollectionList: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/">
+                <Link href="/collection/bedroom">
                   <a>
                     <div className="relative rounded-sm overflow-hidden transition-shadow transition-transform transform shadow-xl hover:shadow-sm hover:-translate-y-1 border border-gray-200">
                       <Image
@@ -106,7 +106,7 @@ const CollectionList: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/">
+                <Link href="/collection/bedroom">
                   <a>
                     <div className="relative rounded-sm overflow-hidden transition-shadow transition-transform transform shadow-xl hover:shadow-sm hover:-translate-y-1 border border-gray-200">
                       <Image
@@ -127,7 +127,7 @@ const CollectionList: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/">
+                <Link href="/collection/bedroom">
                   <a>
                     <div className="relative rounded-sm overflow-hidden transition-shadow transition-transform transform shadow-xl hover:shadow-sm hover:-translate-y-1 border border-gray-200">
                       <Image
@@ -148,7 +148,7 @@ const CollectionList: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/">
+                <Link href="/collection/bedroom">
                   <a>
                     <div className="relative rounded-sm overflow-hidden transition-shadow transition-transform transform shadow-xl hover:shadow-sm hover:-translate-y-1 border border-gray-200">
                       <Image
@@ -169,7 +169,7 @@ const CollectionList: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/">
+                <Link href="/collection/bedroom">
                   <a>
                     <div className="relative rounded-sm overflow-hidden transition-shadow transition-transform transform shadow-xl hover:shadow-sm hover:-translate-y-1 border border-gray-200">
                       <Image
