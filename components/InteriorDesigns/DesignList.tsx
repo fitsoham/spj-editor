@@ -1,3 +1,4 @@
+import Pagination from '@components/Shared/Pagination';
 import Image from 'next/image';
 import React from 'react';
 
@@ -111,6 +112,7 @@ const DesignList: React.FC = () => {
             </div>
           </div>
         </div>
+        <Pagination />
       </div>
     </div>
   );
