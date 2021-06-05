@@ -1,3 +1,4 @@
+import { ArrowNarrowDownIcon } from '@heroicons/react/outline';
 import Image from 'next/image';
 import React from 'react';
 
@@ -16,7 +17,7 @@ const CollectionBanner: React.FC = () => {
         </div>
       </div>
       <div className="flex-1">
-        <div className="h-full flex items-center">
+        <div className="h-full flex items-end">
           <div className="p-10">
             <small className="text-sm text-white">Publish Date: June-10-21</small>
             <h1 className="text-7xl text-white mt-4 mb-4">
@@ -29,6 +30,7 @@ const CollectionBanner: React.FC = () => {
               nemo dolorem inventore explicabo voluptates eum quisquam? Fugit nulla soluta animi repellat optio ab,
               asperiores odio unde!
             </p>
+            <ArrowNarrowDownIcon className="w-8 h-8 mt-10 text-white animate-bounce" />
           </div>
         </div>
       </div>
