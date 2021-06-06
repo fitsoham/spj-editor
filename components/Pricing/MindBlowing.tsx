@@ -57,13 +57,24 @@ const MindBlowing = () => {
       />
       <div className="flex">
         <div className="">
-          <AnimateBox className="banner rounded-xl">
-            <Image
-              src="https://res.cloudinary.com/spacejoy/image/upload/v1622344281/spj-v2/spj-living-room_x9d25x.jpg"
-              alt="spacejoy happy customer"
-              width={'1000'}
-              height={'666'}
-            />
+          <AnimateBox className="banner overflow-hidden">
+            <div className="filter blur-sm">
+              <Image
+                className="object-cover"
+                src="/images/spj-happy-customer_ahkoxm.jpg"
+                alt="spacejoy happy customer"
+                width={'1000'}
+                height={'666'}
+              />
+            </div>
+            <div className="absolute top-0 left-0 right-0 bottom-0">
+              <Image
+                src="https://res.cloudinary.com/spacejoy/image/upload/v1622344281/spj-v2/spj-living-room_x9d25x.jpg"
+                alt="spacejoy awesome look"
+                width={'1000'}
+                height={'666'}
+              />
+            </div>
             <div className="absolute shape-2 top-0 -ml-14 -mt-11"></div>
           </AnimateBox>
         </div>

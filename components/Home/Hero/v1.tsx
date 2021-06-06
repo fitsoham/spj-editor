@@ -46,15 +46,28 @@ const v1: React.FC = () => {
           </AnimateBox>
         </div>
         <div className="col-start-2 col-end-5">
-          <AnimateBox className="banner rounded-xl">
+          <AnimateBox className="banner">
             <div className="absolute shape-1 bottom-0 -ml-14 -mb-14" />
-            <Image
-              className="object-cover"
-              src="https://res.cloudinary.com/spacejoy/image/upload/c_scale,h_1050,w_1671/v1622172527/spj-v2/spj-happy-customer_ahkoxm.jpg"
-              alt="spacejoy happy customer"
-              height={'700'}
-              width={'1114'}
-            />
+            <div className="relative overflow-hidden">
+              <div className="filter blur-sm">
+                <Image
+                  className="object-cover "
+                  src="/images/spj-happy-customer_ahkoxm.jpg"
+                  alt="spacejoy happy customer"
+                  height={'700'}
+                  width={'1114'}
+                />
+              </div>
+              <div className="absolute top-0 left-0 right-0 bottom-0">
+                <Image
+                  className="object-cover"
+                  src="https://res.cloudinary.com/spacejoy/image/upload/c_scale,h_1050,w_1671/v1622172527/spj-v2/spj-happy-customer_ahkoxm.jpg"
+                  alt="spacejoy happy customer"
+                  height={'700'}
+                  width={'1114'}
+                />
+              </div>
+            </div>
           </AnimateBox>
         </div>
       </div>
