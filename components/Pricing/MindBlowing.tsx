@@ -58,7 +58,7 @@ const MindBlowing = () => {
       <div className="flex">
         <div className="">
           <AnimateBox className="banner overflow-hidden">
-            <div className="filter blur-sm">
+            <div className="filter blur-sm bg-gray-100">
               <Image
                 className="object-cover"
                 src="/images/spj-happy-customer_ahkoxm.jpg"
