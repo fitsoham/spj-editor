@@ -5,16 +5,14 @@ import React from 'react';
 const CollectionBanner: React.FC = () => {
   return (
     <div className="flex max-h-screen bg-gray-800 items-end">
-      <div className="h-full">
-        <div className="next-image-fix">
-          <Image
-            className="object-cover"
-            src="https://images.unsplash.com/photo-1618220048045-10a6dbdf83e0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
-            alt="spacejoy happy customer"
-            height={'700'}
-            width={'896'}
-          />
-        </div>
+      <div className="h-full next-image-fix bg-gray-200">
+        <Image
+          className="object-cover"
+          src="https://images.unsplash.com/photo-1618220048045-10a6dbdf83e0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
+          alt="spacejoy happy customer"
+          height={'700'}
+          width={'896'}
+        />
       </div>
       <div className="h-full">
         <div className="flex items-end">
