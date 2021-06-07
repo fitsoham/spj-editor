@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+  min-width: 1280px;
+}
+
 body,
 button,
 p {

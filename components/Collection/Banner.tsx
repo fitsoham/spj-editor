@@ -4,9 +4,9 @@ import React from 'react';
 
 const CollectionBanner: React.FC = () => {
   return (
-    <div className="flex max-h-screen bg-gray-800">
-      <div className="flex-1">
-        <div className="h-full">
+    <div className="flex max-h-screen bg-gray-800 items-end">
+      <div className="h-full">
+        <div className="next-image-fix">
           <Image
             className="object-cover"
             src="https://images.unsplash.com/photo-1618220048045-10a6dbdf83e0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
@@ -16,11 +16,11 @@ const CollectionBanner: React.FC = () => {
           />
         </div>
       </div>
-      <div className="flex-1">
-        <div className="h-full flex items-end">
+      <div className="h-full">
+        <div className="flex items-end">
           <div className="p-10">
             <small className="text-sm text-white">Publish Date: June-10-21</small>
-            <h1 className="text-7xl text-blue-300 mt-4 mb-4">
+            <h1 className="sm:text-3xl md:text-5xl lg:text-7xl text-blue-300 mt-4 mb-4">
               Bedroom
               <br />
               Collection

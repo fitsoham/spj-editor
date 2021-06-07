@@ -15,6 +15,7 @@ module.exports = {
       roman: 'upper-roman',
     },
     extend: {
+      borderWidth: ['last', 'first'],
       colors: {
         'spj-red': '#F5296E',
         'spj-yellow': '#F39C12',
