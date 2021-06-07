@@ -1,3 +1,4 @@
+import { ArrowRightIcon } from '@heroicons/react/outline';
 import Image from 'next/image';
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
@@ -31,15 +32,14 @@ const v1: React.FC = () => {
         <div>
           <AnimateBox className="details">
             <h1 className="lg:text-3xl xl:text-5xl mb-4 lg:semibold xl:font-extrabold tracking-tight">Live in joy</h1>
-            <p className="text-lg mb-4 font-semibold">The best way to design and shop for your home</p>
-            <p className="text-gray-700 mb-6">
-              Create a stunning home with handpicked products from top brands that you can shop instantly
+            <p className="mb-4 text-gray-600">
+              Design a stunning home with handpicked products from top brands that you can shop instantly
             </p>
             <button
               type="button"
               className="focus:outline-none shadow-xs hover:shadow-md text-base text-white py-3 px-12 rounded-full bg-gradient-to-r from-spj-red to-spj-yellow tracking-wide"
             >
-              Start Project
+              Start Project Now <ArrowRightIcon className="inline w-4 h-4" />
             </button>
             <p className="text-sm mt-6 text-gray-700">Price starts from $99.00, checkout now</p>
           </AnimateBox>

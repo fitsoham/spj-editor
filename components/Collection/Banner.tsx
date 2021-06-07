@@ -28,7 +28,7 @@ const CollectionBanner: React.FC = () => {
               nemo dolorem inventore explicabo voluptates eum quisquam? Fugit nulla soluta animi repellat optio ab,
               asperiores odio unde!
             </p>
-            <ArrowNarrowDownIcon className="w-8 h-8 mt-10 text-white animate-bounce" />
+            <ArrowNarrowDownIcon className="w-6 h-6 mt-10 text-white animate-bounce" />
           </div>
         </div>
       </div>
