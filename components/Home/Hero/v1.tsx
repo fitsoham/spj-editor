@@ -47,9 +47,9 @@ const v1: React.FC = () => {
         </div>
         <div className="col-start-2 col-end-5">
           <AnimateBox className="banner">
-            <div className="absolute shape-1 bottom-0 -ml-14 -mb-14" />
+            <div className="absolute shape-2 bottom-0 -ml-2 -mb-2" />
             <div className="relative overflow-hidden">
-              <div className="filter blur-sm bg-gray-100">
+              <div className="next-image-fix filter blur-sm bg-gray-100">
                 <Image
                   className="object-cover "
                   src="/images/spj-happy-customer_ahkoxm.jpg"

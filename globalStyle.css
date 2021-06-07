@@ -44,3 +44,7 @@ h3 {
   height: 30px;
   background-repeat: no-repeat;
 }
+
+.next-image-fix > div {
+  display: block !important;
+}
