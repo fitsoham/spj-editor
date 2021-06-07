@@ -31,10 +31,9 @@ const v1: React.FC = () => {
         <div>
           <AnimateBox className="details">
             <h1 className="lg:text-3xl xl:text-5xl mb-4 lg:semibold xl:font-extrabold tracking-tight">Live in joy</h1>
-            <p className="text-lg mb-4">Online interior design services by Spacejoy</p>
-            <p className="text-sm text-gray-700 mb-6">
-              Get your room designed by professional interior designer and shop high-quality furniture and decor from
-              your favorite brands.
+            <p className="text-lg mb-4 font-semibold">The best way to design and shop for your home</p>
+            <p className="text-gray-700 mb-6">
+              Create a stunning home with handpicked products from top brands that you can shop instantly
             </p>
             <button
               type="button"

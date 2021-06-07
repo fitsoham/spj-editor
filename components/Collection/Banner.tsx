@@ -20,12 +20,12 @@ const CollectionBanner: React.FC = () => {
         <div className="h-full flex items-end">
           <div className="p-10">
             <small className="text-sm text-white">Publish Date: June-10-21</small>
-            <h1 className="text-7xl text-white mt-4 mb-4">
+            <h1 className="text-7xl text-blue-300 mt-4 mb-4">
               Bedroom
               <br />
               Collection
             </h1>
-            <p className="text-gray-400 text-sm max-w-xl">
+            <p className="text-gray-200 text-sm max-w-xl">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet eaque nesciunt, temporibus accusantium
               nemo dolorem inventore explicabo voluptates eum quisquam? Fugit nulla soluta animi repellat optio ab,
               asperiores odio unde!
