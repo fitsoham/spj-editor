@@ -9,9 +9,9 @@ interface ListItemInterface {
     thumbnail: string;
   };
   active: boolean;
-  setSelected: ({ id: number, name: string }) => null;
-  setHovered: ({ id: number, name: string }) => null;
-  setSearchString: (string) => null;
+  setSelected: ({ id, title, theme, thumbnail }) => void;
+  setHovered: ({ id, title, theme, thumbnail }) => void;
+  setSearchString: (args: string) => void;
 }
 
 const ListItem: React.FC<ListItemInterface> = ({ item, active, setSelected, setHovered, setSearchString }) => (
@@ -32,7 +32,7 @@ const ListItem: React.FC<ListItemInterface> = ({ item, active, setSelected, setH
   >
     <Image src={item.thumbnail} className="rounded-md" alt="" height={'60'} width={'60'} />
     <div className="">
-      <h3 className="leading-5 overflow-ellipsis overflow-hidden">{item.title}</h3>
+      <h4 className="leading-6 overflow-ellipsis overflow-hidden">{item.title}</h4>
       <p className="text-gray-500 text-xs">{item.theme}</p>
     </div>
   </li>

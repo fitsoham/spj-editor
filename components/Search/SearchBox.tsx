@@ -112,7 +112,7 @@ const SearchBox: React.FC = () => {
           <form action="#" method="POST">
             <div className="relative">
               <input
-                autoFocus={true}
+                autoFocus
                 onChange={(e) => setSearchString(e?.target?.value)}
                 type="text"
                 name="first_name"
