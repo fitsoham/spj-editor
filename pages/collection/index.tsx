@@ -8,7 +8,7 @@ const collection: React.FC = () => {
       <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
-        <CollectionList count={0} />
+        <CollectionList />
       </Layout.Body>
       <Layout.Footer />
     </Layout>
