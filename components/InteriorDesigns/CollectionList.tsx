@@ -68,7 +68,7 @@ const CollectionList: React.FC<CollectionListInterface> = ({ count }) => {
     <section className="interior-design-section">
       <div className="py-4 bg-gray-100">
         <div className="container mx-auto px-4 pt-8">
-          <div className="flex items-center">
+          <div className="flex items-end">
             <div className="flex-1">
               <p className="text-gray-500">Largest collection of 3D rendered images</p>
               <h1 className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
@@ -90,7 +90,7 @@ const CollectionList: React.FC<CollectionListInterface> = ({ count }) => {
               <li>
                 <Link href="/collection/bedroom">
                   <a>
-                    <div className="next-image-fix relative rounded-sm overflow-hidden bg-yellow-300 transition-all transform duration-300 shadow-xl hover:shadow-sm hover:-translate-y-1 border border-gray-200">
+                    <div className="next-image-fix relative rounded-sm overflow-hidden bg-yellow-300 transition-all transform duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-200">
                       <Image
                         className="rounded-sm object-cover"
                         alt="tmp"
@@ -111,7 +111,7 @@ const CollectionList: React.FC<CollectionListInterface> = ({ count }) => {
               <li>
                 <Link href="/collection/bedroom">
                   <a>
-                    <div className="next-image-fix relative rounded-sm overflow-hidden bg-yellow-300 transition-all transform duration-300 shadow-xl hover:shadow-sm hover:-translate-y-1 border border-gray-200">
+                    <div className="next-image-fix relative rounded-sm overflow-hidden bg-yellow-300 transition-all transform duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-200">
                       <Image
                         className="rounded-sm object-cover"
                         alt="tmp"
@@ -132,7 +132,7 @@ const CollectionList: React.FC<CollectionListInterface> = ({ count }) => {
               <li>
                 <Link href="/collection/bedroom">
                   <a>
-                    <div className="next-image-fix relative rounded-sm overflow-hidden bg-yellow-300 transition-all transform duration-300 shadow-xl hover:shadow-sm hover:-translate-y-1 border border-gray-200">
+                    <div className="next-image-fix relative rounded-sm overflow-hidden bg-yellow-300 transition-all transform duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-200">
                       <Image
                         className="rounded-sm object-cover"
                         alt="tmp"
@@ -153,7 +153,7 @@ const CollectionList: React.FC<CollectionListInterface> = ({ count }) => {
               <li>
                 <Link href="/collection/bedroom">
                   <a>
-                    <div className="next-image-fix relative rounded-sm overflow-hidden bg-yellow-300 transition-all transform duration-300 shadow-xl hover:shadow-sm hover:-translate-y-1 border border-gray-200">
+                    <div className="next-image-fix relative rounded-sm overflow-hidden bg-yellow-300 transition-all transform duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-200">
                       <Image
                         className="rounded-sm object-cover"
                         alt="tmp"
@@ -174,7 +174,7 @@ const CollectionList: React.FC<CollectionListInterface> = ({ count }) => {
               <li>
                 <Link href="/collection/bedroom">
                   <a>
-                    <div className="next-image-fix relative rounded-sm overflow-hidden bg-yellow-300 transition-all transform duration-300 shadow-xl hover:shadow-sm hover:-translate-y-1 border border-gray-200">
+                    <div className="next-image-fix relative rounded-sm overflow-hidden bg-yellow-300 transition-all transform duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-200">
                       <Image
                         className="rounded-sm object-cover"
                         alt="tmp"
@@ -195,7 +195,7 @@ const CollectionList: React.FC<CollectionListInterface> = ({ count }) => {
               <li>
                 <Link href="/collection/bedroom">
                   <a>
-                    <div className="next-image-fix relative rounded-sm overflow-hidden bg-yellow-300 transition-all transform duration-300 shadow-xl hover:shadow-sm hover:-translate-y-1 border border-gray-200">
+                    <div className="next-image-fix relative rounded-sm overflow-hidden bg-yellow-300 transition-all transform duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-200">
                       <Image
                         className="rounded-sm object-cover"
                         alt="tmp"
@@ -218,7 +218,7 @@ const CollectionList: React.FC<CollectionListInterface> = ({ count }) => {
                   <li key={`${i}`}>
                     <Link href="/collection/bedroom">
                       <a>
-                        <div className="next-image-fix relative rounded-sm overflow-hidden bg-yellow-300 transition-all transform duration-300 shadow-xl hover:shadow-sm hover:-translate-y-1 border border-gray-200">
+                        <div className="next-image-fix relative rounded-sm overflow-hidden bg-yellow-300 transition-all transform duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-200">
                           <Image
                             className="rounded-sm object-cover"
                             alt="tmp"
