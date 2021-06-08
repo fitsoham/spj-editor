@@ -1,6 +1,5 @@
-import CollectionList from '@components/InteriorDesigns/CollectionList';
+import CollectionList from '@components/Collection/CollectionList';
 import Layout from '@components/Shared/Layout';
-import PreFooter from '@components/Shared/PreFooter';
 import React from 'react';
 
 const collection: React.FC = () => {
@@ -10,7 +9,6 @@ const collection: React.FC = () => {
       <Layout.Header />
       <Layout.Body>
         <CollectionList count={0} />
-        <PreFooter />
       </Layout.Body>
       <Layout.Footer />
     </Layout>

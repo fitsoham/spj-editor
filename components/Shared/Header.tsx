@@ -89,7 +89,7 @@ const Header: React.FC = () => {
                 </ul>
               </nav>
             </div>
-            <div className="flex-auto text-right">
+            <div className="text-right">
               <Link href="/search">
                 <a href="">
                   <button
