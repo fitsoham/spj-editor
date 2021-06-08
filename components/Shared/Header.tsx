@@ -13,7 +13,7 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <header className={`bg-white sticky top-0 z-20`}>
+      <header className={`bg-white sticky top-0 z-50`}>
         <div className="container p-4 mx-auto">
           <div className="flex items-center">
             <div className="w-40 mt-2">

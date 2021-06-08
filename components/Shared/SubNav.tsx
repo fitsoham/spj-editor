@@ -6,7 +6,7 @@ import React, { Fragment } from 'react';
 const SubNav = ({ subNavState, closeSubNav }: { subNavState: boolean; closeSubNav: () => void }): JSX.Element => {
   return (
     <Transition appear show={subNavState} as={Fragment}>
-      <Dialog as="div" className="fixed bg-gray-900 bg-opacity-75 inset-0 z-0 overflow-y-auto" onClose={closeSubNav}>
+      <Dialog as="div" className="fixed bg-gray-900 bg-opacity-75 inset-0 z-40 overflow-y-auto" onClose={closeSubNav}>
         <div className="min-h-screen text-center">
           <Transition.Child
             as={Fragment}

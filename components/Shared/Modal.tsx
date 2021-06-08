@@ -18,13 +18,13 @@ const Modal: React.FC = () => {
       <button
         type="button"
         onClick={openModal}
-        className="focus:outline-none text-gray-700 hover:text-red-500 text-xs py-2 px-4 rounded-full hover:shadow-md border border-gray-300 hover:border-red-500"
+        className="focus:outline-none text-gray-700 hover:text-red-500 text-xs py-2 px-4 rounded-full hover:shadow-md border border-gray-500 hover:border-red-500"
       >
         <span className="sr-only">Filter</span>
         Filter <FilterIcon className="inline w-4 h-4" />
       </button>
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="fixed  bg-gray-900 bg-opacity-95 inset-0 z-20 overflow-y-auto" onClose={closeModal}>
+        <Dialog as="div" className="fixed  bg-gray-900 bg-opacity-95 inset-0 z-50 overflow-y-auto" onClose={closeModal}>
           <div className="min-h-screen px-4 text-center">
             <Transition.Child
               as={Fragment}
