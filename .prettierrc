@@ -4,7 +4,5 @@
   "bracketSpacing": true,
   "jsxBracketSameLine": false,
   "proseWrap": "always",
-  "tabs": true,
-  "tabWidth": 2,
   "printWidth": 120
 }

@@ -38,8 +38,7 @@ const Sticky2Styled = styled.div`
     }
   }
 `;
-
-const Sticky2 = () => (
+const Sticky2: React.FC = () => (
   <Sticky2Styled>
     <div className="section" />
     <Controller>
@@ -55,16 +54,6 @@ const Sticky2 = () => (
                     </svg>
                   </div>
                 </Tween>
-                {/* <Timeline
-                  target={
-                    <div className="heading">
-                      <h2>This is a cool heading</h2>
-                    </div>
-                  }
-                >
-                  <Tween from={{ opacity: 0 }} to={{ opacity: 1 }} />
-                  <Tween to={{ x: '110%' }} />
-                </Timeline> */}
               </Timeline>
             </div>
           )}

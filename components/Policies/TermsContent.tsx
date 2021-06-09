@@ -331,7 +331,8 @@ const TermsContent: React.FC = () => {
               You understand that by using the Service, you may encounter data, information, applications, materials and
               other content from third parties, including other users (collectively, &#34;Third Party Materials&#34;),
               and data, information, applications, materials and other content from {company.product} (collectively,
-              &#34;{company.product} Content&#34; and, together with Third Party Materials, but excluding Your Content,
+              &#34;
+              {company.product} Content&#34; and, together with Third Party Materials, but excluding Your Content,
               &#34;Service Content&#34;), that may be offensive, indecent, or objectionable Nevertheless, you agree to
               use the Service at your sole risk and that {company.product} shall not have any liability to you for any
               Service Content that may be found to be offensive, indecent, or that is inaccurate, incomplete, untimely,

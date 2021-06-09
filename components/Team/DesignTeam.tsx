@@ -1,5 +1,6 @@
 import SectionTitle from '@components/Shared/SectionTitle';
 import React from 'react';
+import { Controller } from 'react-scrollmagic';
 import DesignTeamData from '../../mocks/DesignTeamData';
 import TeamMember from './TeamMember';
 
@@ -16,9 +17,11 @@ const DesignTeam: React.FC = () => (
     <div className="max-w-7xl mx-auto px-4 text-center sm:px-6 lg:px-8">
       <div className="space-y-8 sm:space-y-12">
         <ul className="mx-auto grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-4 md:gap-x-6 lg:max-w-5xl lg:gap-x-8 lg:gap-y-12 xl:grid-cols-6">
-          {DesignTeamData.map((designer, index) => (
-            <TeamMember designer={designer} key={`${designer.firstName}-${index}`} />
-          ))}
+          <Controller>
+            {DesignTeamData.map((designer, index) => (
+              <TeamMember designer={designer} key={`${designer.firstName}-${index}`} />
+            ))}
+          </Controller>
         </ul>
       </div>
     </div>

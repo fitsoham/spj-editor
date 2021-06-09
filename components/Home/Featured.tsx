@@ -44,7 +44,7 @@ const AnimateBox = styled.div`
   }
 `;
 
-const Featured = () => {
+const Featured: React.FC = () => {
   return (
     <>
       <SectionTitle

@@ -12,14 +12,12 @@ interface FetcherArgs {
 }
 
 const fetcher = async ({
-  ctx,
   endPoint,
   method,
   body,
   isSocket = false,
   type = 'text',
 }: FetcherArgs): Promise<Record<string, any>> => {
-  const isServer = ctx && ctx.req && !!ctx.req;
   const JWT = '';
   const contentType = type === 'file' ? '' : 'application/json';
 
