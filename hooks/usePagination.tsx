@@ -1,4 +1,3 @@
-import { internalPages } from '@utils/config';
 import fetcher from '@utils/fetcher';
 import { useRouter } from 'next/router';
 import { useEffect, useReducer, useState } from 'react';
@@ -43,6 +42,7 @@ const reducer = (state = initialState, action) => {
 };
 
 const fetchMoreData = async (api, skip, limit) => {
+  // TODO: Change var names
   const { url, method, payload } = api;
 
   const queryParam = `?limit=${limit}&skip=${skip}`;
@@ -100,6 +100,7 @@ const usePagination = (api, initialData, totalRecords, paginationButtonCount, pa
 
   useEffect(() => {
     async function fetchData(...args) {
+      console.log(`List loading from Pagination`);
       const newData = await fetchMoreData.apply(null, [...args]);
       dispatch({ type: 'ADD_TO_LIST', payload: { data: newData, currentPage } });
       dispatch({ type: 'SET_LOADING' });

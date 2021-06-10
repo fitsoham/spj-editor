@@ -34,9 +34,9 @@ const topCollections = {
     },
     {
       _id: 5,
-      name: 'Work Station',
+      name: 'Nursery',
       metaDescription: '2000+ 3D Renders',
-      slug: 'work-station-ideas',
+      slug: 'nursery-ideas',
       cdnThumbnail: 'v1623306199/web/thumbnail_mpgrrb.jpg',
       metaTitle: '2000+ 3D Renders',
     },

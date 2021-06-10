@@ -4,8 +4,6 @@ import Pagination from '@components/Shared/Pagination';
 import usePagination from '@hooks/usePagination';
 import { internalPages } from '@utils/config';
 import { publicRoutes } from '@utils/constants/api';
-import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 

@@ -30,10 +30,13 @@ export const getStaticProps = async () => {
     endPoint: `${publicRoutes.collectionFeed}${additionalParamsCollections}`,
     method: 'GET',
   });
-  const { data: list = [] } = res;
+  const {
+    data: { list: mainList },
+  } = res;
+
   return {
     props: {
-      collectionFeedData: { list, count: 500 },
+      collectionFeedData: { list: mainList, count: 500 },
     },
     revalidate: 1, //TODO: Recheck the doc Data Fetching
   };

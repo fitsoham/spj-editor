@@ -3,10 +3,10 @@ import DesignList from '@components/InteriorDesigns/DesignList';
 import ListFilter from '@components/InteriorDesigns/ListFilter';
 import Layout from '@components/Shared/Layout';
 import PreFooter from '@components/Shared/PreFooter';
-import React from 'react';
-import fetcher from '@utils/fetcher';
-import { publicRoutes } from '@utils/constants/api';
 import { internalPages } from '@utils/config';
+import { publicRoutes } from '@utils/constants/api';
+import fetcher from '@utils/fetcher';
+import React from 'react';
 
 interface CollectionPage {
   designFeedData: {
@@ -27,8 +27,6 @@ interface CollectionPage {
 }
 
 const collectionView: React.FC<CollectionPage> = ({ designFeedData, collectionData }) => {
-  console.log(designFeedData, collectionData);
-
   return (
     <Layout>
       <Layout.Banner />
@@ -45,7 +43,14 @@ const collectionView: React.FC<CollectionPage> = ({ designFeedData, collectionDa
 };
 
 export const getStaticPaths = async () => {
-  const slugs = ['bedroom-ideas', 'living-room-ideas', 'entryway-ideas', 'home-office-ideas', 'kids-room-ideas'];
+  const slugs = [
+    'bedroom-ideas',
+    'living-room-ideas',
+    'entryway-ideas',
+    'home-office-ideas',
+    'kids-room-ideas',
+    'nursery-ideas',
+  ];
   const paths = slugs.map((slug) => ({
     params: { slug },
   }));
@@ -56,7 +61,6 @@ export const getStaticProps = async ({ params }) => {
   const endPoint = `${publicRoutes.collectionData}/${params?.slug}`;
   const res = await fetcher({ endPoint, method: 'GET' });
   const { data, statusCode } = res;
-  console.log('res', res);
   if (statusCode <= 301) {
     const additionalParams = `?limit=${internalPages.InteriorDesigns.DEFAULT_PAGE_SIZE}&skip=0`;
     const designRes = await fetcher({
