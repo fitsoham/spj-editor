@@ -3,15 +3,15 @@ import Lottie from 'lottie-react-web';
 import React from 'react';
 
 const LottieAnimation: React.FC = () => {
-    return (
-        <Lottie
-            ariaLabel="Lottie"
-            ariaRole="present"
-            options={{
-                animationData: animation,
-            }}
-        />
-    );
+  return (
+    <Lottie
+      ariaLabel="Lottie"
+      ariaRole="present"
+      options={{
+        animationData: animation,
+      }}
+    />
+  );
 };
 
 export default LottieAnimation;
