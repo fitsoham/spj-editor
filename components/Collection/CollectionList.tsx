@@ -1,4 +1,9 @@
+import CollectionCard from '@components/InteriorDesigns/CollectionCard';
+import CollectionCardDimmer from '@components/InteriorDesigns/CollectionCardDimmer';
 import Pagination from '@components/Shared/Pagination';
+import usePagination from '@hooks/usePagination';
+import { internalPages } from '@utils/config';
+import { publicRoutes } from '@utils/constants/api';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -59,7 +64,23 @@ const AnimateBox = styled.ul`
   }
 `;
 
-const CollectionList: React.FC = () => {
+interface CollectionList {
+  feedData: {
+    list: [];
+    count: number;
+  };
+}
+
+const CollectionList: React.FC<CollectionList> = ({ feedData }) => {
+  const { list, count: totalRecords } = feedData;
+  const { currentRenderList, isFetching, buttons } = usePagination(
+    { url: publicRoutes.collectionFeed, method: 'GET' },
+    list,
+    totalRecords,
+    internalPages.InteriorDesigns.DEFAULT_PAGINATION_BUTTON_COUNT,
+    internalPages.Collection.DEFAULT_PAGE_SIZE
+  );
+
   return (
     <section className="interior-design-section">
       <div>
@@ -79,158 +100,18 @@ const CollectionList: React.FC = () => {
           </div>
           <div className="relative bg-white">
             <AnimateBox className="grid grid-cols-6 gap-x-8 gap-y-10">
-              <li>
-                <Link href="/collection/bedroom">
-                  <a>
-                    <div className="relative">
-                      <div className="next-image-fix transition-all transform duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-200">
-                        <Image
-                          className="rounded-sm object-cover"
-                          alt="tmp"
-                          src="https://images.unsplash.com/photo-1562663474-6cbb3eaa4d14?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
-                          height="300"
-                          width="225"
-                        />
-                      </div>
-                      <div className="pt-4">
-                        <p>Bedroom</p>
-                        <p className="text-gray-500 text-sm">2000+ 3D Renders</p>
-                      </div>
-                    </div>
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/collection/bedroom">
-                  <a>
-                    <div className="relative">
-                      <div className="next-image-fix transition-all transform duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-200">
-                        <Image
-                          className="rounded-sm object-cover"
-                          alt="tmp"
-                          src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=934&q=80"
-                          height="300"
-                          width="225"
-                        />
-                      </div>
-                      <div className="pt-4">
-                        <p>Bedroom</p>
-                        <p className="text-gray-500 text-sm">2000+ 3D Renders</p>
-                      </div>
-                    </div>
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/collection/bedroom">
-                  <a>
-                    <div className="relative">
-                      <div className="next-image-fix transition-all transform duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-200">
-                        <Image
-                          className="rounded-sm object-cover"
-                          alt="tmp"
-                          src="https://images.unsplash.com/photo-1605351720698-6cfec9eb9b5e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
-                          height="300"
-                          width="225"
-                        />
-                      </div>
-                      <div className="pt-4">
-                        <p>Bedroom</p>
-                        <p className="text-gray-500 text-sm">2000+ 3D Renders</p>
-                      </div>
-                    </div>
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/collection/bedroom">
-                  <a>
-                    <div className="relative">
-                      <div className="next-image-fix transition-all transform duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-200">
-                        <Image
-                          className="rounded-sm object-cover"
-                          alt="tmp"
-                          src="https://images.unsplash.com/photo-1607522783211-cb0d1ffdab8a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
-                          height="300"
-                          width="225"
-                        />
-                      </div>
-                      <div className="pt-4">
-                        <p>Bedroom</p>
-                        <p className="text-gray-500 text-sm">2000+ 3D Renders</p>
-                      </div>
-                    </div>
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/collection/bedroom">
-                  <a>
-                    <div className="relative">
-                      <div className="next-image-fix transition-all transform duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-200">
-                        <Image
-                          className="rounded-sm object-cover"
-                          alt="tmp"
-                          src="https://images.unsplash.com/photo-1519974719765-e6559eac2575?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-                          height="300"
-                          width="225"
-                        />
-                      </div>
-                      <div className="pt-4">
-                        <p>Bedroom</p>
-                        <p className="text-gray-500 text-sm">2000+ 3D Renders</p>
-                      </div>
-                    </div>
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/collection/bedroom">
-                  <a>
-                    <div className="relative">
-                      <div className="next-image-fix transition-all transform duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-200">
-                        <Image
-                          className="rounded-sm object-cover"
-                          alt="tmp"
-                          src="https://images.unsplash.com/photo-1594113768745-aa11bdc68b47?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=975&q=80"
-                          height="300"
-                          width="225"
-                        />
-                      </div>
-                      <div className="pt-4">
-                        <p>Bedroom</p>
-                        <p className="text-gray-500 text-sm">2000+ 3D Renders</p>
-                      </div>
-                    </div>
-                  </a>
-                </Link>
-              </li>
-
-              {[1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6].map((i) => (
-                <li key={`${i}`}>
-                  <Link href="/collection/bedroom">
-                    <a>
-                      <div className="relative">
-                        <div className="next-image-fix transition-all transform duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-200">
-                          <Image
-                            className="rounded-sm object-cover"
-                            alt="tmp"
-                            src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=934&q=80"
-                            height="300"
-                            width="225"
-                          />
-                        </div>
-                        <div className="pt-4">
-                          <p>Bedroom</p>
-                          <p className="text-gray-500 text-sm">2000+ 3D Renders</p>
-                        </div>
-                      </div>
-                    </a>
-                  </Link>
-                </li>
+              {isFetching && (
+                <>
+                  {[...new Array(internalPages.InteriorDesigns.DEFAULT_PAGE_SIZE)].map((_d, _i) => (
+                    <CollectionCardDimmer key={Math.random()} />
+                  ))}
+                </>
+              )}
+              {currentRenderList.map((collection) => (
+                <CollectionCard cardData={collection} key={collection?._id} inset={false} />
               ))}
             </AnimateBox>
-            <Pagination />
+            <Pagination buttonList={buttons} />
           </div>
         </div>
       </div>

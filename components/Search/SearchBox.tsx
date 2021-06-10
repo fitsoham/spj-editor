@@ -1,5 +1,5 @@
 import { RefreshIcon } from '@heroicons/react/outline';
-import useKeyPress from 'hooks/useKeyPress';
+import useKeyPress from '@hooks/useKeyPress';
 import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import ListItem from './ListItem';

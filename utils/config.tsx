@@ -30,7 +30,7 @@ const cloudinary = {
   apiKey: '432541925957862',
   apiSecret: 'dhn4tENhmmFqoefnjWXtcjlkfUw',
   environmentVariable: 'CLOUDINARY_URL=cloudinary://432541925957862:dhn4tENhmmFqoefnjWXtcjlkfUw@spacejoy',
-  baseDeliveryURL: '//res.cloudinary.com/spacejoy',
+  baseDeliveryURL: 'https://res.cloudinary.com/spacejoy',
   apiBaseURL: '//api.cloudinary.com/v1_1/spacejoy',
 };
 
@@ -106,4 +106,15 @@ const company = {
   },
 };
 
-export { company, page, cloudinary };
+const internalPages = {
+  InteriorDesigns: {
+    DEFAULT_PAGE_SIZE: 16,
+    DEFAULT_PAGINATION_BUTTON_COUNT: 5,
+  },
+  Collection: {
+    DEFAULT_PAGE_SIZE_BANNER: 6,
+    DEFAULT_PAGE_SIZE: 24,
+  },
+};
+
+export { company, page, cloudinary, internalPages };
