@@ -78,13 +78,13 @@ const usePagination = (api, initialData, totalRecords, paginationButtonCount, pa
     }
   }, [initialData]);
 
-  const paginationBtnNav = (btnIndex) => {
+  const paginationBtnNav = (buttonIndex) => {
     // button click updates router only
     const currentQueryParam = router.query;
     router.push(
       {
         pathname: router.pathname,
-        query: { ...currentQueryParam, page: parseInt(btnIndex, 10) + 1 },
+        query: { ...currentQueryParam, page: parseInt(buttonIndex, 10) + 1 },
       },
       undefined,
       { shallow: true }
@@ -93,14 +93,13 @@ const usePagination = (api, initialData, totalRecords, paginationButtonCount, pa
 
   //read query params
   useEffect(() => {
-    const { query: { page = '' } = {} } = router;
-    const step = (!page ? 0 : parseInt(page[0], 10)) - 1;
-    dispatch({ type: 'UPDATE_CURRENT_PAGE', payload: Math.max(step, 0) });
+    const { query: { page = 0 } } = router;
+    const stepNumber = parseInt(page as string, 10) - 1;
+    dispatch({ type: 'UPDATE_CURRENT_PAGE', payload: Math.max(stepNumber, 0) });
   }, [router]);
 
   useEffect(() => {
     async function fetchData(...args) {
-      console.log(`List loading from Pagination`);
       const newData = await fetchMoreData.apply(null, [...args]);
       dispatch({ type: 'ADD_TO_LIST', payload: { data: newData, currentPage } });
       dispatch({ type: 'SET_LOADING' });
