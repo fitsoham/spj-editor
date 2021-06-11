@@ -1,4 +1,4 @@
-import CollectionList from '@components/InteriorDesigns/CollectionList';
+import CollectionList from '@components/Collection/InjectCollectionList';
 import DesignList from '@components/InteriorDesigns/DesignList';
 import ListFilter from '@components/InteriorDesigns/ListFilter';
 import Layout from '@components/Shared/Layout';

@@ -1,5 +1,5 @@
-import CollectionCard from '@components/InteriorDesigns/CollectionCard';
-import CollectionCardDimmer from '@components/InteriorDesigns/CollectionCardDimmer';
+import CollectionCard from '@components/Collection/CollectionCard';
+import CollectionCardDimmer from '@components/Collection/CollectionCardDimmer';
 import Pagination from '@components/Shared/Pagination';
 import usePagination from '@hooks/usePagination';
 import { internalPages } from '@utils/config';

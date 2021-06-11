@@ -117,49 +117,54 @@ const usePagination = (api, initialData, totalRecords, paginationButtonCount, pa
 
 
   useEffect(() => {
-    const numOfPages = Math.ceil(totalRecords / pageSize);
-    let maxLeft = state.currentPage - Math.floor(paginationButtonCount / 2);
-    let maxRight = currentPage + Math.floor(paginationButtonCount / 2);
+    if (currentPage === 0 && list[currentPage]?.length < pageSize) {
+      setCurrentBtnWindow([]);
+    } else {
+      const numOfPages = Math.ceil(totalRecords / pageSize);
+      let maxLeft = state.currentPage - Math.floor(paginationButtonCount / 2);
+      let maxRight = currentPage + Math.floor(paginationButtonCount / 2);
 
-    if (maxLeft < 0) {
-      maxLeft = 0;
-      maxRight = paginationButtonCount - 1;
-    }
-    if (maxRight > numOfPages) {
-      maxLeft = numOfPages - (paginationButtonCount - 1);
-      maxRight = numOfPages;
       if (maxLeft < 0) {
         maxLeft = 0;
+        maxRight = paginationButtonCount - 1;
       }
-    }
-    const btns = [];
+      if (maxRight > numOfPages) {
+        maxLeft = numOfPages - (paginationButtonCount - 1);
+        maxRight = numOfPages;
+        if (maxLeft < 0) {
+          maxLeft = 0;
+        }
+      }
+      const buttons = [];
 
-    const doesMoreDataExist = list[currentPage]?.length && list[currentPage]?.length === pageSize;
+      const doesMoreDataExist = list[currentPage]?.length && list[currentPage]?.length === pageSize;
 
-    btns.push({
-      index: currentPage - 1,
-      label: 'Prev',
-      onClick: paginationBtnNav,
-      disabled: currentPage === 0,
-    });
-    for (let i = maxLeft; i <= maxRight; i++) {
-      btns.push({
-        index: i,
+      buttons.push({
+        index: currentPage - 1,
+        label: 'Prev',
         onClick: paginationBtnNav,
-        label: i + 1,
-        active: state.currentPage === i,
-        disabled: i > currentPage && !doesMoreDataExist
+        disabled: currentPage === 0,
       });
+      for (let i = maxLeft; i <= maxRight; i++) {
+        buttons.push({
+          index: i,
+          onClick: paginationBtnNav,
+          label: i + 1,
+          active: state.currentPage === i,
+          disabled: i > currentPage && !doesMoreDataExist
+        });
+      }
+
+      buttons.push({
+        index: currentPage + 1,
+        label: 'Next',
+        onClick: paginationBtnNav,
+        disabled: maxRight === numOfPages || !doesMoreDataExist,
+      });
+
+      setCurrentBtnWindow(buttons);
     }
 
-    btns.push({
-      index: currentPage + 1,
-      label: 'Next',
-      onClick: paginationBtnNav,
-      disabled: maxRight === numOfPages || !doesMoreDataExist,
-    });
-
-    setCurrentBtnWindow(btns);
   }, [currentPage, list])
 
 

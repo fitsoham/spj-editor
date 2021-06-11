@@ -1,10 +1,8 @@
 import { ArrowRightIcon } from '@heroicons/react/outline';
-import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-import CollectionCard from '@components/InteriorDesigns/CollectionCard';
-import { isMainThread } from 'worker_threads';
+import CollectionCard from '@components/Collection/CollectionCard';
 
 const entry = keyframes`
 	from { 
