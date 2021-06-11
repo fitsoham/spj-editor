@@ -1,15 +1,15 @@
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRightIcon } from '@heroicons/react/outline';
 import { cloudinary } from '@utils/config';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
 
 const CollectionCard = ({ cardData, inset }) => {
   return (
     <li>
       <Link href={`/collection/${cardData?.slug}`}>
         <a>
-          <div className="next-image-fix relative rounded-sm overflow-hidden bg-yellow-300 transition-all transform duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-200">
+          <div className="group next-image-fix relative rounded-sm overflow-hidden bg-gray-200 transition-all transform duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-200">
             <Image
               className="rounded-sm object-cover"
               alt="tmp"
@@ -20,7 +20,8 @@ const CollectionCard = ({ cardData, inset }) => {
             {inset && (
               <div className="absolute bottom-0 right-0 left-0 bg-gradient-to-t from-gray-900 to-transparent pb-4 pt-10 px-4">
                 <p className="text-lg font-semibold text-white">
-                  {cardData?.name} <ArrowRightIcon className="inline w-4 h-4" />
+                  {cardData?.name}{' '}
+                  <ArrowRightIcon className="transition-transform transform group-hover:translate-x-3 inline w-4 h-4" />
                 </p>
                 <p className="text-yellow-400 text-sm">{cardData?.metaTitle}</p>
               </div>
