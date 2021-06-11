@@ -1,4 +1,5 @@
 import { ArrowRightIcon } from '@heroicons/react/outline';
+import blurredBg from '@public/images/bg-base-64';
 import Image from 'next/image';
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
@@ -51,7 +52,7 @@ const v1: React.FC = () => {
               <div className="next-image-fix filter blur-sm bg-gray-100">
                 <Image
                   className="object-cover "
-                  src="/images/spj-happy-customer_ahkoxm.jpg"
+                  src={blurredBg}
                   alt="spacejoy happy customer"
                   height={'700'}
                   width={'1114'}
