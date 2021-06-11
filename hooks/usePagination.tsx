@@ -113,11 +113,14 @@ const usePagination = (api, initialData, totalRecords, paginationButtonCount, pa
         fetchData(api, currentPage * pageSize, pageSize);
       }
     }
-
     //calculate max buttons to show
+  }, [state.currentPage]);
+
+
+  useEffect(() => {
     const numOfPages = Math.ceil(totalRecords / pageSize);
     let maxLeft = state.currentPage - Math.floor(paginationButtonCount / 2);
-    let maxRight = state.currentPage + Math.floor(paginationButtonCount / 2);
+    let maxRight = currentPage + Math.floor(paginationButtonCount / 2);
 
     if (maxLeft < 0) {
       maxLeft = 0;
@@ -132,11 +135,13 @@ const usePagination = (api, initialData, totalRecords, paginationButtonCount, pa
     }
     const btns = [];
 
+    const doesMoreDataExist = list[currentPage]?.length && list[currentPage]?.length === pageSize;
+
     btns.push({
       index: currentPage - 1,
       label: 'Prev',
       onClick: paginationBtnNav,
-      disabled: maxLeft === 0,
+      disabled: currentPage === 0,
     });
     for (let i = maxLeft; i <= maxRight; i++) {
       btns.push({
@@ -144,6 +149,7 @@ const usePagination = (api, initialData, totalRecords, paginationButtonCount, pa
         onClick: paginationBtnNav,
         label: i + 1,
         active: state.currentPage === i,
+        disabled: i > currentPage && !doesMoreDataExist
       });
     }
 
@@ -151,11 +157,12 @@ const usePagination = (api, initialData, totalRecords, paginationButtonCount, pa
       index: currentPage + 1,
       label: 'Next',
       onClick: paginationBtnNav,
-      disabled: maxRight === numOfPages,
+      disabled: maxRight === numOfPages || !doesMoreDataExist,
     });
 
     setCurrentBtnWindow(btns);
-  }, [state.currentPage]);
+  }, [currentPage, list])
+
 
   return {
     isFetching,
