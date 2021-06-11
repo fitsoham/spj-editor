@@ -85,7 +85,7 @@ export const getStaticProps = async ({ params }) => {
             metaDescription: data?.metaDescription,
           },
         },
-        revalidate: 1, //TODO: Recheck the doc Data Fetching
+        revalidate: 1,
       };
     } else {
       return {
