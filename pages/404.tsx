@@ -13,7 +13,7 @@ const PageNotFound: React.FC = () => {
       <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
-        <ErrorState status={400} />
+        <ErrorState status={404} />
       </Layout.Body>
       <Layout.Footer />
     </Layout>
