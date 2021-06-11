@@ -90,7 +90,7 @@ export const getStaticProps = async ({ params }) => {
     } else {
       return {
         props: {
-          designFeedData: { list: [], count: 0 },
+          designFeedData: { list: [], count: 0, filters: {} },
           collectionData: {},
         },
       };
@@ -98,7 +98,7 @@ export const getStaticProps = async ({ params }) => {
   }
   return {
     props: {
-      designFeedData: { list: [], count: 0 },
+      designFeedData: { list: [], count: 0, filters: {} },
       collectionData: {},
     },
   };

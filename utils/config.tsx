@@ -2,7 +2,7 @@ const isProduction = process.env.NEXT_PUBLIC_ENV_HOST === 'production';
 
 const page = {
   appName: 'SpaceJoyWeb',
-  apiBaseUrl: isProduction ? 'https://api.spacejoy.com/api' : 'https://api-staging.spacejoy.com/api',
+  apiBaseUrl: process.env.NEXT_PUBLIC_API_GATEWAY,
   apiSocketUrl: isProduction ? 'https://ws-api.spacejoy.com/api' : 'https://api-staging.spacejoy.com/api',
   placeKey: 'AIzaSyDsLNNs6HOOBILlbiMfr9hn9w3_CTxPlRA',
   googleSiteVerification: 'AvMwlYBDLdgqosxOUuNf114TxPVJtkY3lm3jxDpqLMY',
