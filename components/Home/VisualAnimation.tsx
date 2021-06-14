@@ -3,13 +3,16 @@ import React from 'react';
 
 const VisualAnimation: React.FC = () => {
   return (
-    <Image
-      className="filter contrast-125 object-cover"
-      src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,f_auto,q_auto,w_1896,h_759/v1622186205/spj-v2/spj-living-room_gyepig.jpg"
-      alt="spacejoy happy customer"
-      height={'550'}
-      width={'1896'}
-    />
+    <div className="relative next-image-fix">
+      <Image
+        className="filter contrast-125 object-cover"
+        src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,f_auto,q_auto,w_1896,h_759/v1622186205/spj-v2/spj-living-room_gyepig.jpg"
+        alt="spacejoy happy customer"
+        height={'450'}
+        width={'1896'}
+      />
+      <div className="absolute inset-0 bg-gray-800 opacity-70"></div>
+    </div>
   );
 };
 

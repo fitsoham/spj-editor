@@ -22,20 +22,17 @@ const AnimateBox = styled.div`
       opacity: 0;
       animation: ${entry} 0.8s forwards;
       transform: translateY(50px);
-      &:nth-child(1) {
+      &:nth-child(2) {
         animation-delay: 150ms;
       }
-      &:nth-child(2) {
+      &:nth-child(3) {
         animation-delay: 200ms;
       }
-      &:nth-child(3) {
+      &:nth-child(4) {
         animation-delay: 350ms;
       }
-      &:nth-child(4) {
-        animation-delay: 400ms;
-      }
       &:nth-child(5) {
-        animation-delay: 450ms;
+        animation-delay: 400ms;
       }
     }
   }
