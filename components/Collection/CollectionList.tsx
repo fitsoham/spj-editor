@@ -80,40 +80,36 @@ const CollectionList: React.FC<CollectionList> = ({ feedData }) => {
   );
 
   return (
-    <section className="interior-design-section">
-      <div>
-        <div className="container mx-auto px-4">
-          <div className="flex items-end py-20">
-            <div className="flex-1">
-              <p className="text-gray-500">Largest collection of 3D rendered images</p>
-              <h1 className="my-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                Hand Picked Collections
-              </h1>
-              <p className="text-gray-800 max-w-3xl">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto id possimus, sit assumenda sequi
-                qui tempora placeat veritatis. Similique amet aperiam sequi assumenda. Quos ad, asperiores laboriosam
-                nihil sint provident.
-              </p>
-            </div>
-          </div>
-          <div className="relative bg-white">
-            <AnimateBox className="grid grid-cols-6 gap-x-8 gap-y-10">
-              {isFetching && (
-                <>
-                  {[...new Array(internalPages.InteriorDesigns.DEFAULT_PAGE_SIZE)].map((_d, _i) => (
-                    <CollectionCardDimmer key={Math.random()} />
-                  ))}
-                </>
-              )}
-              {currentRenderList.map((collection) => (
-                <CollectionCard cardData={collection} key={collection?._id} inset={false} />
-              ))}
-            </AnimateBox>
-            <Pagination buttonList={buttons} />
-          </div>
+    <div className="container mx-auto px-4">
+      <div className="flex items-end py-20">
+        <div className="flex-1">
+          <p className="text-gray-500">Largest collection of 3D rendered images</p>
+          <h1 className="my-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+            Hand Picked Collections
+          </h1>
+          <p className="text-gray-800 max-w-3xl">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto id possimus, sit assumenda sequi qui
+            tempora placeat veritatis. Similique amet aperiam sequi assumenda. Quos ad, asperiores laboriosam nihil sint
+            provident.
+          </p>
         </div>
       </div>
-    </section>
+      <div className="relative bg-white">
+        <AnimateBox className="grid grid-cols-6 gap-x-8 gap-y-10">
+          {isFetching && (
+            <>
+              {[...new Array(internalPages.InteriorDesigns.DEFAULT_PAGE_SIZE)].map((_d, _i) => (
+                <CollectionCardDimmer key={Math.random()} />
+              ))}
+            </>
+          )}
+          {currentRenderList.map((collection) => (
+            <CollectionCard cardData={collection} key={collection?._id} inset={false} />
+          ))}
+        </AnimateBox>
+        <Pagination buttonList={buttons} />
+      </div>
+    </div>
   );
 };
 
