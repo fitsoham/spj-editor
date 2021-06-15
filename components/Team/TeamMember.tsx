@@ -34,7 +34,7 @@ const TeamMember: React.FC<TeamMemberInterface> = ({ designer }) => {
   return (
     <li>
       <Scene classToggle="entry" triggerHook={1} indicators={false} reverse={true}>
-        <AnimateBox>
+        <AnimateBox className="next-image-fix">
           <Image
             className="mx-auto h-20 w-20 rounded-full lg:w-24 lg:h-24 object-cover filter contrast-125"
             src={`https://res.cloudinary.com/spacejoy/${designer.icon}`}
@@ -42,11 +42,11 @@ const TeamMember: React.FC<TeamMemberInterface> = ({ designer }) => {
             height={'180'}
             width={'180'}
           />
-          <div className="text-xs lg:text-sm">
-            <h3 className="font-medium">
+          <div className="">
+            <p className="font-bold text-sm">
               {designer.firstName} {designer.lastName}
-            </h3>
-            <p className="text-indigo-400">Design Expert</p>
+            </p>
+            <p className="text-indigo-400 text-xs">Design Expert</p>
           </div>
         </AnimateBox>
       </Scene>
@@ -54,4 +54,4 @@ const TeamMember: React.FC<TeamMemberInterface> = ({ designer }) => {
   );
 };
 
-export default TeamMember;
+export default React.memo(TeamMember);
