@@ -1,6 +1,7 @@
 import { ChevronDownIcon, SearchIcon, ShoppingBagIcon } from '@heroicons/react/outline';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import SubNav from './SubNav';
 
@@ -11,6 +12,8 @@ const Header: React.FC = () => {
 
   const openSubNav = () => setIsOpenSubNav(true);
 
+  const router = useRouter();
+
   return (
     <>
       <header className={`bg-white sticky top-0 z-50`}>
@@ -18,7 +21,7 @@ const Header: React.FC = () => {
           <div className="flex items-center">
             <div className="w-40 mt-2">
               <Link href="/">
-                <a href="/">
+                <a className={router.asPath === '/' ? 'text-red-500' : 'text-gray-700 hover:text-red-600'}>
                   <Image src="/logo.svg" alt="spacejoy Logo" height={'34'} width={'129'} />
                 </a>
               </Link>
@@ -28,11 +31,12 @@ const Header: React.FC = () => {
                 <ul>
                   <li className="inline-block">
                     <Link href="/interior-designs">
-                      <a>
-                        <button
-                          type="button"
-                          className="focus:outline-none text-gray-700 hover:text-red-600 text-sm py-2 px-2.5 rounded-md"
-                        >
+                      <a
+                        className={
+                          router.asPath === '/interior-designs' ? 'text-red-500' : 'text-gray-700 hover:text-red-600'
+                        }
+                      >
+                        <button type="button" className="focus:outline-none text-sm py-2 px-2.5 rounded-md">
                           Ideas
                         </button>
                       </a>
@@ -55,20 +59,14 @@ const Header: React.FC = () => {
                     </button>
                   </li>
                   <li className="inline-block">
-                    <button
-                      type="button"
-                      className="focus:outline-none text-gray-700 hover:text-red-600 text-sm py-2 px-2.5 rounded-md"
-                    >
+                    <button type="button" className="focus:outline-none text-sm py-2 px-2.5 rounded-md">
                       Quiz
                     </button>
                   </li>
                   <li className="inline-block">
                     <Link href="/pricing">
-                      <a>
-                        <button
-                          type="button"
-                          className="focus:outline-none text-gray-700 hover:text-red-600 text-sm py-2 px-2.5 rounded-md"
-                        >
+                      <a className={router.asPath === '/pricing' ? 'text-red-500' : 'text-gray-700 hover:text-red-600'}>
+                        <button type="button" className="focus:outline-none text-sm py-2 px-2.5 rounded-md">
                           Pricing
                         </button>
                       </a>
@@ -76,11 +74,8 @@ const Header: React.FC = () => {
                   </li>
                   <li className="inline-block">
                     <Link href="/help">
-                      <a>
-                        <button
-                          type="button"
-                          className="focus:outline-none text-gray-700 hover:text-red-600 text-sm py-2 px-2.5 rounded-md"
-                        >
+                      <a className={router.asPath === '/' ? 'text-red-500' : 'text-gray-700 hover:text-red-600'}>
+                        <button type="button" className="focus:outline-none text-sm py-2 px-2.5 rounded-md">
                           Help
                         </button>
                       </a>

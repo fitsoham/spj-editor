@@ -27,7 +27,7 @@ const SectionTitle = ({
             {feature}
           </p>
         )}
-        <h2 className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl mb-5">
+        <h2 className="mt-2 text-3xl leading-8 font-extrabold tracking-tight tracking-normal text-gray-900 sm:text-4xl mb-5">
           {title}
         </h2>
         {description && <p className="text-gray-500">{description}</p>}

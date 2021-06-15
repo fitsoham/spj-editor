@@ -1,8 +1,8 @@
+import CollectionCard from '@components/Collection/CollectionCard';
 import { ArrowRightIcon } from '@heroicons/react/outline';
 import Link from 'next/link';
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-import CollectionCard from '@components/Collection/CollectionCard';
 
 const entry = keyframes`
 	from { 
@@ -89,7 +89,7 @@ const CollectionList: React.FC<DesignListInterface> = ({ feedData }) => {
             </div>
             <div className="text-right flex-1">
               <Link href="/collection">
-                <a className="text-sm hover:text-red-500">
+                <a className="text-sm text-indigo-500 hover:text-red-500">
                   See All <ArrowRightIcon className="inline w-4 h-4" />
                 </a>
               </Link>

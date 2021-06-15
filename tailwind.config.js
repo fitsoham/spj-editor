@@ -4,8 +4,8 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     fontFamily: {
-      Poppins: ['Poppins', 'system-ui', 'sans-serif'],
-      'Playfair-Display': ['Playfair Display', 'system-ui', 'sans-serif'],
+      poppins: ['Poppins', 'system-ui', 'sans-serif'],
+      playfair: ['Playfair Display', 'system-ui', 'sans-serif'],
     },
     listStyleType: {
       none: 'none',

@@ -47,7 +47,7 @@ const SubNav = ({ subNavState, closeSubNav }: { subNavState: boolean; closeSubNa
                         <div className="absolute shape-4 bottom-10 -ml-3" />
                       </div>
                       <div className="col-start-2 col-end-4">
-                        <h3 className="text-xl mb-2">How Spacejoy has transform Marisa’s Home</h3>
+                        <h3 className="text-xl mb-2 font-poppins">How Spacejoy has transform Marisa’s Home</h3>
                         <p className="text-sm mb-4 text-gray-600">
                           Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum,
                           neque sem pretium metus, quis mollis nisl nunc et massa.
@@ -81,7 +81,7 @@ const SubNav = ({ subNavState, closeSubNav }: { subNavState: boolean; closeSubNa
                           />
                         </div>
                         <div>
-                          <h3 className="text-lg text-red-700">Design Matters</h3>
+                          <h3 className="text-lg text-red-700 font-poppins">Design Matters</h3>
                           <p className="text-sm mb-2">Tips & Guides</p>
                           <ArrowRightIcon className="h-4 w-4" />
                         </div>
@@ -100,7 +100,7 @@ const SubNav = ({ subNavState, closeSubNav }: { subNavState: boolean; closeSubNa
                           />
                         </div>
                         <div>
-                          <h3 className="text-lg text-green-700">Customer Stories</h3>
+                          <h3 className="text-lg text-green-700 font-poppins">Customer Stories</h3>
                           <p className="text-sm mb-2">100% Happiness Delivered</p>
                           <ArrowRightIcon className="h-4 w-4" />
                         </div>
