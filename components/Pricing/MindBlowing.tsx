@@ -25,7 +25,7 @@ const AnimateBox = styled.div`
   }
 `;
 
-const MindBlowing = () => {
+const MindBlowing: React.FC = () => {
   return (
     <div className="relative">
       <svg
@@ -56,7 +56,7 @@ const MindBlowing = () => {
         description="Pick from one of our three online interior design packages, custom-made keeping your budget, style and interior design needs in mind"
       />
       <div className="flex">
-        <div className="">
+        <div className="relative">
           <AnimateBox className="banner overflow-hidden">
             <div className="next-image-fix filter blur-sm bg-gray-100">
               <Image
@@ -75,8 +75,8 @@ const MindBlowing = () => {
                 height={'666'}
               />
             </div>
-            <div className="absolute shape-2 top-0 -ml-14 -mt-11"></div>
           </AnimateBox>
+          <div className="absolute shape-2 top-0 -ml-14 -mt-11" />
         </div>
         <div className="relative h-full px-12 max-w-lg justify-center self-center">
           <div>

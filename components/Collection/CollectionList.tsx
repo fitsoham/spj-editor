@@ -84,7 +84,7 @@ const CollectionList: React.FC<CollectionList> = ({ feedData }) => {
       <div className="flex items-end py-20">
         <div className="flex-1">
           <p className="text-gray-500">Largest collection of 3D rendered images</p>
-          <h1 className="my-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+          <h1 className="my-4 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
             Hand Picked Collections
           </h1>
           <p className="text-gray-800 max-w-3xl">

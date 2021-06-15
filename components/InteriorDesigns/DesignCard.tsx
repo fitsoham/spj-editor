@@ -15,10 +15,10 @@ export interface DesignCardInterface {
 const DesignCard: React.FC<DesignCardInterface> = ({ cardData }) => {
   return (
     <div className="cursor-pointer">
-      <div className="next-image-fix relative">
+      <div className="next-image-fix rounded-lg overflow-hidden relative">
         <div className="absolute inset-0 bg-gray-200 animate-pulse" />
         <Image
-          className="object-cover rounded-sm transition-transform duration-700 transform hover:scale-105"
+          className="object-cover transition-transform duration-700 transform hover:scale-105"
           alt="tmp"
           src={`https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/c_scale,w_950/${cardData?.cdnRender[0]}`}
           height="300"
