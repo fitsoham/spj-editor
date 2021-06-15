@@ -48,7 +48,7 @@ const v1: React.FC = () => {
         <div className="col-start-2 col-end-5">
           <AnimateBox className="banner">
             <div className="absolute shape-2 bottom-0 -ml-2 -mb-2" />
-            <div className="relative overflow-hidden">
+            <div className="relative overflow-hidden rounded-2xl">
               <div className="next-image-fix filter blur-sm bg-gray-100">
                 <Image
                   className="object-cover "

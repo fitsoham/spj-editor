@@ -13,7 +13,7 @@ const Slide = ({ testimonial }) => (
       ))}
     </div>
     <blockquote className="mt-6 md:flex-grow md:flex md:flex-col">
-      <h3 className="text-lg text-gray-800">{testimonial?.shortDescription}</h3>
+      <h3 className="text-2xl text-gray-800">{testimonial?.shortDescription}</h3>
       <div className="relative md:flex-grow">
         <svg
           className="absolute top-3 left-0 transform -translate-x-3 -translate-y-2 h-8 w-8 text-red-300"
