@@ -44,7 +44,6 @@ const SubNav = ({ subNavState, closeSubNav }: { subNavState: boolean; closeSubNa
                           height={'300'}
                           width={'300'}
                         />
-                        <div className="absolute shape-4 bottom-10 -ml-3" />
                       </div>
                       <div className="col-start-2 col-end-4">
                         <h3 className="text-xl mb-2 font-poppins">How Spacejoy has transform Marisa’s Home</h3>

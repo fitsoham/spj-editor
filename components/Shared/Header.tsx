@@ -74,7 +74,7 @@ const Header: React.FC = () => {
                   </li>
                   <li className="inline-block">
                     <Link href="/help">
-                      <a className={router.asPath === '/' ? 'text-red-500' : 'text-gray-700 hover:text-red-600'}>
+                      <a className={router.asPath === '/help' ? 'text-red-500' : 'text-gray-700 hover:text-red-600'}>
                         <button type="button" className="focus:outline-none text-sm py-2 px-2.5 rounded-md">
                           Help
                         </button>

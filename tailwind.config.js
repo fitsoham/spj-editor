@@ -5,7 +5,6 @@ module.exports = {
   theme: {
     fontFamily: {
       poppins: ['Poppins', 'system-ui', 'sans-serif'],
-      playfair: ['Playfair Display', 'system-ui', 'sans-serif'],
     },
     listStyleType: {
       none: 'none',
