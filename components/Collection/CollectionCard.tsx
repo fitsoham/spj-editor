@@ -9,7 +9,7 @@ const CollectionCard = ({ cardData, inset }) => {
     <li>
       <Link href={`/collection/${cardData?.slug}`}>
         <a>
-          <div className="group next-image-fix rounded-xl relative rounded-sm overflow-hidden bg-gray-200 transition-all transform duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-300">
+          <div className="group next-image-fix rounded-xl relative overflow-hidden bg-gray-200 transition-all transform duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-300">
             <Image
               className="rounded-xl object-cover"
               alt="tmp"
