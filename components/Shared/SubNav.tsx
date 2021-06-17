@@ -53,7 +53,7 @@ const SubNav = ({ subNavState, closeSubNav }: { subNavState: boolean; closeSubNa
                         </p>
                         <button
                           type="button"
-                          className="focus:outline-none shadow-xs hover:shadow-md text-xs text-white py-2 px-5 rounded-full bg-gradient-to-r from-spj-red to-spj-yellow tracking-wide"
+                          className="focus:outline-none shadow-xs hover:shadow-md text-xs text-white py-2 px-5 rounded-full bg-gray-900 tracking-wide"
                           onClick={closeSubNav}
                         >
                           Read my story
@@ -69,7 +69,7 @@ const SubNav = ({ subNavState, closeSubNav }: { subNavState: boolean; closeSubNa
                     </div>
                   </div>
                   <div className="lg:col-start-3 lg:col-end-4 xl:col-start-4 xl:col-end-5">
-                    <div className="shadow-sm rounded-xl bg-red-100 h-full">
+                    <div className="shadow-sm rounded-xl bg-gray-100 h-full">
                       <div className="flex h-full p-4 flex-col justify-end">
                         <div>
                           <Image
