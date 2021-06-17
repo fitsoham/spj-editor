@@ -3,8 +3,14 @@ import { cloudinary } from '@utils/config';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { CollectionCardDataInterface } from './interface';
 
-const CollectionCard = ({ cardData, inset }) => {
+interface CollectionCardInterface {
+  cardData: CollectionCardDataInterface;
+  inset: boolean;
+}
+
+const CollectionCard: React.FC<CollectionCardInterface> = ({ cardData, inset }) => {
   return (
     <li>
       <Link href={`/collection/${cardData?.slug}`}>

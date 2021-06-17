@@ -1,24 +1,20 @@
 import CollectionList from '@components/Collection/CollectionList';
+import { CollectionListInterface } from '@components/Collection/interface';
 import Layout from '@components/Shared/Layout';
 import PreFooter from '@components/Shared/PreFooter';
 import { internalPages } from '@utils/config';
 import { publicRoutes } from '@utils/constants/api';
 import fetcher from '@utils/fetcher';
+import { GetStaticProps } from 'next';
 import React from 'react';
 
-interface CollectionFeedDataInterface {
-  collectionFeedData: {
-    list: [];
-    count: number;
-  };
-}
-const collection: React.FC<CollectionFeedDataInterface> = ({ collectionFeedData }) => {
+const collection: React.FC<CollectionListInterface> = ({ feedData }) => {
   return (
     <Layout>
       <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
-        <CollectionList feedData={collectionFeedData} />
+        <CollectionList feedData={feedData} />
         <PreFooter />
       </Layout.Body>
       <Layout.Footer />
@@ -26,19 +22,16 @@ const collection: React.FC<CollectionFeedDataInterface> = ({ collectionFeedData 
   );
 };
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps<CollectionListInterface> = async () => {
   const additionalParamsCollections = `?limit=${internalPages.Collection.DEFAULT_PAGE_SIZE}`;
   const res = await fetcher({
     endPoint: `${publicRoutes.collectionFeed}${additionalParamsCollections}`,
     method: 'GET',
   });
-  const {
-    data: { list: mainList },
-  } = res;
-
+  const { data: mainList } = res;
   return {
     props: {
-      collectionFeedData: { list: mainList, count: 500 },
+      feedData: { list: mainList, count: 500 },
     },
     revalidate: 1, //TODO: Recheck the doc Data Fetching
   };

@@ -6,6 +6,7 @@ import { internalPages } from '@utils/config';
 import { publicRoutes } from '@utils/constants/api';
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
+import { CollectionListInterface } from './interface';
 
 const entry = keyframes`
 	from { 
@@ -62,14 +63,7 @@ const AnimateBox = styled.ul`
   }
 `;
 
-interface CollectionList {
-  feedData: {
-    list: [];
-    count: number;
-  };
-}
-
-const CollectionList: React.FC<CollectionList> = ({ feedData }) => {
+const CollectionList: React.FC<CollectionListInterface> = ({ feedData }) => {
   const { list, count: totalRecords } = feedData;
   const { currentRenderList, isFetching, buttons } = usePagination(
     { url: publicRoutes.collectionFeed, method: 'GET' },

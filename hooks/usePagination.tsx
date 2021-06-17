@@ -93,7 +93,9 @@ const usePagination = (api, initialData, totalRecords, paginationButtonCount, pa
 
   //read query params
   useEffect(() => {
-    const { query: { page = 0 } } = router;
+    const {
+      query: { page = 0 },
+    } = router;
     const stepNumber = parseInt(page as string, 10) - 1;
     dispatch({ type: 'UPDATE_CURRENT_PAGE', payload: Math.max(stepNumber, 0) });
   }, [router]);
@@ -114,7 +116,6 @@ const usePagination = (api, initialData, totalRecords, paginationButtonCount, pa
     }
     //calculate max buttons to show
   }, [state.currentPage]);
-
 
   useEffect(() => {
     if (currentPage === 0 && list[currentPage]?.length < pageSize) {
@@ -151,7 +152,7 @@ const usePagination = (api, initialData, totalRecords, paginationButtonCount, pa
           onClick: paginationBtnNav,
           label: i + 1,
           active: state.currentPage === i,
-          disabled: i > currentPage && !doesMoreDataExist
+          disabled: i > currentPage && !doesMoreDataExist,
         });
       }
 
@@ -164,9 +165,7 @@ const usePagination = (api, initialData, totalRecords, paginationButtonCount, pa
 
       setCurrentBtnWindow(buttons);
     }
-
-  }, [currentPage, list])
-
+  }, [currentPage, list]);
 
   return {
     isFetching,

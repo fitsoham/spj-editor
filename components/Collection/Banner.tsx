@@ -28,7 +28,7 @@ interface BannerProps {
 }
 
 const CollectionBanner: React.FC<BannerProps> = ({ data }) => {
-  const date = new Date(data?.publishedDate);
+  const date = new Date(data?.publishedDate || '');
   const formattedDate = `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
   return (
     <div className="flex bg-blue-900">
