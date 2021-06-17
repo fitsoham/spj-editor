@@ -16,7 +16,7 @@ const PreFooter: React.FC = () => {
           <p className="mt-5 text-gray-700 text-sm">
             Price starts from $99.00,{' '}
             <Link href="/pricing">
-              <a className="text-yellow-500">checkout now</a>
+              <a className="text-red-500">checkout now</a>
             </Link>
           </p>
         </div>

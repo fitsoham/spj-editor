@@ -89,7 +89,7 @@ const CollectionList: React.FC<DesignListInterface> = ({ feedData }) => {
             </div>
             <div className="text-right flex-1">
               <Link href="/collection">
-                <a className="text-sm text-indigo-500 hover:text-red-500">
+                <a className="text-sm hover:text-red-500">
                   See All <ArrowRightIcon className="inline w-4 h-4" />
                 </a>
               </Link>
@@ -97,9 +97,9 @@ const CollectionList: React.FC<DesignListInterface> = ({ feedData }) => {
           </div>
           <div className="relative">
             <AnimateBox className="grid grid-cols-6 gap-8 my-6">
-              {list.map((collection) => {
-                return <CollectionCard key={collection?._id} cardData={collection} inset />;
-              })}
+              {list.map((collection) => (
+                <CollectionCard key={collection?._id} cardData={collection} inset />
+              ))}
             </AnimateBox>
           </div>
         </div>

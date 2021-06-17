@@ -41,7 +41,7 @@ const AnimateBox = styled.div`
 const design = (): JSX.Element => {
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionTitle accent="indigo" feature="help" title="Frequently asked questions" />
+      <SectionTitle feature="help" title="Frequently asked questions" />
       <AnimateBox className="divide-y-2 divide-gray-200">
         <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:grid-rows-2 md:gap-x-8 md:gap-y-12 lg:grid-cols-3">
           <div>

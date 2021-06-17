@@ -1,6 +1,5 @@
-import React from 'react';
 import { PricingData } from '@components/Pricing/PricingTypes';
-import pricing from 'pages/pricing';
+import React from 'react';
 
 interface Price {
   pricingItem: PricingData;
@@ -8,7 +7,7 @@ interface Price {
 
 export function PricingCard({ pricingItem }: Price) {
   return (
-    <div className="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200" key={pricingItem?.name}>
+    <div className="border border-gray-200 rounded-xl shadow-sm divide-y divide-gray-200" key={pricingItem?.name}>
       <div className="p-6">
         <h2 className="text-lg leading-6 font-medium text-gray-900 capitalize">{pricingItem?.name}</h2>
         <p className="mt-4 text-sm text-gray-500">{pricingItem?.description}</p>
@@ -18,7 +17,7 @@ export function PricingCard({ pricingItem }: Price) {
         </p>
         <a
           href="#"
-          className="mt-8 block w-full bg-gray-800 border border-gray-800 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900 capitalize"
+          className="mt-8 block w-full bg-gray-800 border border-gray-800 rounded-lg py-2 text-sm font-semibold text-white text-center hover:bg-gray-900 capitalize"
         >
           Buy {pricingItem?.name}
         </a>

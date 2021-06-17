@@ -38,7 +38,7 @@ const v1: React.FC = () => {
             </p>
             <button
               type="button"
-              className="focus:outline-none shadow-xs hover:shadow-md text-base text-white py-3 px-12 rounded-full bg-gradient-to-r from-spj-red to-spj-yellow tracking-wide"
+              className="focus:outline-none shadow-md hover:shadow-xl text-base text-white py-3 px-12 rounded-xl bg-gray-900 tracking-wide"
             >
               Start Project Now <ArrowRightIcon className="inline w-4 h-4" />
             </button>
