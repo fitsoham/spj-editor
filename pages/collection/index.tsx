@@ -1,5 +1,6 @@
 import CollectionList from '@components/Collection/CollectionList';
 import Layout from '@components/Shared/Layout';
+import PreFooter from '@components/Shared/PreFooter';
 import { internalPages } from '@utils/config';
 import { publicRoutes } from '@utils/constants/api';
 import fetcher from '@utils/fetcher';
@@ -18,6 +19,7 @@ const collection: React.FC<CollectionFeedDataInterface> = ({ collectionFeedData 
       <Layout.Header />
       <Layout.Body>
         <CollectionList feedData={collectionFeedData} />
+        <PreFooter />
       </Layout.Body>
       <Layout.Footer />
     </Layout>
