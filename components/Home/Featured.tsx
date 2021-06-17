@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import { Controller, Scene } from 'react-scrollmagic';
+import { ScrollTrigger, Tween } from 'react-gsap';
 import styled, { keyframes } from 'styled-components';
 import SectionTitle from '../Shared/SectionTitle';
 
@@ -60,9 +60,14 @@ const Featured: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="-mb-72 max-w-7xl mx-auto z-10 relative">
           <div className="bg-white p-8 shadow-lg rounded-lg">
-            <Controller>
-              <Scene classToggle="entry" triggerHook={1} indicators={false} reverse={true}>
-                <AnimateBox className="grid gap-8 grid-cols-4">
+            <ScrollTrigger start="-500px center" end="-100px center">
+              <div className="grid gap-8 grid-cols-4">
+                <Tween
+                  from={{ scale: 0.95, opacity: 0, y: 50 }}
+                  to={{ scale: 1, opacity: 1, y: 0 }}
+                  stagger={0.5}
+                  duration={1}
+                >
                   <div className="col-span-1 flex justify-center py-0 px-8 rounded-md bg-gray-200">
                     <Image
                       src="https://res.cloudinary.com/spacejoy/image/upload/v1610014244/shared/Brand%20logos%2007-2021/publication_LOGO-01_fohpe0.svg"
@@ -127,9 +132,9 @@ const Featured: React.FC = () => {
                       width={'200'}
                     />
                   </div>
-                </AnimateBox>
-              </Scene>
-            </Controller>
+                </Tween>
+              </div>
+            </ScrollTrigger>
           </div>
           <p className="max-w-3xl mx-auto text-gray-50 text-center mt-8">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos maiores ea possimus rem consectetur ipsa

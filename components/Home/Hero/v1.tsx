@@ -2,6 +2,7 @@ import { ArrowRightIcon } from '@heroicons/react/outline';
 import blurredBg from '@public/images/bg-base-64';
 import Image from 'next/image';
 import React from 'react';
+import { Tween } from 'react-gsap';
 import styled, { keyframes } from 'styled-components';
 
 const entry = keyframes`
@@ -31,7 +32,7 @@ const v1: React.FC = () => {
     <div className="container mx-auto px-4">
       <div className="grid gap-14 grid-cols-4 items-center">
         <div>
-          <AnimateBox className="details">
+          <Tween from={{ opacity: 0, x: -50 }} to={{ opacity: 1, x: 0 }} stagger={0.5} duration={2}>
             <h1 className="lg:text-3xl xl:text-5xl mb-4 lg:semibold xl:font-extrabold tracking-tight">Live in joy</h1>
             <p className="mb-4 text-gray-600">
               Design a stunning home with handpicked products from top brands that you can shop instantly
@@ -43,11 +44,10 @@ const v1: React.FC = () => {
               Start Project Now <ArrowRightIcon className="inline w-4 h-4" />
             </button>
             <p className="text-sm mt-6 text-gray-700">Price starts from $99.00, checkout now</p>
-          </AnimateBox>
+          </Tween>
         </div>
         <div className="col-start-2 col-end-5">
           <AnimateBox className="banner">
-            <div className="absolute shape-2 bottom-0 -ml-2 -mb-2" />
             <div className="relative overflow-hidden rounded-2xl">
               <div className="next-image-fix filter blur-sm bg-gray-100">
                 <Image
