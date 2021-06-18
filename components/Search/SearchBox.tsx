@@ -1,6 +1,6 @@
 import DesignCard from '@components/InteriorDesigns/DesignCard';
 import EmptyState from '@components/Shared/EmptyState';
-import { RefreshIcon, XIcon } from '@heroicons/react/outline';
+import { RefreshIcon, SearchIcon, XIcon } from '@heroicons/react/outline';
 import useKeyPress from '@hooks/useKeyPress';
 import useSearch from '@hooks/useSearch';
 import TopSearches from '@utils/Mocks/TopSearches';
@@ -85,11 +85,9 @@ const SearchBox: React.FC = () => {
 
   useEffect(() => {
     if (escPress) {
-      goBack()
+      goBack();
     }
   }, [escPress]);
-
-
 
   const clear = () => setSearchString('');
 
@@ -107,6 +105,9 @@ const SearchBox: React.FC = () => {
       <div className="relative md:max-w-3xl xl:max-w-3xl mx-auto pt-12 pb-10 px-4 sm:px-6 lg:pt-16 lg:px-8">
         <AnimateBox className="entry">
           <div className="relative">
+            <div className="absolute left-6 top-0 bottom-0 flex justify-center items-center">
+              <SearchIcon className="w-4 h-4 text-gray-900" />
+            </div>
             <input
               autoFocus
               onChange={(e) => setSearchString(e?.target?.value)}
@@ -116,7 +117,7 @@ const SearchBox: React.FC = () => {
               autoComplete="off"
               placeholder="Start typing to view inspiring designs"
               value={searchString}
-              className="py-5 pl-5 pr-28 outline-none block w-full shadow-sm focus:shadow-lg focus:ring-transparent border border-gray-100 focus:border-gray-100 rounded-xl capitalize"
+              className="py-5 pl-14 pr-28 outline-none block w-full shadow-sm focus:shadow-lg focus:ring-transparent border border-gray-100 focus:border-gray-100 rounded-xl capitalize"
             />
             <div className="absolute right-20 top-0 bottom-0 flex justify-center items-center">
               {isFetching && <RefreshIcon className="w-4 h-4 text-gray-500 animate-spin" />}
@@ -152,17 +153,24 @@ const SearchBox: React.FC = () => {
           )}
         </div>
       </div>
-      {!searchString && searchResultsList && searchResultsList?.length === 0 ? (
+      {searchResultsList && searchResultsList?.length === 0 ? (
         <>
           {init === 'init' ? (
             <div className="max-w-md text-center mx-auto px-4">
-              <p className="text-gray-900">Most popular results</p>
+              <p className="text-gray-900">Most popular searches</p>
               <div className="grid grid-cols-4 gap-x-4 mt-4">
-                <Tween from={{ opacity: 0, y: 50 }} to={{ opacity: 1, y: 0 }} duration={0.5} stagger={0.25}>
+                <Tween
+                  from={{ opacity: 0, y: 50 }}
+                  to={{ opacity: 1, y: 0 }}
+                  duration={2}
+                  ease="back.out(1.7)"
+                  stagger={0.25}
+                  delay={0.5}
+                >
                   {TopSearches?.map((searchItem) => {
                     return (
                       <div key={searchItem?.id} onClick={() => setSelectedSearchQuery(searchItem?.meta)}>
-                        <div className="shadow-xl next-image-fix rounded-xl cursor-pointer">
+                        <div className="shadow-md hover:shadow-xl next-image-fix rounded-xl cursor-pointer transition hover:-translate-y-1">
                           <Image
                             src={searchItem?.img}
                             className="rounded-xl object-cover"
@@ -179,22 +187,22 @@ const SearchBox: React.FC = () => {
               </div>
             </div>
           ) : (
-              <EmptyState
-                title="No results"
-                message="Oops! No results match your search criteria. Please try again with different keywords."
-              />
-            )}
+            <EmptyState
+              title="No results"
+              message="Oops! No results match your search criteria. Please try again with different keywords."
+            />
+          )}
         </>
       ) : (
-          <div className="container mx-auto px-4 pb-40">
-            <p className="text-gray-400 text-xl mb-5 capitalize">Search Results for {`'${searchString}'`}</p>
-            <div className="lg:grid-cols-3 lg:gap-4 xl:grid-cols-4 xl:gap-8 grid">
-              {searchResultsList?.map((searchItem) => (
-                <DesignCard cardData={searchItem?.design} key={searchItem?.design?._id} />
-              ))}
-            </div>
+        <div className="container mx-auto px-4 pb-40">
+          <p className="text-gray-400 text-xl mb-5 capitalize">Search Results</p>
+          <div className="lg:grid-cols-3 lg:gap-4 xl:grid-cols-4 xl:gap-8 grid">
+            {searchResultsList?.map((searchItem) => (
+              <DesignCard cardData={searchItem?.design} key={searchItem?.design?._id} />
+            ))}
           </div>
-        )}
+        </div>
+      )}
     </div>
   );
 };
