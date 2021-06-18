@@ -1,51 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import { ScrollTrigger, Tween } from 'react-gsap';
-import styled, { keyframes } from 'styled-components';
 import SectionTitle from '../Shared/SectionTitle';
-
-const entry = keyframes`
-	from { 
-		opacity: 0;
-	}
-	to {
-    opacity: 1;
-    transform: translateY(0px);
-	}
-`;
-
-const AnimateBox = styled.div`
-  opacity: 0;
-  &.entry {
-    opacity: 1;
-    & > div {
-      opacity: 0;
-      animation: ${entry} 0.8s forwards;
-      transform: translateY(50px);
-      &:nth-child(2) {
-        animation-delay: 100ms;
-      }
-      &:nth-child(3) {
-        animation-delay: 200ms;
-      }
-      &:nth-child(4) {
-        animation-delay: 300ms;
-      }
-      &:nth-child(5) {
-        animation-delay: 400ms;
-      }
-      &:nth-child(6) {
-        animation-delay: 500ms;
-      }
-      &:nth-child(7) {
-        animation-delay: 600ms;
-      }
-      &:nth-child(8) {
-        animation-delay: 700ms;
-      }
-    }
-  }
-`;
 
 const Featured: React.FC = () => {
   return (
