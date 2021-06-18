@@ -90,18 +90,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       };
     } else {
       return {
-        props: {
-          designFeedData: { list: [], count: 0, filters: {} },
-          collectionData: {},
-        },
+        notFound: true,
       };
     }
   }
   return {
-    props: {
-      designFeedData: { list: [], count: 0, filters: {} },
-      collectionData: {},
-    },
+    notFound: true,
   };
 };
 

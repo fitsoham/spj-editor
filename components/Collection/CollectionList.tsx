@@ -1,5 +1,6 @@
 import CollectionCard from '@components/Collection/CollectionCard';
 import CollectionCardDimmer from '@components/Collection/CollectionCardDimmer';
+import EmptyState from '@components/Shared/EmptyState';
 import Pagination from '@components/Shared/Pagination';
 import usePagination from '@hooks/usePagination';
 import { internalPages } from '@utils/config';
@@ -90,17 +91,21 @@ const CollectionList: React.FC<CollectionListInterface> = ({ feedData }) => {
       </div>
       <div className="relative bg-white">
         <AnimateBox className="grid grid-cols-6 gap-x-8 gap-y-10">
-          {isFetching && (
+          {isFetching && currentRenderList?.length > 0 && (
             <>
               {[...new Array(internalPages.InteriorDesigns.DEFAULT_PAGE_SIZE)].map((_d, _i) => (
                 <CollectionCardDimmer key={Math.random()} />
               ))}
             </>
           )}
-          {currentRenderList.map((collection) => (
+
+          {currentRenderList?.map((collection) => (
             <CollectionCard cardData={collection} key={collection?._id} inset={false} />
           ))}
         </AnimateBox>
+        {currentRenderList?.length === 0 && (
+          <EmptyState title="No collections found" message="Please refresh the page" />
+        )}
         <Pagination buttonList={buttons} />
       </div>
     </div>
