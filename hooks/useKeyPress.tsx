@@ -22,7 +22,7 @@ const useKeyPress = (targetKey) => {
       window.removeEventListener('keydown', downHandler);
       window.removeEventListener('keyup', upHandler);
     };
-  },[]);
+  }, []);
   return keyPressed;
 };
 
