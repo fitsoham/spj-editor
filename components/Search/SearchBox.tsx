@@ -86,11 +86,11 @@ const SearchBox: React.FC = () => {
       <div className="container relative mx-auto px-4">
         <Tween from={{ opacity: 0, y: -50 }} to={{ opacity: 1, y: 0 }} duration={0.5} delay={1}>
           <button
-            className="absolute right-0 top-0 bottom-0 focus:outline-none w-16 h-16 shadow-sm text-center bg-white border border-gray-100"
+            className="absolute rounded-b-lg right-0 top-0 bottom-0 focus:outline-none w-16 h-16 shadow-sm text-center text-gray-400 hover:text-yellow-500 bg-white border border-gray-100"
             onClick={() => router.back()}
           >
             <XIcon className="inline w-6 h-6" />
-            <p className="text-xs text-gray-400 mt-1">esc</p>
+            <p className="text-xs mt-1">esc</p>
           </button>
         </Tween>
       </div>
