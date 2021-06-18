@@ -117,16 +117,16 @@ const SearchBox: React.FC = () => {
               autoComplete="off"
               placeholder="Start typing to view inspiring designs"
               value={searchString}
-              className="py-5 pl-14 pr-28 outline-none block w-full shadow-sm focus:shadow-lg focus:ring-transparent border border-gray-100 focus:border-gray-100 rounded-xl capitalize"
+              className="py-5 pl-14 pr-28 outline-none block w-full caret-yellow-500 shadow-sm focus:shadow-lg focus:ring-transparent border border-gray-100 focus:border-gray-100 rounded-xl capitalize"
             />
             <div className="absolute right-20 top-0 bottom-0 flex justify-center items-center">
               {isFetching && <RefreshIcon className="w-4 h-4 text-gray-500 animate-spin" />}
             </div>
             <button
-              className="absolute right-0 top-0 bottom-0 focus:outline-none w-16 bg-gray-50 flex justify-center text-center items-center border border-gray-100 rounded-xl"
+              className="absolute right-0 top-0 bottom-0 text-gray-500 hover:text-yellow-500 focus:outline-none w-16 bg-gray-50 flex justify-center text-center items-center border border-gray-100 rounded-xl"
               onClick={clear}
             >
-              <span className="text-xs text-yellow-500">clear</span>
+              <span className="text-xs">clear</span>
             </button>
           </div>
         </AnimateBox>

@@ -96,10 +96,12 @@ const Header: React.FC = () => {
             </div>
             <div className="text-right">
               <Link href="/search">
-                <a href="">
+                <a>
                   <button
                     type="button"
-                    className="focus:outline-none text-gray-700 text-xs py-2 px-2 mx-2 rounded-full border border-transparent hover:shadow-xl hover:border-gray-200"
+                    className={`focus:outline-none text-gray-700 text-xs py-2 px-2 mx-2 rounded-full border hover:shadow-xl hover:border-gray-200 ${
+                      router.asPath === '/search' ? 'shadow-xl border-gray-200' : 'border-transparent'
+                    }`}
                   >
                     <span className="sr-only">Search</span>
                     <SearchIcon className="inline h-4 w-4" />

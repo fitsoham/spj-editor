@@ -48,13 +48,10 @@ const v1: React.FC = () => {
             <Tween from={{ opacity: 0, y: 100 }} to={{ opacity: 1, y: 0 }} duration={0.5} delay={0.5}>
               <button
                 type="button"
-                className="group relative overflow-hidden focus:outline-none shadow-sm hover:shadow-lg text-base text-white py-5 px-12 rounded-xl bg-gray-900 tracking-wide"
+                className="group overflow-hidden focus:outline-none shadow-sm hover:shadow-lg text-base text-white py-5 px-12 rounded-xl bg-gray-900 tracking-wide"
               >
-                <span className="block w-full h-full absolute inset-0 rounded-xl bg-gradient-to-r from-spj-red to-spj-yellow transition -translate-x-80 group-hover:translate-x-0 opacity-50" />
-                <span className="relative z-10">
-                  Start Project Now{' '}
-                  <ArrowNarrowRightIcon className="inline h-4 w-4 transition group-hover:translate-x-1" />
-                </span>
+                Start Project Now{' '}
+                <ArrowNarrowRightIcon className="inline h-4 w-4 transition group-hover:translate-x-1" />
               </button>
             </Tween>
           </div>
