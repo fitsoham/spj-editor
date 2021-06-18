@@ -1,7 +1,9 @@
 import { ArrowNarrowDownIcon } from '@heroicons/react/outline';
+import blurredBg from '@public/images/bg-base-64';
 import { cloudinary } from '@utils/config';
 import Image from 'next/image';
 import React from 'react';
+import { Tween } from 'react-gsap';
 
 const months = [
   'January',
@@ -31,23 +33,28 @@ const CollectionBanner: React.FC<BannerProps> = ({ data }) => {
   const date = new Date(data?.publishedDate || '');
   const formattedDate = `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
   return (
-    <div className="flex bg-blue-900">
-      <div className="h-full flex-1 next-image-fix bg-gray-200">
-        <Image
-          className="object-cover"
-          src={`${cloudinary.baseDeliveryURL}/${data?.coverImg}`}
-          alt="spacejoy happy customer"
-          height={'700'}
-          width={'896'}
-        />
+    <div className="flex bg-blue-50">
+      <div className="h-full relative flex-1 bg-gray-200">
+        <div className="absolute inset-0">
+          <Image className="object-cover" src={blurredBg} alt="spacejoy happy customer" height={'700'} width={'896'} />
+        </div>
+        <div className="next-image-fix">
+          <Image
+            className="object-cover"
+            src={`${cloudinary.baseDeliveryURL}/${data?.coverImg}`}
+            alt="spacejoy happy customer"
+            height={'700'}
+            width={'896'}
+          />
+        </div>
       </div>
       <div className="h-full flex-1 self-end p-8">
-        <small className="text-sm text-white text-opacity-70">Published Date: {formattedDate}</small>
-        <h1 className="sm:text-3xl md:text-5xl text-blue-300 mt-4 mb-4 max-w-xl leading-loose">{data?.name}</h1>
-        <p className="text-gray-200 h-20 overflow-hidden overflow-ellipsis text-justify text-sm max-w-xl">
-          {data?.description}
-        </p>
-        <ArrowNarrowDownIcon className="w-6 h-6 mt-10 text-white animate-bounce" />
+        <Tween from={{ opacity: 0, x: 20 }} to={{ opacity: 1, x: 0 }} duration={2} stagger={0.5}>
+          <small className="text-sm text-opacity-70">Published Date: {formattedDate}</small>
+          <h1 className="sm:text-3xl md:text-5xl text-blue-600 mt-4 mb-4 max-w-xl leading-loose">{data?.name}</h1>
+          <p className="h-40 overflow-hidden overflow-ellipsis text-justify text-sm max-w-xl">{data?.description}</p>
+        </Tween>
+        <ArrowNarrowDownIcon className="w-6 h-6 mt-10 animate-bounce" />
       </div>
     </div>
   );

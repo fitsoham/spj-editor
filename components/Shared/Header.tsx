@@ -17,12 +17,14 @@ const Header: React.FC = () => {
   return (
     <>
       <header className={`bg-white sticky top-0 z-50`}>
-        <div className="container p-4 mx-auto">
-          <div className="flex items-center">
-            <div className="w-40 mt-2">
+        <div className="container px-4 mx-auto">
+          <div className="h-20 flex items-center">
+            <div className="">
               <Link href="/">
                 <a className={router.asPath === '/' ? 'text-red-500' : 'text-gray-700 hover:text-red-600'}>
-                  <Image src="/logo.svg" alt="spacejoy Logo" height={'34'} width={'129'} />
+                  <div className="next-image-fix mr-10">
+                    <Image src="/logo.svg" alt="spacejoy Logo" height={'34'} width={'129'} />
+                  </div>
                 </a>
               </Link>
             </div>
@@ -43,6 +45,19 @@ const Header: React.FC = () => {
                     </Link>
                   </li>
                   <li className="inline-block">
+                    <Link href="/collection">
+                      <a
+                        className={
+                          router.asPath === '/collection' ? 'text-red-500' : 'text-gray-700 hover:text-red-600'
+                        }
+                      >
+                        <button type="button" className="focus:outline-none text-sm py-2 px-2.5 h-full rounded-md">
+                          Collection
+                        </button>
+                      </a>
+                    </Link>
+                  </li>
+                  <li className="inline-block">
                     <button
                       type="button"
                       className={`focus:outline-none hover:text-red-600 text-sm py-2 px-2.5 rounded-md flex items-center ${
@@ -56,11 +71,6 @@ const Header: React.FC = () => {
                           isOpenSubNav ? 'rotate-180' : ''
                         }`}
                       />
-                    </button>
-                  </li>
-                  <li className="inline-block">
-                    <button type="button" className="focus:outline-none text-sm py-2 px-2.5 rounded-md">
-                      Quiz
                     </button>
                   </li>
                   <li className="inline-block">
@@ -89,19 +99,19 @@ const Header: React.FC = () => {
                 <a href="">
                   <button
                     type="button"
-                    className="focus:outline-none text-gray-700 text-xs py-2 px-2 mx-2 rounded-full hover:shadow-md"
+                    className="focus:outline-none text-gray-700 text-xs py-2 px-2 mx-2 rounded-full border border-transparent hover:shadow-xl hover:border-gray-200"
                   >
                     <span className="sr-only">Search</span>
-                    <SearchIcon className="h-4 w-4" />
+                    <SearchIcon className="inline h-4 w-4" />
                   </button>
                 </a>
               </Link>
               <button
                 type="button"
-                className="focus:outline-none text-gray-700 text-xs py-2 px-2 mx-2 rounded-full hover:shadow-md"
+                className="focus:outline-none text-gray-700 text-xs py-2 px-2 mx-2 rounded-full border border-transparent hover:shadow-xl hover:border-gray-200"
               >
                 <span className="sr-only">Shopping</span>
-                <ShoppingBagIcon className="h-4 w-4" />
+                <ShoppingBagIcon className="inline h-4 w-4" />
               </button>
               <button
                 type="button"

@@ -33,7 +33,7 @@ export const getStaticProps: GetStaticProps<CollectionListInterface> = async () 
     props: {
       feedData: { list: mainList, count: 500 },
     },
-    revalidate: 1, //TODO: Recheck the doc Data Fetching
+    revalidate: false, //TODO: Recheck the doc Data Fetching
   };
 };
 

@@ -6,6 +6,7 @@ import PreFooter from '@components/Shared/PreFooter';
 import { internalPages } from '@utils/config';
 import { publicRoutes } from '@utils/constants/api';
 import fetcher from '@utils/fetcher';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import React from 'react';
 
 interface CollectionPage {
@@ -42,7 +43,7 @@ const collectionView: React.FC<CollectionPage> = ({ designFeedData, collectionDa
   );
 };
 
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
   const slugs = [
     'bedroom-ideas',
     'living-room-ideas',
@@ -57,7 +58,7 @@ export const getStaticPaths = async () => {
   return { paths, fallback: true };
 };
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const endPoint = `${publicRoutes.collectionData}/${params?.slug}`;
   const res = await fetcher({ endPoint, method: 'GET' });
   const { data, statusCode } = res;

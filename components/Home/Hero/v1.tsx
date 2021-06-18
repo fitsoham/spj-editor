@@ -1,4 +1,4 @@
-import { ArrowRightIcon } from '@heroicons/react/outline';
+import { ArrowNarrowRightIcon } from '@heroicons/react/outline';
 import blurredBg from '@public/images/bg-base-64';
 import Image from 'next/image';
 import React from 'react';
@@ -48,9 +48,9 @@ const v1: React.FC = () => {
             <Tween from={{ y: 100 }} to={{ opacity: 1, y: 0 }} duration={0.5} delay={0.5}>
               <button
                 type="button"
-                className="focus:outline-none shadow-md hover:shadow-xl text-base text-white py-3 px-12 rounded-xl bg-gray-900 tracking-wide"
+                className="focus:outline-none shadow-md hover:shadow-xl text-base text-white py-5 px-12 rounded-xl bg-gray-900 tracking-wide"
               >
-                Start Project Now <ArrowRightIcon className="inline w-4 h-4" />
+                Start Project Now <ArrowNarrowRightIcon className="inline h-4 w-4" />
               </button>
             </Tween>
           </div>
