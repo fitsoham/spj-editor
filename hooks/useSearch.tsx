@@ -149,7 +149,9 @@ const useSearch = (): any => {
         setAutoCompleteError(e.message);
         setSearchAutoCompleteResult([]);
       } finally {
-        setFetching(false);
+        setTimeout(() => {
+          setFetching(false);
+        }, 600)
       }
     };
     // fetch search results

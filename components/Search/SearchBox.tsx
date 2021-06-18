@@ -9,6 +9,7 @@ import React, { useEffect, useState } from 'react';
 import { Tween } from 'react-gsap';
 import styled, { keyframes } from 'styled-components';
 import ListItem from './ListItem';
+import TopSearches from '@utils/Mocks/TopSearches';
 
 const entry = keyframes`
 	from { 
@@ -49,6 +50,7 @@ const SearchBox: React.FC = () => {
     searchString,
     setSearchString,
     init,
+    isFetching
   } = useSearch();
 
   const router = useRouter();
@@ -104,12 +106,12 @@ const SearchBox: React.FC = () => {
               name="first_name"
               id="first_name"
               autoComplete="off"
-              placeholder="Start typing to view your inspiring designs"
+              placeholder="Start typing to view inspiring designs"
               value={searchString}
               className="py-5 pl-5 pr-28 outline-none block w-full shadow-sm focus:shadow-lg focus:ring-transparent border border-gray-100 focus:border-gray-100 rounded-xl capitalize"
             />
             <div className="absolute right-20 top-0 bottom-0 flex justify-center items-center">
-              {isLoadingSearch && <RefreshIcon className="w-4 h-4 text-gray-500 animate-spin" />}
+              {isFetching && <RefreshIcon className="w-4 h-4 text-gray-500 animate-spin" />}
             </div>
             <button
               className="absolute right-0 top-0 bottom-0 focus:outline-none w-16 bg-gray-50 flex justify-center text-center items-center border border-gray-100 rounded-xl"
@@ -149,76 +151,47 @@ const SearchBox: React.FC = () => {
               <p className="text-gray-900">Most popular results</p>
               <div className="grid grid-cols-4 gap-x-4 mt-4">
                 <Tween from={{ opacity: 0, y: 50 }} to={{ opacity: 1, y: 0 }} duration={0.5} stagger={0.25}>
-                  <div>
-                    <div className="shadow-xl next-image-fix rounded-xl">
-                      <Image
-                        src="https://images.unsplash.com/photo-1523544463628-d873327f5217?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80"
-                        className="rounded-xl object-cover"
-                        alt="spacejoy happy customer"
-                        height="124"
-                        width="124"
-                      />
-                    </div>
-                    <small>Eclectic</small>
-                  </div>
-                  <div>
-                    <div className="shadow-xl next-image-fix rounded-xl">
-                      <Image
-                        src="https://images.unsplash.com/photo-1607322851003-f5a88dc5b960?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80"
-                        className="rounded-xl object-cover"
-                        alt="spacejoy happy customer"
-                        height="124"
-                        width="124"
-                      />
-                    </div>
-                    <small>Glam</small>
-                  </div>
-                  <div>
-                    <div className="shadow-xl next-image-fix rounded-xl">
-                      <Image
-                        src="https://images.unsplash.com/photo-1602872029708-84d970d3382b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80"
-                        className="rounded-xl object-cover"
-                        alt="spacejoy happy customer"
-                        height="124"
-                        width="124"
-                      />
-                    </div>
-                    <small>Modern</small>
-                  </div>
-                  <div>
-                    <div className="shadow-xl next-image-fix rounded-xl">
-                      <Image
-                        src="https://images.unsplash.com/photo-1614518921956-0d7c71b7999d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80"
-                        className="rounded-xl object-cover"
-                        alt="spacejoy happy customer"
-                        height="124"
-                        width="124"
-                      />
-                    </div>
-                    <small>Home Office</small>
-                  </div>
+                  {
+                    TopSearches.map((searchItem) => {
+                      return (
+                        <div key={searchItem?.id} onClick={() => setSelectedSearchQuery(searchItem?.meta)}>
+                          <div className="shadow-xl next-image-fix rounded-xl cursor-pointer">
+                            <Image
+                              src={searchItem?.img}
+                              className="rounded-xl object-cover"
+                              alt="spacejoy happy customer"
+                              height="124"
+                              width="124"
+                            />
+                          </div>
+                          <small className="capitalize mt-4">{searchItem?.title}</small>
+                        </div>
+                      )
+                    })
+                  }
+
                 </Tween>
               </div>
             </div>
           ) : (
-            <div className="max-w-md mx-auto">
-              <EmptyState />
-              <p className="mt-8 text-center text-gray-600">
-                Oops! No results match your search criteria. Please try again with different keywords.
+              <div className="max-w-md mx-auto">
+                <EmptyState />
+                <p className="mt-8 text-center text-gray-600">
+                  Oops! No results match your search criteria. Please try again with different keywords.
               </p>
-            </div>
-          )}
+              </div>
+            )}
         </>
       ) : (
-        <div className="container mx-auto px-4 pb-40">
-          <p className="text-gray-400 text-xl mb-5">Search Results for {searchString}</p>
-          <div className="lg:grid-cols-3 lg:gap-4 xl:grid-cols-4 xl:gap-8 grid">
-            {searchResultsList?.map((searchItem) => (
-              <DesignCard cardData={searchItem?.design} key={searchItem?.design?._id} />
-            ))}
+          <div className="container mx-auto px-4 pb-40">
+            <p className="text-gray-400 text-xl mb-5 capitalize">Search Results for {`'${searchString}'`}</p>
+            <div className="lg:grid-cols-3 lg:gap-4 xl:grid-cols-4 xl:gap-8 grid">
+              {searchResultsList?.map((searchItem) => (
+                <DesignCard cardData={searchItem?.design} key={searchItem?.design?._id} />
+              ))}
+            </div>
           </div>
-        </div>
-      )}
+        )}
     </div>
   );
 };
