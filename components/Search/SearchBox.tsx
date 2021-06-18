@@ -3,13 +3,13 @@ import EmptyState from '@components/Shared/EmptyState';
 import { RefreshIcon, XIcon } from '@heroicons/react/outline';
 import useKeyPress from '@hooks/useKeyPress';
 import useSearch from '@hooks/useSearch';
+import TopSearches from '@utils/Mocks/TopSearches';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { Tween } from 'react-gsap';
 import styled, { keyframes } from 'styled-components';
 import ListItem from './ListItem';
-import TopSearches from '@utils/Mocks/TopSearches';
 
 const entry = keyframes`
 	from { 
@@ -46,11 +46,10 @@ const SearchBox: React.FC = () => {
     autoCompleteResults,
     setSelectedSearchQuery,
     searchResultsList,
-    isLoadingSearch,
     searchString,
     setSearchString,
     init,
-    isFetching
+    isFetching,
   } = useSearch();
 
   const router = useRouter();
@@ -86,15 +85,13 @@ const SearchBox: React.FC = () => {
   return (
     <div className="relative min-h-screen bg-gray-100">
       <div className="container relative mx-auto px-4">
-        <Tween from={{ opacity: 0, y: -50 }} to={{ opacity: 1, y: 0 }} duration={0.5} delay={1}>
-          <button
-            className="absolute rounded-b-lg right-0 top-0 bottom-0 focus:outline-none w-16 h-16 shadow-sm text-center text-gray-400 hover:text-yellow-500 bg-white border border-gray-100"
-            onClick={() => router.back()}
-          >
-            <XIcon className="inline w-6 h-6" />
-            <p className="text-xs mt-1">esc</p>
-          </button>
-        </Tween>
+        <button
+          className="absolute rounded-b-lg right-0 top-0 bottom-0 focus:outline-none w-16 h-16 shadow-sm text-center text-gray-400 hover:text-yellow-500 bg-white border border-gray-100"
+          onClick={() => router.back()}
+        >
+          <XIcon className="inline w-6 h-6" />
+          <p className="text-xs mt-1">esc</p>
+        </button>
       </div>
       <div className="relative md:max-w-3xl xl:max-w-3xl mx-auto pt-12 pb-10 px-4 sm:px-6 lg:pt-16 lg:px-8">
         <AnimateBox className="entry">
@@ -125,7 +122,7 @@ const SearchBox: React.FC = () => {
           {searchString && (
             <div className="inset-0 absolute z-10">
               {!!autoCompleteResults?.length && (
-                <AnimateBox className={`${searchString ? 'entry' : ''}`}>
+                <AnimateBox className={`${searchString && 'entry'}`}>
                   <ul className="w-full bg-white border border-gray-100 mt-2 p-4 shadow-sm rounded-xl overflow-hidden">
                     {autoCompleteResults.map((item, i) => (
                       <ListItem
@@ -151,47 +148,42 @@ const SearchBox: React.FC = () => {
               <p className="text-gray-900">Most popular results</p>
               <div className="grid grid-cols-4 gap-x-4 mt-4">
                 <Tween from={{ opacity: 0, y: 50 }} to={{ opacity: 1, y: 0 }} duration={0.5} stagger={0.25}>
-                  {
-                    TopSearches.map((searchItem) => {
-                      return (
-                        <div key={searchItem?.id} onClick={() => setSelectedSearchQuery(searchItem?.meta)}>
-                          <div className="shadow-xl next-image-fix rounded-xl cursor-pointer">
-                            <Image
-                              src={searchItem?.img}
-                              className="rounded-xl object-cover"
-                              alt="spacejoy happy customer"
-                              height="124"
-                              width="124"
-                            />
-                          </div>
-                          <small className="capitalize mt-4">{searchItem?.title}</small>
+                  {TopSearches?.map((searchItem) => {
+                    return (
+                      <div key={searchItem?.id} onClick={() => setSelectedSearchQuery(searchItem?.meta)}>
+                        <div className="shadow-xl next-image-fix rounded-xl cursor-pointer">
+                          <Image
+                            src={searchItem?.img}
+                            className="rounded-xl object-cover"
+                            alt="spacejoy happy customer"
+                            height="124"
+                            width="124"
+                          />
                         </div>
-                      )
-                    })
-                  }
-
+                        <small className="capitalize mt-4">{searchItem?.title}</small>
+                      </div>
+                    );
+                  })}
                 </Tween>
               </div>
             </div>
           ) : (
-              <div className="max-w-md mx-auto">
-                <EmptyState />
-                <p className="mt-8 text-center text-gray-600">
-                  Oops! No results match your search criteria. Please try again with different keywords.
-              </p>
-              </div>
-            )}
+            <EmptyState
+              title="No results"
+              message="Oops! No results match your search criteria. Please try again with different keywords."
+            />
+          )}
         </>
       ) : (
-          <div className="container mx-auto px-4 pb-40">
-            <p className="text-gray-400 text-xl mb-5 capitalize">Search Results for {`'${searchString}'`}</p>
-            <div className="lg:grid-cols-3 lg:gap-4 xl:grid-cols-4 xl:gap-8 grid">
-              {searchResultsList?.map((searchItem) => (
-                <DesignCard cardData={searchItem?.design} key={searchItem?.design?._id} />
-              ))}
-            </div>
+        <div className="container mx-auto px-4 pb-40">
+          <p className="text-gray-400 text-xl mb-5 capitalize">Search Results for {`'${searchString}'`}</p>
+          <div className="lg:grid-cols-3 lg:gap-4 xl:grid-cols-4 xl:gap-8 grid">
+            {searchResultsList?.map((searchItem) => (
+              <DesignCard cardData={searchItem?.design} key={searchItem?.design?._id} />
+            ))}
           </div>
-        )}
+        </div>
+      )}
     </div>
   );
 };
