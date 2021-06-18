@@ -62,7 +62,11 @@ const CollectionBanner: React.FC<BannerProps> = ({ data }) => {
           <h1 className="sm:text-3xl md:text-5xl text-gray-600 mt-4 mb-4 max-w-xl leading-loose">{data?.name}</h1>
           <p className="h-40 overflow-hidden overflow-ellipsis text-justify text-sm max-w-xl">{data?.description}</p>
         </Tween>
-        <ArrowNarrowDownIcon className="w-6 h-6 mt-10 animate-bounce" />
+        <Tween from={{ opacity: 0, y: -50 }} to={{ opacity: 1, y: 0 }} duration={1} delay={0.5}>
+          <div>
+            <ArrowNarrowDownIcon className="w-6 h-6 mt-10 animate-bounce" />
+          </div>
+        </Tween>
       </div>
     </div>
   );

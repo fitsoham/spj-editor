@@ -1,9 +1,12 @@
 import DesignCard from '@components/InteriorDesigns/DesignCard';
 import EmptyState from '@components/Shared/EmptyState';
-import { RefreshIcon } from '@heroicons/react/outline';
+import { RefreshIcon, XIcon } from '@heroicons/react/outline';
 import useKeyPress from '@hooks/useKeyPress';
 import useSearch from '@hooks/useSearch';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
+import { Tween } from 'react-gsap';
 import styled, { keyframes } from 'styled-components';
 import ListItem from './ListItem';
 
@@ -48,6 +51,8 @@ const SearchBox: React.FC = () => {
     init,
   } = useSearch();
 
+  const router = useRouter();
+
   useEffect(() => {
     if (autoCompleteResults.length && downPress) {
       setCursor((prevState) => (prevState < autoCompleteResults.length - 1 ? prevState + 1 : prevState));
@@ -78,7 +83,18 @@ const SearchBox: React.FC = () => {
 
   return (
     <div className="relative min-h-screen bg-gray-100">
-      <div className="container md:max-w-3xl xl:max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+      <div className="container relative mx-auto px-4">
+        <Tween from={{ opacity: 0, y: -50 }} to={{ opacity: 1, y: 0 }} duration={0.5} delay={1}>
+          <button
+            className="absolute right-0 top-0 bottom-0 focus:outline-none w-16 h-16 shadow-sm text-center bg-white border border-gray-100"
+            onClick={() => router.back()}
+          >
+            <XIcon className="inline w-6 h-6" />
+            <p className="text-xs text-gray-400 mt-1">esc</p>
+          </button>
+        </Tween>
+      </div>
+      <div className="relative md:max-w-3xl xl:max-w-3xl mx-auto pt-12 pb-10 px-4 sm:px-6 lg:pt-16 lg:px-8">
         <AnimateBox className="entry">
           <div className="relative">
             <input
@@ -88,7 +104,7 @@ const SearchBox: React.FC = () => {
               name="first_name"
               id="first_name"
               autoComplete="off"
-              placeholder="search"
+              placeholder="Start typing to view your inspiring designs"
               value={searchString}
               className="py-5 pl-5 pr-28 outline-none block w-full shadow-sm focus:shadow-lg focus:ring-transparent border border-gray-100 focus:border-gray-100 rounded-xl capitalize"
             />
@@ -106,8 +122,8 @@ const SearchBox: React.FC = () => {
         <div className="relative">
           {searchString && (
             <div className="inset-0 absolute z-10">
-              <AnimateBox className={`${searchString ? 'entry' : ''}`}>
-                {!!autoCompleteResults?.length && (
+              {!!autoCompleteResults?.length && (
+                <AnimateBox className={`${searchString ? 'entry' : ''}`}>
                   <ul className="w-full bg-white border border-gray-100 mt-2 p-4 shadow-sm rounded-xl overflow-hidden">
                     {autoCompleteResults.map((item, i) => (
                       <ListItem
@@ -120,16 +136,70 @@ const SearchBox: React.FC = () => {
                       />
                     ))}
                   </ul>
-                )}
-              </AnimateBox>
+                </AnimateBox>
+              )}
             </div>
           )}
         </div>
       </div>
-      {searchResultsList && searchResultsList?.length === 0 ? (
+      {!searchString && searchResultsList && searchResultsList?.length === 0 ? (
         <>
           {init === 'init' ? (
-            <p className="text-center text-gray-400">Start typing to view your inspiring designs</p>
+            <div className="max-w-md text-center mx-auto px-4">
+              <p className="text-gray-900">Most popular results</p>
+              <div className="grid grid-cols-4 gap-x-4 mt-4">
+                <Tween from={{ opacity: 0, y: 50 }} to={{ opacity: 1, y: 0 }} duration={0.5} stagger={0.25}>
+                  <div>
+                    <div className="shadow-xl next-image-fix rounded-xl">
+                      <Image
+                        src="https://images.unsplash.com/photo-1523544463628-d873327f5217?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80"
+                        className="rounded-xl object-cover"
+                        alt="spacejoy happy customer"
+                        height="124"
+                        width="124"
+                      />
+                    </div>
+                    <small>Eclectic</small>
+                  </div>
+                  <div>
+                    <div className="shadow-xl next-image-fix rounded-xl">
+                      <Image
+                        src="https://images.unsplash.com/photo-1607322851003-f5a88dc5b960?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80"
+                        className="rounded-xl object-cover"
+                        alt="spacejoy happy customer"
+                        height="124"
+                        width="124"
+                      />
+                    </div>
+                    <small>Glam</small>
+                  </div>
+                  <div>
+                    <div className="shadow-xl next-image-fix rounded-xl">
+                      <Image
+                        src="https://images.unsplash.com/photo-1602872029708-84d970d3382b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80"
+                        className="rounded-xl object-cover"
+                        alt="spacejoy happy customer"
+                        height="124"
+                        width="124"
+                      />
+                    </div>
+                    <small>Modern</small>
+                  </div>
+                  <div>
+                    <div className="shadow-xl next-image-fix rounded-xl">
+                      <Image
+                        src="https://images.unsplash.com/photo-1614518921956-0d7c71b7999d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80"
+                        className="rounded-xl object-cover"
+                        alt="spacejoy happy customer"
+                        height="124"
+                        width="124"
+                      />
+                    </div>
+                    <small>Home Office</small>
+                  </div>
+                </Tween>
+              </div>
+            </div>
           ) : (
             <div className="max-w-md mx-auto">
               <EmptyState />

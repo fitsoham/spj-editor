@@ -33,19 +33,19 @@ const v1: React.FC = () => {
       <div className="grid gap-14 grid-cols-4 items-center">
         <div>
           <div className="overflow-hidden">
-            <Tween from={{ y: 100 }} to={{ opacity: 1, y: 0 }} duration={0.75}>
+            <Tween from={{ opacity: 0, y: 100 }} to={{ opacity: 1, y: 0 }} duration={0.75}>
               <h1 className="lg:text-3xl xl:text-5xl mb-4 lg:semibold xl:font-extrabold tracking-tight">Live in joy</h1>
             </Tween>
           </div>
           <div className="overflow-hidden">
-            <Tween from={{ y: 100 }} to={{ opacity: 1, y: 0 }} duration={0.5} delay={0.25}>
+            <Tween from={{ opacity: 0, y: 100 }} to={{ opacity: 1, y: 0 }} duration={0.5} delay={0.25}>
               <p className="mb-4 text-gray-600">
                 Design a stunning home with handpicked products from top brands that you can shop instantly
               </p>
             </Tween>
           </div>
           <div className="overflow-hidden">
-            <Tween from={{ y: 100 }} to={{ opacity: 1, y: 0 }} duration={0.5} delay={0.5}>
+            <Tween from={{ opacity: 0, y: 100 }} to={{ opacity: 1, y: 0 }} duration={0.5} delay={0.5}>
               <button
                 type="button"
                 className="focus:outline-none shadow-md hover:shadow-xl text-base text-white py-5 px-12 rounded-xl bg-gray-900 tracking-wide"
@@ -55,7 +55,7 @@ const v1: React.FC = () => {
             </Tween>
           </div>
           <div className="overflow-hidden">
-            <Tween from={{ y: 100 }} to={{ opacity: 1, y: 0 }} duration={0.5} delay={0.5}>
+            <Tween from={{ opacity: 0, y: 100 }} to={{ opacity: 1, y: 0 }} duration={0.5} delay={0.5}>
               <p className="text-sm mt-6 text-gray-700">Price starts from $99.00, checkout now</p>
             </Tween>
           </div>
