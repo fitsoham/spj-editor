@@ -39,6 +39,7 @@ const SearchBox: React.FC = () => {
   const downPress = useKeyPress('ArrowDown');
   const upPress = useKeyPress('ArrowUp');
   const enterPress = useKeyPress('Enter');
+  const escPress = useKeyPress('Escape');
   const [cursor, setCursor] = useState(-1);
   const [hovered, setHovered] = useState(undefined);
 
@@ -53,6 +54,8 @@ const SearchBox: React.FC = () => {
   } = useSearch();
 
   const router = useRouter();
+
+  const goBack = () => router.back();
 
   useEffect(() => {
     if (autoCompleteResults.length && downPress) {
@@ -80,6 +83,14 @@ const SearchBox: React.FC = () => {
     }
   }, [hovered]);
 
+  useEffect(() => {
+    if (escPress) {
+      goBack()
+    }
+  }, [escPress]);
+
+
+
   const clear = () => setSearchString('');
 
   return (
@@ -87,7 +98,7 @@ const SearchBox: React.FC = () => {
       <div className="container relative mx-auto px-4">
         <button
           className="absolute rounded-b-lg right-0 top-0 bottom-0 focus:outline-none w-16 h-16 shadow-sm text-center text-gray-400 hover:text-yellow-500 bg-white border border-gray-100"
-          onClick={() => router.back()}
+          onClick={goBack}
         >
           <XIcon className="inline w-6 h-6" />
           <p className="text-xs mt-1">esc</p>
@@ -168,22 +179,22 @@ const SearchBox: React.FC = () => {
               </div>
             </div>
           ) : (
-            <EmptyState
-              title="No results"
-              message="Oops! No results match your search criteria. Please try again with different keywords."
-            />
-          )}
+              <EmptyState
+                title="No results"
+                message="Oops! No results match your search criteria. Please try again with different keywords."
+              />
+            )}
         </>
       ) : (
-        <div className="container mx-auto px-4 pb-40">
-          <p className="text-gray-400 text-xl mb-5 capitalize">Search Results for {`'${searchString}'`}</p>
-          <div className="lg:grid-cols-3 lg:gap-4 xl:grid-cols-4 xl:gap-8 grid">
-            {searchResultsList?.map((searchItem) => (
-              <DesignCard cardData={searchItem?.design} key={searchItem?.design?._id} />
-            ))}
+          <div className="container mx-auto px-4 pb-40">
+            <p className="text-gray-400 text-xl mb-5 capitalize">Search Results for {`'${searchString}'`}</p>
+            <div className="lg:grid-cols-3 lg:gap-4 xl:grid-cols-4 xl:gap-8 grid">
+              {searchResultsList?.map((searchItem) => (
+                <DesignCard cardData={searchItem?.design} key={searchItem?.design?._id} />
+              ))}
+            </div>
           </div>
-        </div>
-      )}
+        )}
     </div>
   );
 };

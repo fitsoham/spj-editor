@@ -65,7 +65,7 @@ const useSearch = (): any => {
       queryTitle = autoCompleteRaw.map((item) => item).join(',');
     }
     const currentQueryParam = router.query;
-    router.push(
+    router.replace(
       {
         pathname: router.pathname,
         query: { ...currentQueryParam, q: encodeURIComponent(queryTitle || value), search: value },
