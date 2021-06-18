@@ -1,12 +1,9 @@
 const { withSentryConfig } = require('@sentry/nextjs');
 const withOffline = require('next-offline');
 
-const prod = process.env.NODE_ENV === 'production';
-
 const moduleExports = withOffline({
   poweredByHeader: false,
   crossOrigin: 'anonymous',
-  assetPrefix: prod ? '' : '',
   images: {
     domains: ['res.cloudinary.com', 'images.unsplash.com'],
   },
