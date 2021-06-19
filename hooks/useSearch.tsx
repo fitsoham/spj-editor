@@ -151,7 +151,7 @@ const useSearch = (): any => {
       } finally {
         setTimeout(() => {
           setFetching(false);
-        }, 600)
+        }, 600);
       }
     };
     // fetch search results
