@@ -100,7 +100,7 @@ const Header: React.FC = () => {
                   <button
                     type="button"
                     className={`focus:outline-none text-gray-700 text-xs py-2 px-2 mx-2 rounded-full border hover:shadow-xl hover:border-gray-200 ${
-                      router.asPath === '/search' ? 'shadow-xl border-gray-200' : 'border-transparent'
+                      router.asPath === '/search' ? 'border-gray-200 text-red-500' : 'border-transparent'
                     }`}
                   >
                     <span className="sr-only">Search</span>

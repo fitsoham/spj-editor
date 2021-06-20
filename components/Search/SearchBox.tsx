@@ -93,15 +93,13 @@ const SearchBox: React.FC = () => {
 
   return (
     <div className="relative min-h-screen bg-gray-100">
-      <div className="container relative mx-auto px-4">
-        <button
-          className="absolute rounded-b-lg right-0 top-0 bottom-0 focus:outline-none w-16 h-16 shadow-sm text-center text-gray-400 hover:text-yellow-500 bg-white border border-gray-100"
-          onClick={goBack}
-        >
-          <XIcon className="inline w-6 h-6" />
-          <p className="text-xs mt-1">esc</p>
-        </button>
-      </div>
+      <button
+        className="absolute rounded-b-lg right-0 top-0 bottom-0 focus:outline-none w-16 h-16 text-center text-gray-400 hover:text-yellow-500 "
+        onClick={goBack}
+      >
+        <XIcon className="inline w-6 h-6" />
+        <p className="text-xs mt-1">esc</p>
+      </button>
       <div className="relative md:max-w-3xl xl:max-w-3xl mx-auto pt-12 pb-10 px-4 sm:px-6 lg:pt-16 lg:px-8">
         <AnimateBox className="entry">
           <div className="relative">
@@ -157,7 +155,9 @@ const SearchBox: React.FC = () => {
         <>
           {init === 'init' ? (
             <div className="max-w-md text-center mx-auto px-4">
-              <p className="text-gray-900">Most popular searches</p>
+              <Tween from={{ opacity: 0, y: 50 }} to={{ opacity: 1, y: 0 }} duration={1} ease="back.out(1.7)">
+                <p className="text-gray-600">Most popular searches</p>
+              </Tween>
               <div className="grid grid-cols-4 gap-x-4 mt-4">
                 <Tween
                   from={{ opacity: 0, y: 50 }}
@@ -165,21 +165,21 @@ const SearchBox: React.FC = () => {
                   duration={2}
                   ease="back.out(1.7)"
                   stagger={0.25}
-                  delay={0.5}
+                  delay={0.25}
                 >
                   {TopSearches?.map((searchItem) => {
                     return (
                       <div key={searchItem?.id} onClick={() => setSelectedSearchQuery(searchItem?.meta)}>
-                        <div className="shadow-md hover:shadow-xl next-image-fix rounded-xl cursor-pointer transition hover:-translate-y-1">
+                        <div className="overflow-hidden shadow-md hover:shadow-xl next-image-fix rounded-xl cursor-pointer border border-gray-300 transition hover:-translate-y-1">
                           <Image
                             src={searchItem?.img}
-                            className="rounded-xl object-cover"
+                            className="object-cover"
                             alt="spacejoy happy customer"
                             height="124"
                             width="124"
                           />
                         </div>
-                        <small className="capitalize mt-4">{searchItem?.title}</small>
+                        <small className="capitalize mt-6 text-gray-600">{searchItem?.title}</small>
                       </div>
                     );
                   })}
