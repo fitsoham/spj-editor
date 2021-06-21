@@ -25,13 +25,7 @@ const AnimateBox = styled.div`
   &.entry {
     opacity: 0;
     transform: translateY(20px);
-    animation: ${entry} 0.8s forwards;
-  }
-  &.details {
-    animation-delay: 550ms;
-  }
-  &.banner {
-    animation-delay: 300ms;
+    animation: ${entry} 0.5s forwards;
   }
 `;
 
@@ -129,26 +123,24 @@ const SearchBox: React.FC = () => {
           </div>
         </AnimateBox>
         <div className="relative">
-          {searchString && (
-            <div className="inset-0 absolute z-10">
-              {!!autoCompleteResults?.length && (
-                <AnimateBox className={`${searchString && 'entry'}`}>
-                  <ul className="w-full bg-white border border-gray-100 mt-2 p-4 shadow-sm rounded-xl overflow-hidden">
-                    {autoCompleteResults.map((item, i) => (
-                      <ListItem
-                        key={item.id}
-                        active={i === cursor}
-                        item={item}
-                        setSelected={setSelectedSearchQuery}
-                        setHovered={setHovered}
-                        setSearchString={setSearchString}
-                      />
-                    ))}
-                  </ul>
-                </AnimateBox>
-              )}
-            </div>
-          )}
+          <div className="inset-0 absolute z-10">
+            {!!autoCompleteResults?.length && (
+              <AnimateBox className={`${searchString && 'entry'}`}>
+                <ul className="w-full bg-white border border-gray-100 mt-2 p-4 shadow-sm rounded-xl overflow-hidden">
+                  {autoCompleteResults.map((item, i) => (
+                    <ListItem
+                      key={item.id}
+                      active={i === cursor}
+                      item={item}
+                      setSelected={setSelectedSearchQuery}
+                      setHovered={setHovered}
+                      setSearchString={setSearchString}
+                    />
+                  ))}
+                </ul>
+              </AnimateBox>
+            )}
+          </div>
         </div>
       </div>
       {searchResultsList && searchResultsList?.length === 0 ? (
