@@ -1,4 +1,7 @@
+import { ArrowNarrowRightIcon } from '@heroicons/react/outline';
+import TeamData from '@mocks/TeamData';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import { ScrollTrigger, Tween } from 'react-gsap';
 import { Controller, Scene } from 'react-scrollmagic';
@@ -22,102 +25,44 @@ const Team: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="flex">
             <div className="w-5/12">
-              <Scene duration={200} triggerHook={0.2} pin={true} enabled={true} indicators={false}>
+              <Scene duration={580} triggerHook={0.2} pin={true} enabled={true} indicators={false}>
                 <div>
                   <div className="absolute top-0 -left-8 w-28 h-28 bg-yellow-300 rounded-2xl" />
                   <BigText className="text-5xl py-10 text-gray-200">Meet Our Team</BigText>
                 </div>
               </Scene>
             </div>
-            <ScrollTrigger start="-500px center" end="300px center" scrub={0.2}>
+            <ScrollTrigger start="-500px center" end="600px center" scrub={0.5}>
               <div className="w-7/12">
-                <div className="h-full grid grid-cols-3 gap-8">
+                <div className="grid grid-cols-3 gap-8">
                   <Tween
-                    from={{ scale: 0.95, opacity: 0, y: 100 }}
+                    from={{ scale: 0.8, opacity: 0.5, y: 100 }}
                     to={{ scale: 1, opacity: 1, y: 0 }}
                     stagger={0.5}
                     duration={2}
                   >
-                    <div className="next-image-fix rounded-xl overflow-hidden">
-                      <Image
-                        className="rounded-xl filter contrast-125"
-                        src="https://res.cloudinary.com/spacejoy/image/upload/v1621832684/maria_castillero_zzcgvs.png"
-                        alt="spacejoy happy customer"
-                        height="500"
-                        width="500"
-                      />
-                    </div>
-                    <div className="next-image-fix rounded-xl overflow-hidden">
-                      <Image
-                        className="rounded-xl filter contrast-125"
-                        src="https://res.cloudinary.com/spacejoy/image/upload/c_fill,g_face,h_800,w_800/v1617713822/web/avatars/0_-_Sarah_Nelson_bq1dzz.jpg"
-                        alt="spacejoy happy customer"
-                        height="500"
-                        width="500"
-                      />
-                    </div>
-                    <div className="next-image-fix rounded-xl overflow-hidden">
-                      <Image
-                        className="rounded-xl filter contrast-125"
-                        src="https://res.cloudinary.com/spacejoy/image/upload/c_fill,g_face,h_800,w_800/v1621841011/lauren_q0btgw.jpg"
-                        alt="spacejoy happy customer"
-                        height="500"
-                        width="500"
-                      />
-                    </div>
-                    <div className="next-image-fix rounded-xl overflow-hidden">
-                      <Image
-                        className="rounded-xl filter contrast-125"
-                        src="https://res.cloudinary.com/spacejoy/image/upload/c_fill,g_face,h_800,w_800/v1621934310/casey_davis_ybo6d4.jpg"
-                        alt="spacejoy happy customer"
-                        height="500"
-                        width="500"
-                      />
-                    </div>
-                    <div className="next-image-fix rounded-xl overflow-hidden">
-                      <Image
-                        className="rounded-xl filter contrast-125"
-                        src="https://res.cloudinary.com/spacejoy/image/upload/c_fill,g_face,h_800,w_800/v1617712860/web/avatars/0_-_Kate_Harvey_pxcauc.jpg"
-                        alt="spacejoy happy customer"
-                        height="500"
-                        width="500"
-                      />
-                    </div>
-                    <div className="next-image-fix rounded-xl overflow-hidden">
-                      <Image
-                        className="rounded-xl filter contrast-125"
-                        src="https://res.cloudinary.com/spacejoy/image/upload/c_fill,g_face,h_800,w_800/v1617712377/web/avatars/Final_Edits_To_Headshots-0018_-_elisabeth_populo_kucasa.jpg"
-                        alt="spacejoy happy customer"
-                        height="500"
-                        width="500"
-                      />
-                    </div>
-                    <div className="next-image-fix rounded-xl overflow-hidden">
-                      <Image
-                        className="rounded-xl filter contrast-125"
-                        src="https://res.cloudinary.com/spacejoy/image/upload/c_fill,g_face,h_800,w_800/v1617711683/web/avatars/self_portrait_edit-0102_-_Angela_Amore_npaf3j.jpg"
-                        alt="spacejoy happy customer"
-                        height="500"
-                        width="500"
-                      />
-                    </div>
-                    <div className="next-image-fix rounded-xl overflow-hidden">
-                      <Image
-                        className="rounded-xl filter contrast-125"
-                        src="https://res.cloudinary.com/spacejoy/image/upload/c_fill,g_face,h_800,w_800/v1621832684/nathan_scheuer_x2hkbu.jpg"
-                        alt="spacejoy happy customer"
-                        height="500"
-                        width="500"
-                      />
-                    </div>
-                    <div className="next-image-fix rounded-xl overflow-hidden">
-                      <Image
-                        className="rounded-xl filter contrast-125"
-                        src="https://res.cloudinary.com/spacejoy/image/upload/c_fill,g_face,h_800,w_800/v1617712050/web/avatars/Chelsie_Somerfield_Professional_Photo_-_chelsie_somerfield_zn7pfq.jpg"
-                        alt="spacejoy happy customer"
-                        height="500"
-                        width="500"
-                      />
+                    {TeamData.map((member) => (
+                      <div className="next-image-fix rounded-xl overflow-hidden" key={member.id}>
+                        <Image
+                          className="rounded-xl filter contrast-125"
+                          src={member.thumbnail}
+                          alt="spacejoy happy customer"
+                          height="500"
+                          width="500"
+                        />
+                      </div>
+                    ))}
+                    <div>
+                      <Link href="/online-interior-designers">
+                        <a className="text-white">
+                          <div className="group w-full h-full rounded-xl overflow-hidden bg-yellow-300 flex items-end justify-end">
+                            <p className=" px-10 py-6">
+                              Full Team{' '}
+                              <ArrowNarrowRightIcon className="inline h-4 w-4 transition group-hover:translate-x-1" />
+                            </p>
+                          </div>
+                        </a>
+                      </Link>
                     </div>
                   </Tween>
                 </div>

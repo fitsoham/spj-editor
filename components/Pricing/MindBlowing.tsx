@@ -52,7 +52,7 @@ const MindBlowing: React.FC = () => {
       </svg>
       <SectionTitle
         accent="indigo"
-        title="Literally, we are mind blowing"
+        title="We are Awesome!"
         description="Pick from one of our three online interior design packages, custom-made keeping your budget, style and interior design needs in mind"
       />
       <div className="flex">

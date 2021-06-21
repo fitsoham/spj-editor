@@ -1,6 +1,7 @@
 import { ArrowNarrowRightIcon } from '@heroicons/react/outline';
 import blurredBg from '@public/images/bg-base-64';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import { Tween } from 'react-gsap';
 import styled, { keyframes } from 'styled-components';
@@ -56,8 +57,13 @@ const v1: React.FC = () => {
             </Tween>
           </div>
           <div className="overflow-hidden">
-            <Tween from={{ opacity: 0, y: 100 }} to={{ opacity: 1, y: 0 }} duration={0.5} delay={0.5}>
-              <p className="text-sm mt-6 text-gray-700">Price starts from $99.00, checkout now</p>
+            <Tween from={{ opacity: 0, y: 100 }} to={{ opacity: 1, y: 0 }} duration={0.5} delay={0.65}>
+              <p className="text-sm text-gray-700">
+                Price starts from $99.00,{' '}
+                <Link href="/pricing">
+                  <a className="text-red-500">checkout now</a>
+                </Link>
+              </p>
             </Tween>
           </div>
         </div>
