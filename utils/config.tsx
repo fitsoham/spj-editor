@@ -108,7 +108,7 @@ const company = {
 
 const internalPages = {
   InteriorDesigns: {
-    DEFAULT_PAGE_SIZE: 16,
+    DEFAULT_PAGE_SIZE: 18,
     DEFAULT_PAGINATION_BUTTON_COUNT: 5,
   },
   Collection: {

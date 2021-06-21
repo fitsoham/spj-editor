@@ -27,7 +27,7 @@ const DesignList: React.FC<DesignListInterface> = ({ feedData }) => {
   return (
     <div className="bg-white">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-4 gap-x-8 gap-y-12">
+        <div className="grid grid-cols-3 lg:gap-8 xl:gap-12">
           {isFetching && (
             <>
               {[...new Array(internalPages.InteriorDesigns.DEFAULT_PAGE_SIZE)].map((_d, _i) => (

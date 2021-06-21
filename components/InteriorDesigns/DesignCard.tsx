@@ -46,7 +46,7 @@ const DesignCard: React.FC<DesignCardInterface> = ({ cardData }) => {
           </button>
         </div>
       </div>
-      <p className="text-gray-800 font-semibold">{cardData?.name}</p>
+      <p className="text-gray-800">{cardData?.name}</p>
     </div>
   );
 };
