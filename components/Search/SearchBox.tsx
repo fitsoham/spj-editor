@@ -24,8 +24,8 @@ const entry = keyframes`
 const AnimateBox = styled.div`
   &.entry {
     opacity: 0;
-    transform: translateY(20px);
-    animation: ${entry} 0.5s forwards;
+    transform: translateY(5px);
+    animation: ${entry} 0.25s forwards;
   }
 `;
 
