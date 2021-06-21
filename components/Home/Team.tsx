@@ -25,7 +25,7 @@ const Team: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="flex">
             <div className="w-5/12">
-              <Scene duration={580} triggerHook={0.2} pin={true} enabled={true} indicators={false}>
+              <Scene duration={500} triggerHook={0.2} pin={true} enabled={true} indicators={false}>
                 <div>
                   <div className="absolute top-0 -left-8 w-28 h-28 bg-yellow-300 rounded-2xl" />
                   <BigText className="text-5xl py-10 text-gray-200">Meet Our Team</BigText>
@@ -36,9 +36,9 @@ const Team: React.FC = () => {
               <div className="w-7/12">
                 <div className="grid grid-cols-3 gap-8">
                   <Tween
-                    from={{ scale: 0.8, opacity: 0.5, y: 100 }}
+                    from={{ scale: 0.9, opacity: 0.5, y: 100 }}
                     to={{ scale: 1, opacity: 1, y: 0 }}
-                    stagger={0.5}
+                    stagger={0.2}
                     duration={2}
                   >
                     {TeamData.map((member) => (

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CollectionCardDimmer = () => {
+const CollectionCardDimmer: React.FC = () => {
   return (
     <div className="h-96 animate-pulse">
       <div className="h-3/4 bg-gray-200" />
