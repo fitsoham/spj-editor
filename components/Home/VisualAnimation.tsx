@@ -11,7 +11,7 @@ const VisualAnimation: React.FC = () => {
         height={'450'}
         width={'1896'}
       />
-      <div className="absolute inset-0 bg-gray-800 opacity-70"></div>
+      <div className="absolute inset-0 bg-gray-800 opacity-70" />
     </div>
   );
 };
