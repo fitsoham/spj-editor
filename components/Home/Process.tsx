@@ -64,10 +64,10 @@ const Process: React.FC = () => {
                 </div>
               </Tween>
               <Tween from={{ opacity: 0 }} to={{ opacity: 1 }}>
-                <div className="absolute group mx-auto inset-0 bg-gray-900 rounded-2xl flex items-center justify-center">
+                <div className="absolute mx-auto inset-0 bg-gray-900 rounded-2xl flex items-center justify-center">
                   <div>
                     <h2 className="text-9xl text-white text-center">Lets Start</h2>
-                    <div className="mt-10 text-center">
+                    <div className="mt-10 text-center group">
                       <Link href="/interior-designs">
                         <a className="shadow-sm text-gray-900 py-3 px-6 rounded-xl bg-white inline-block">
                           <ArrowRightIcon className="h-8 w-8 transition group-hover:translate-x-2" />

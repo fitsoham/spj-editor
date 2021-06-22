@@ -6,7 +6,7 @@ import Image from 'next/image';
 import React from 'react';
 
 const Slide = ({ testimonial }) => (
-  <div className="pt-24 pb-16 border-r text-center border-white px-16">
+  <div className="pt-24 pb-16 text-center px-16 bg-red-50 xl:mx-5 lg:mx-3 rounded-xl">
     <div className="flex justify-center">
       {[...new Array(5)].map((_d, i) => (
         <StarIcon key={`star-${i}`} className="w-10 h-10 text-yellow-400" />
@@ -54,7 +54,7 @@ const Testimonials = (): JSX.Element => (
       title="Hear it from our customers"
       description="Our design experts will transform any room in your home on our smart 3D desktop App. Shop handpicked products within your budget and style, directly from your room design, within Spacejoy."
     />
-    <div className="bg-red-50 relative">
+    <div className="relative">
       <Carousel centerPadding="25%" centerMode customButtons position={position.top}>
         {TestimonialData.map((testimonial) => (
           <Slide key={testimonial.id} testimonial={testimonial} />
