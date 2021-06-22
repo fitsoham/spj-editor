@@ -1,4 +1,5 @@
 import SectionTitle from '@components/Shared/SectionTitle';
+import { ArrowRightIcon } from '@heroicons/react/outline';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -14,7 +15,7 @@ const Process: React.FC = () => {
         description="Our design experts will transform any room in your home on our smart 3D desktop App. Shop handpicked products within your budget and style, directly from your room design, within Spacejoy."
       />
       <Controller>
-        <Scene duration={3500} triggerHook="onLeave" pin={true} indicators={true} offset={-80}>
+        <Scene duration={3500} triggerHook="onLeave" pin={true} indicators={false} offset={-80}>
           <Timeline
             labels={[
               {
@@ -63,24 +64,15 @@ const Process: React.FC = () => {
                 </div>
               </Tween>
               <Tween from={{ opacity: 0 }} to={{ opacity: 1 }}>
-                <div className="absolute next-image-fix mx-auto inset-0 bg-gray-900 rounded-2xl flex items-center justify-center">
+                <div className="absolute group mx-auto inset-0 bg-gray-900 rounded-2xl flex items-center justify-center">
                   <div>
                     <h2 className="text-9xl text-white text-center">Lets Start</h2>
-                    <div className="flex mx-auto max-w-xl mt-6 items-center justify-center bg-gray-500">
-                      <div className="flex-1 mr-4 text-center">
-                        <Link href="/interior-designs">
-                          <a className="shadow-sm hover:shadow-lg text-gray-900 py-3 px-6 rounded-xl bg-white tracking-wide">
-                            Explore Ideas
-                          </a>
-                        </Link>
-                      </div>
-                      <div className="flex-1 text-center">
-                        <Link href="">
-                          <a className="shadow-sm hover:shadow-lg text-white py-3 px-6 rounded-xl bg-gray-900 tracking-wide">
-                            Start Project
-                          </a>
-                        </Link>
-                      </div>
+                    <div className="mt-10 text-center">
+                      <Link href="/interior-designs">
+                        <a className="shadow-sm text-gray-900 py-3 px-6 rounded-xl bg-white inline-block">
+                          <ArrowRightIcon className="h-8 w-8 transition group-hover:translate-x-2" />
+                        </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
