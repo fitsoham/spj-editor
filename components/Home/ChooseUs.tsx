@@ -5,7 +5,6 @@ import SectionTitle from '../Shared/SectionTitle';
 const ChooseUs = (): JSX.Element => {
   return (
     <div className="relative">
-      <div className="absolute -top-14 z-1 right-24 shape-3" />
       <SectionTitle
         accent="pink"
         feature="Best Service"

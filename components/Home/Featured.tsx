@@ -1,3 +1,4 @@
+import FeaturedData from '@mocks/FeaturedData';
 import Image from 'next/image';
 import React from 'react';
 import { ScrollTrigger, Tween } from 'react-gsap';
@@ -15,7 +16,7 @@ const Featured: React.FC = () => {
       />
       <div className="container mx-auto px-4">
         <div className="-mb-72 max-w-7xl mx-auto z-10 relative">
-          <div className="bg-white p-8 shadow-lg rounded-lg">
+          <div className="bg-white p-8 shadow-lg rounded-lg border border-gray-200">
             <ScrollTrigger start="-500px center" end="-100px center">
               <div className="grid gap-8 grid-cols-4">
                 <Tween
@@ -24,70 +25,11 @@ const Featured: React.FC = () => {
                   stagger={0.5}
                   duration={1}
                 >
-                  <div className="col-span-1 flex justify-center py-0 px-8 rounded-md bg-gray-200">
-                    <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/v1610014244/shared/Brand%20logos%2007-2021/publication_LOGO-01_fohpe0.svg"
-                      alt="spacejoy happy customer"
-                      height={'130'}
-                      width={'200'}
-                    />
-                  </div>
-                  <div className="col-span-1 flex justify-center py-0 px-8 rounded-md bg-gray-200">
-                    <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/v1610014243/shared/Brand%20logos%2007-2021/publication_LOGO-03_obxond.svg"
-                      alt="spacejoy happy customer"
-                      height={'130'}
-                      width={'200'}
-                    />
-                  </div>
-                  <div className="col-span-1 flex justify-center py-0 px-8 rounded-md bg-gray-200">
-                    <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/v1610014243/shared/Brand%20logos%2007-2021/publication_LOGO-02_ogxwsc.svg"
-                      alt="spacejoy happy customer"
-                      height={'130'}
-                      width={'200'}
-                    />
-                  </div>
-                  <div className="col-span-1 flex justify-center py-0 px-8 rounded-md bg-gray-200">
-                    <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/v1610014242/shared/Brand%20logos%2007-2021/publication_LOGO-04_bj5aqr.svg"
-                      alt="spacejoy happy customer"
-                      height={'130'}
-                      width={'200'}
-                    />
-                  </div>
-                  <div className="col-span-1 flex justify-center py-0 px-8 rounded-md bg-gray-200">
-                    <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/v1610014241/shared/Brand%20logos%2007-2021/publication_LOGO-07_odqvkc.svg"
-                      alt="spacejoy happy customer"
-                      height={'130'}
-                      width={'200'}
-                    />
-                  </div>
-                  <div className="col-span-1 flex justify-center py-0 px-8 rounded-md bg-gray-200">
-                    <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/v1610014242/shared/Brand%20logos%2007-2021/publication_LOGO-04_bj5aqr.svg"
-                      alt="spacejoy happy customer"
-                      height={'130'}
-                      width={'200'}
-                    />
-                  </div>
-                  <div className="col-span-1 flex justify-center py-0 px-8 rounded-md bg-gray-200">
-                    <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/v1610014241/shared/Brand%20logos%2007-2021/publication_LOGO-07_odqvkc.svg"
-                      alt="spacejoy happy customer"
-                      height={'130'}
-                      width={'200'}
-                    />
-                  </div>
-                  <div className="col-span-1 flex justify-center py-0 px-8 rounded-md bg-gray-200">
-                    <Image
-                      src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/v1610014241/shared/Brand%20logos%2007-2021/publication_LOGO-09_dodwjx.svg"
-                      alt="spacejoy happy customer"
-                      height={'130'}
-                      width={'200'}
-                    />
-                  </div>
+                  {FeaturedData.map((item) => (
+                    <div className="col-span-1 flex justify-center py-0 px-8 rounded-md bg-gray-200" key={item.id}>
+                      <Image src={item.logo} alt="spacejoy happy customer" height={'130'} width={'200'} />
+                    </div>
+                  ))}
                 </Tween>
               </div>
             </ScrollTrigger>
@@ -98,6 +40,16 @@ const Featured: React.FC = () => {
             Asperiores.
           </p>
         </div>
+      </div>
+      <div className="relative next-image-fix">
+        <Image
+          className="filter contrast-125 object-cover"
+          src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,f_auto,q_auto,w_1896,h_759/v1622186205/spj-v2/spj-living-room_gyepig.jpg"
+          alt="spacejoy happy customer"
+          height={'450'}
+          width={'1896'}
+        />
+        <div className="absolute inset-0 bg-gray-800 opacity-70"></div>
       </div>
     </>
   );
