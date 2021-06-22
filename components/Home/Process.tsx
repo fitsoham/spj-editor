@@ -14,10 +14,19 @@ const Process: React.FC = () => {
         description="Our design experts will transform any room in your home on our smart 3D desktop App. Shop handpicked products within your budget and style, directly from your room design, within Spacejoy."
       />
       <Controller>
-        <Scene duration={2500} triggerHook={0.1} pin={true}>
-          <Timeline paused={true} offset={0.75}>
-            <div className="relative container mx-auto h-auto rounded-2xl overflow-hidden">
-              <div className="next-image-fix mx-auto inset-0 h-1/2 bg-indigo-200 rounded-2xl">
+        <Scene duration={2500} triggerHook="onLeave" pin={true} indicators={false} offset={-90}>
+          <Timeline
+            paused={true}
+            offset={0.75}
+            labels={[
+              {
+                label: 'final',
+                position: 4,
+              },
+            ]}
+          >
+            <div className="relative container mx-auto rounded-2xl shadow-xl overflow-hidden">
+              <div className="next-image-fix mx-auto inset-0 bg-indigo-200 rounded-2xl">
                 <Image
                   className="object-cover rounded-2xl"
                   src="https://res.cloudinary.com/spacejoy/image/upload/v1624342360/spj-v2/transition/hp-transformation-empty_q8w3ma.jpg"
@@ -25,8 +34,8 @@ const Process: React.FC = () => {
                   width="2200"
                 />
               </div>
-              <Tween from={{ opacity: 0, y: -20 }} to={{ opacity: 1, y: 0 }} duration={2} position="+=2">
-                <div className="absolute next-image-fix mx-auto inset-0 h-1/2 bg-pink-200 rounded-2xl">
+              <Tween from={{ opacity: 0, y: -20 }} to={{ opacity: 1, y: 0 }}>
+                <div className="absolute next-image-fix mx-auto inset-0 bg-pink-200 rounded-2xl">
                   <Image
                     className="object-cover rounded-2xl"
                     src="https://res.cloudinary.com/spacejoy/image/upload/v1624342360/spj-v2/transition/hp-transformation-scandinavian_rilssr.jpg"
@@ -35,8 +44,8 @@ const Process: React.FC = () => {
                   />
                 </div>
               </Tween>
-              <Tween from={{ opacity: 0 }} to={{ opacity: 1 }} duration={5} position="+=2">
-                <div className="absolute next-image-fix mx-auto inset-0 h-1/2 bg-yellow-200 rounded-2xl">
+              <Tween from={{ opacity: 0 }} to={{ opacity: 1 }}>
+                <div className="absolute next-image-fix mx-auto inset-0 bg-yellow-200 rounded-2xl">
                   <Image
                     className="object-cover rounded-2xl"
                     src="https://res.cloudinary.com/spacejoy/image/upload/v1624342360/spj-v2/transition/hp-transformation-modern_wqhnru.jpg"
@@ -45,8 +54,8 @@ const Process: React.FC = () => {
                   />
                 </div>
               </Tween>
-              <Tween from={{ opacity: 0 }} to={{ opacity: 1 }} position="+=2">
-                <div className="absolute next-image-fix mx-auto inset-0 h-1/2 bg-blue-200 rounded-2xl">
+              <Tween from={{ opacity: 0 }} to={{ opacity: 1 }}>
+                <div className="absolute next-image-fix mx-auto inset-0 bg-blue-200 rounded-2xl">
                   <Image
                     className="object-cover rounded-2xl"
                     src="https://res.cloudinary.com/spacejoy/image/upload/v1624342360/spj-v2/transition/hp-transformation-industrial_npa9wm.jpg"
@@ -55,7 +64,7 @@ const Process: React.FC = () => {
                   />
                 </div>
               </Tween>
-              <Tween from={{ opacity: 0 }} to={{ opacity: 1 }} position="+=2">
+              <Tween from={{ opacity: 0 }} to={{ opacity: 1 }}>
                 <div className="absolute next-image-fix mx-auto inset-0 bg-gray-500 rounded-2xl flex items-center justify-center">
                   <div>
                     <h2 className="text-7xl text-white text-center">Lets Start</h2>
@@ -78,6 +87,7 @@ const Process: React.FC = () => {
                   </div>
                 </div>
               </Tween>
+              <Tween position="final" />
             </div>
           </Timeline>
         </Scene>
