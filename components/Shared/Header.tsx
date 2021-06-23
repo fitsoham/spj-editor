@@ -16,7 +16,10 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <a className="text-sm py-3 px-2.5 bg-gray-200 inline-block absolute top-0 left-0 focus:z-50" href="#main">
+      <a
+        className="text-sm py-3 px-2.5 bg-gray-200 inline-block absolute top-0 left-0 focus:z-50 focus:ring-1 focus:ring-gray-900 focus:outline-none"
+        href="#main"
+      >
         Skip to content
       </a>
       <header className={`bg-white sticky top-0 z-50`}>
