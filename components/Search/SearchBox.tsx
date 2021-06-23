@@ -87,17 +87,10 @@ const SearchBox: React.FC = () => {
 
   return (
     <div className="relative min-h-screen bg-gray-100">
-      <button
-        className="absolute rounded-b-lg right-0 top-0 bottom-0 focus:outline-none w-16 h-16 text-center text-gray-400 hover:text-yellow-500 "
-        onClick={goBack}
-      >
-        <XIcon className="inline w-6 h-6" />
-        <p className="text-xs mt-1">esc</p>
-      </button>
       <div className="relative md:max-w-3xl xl:max-w-3xl mx-auto pt-12 pb-10 px-4 sm:px-6 lg:pt-16 lg:px-8">
         <AnimateBox className="entry">
           <div className="relative">
-            <div className="absolute left-6 top-0 bottom-0 flex justify-center items-center">
+            <div className="absolute left-6 inset-y-0 flex justify-center items-center">
               <SearchIcon className="w-4 h-4 text-gray-900" />
             </div>
             <input
@@ -111,11 +104,11 @@ const SearchBox: React.FC = () => {
               value={searchString}
               className="py-5 pl-14 pr-28 outline-none block w-full caret-yellow-500 shadow-sm focus:shadow-lg focus:ring-transparent border border-gray-100 focus:border-gray-100 rounded-xl capitalize"
             />
-            <div className="absolute right-20 top-0 bottom-0 flex justify-center items-center">
+            <div className="absolute right-20 inset-y-0 flex justify-center items-center">
               {isFetching && <RefreshIcon className="w-4 h-4 text-gray-500 animate-spin" />}
             </div>
             <button
-              className="absolute right-0 top-0 bottom-0 text-gray-500 hover:text-yellow-500 focus:outline-none w-16 bg-gray-50 flex justify-center text-center items-center border border-gray-100 rounded-xl"
+              className="absolute right-0 inset-y-0 text-gray-500 hover:text-yellow-500 w-16 bg-gray-50 flex justify-center text-center items-center border border-gray-100 rounded-xl"
               onClick={clear}
             >
               <span className="text-xs">clear</span>
@@ -195,6 +188,13 @@ const SearchBox: React.FC = () => {
           </div>
         </div>
       )}
+      <button
+        className="absolute right-0 inset-y-0 w-16 h-16 text-center text-gray-400 hover:text-yellow-500 "
+        onClick={goBack}
+      >
+        <XIcon className="inline w-6 h-6" />
+        <p className="text-xs mt-1">esc</p>
+      </button>
     </div>
   );
 };

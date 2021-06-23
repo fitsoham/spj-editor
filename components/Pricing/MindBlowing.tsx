@@ -76,7 +76,7 @@ const MindBlowing: React.FC = () => {
               />
             </div>
           </AnimateBox>
-          <div className="absolute shape-2 top-0 -ml-14 -mt-11" />
+          <div className="absolute -top-12 w-16 h-24 bg-yellow-300" />
         </div>
         <div className="relative h-full px-12 max-w-lg justify-center self-center">
           <div>

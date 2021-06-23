@@ -67,7 +67,7 @@ const Process: React.FC = () => {
                       <h2 className="text-9xl text-white text-center">Lets Start</h2>
                       <div className="mt-10 text-center group">
                         <Link href="/interior-designs">
-                          <a className="shadow-sm text-gray-500 py-3 px-6 rounded-full bg-white inline-block">
+                          <a className="shadow-sm text-gray-500 py-2 px-8 rounded-full bg-white inline-block focus:ring-1 focus:ring-gray-900 focus:outline-none">
                             <ArrowRightIcon className="h-8 w-8 transition group-hover:translate-x-2" />
                           </a>
                         </Link>

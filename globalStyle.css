@@ -16,34 +16,6 @@ h3 {
   font-family: 'Poppins', sans-serif;
 }
 
-.shape-1 {
-  background-image: url(/images/shapes/3139839-08.svg);
-  width: 100px;
-  height: 100px;
-  background-repeat: no-repeat;
-}
-
-.shape-2 {
-  background-image: url(/images/shapes/shape-2.svg);
-  width: 100px;
-  height: 100px;
-  background-repeat: no-repeat;
-}
-
-.shape-3 {
-  background-image: url(/images/shapes/3139839-28.svg);
-  width: 40px;
-  height: 100px;
-  background-repeat: no-repeat;
-}
-
-.shape-4 {
-  background-image: url(/images/shapes/3139839-02.svg);
-  width: 30px;
-  height: 30px;
-  background-repeat: no-repeat;
-}
-
 .next-image-fix > div {
   display: block !important;
 }
