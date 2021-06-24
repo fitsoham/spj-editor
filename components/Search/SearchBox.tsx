@@ -64,10 +64,11 @@ const SearchBox: React.FC = () => {
   }, [upPress]);
 
   useEffect(() => {
-    if (autoCompleteResults.length && enterPress) {
+    if (autoCompleteResults?.length && enterPress) {
       // setSelected(autoCompleteResults[cursor]);
-      setSelectedSearchQuery(autoCompleteResults[cursor]);
-      setSearchString(autoCompleteResults[cursor]?.value);
+      const indexVal = cursor === -1 ? (autoCompleteResults?.length - 1) : cursor;
+      setSelectedSearchQuery(autoCompleteResults[indexVal]);
+      setSearchString(autoCompleteResults[indexVal]?.value);
     }
   }, [cursor, enterPress]);
 
@@ -172,22 +173,22 @@ const SearchBox: React.FC = () => {
               </div>
             </div>
           ) : (
-            <EmptyState
-              title="No results"
-              message="Oops! No results match your search criteria. Please try again with different keywords."
-            />
-          )}
+              <EmptyState
+                title="No results"
+                message="Oops! No results match your search criteria. Please try again with different keywords."
+              />
+            )}
         </>
       ) : (
-        <div className="container mx-auto px-4 pb-40">
-          <p className="text-gray-400 text-xl mb-5 capitalize">Search Results</p>
-          <div className="lg:grid-cols-3 lg:gap-4 xl:grid-cols-4 xl:gap-8 grid">
-            {searchResultsList?.map((searchItem) => (
-              <DesignCard cardData={searchItem?.design} key={searchItem?.design?._id} />
-            ))}
+          <div className="container mx-auto px-4 pb-40">
+            <p className="text-gray-400 text-xl mb-5 capitalize">Search Results</p>
+            <div className="lg:grid-cols-3 lg:gap-4 xl:grid-cols-4 xl:gap-8 grid">
+              {searchResultsList?.map((searchItem) => (
+                <DesignCard cardData={searchItem?.design} key={searchItem?.design?._id} />
+              ))}
+            </div>
           </div>
-        </div>
-      )}
+        )}
       <button
         className="absolute right-0 inset-y-0 w-16 h-16 text-center text-gray-400 hover:text-yellow-500 focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
         onClick={goBack}
