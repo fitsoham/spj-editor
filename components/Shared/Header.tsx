@@ -25,15 +25,13 @@ const Header: React.FC = () => {
       <header className={`bg-white sticky top-0 z-50`}>
         <div className="container px-4 mx-auto">
           <div className="h-20 flex items-center">
-            <div className="">
-              <Link href="/">
-                <a className="focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-900 focus:outline-none inline-block rounded-md mr-10">
-                  <div className="next-image-fix mr-1">
-                    <Image src="/logo.svg" alt="spacejoy Logo" height={'34'} width={'129'} />
-                  </div>
-                </a>
-              </Link>
-            </div>
+            <Link href="/">
+              <a className="focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-900 focus:outline-none inline-block rounded-md mr-10">
+                <div className="next-image-fix mr-1">
+                  <Image src="/logo.svg" alt="spacejoy Logo" height={'34'} width={'129'} />
+                </div>
+              </a>
+            </Link>
             <div className="flex-1">
               <nav aria-label="Primary">
                 <ul>

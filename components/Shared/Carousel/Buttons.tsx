@@ -36,7 +36,7 @@ interface CarouselNavButton {
 const CarouselNavButton: React.FC<CarouselNavButton> = ({ onClick, flow }) => {
   return (
     <Controller>
-      <Scene classToggle="entry" triggerHook={0.75} indicators={false} reverse={false}>
+      <Scene classToggle="entry" triggerHook={1} indicators={false} reverse={false}>
         <AnimateBox className={`${flow === 'left' ? 'justify-self-end' : 'justify-self-start'}`}>
           <button
             className="relative z-10 lg:h-24 lg:w-24 h-20 w-20 bg-white shadow-lg border border-bg-50 transition hover:shadow-sm rounded-2xl flex items-center justify-center hover:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none rounded-md px-1"

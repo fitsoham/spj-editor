@@ -55,14 +55,14 @@ const SubNav = ({ subNavState, closeSubNav }: { subNavState: boolean; closeSubNa
                         </p>
                         <button
                           type="button"
-                          className="shadow-xs hover:shadow-md text-xs text-white py-2 px-5 rounded-full bg-gray-900 tracking-wide"
+                          className="shadow-xs hover:shadow-md text-xs text-white py-2 px-5 rounded-full bg-gray-900 tracking-wide focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
                           onClick={closeSubNav}
                         >
                           Read my story
                         </button>
                         <button
                           type="button"
-                          className="text-gray-700 text-xs py-2 px-5 ml-4 rounded-full border border-gray-600 hover:bg-gray-50 tracking-wide"
+                          className="text-gray-700 text-xs py-2 px-5 ml-4 rounded-full border border-gray-600 hover:bg-gray-50 tracking-wide focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
                           onClick={closeSubNav}
                         >
                           Read all stories

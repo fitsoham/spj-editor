@@ -19,3 +19,7 @@ h3 {
 .next-image-fix > div {
   display: block !important;
 }
+
+.min-h-free {
+  min-height: calc(100vh - 125px);
+}

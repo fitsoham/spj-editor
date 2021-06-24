@@ -86,7 +86,7 @@ const SearchBox: React.FC = () => {
   const clear = () => setSearchString('');
 
   return (
-    <div className="relative min-h-screen bg-gray-100">
+    <div className="relative min-h-free bg-gray-100">
       <div className="relative md:max-w-3xl xl:max-w-3xl mx-auto pt-12 pb-10 px-4 sm:px-6 lg:pt-16 lg:px-8">
         <AnimateBox className="entry">
           <div className="relative">
@@ -108,7 +108,7 @@ const SearchBox: React.FC = () => {
               {isFetching && <RefreshIcon className="w-4 h-4 text-gray-500 animate-spin" />}
             </div>
             <button
-              className="absolute right-0 inset-y-0 text-gray-500 hover:text-yellow-500 w-16 bg-gray-50 flex justify-center text-center items-center border border-gray-100 rounded-xl"
+              className="absolute right-0 inset-y-0 text-gray-500 hover:text-yellow-500 w-16 bg-gray-50 flex justify-center text-center items-center border border-gray-100 rounded-xl focus:ring-1 focus:ring-gray-600 focus:outline-none"
               onClick={clear}
             >
               <span className="text-xs">clear</span>
@@ -141,7 +141,7 @@ const SearchBox: React.FC = () => {
           {init === 'init' ? (
             <div className="max-w-md text-center mx-auto px-4">
               <Tween from={{ opacity: 0, y: 50 }} to={{ opacity: 1, y: 0 }} duration={1} ease="back.out(1.7)">
-                <p className="text-gray-600">Most popular searches</p>
+                <p className="text-gray-500">Most popular searches</p>
               </Tween>
               <div className="grid grid-cols-4 gap-x-4 mt-4">
                 <Tween
@@ -164,7 +164,7 @@ const SearchBox: React.FC = () => {
                             width="124"
                           />
                         </div>
-                        <small className="capitalize mt-6 text-gray-600">{searchItem?.title}</small>
+                        <small className="capitalize mt-6 text-gray-500">{searchItem?.title}</small>
                       </div>
                     );
                   })}
@@ -189,7 +189,7 @@ const SearchBox: React.FC = () => {
         </div>
       )}
       <button
-        className="absolute right-0 inset-y-0 w-16 h-16 text-center text-gray-400 hover:text-yellow-500 "
+        className="absolute right-0 inset-y-0 w-16 h-16 text-center text-gray-400 hover:text-yellow-500 focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
         onClick={goBack}
       >
         <XIcon className="inline w-6 h-6" />

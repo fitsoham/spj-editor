@@ -28,7 +28,7 @@ const Team: React.FC = () => {
               <Scene duration={500} triggerHook={0.2} pin={true} enabled={true} indicators={false}>
                 <div>
                   <div className="absolute top-0 -left-8 w-28 h-28 bg-yellow-300 rounded-2xl" />
-                  <BigText className="text-5xl py-10 text-gray-200">Meet Our Team</BigText>
+                  <BigText className="text-5xl py-10 text-gray-300">Meet Our Team</BigText>
                 </div>
               </Scene>
             </div>

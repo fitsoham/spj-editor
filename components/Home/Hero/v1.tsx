@@ -31,7 +31,7 @@ const AnimateBox = styled.div`
 const v1: React.FC = () => {
   return (
     <div className="container mx-auto px-4">
-      <div className="grid gap-14 grid-cols-4 items-center">
+      <div className="grid gap-12 xl:gap-14 grid-cols-4 items-center">
         <div>
           <div className="overflow-hidden">
             <Tween from={{ opacity: 0, y: 100 }} to={{ opacity: 1, y: 0 }} duration={0.75}>
@@ -74,14 +74,14 @@ const v1: React.FC = () => {
             <div className="relative overflow-hidden rounded-2xl">
               <div className="next-image-fix filter blur-sm bg-gray-100">
                 <Image
-                  className="object-cover "
+                  className="object-cover"
                   src={blurredBg}
                   alt="spacejoy happy customer"
                   height={'700'}
                   width={'1114'}
                 />
               </div>
-              <div className="absolute top-0 left-0 right-0 bottom-0">
+              <div className="absolute inset-0">
                 <Image
                   className="object-cover"
                   src="https://res.cloudinary.com/spacejoy/image/upload/c_scale,h_1050,w_1671/v1622172527/spj-v2/spj-happy-customer_ahkoxm.jpg"

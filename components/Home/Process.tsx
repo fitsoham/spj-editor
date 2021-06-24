@@ -25,7 +25,7 @@ const Process: React.FC = () => {
                 },
                 {
                   label: 'final',
-                  position: 4,
+                  position: 6,
                 },
               ]}
               target={
@@ -34,7 +34,7 @@ const Process: React.FC = () => {
                     <Image
                       className="object-cover rounded-2xl"
                       src="https://res.cloudinary.com/spacejoy/image/upload/v1624342360/spj-v2/transition/hp-transformation-empty_q8w3ma.jpg"
-                      height="900"
+                      height="800"
                       width="1700"
                     />
                   </div>
@@ -42,7 +42,7 @@ const Process: React.FC = () => {
                     <Image
                       className="object-cover rounded-2xl"
                       src="https://res.cloudinary.com/spacejoy/image/upload/v1624342360/spj-v2/transition/hp-transformation-scandinavian_rilssr.jpg"
-                      height="900"
+                      height="800"
                       width="1700"
                     />
                   </div>
@@ -50,7 +50,7 @@ const Process: React.FC = () => {
                     <Image
                       className="object-cover rounded-2xl"
                       src="https://res.cloudinary.com/spacejoy/image/upload/v1624342360/spj-v2/transition/hp-transformation-modern_wqhnru.jpg"
-                      height="900"
+                      height="800"
                       width="1700"
                     />
                   </div>
@@ -58,7 +58,7 @@ const Process: React.FC = () => {
                     <Image
                       className="object-cover rounded-2xl"
                       src="https://res.cloudinary.com/spacejoy/image/upload/v1624342360/spj-v2/transition/hp-transformation-industrial_npa9wm.jpg"
-                      height="900"
+                      height="800"
                       width="1700"
                     />
                   </div>
