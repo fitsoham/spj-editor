@@ -15,7 +15,7 @@ const Process: React.FC = () => {
         description="Our design experts will transform any room in your home on our smart 3D desktop App. Shop handpicked products within your budget and style, directly from your room design, within Spacejoy."
       />
       <Controller>
-        <div className="container mx-auto px-4">
+        <div className="relative container mx-auto px-4">
           <Scene duration={3500} triggerHook="onLeave" pin={true} indicators={false} offset={-80}>
             <Timeline
               labels={[
