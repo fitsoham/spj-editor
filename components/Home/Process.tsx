@@ -1,5 +1,5 @@
 import SectionTitle from '@components/Shared/SectionTitle';
-import { ArrowRightIcon } from '@heroicons/react/outline';
+import { ArrowDownIcon, ArrowRightIcon } from '@heroicons/react/outline';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -15,7 +15,7 @@ const Process: React.FC = () => {
         description="Our design experts will transform any room in your home on our smart 3D desktop App. Shop handpicked products within your budget and style, directly from your room design, within Spacejoy."
       />
       <Controller>
-        <div className="relative container mx-auto px-4 rounded-2xl">
+        <div className="container mx-auto px-4">
           <Scene duration={3500} triggerHook="onLeave" pin={true} indicators={false} offset={-80}>
             <Timeline
               labels={[
@@ -25,7 +25,7 @@ const Process: React.FC = () => {
                 },
                 {
                   label: 'final',
-                  position: 6,
+                  position: 5,
                 },
               ]}
               target={
@@ -34,15 +34,18 @@ const Process: React.FC = () => {
                     <Image
                       className="object-cover rounded-2xl"
                       src="https://res.cloudinary.com/spacejoy/image/upload/v1624342360/spj-v2/transition/hp-transformation-empty_q8w3ma.jpg"
-                      height="800"
+                      height="850"
                       width="1700"
                     />
+                    <div className="absolute w-full">
+                      <ArrowDownIcon className="animate-bounce h-6 w-6 mt-4 mx-auto text-gray-300" />
+                    </div>
                   </div>
                   <div className="absolute next-image-fix mx-auto inset-0 bg-pink-200 rounded-2xl">
                     <Image
                       className="object-cover rounded-2xl"
                       src="https://res.cloudinary.com/spacejoy/image/upload/v1624342360/spj-v2/transition/hp-transformation-scandinavian_rilssr.jpg"
-                      height="800"
+                      height="850"
                       width="1700"
                     />
                   </div>
@@ -50,7 +53,7 @@ const Process: React.FC = () => {
                     <Image
                       className="object-cover rounded-2xl"
                       src="https://res.cloudinary.com/spacejoy/image/upload/v1624342360/spj-v2/transition/hp-transformation-modern_wqhnru.jpg"
-                      height="800"
+                      height="850"
                       width="1700"
                     />
                   </div>
@@ -58,7 +61,7 @@ const Process: React.FC = () => {
                     <Image
                       className="object-cover rounded-2xl"
                       src="https://res.cloudinary.com/spacejoy/image/upload/v1624342360/spj-v2/transition/hp-transformation-industrial_npa9wm.jpg"
-                      height="800"
+                      height="850"
                       width="1700"
                     />
                   </div>
