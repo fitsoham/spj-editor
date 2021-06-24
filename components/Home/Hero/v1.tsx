@@ -31,8 +31,8 @@ const AnimateBox = styled.div`
 const v1: React.FC = () => {
   return (
     <div className="container mx-auto px-4">
-      <div className="grid gap-12 xl:gap-14 grid-cols-4 items-center">
-        <div>
+      <div className="flex items-center">
+        <div className="flex-1 w-1/3 lg:w-1/4 mr-8 xl:mr-16">
           <div className="overflow-hidden">
             <Tween from={{ opacity: 0, y: 100 }} to={{ opacity: 1, y: 0 }} duration={0.75}>
               <h1 className="lg:text-3xl xl:text-5xl mb-4 lg:semibold xl:font-extrabold tracking-tight">Live in joy</h1>
@@ -49,7 +49,7 @@ const v1: React.FC = () => {
             <Tween from={{ opacity: 0, y: 100 }} to={{ opacity: 1, y: 0 }} duration={0.5} delay={0.5}>
               <button
                 type="button"
-                className="group overflow-hidden shadow-sm hover:shadow-lg text-base text-white py-5 px-12 rounded-xl bg-gray-900 tracking-wide focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+                className="group overflow-hidden shadow-sm hover:shadow-lg text-base text-white py-3 xl:py-5 px-4 xl:px-10 rounded-xl bg-gray-900 tracking-wide focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
               >
                 Start Project Now{' '}
                 <ArrowNarrowRightIcon className="inline h-4 w-4 transition group-hover:translate-x-1" />
@@ -69,7 +69,7 @@ const v1: React.FC = () => {
             </Tween>
           </div>
         </div>
-        <div className="col-start-2 col-end-5">
+        <div className="w-2/3 lg:w-3/4">
           <AnimateBox className="banner">
             <div className="relative overflow-hidden rounded-2xl">
               <div className="next-image-fix filter blur-sm bg-gray-100">

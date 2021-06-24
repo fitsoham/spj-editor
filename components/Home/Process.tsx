@@ -16,7 +16,7 @@ const Process: React.FC = () => {
       />
       <Controller>
         <div className="relative container mx-auto px-4">
-          <Scene duration={3500} triggerHook="onLeave" pin={true} indicators={false} offset={-80}>
+          <Scene duration={3000} triggerHook="onLeave" pin={true} indicators={false} offset={-80}>
             <Timeline
               labels={[
                 {
@@ -38,7 +38,7 @@ const Process: React.FC = () => {
                       width="1700"
                     />
                     <div className="absolute w-full">
-                      <ArrowDownIcon className="animate-bounce h-6 w-6 mt-4 mx-auto text-gray-300" />
+                      <ArrowDownIcon className="animate-bounce h-6 w-6 mt-8 mx-auto text-gray-500" />
                     </div>
                   </div>
                   <div className="absolute next-image-fix mx-auto inset-0 bg-pink-200 rounded-2xl">

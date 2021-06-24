@@ -14,7 +14,7 @@ const CollectionCard: React.FC<CollectionCardInterface> = ({ cardData, inset }) 
   return (
     <li>
       <Link href={`/collection/${cardData?.slug}`}>
-        <a>
+        <a className="rounded-xl inline-block focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none">
           <div className="group next-image-fix rounded-xl relative overflow-hidden bg-gray-200 transition-all transform duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-300">
             <Image
               className="rounded-xl object-cover"

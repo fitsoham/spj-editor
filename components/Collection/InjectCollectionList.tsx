@@ -89,7 +89,7 @@ const CollectionList: React.FC<DesignListInterface> = ({ feedData }) => {
             </div>
             <div className="text-right flex-1">
               <Link href="/collection">
-                <a className="text-sm hover:text-red-500">
+                <a className="text-sm hover:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none rounded-md px-1">
                   See All <ArrowRightIcon className="inline w-4 h-4" />
                 </a>
               </Link>

@@ -56,7 +56,7 @@ const Team: React.FC = () => {
                       <Link href="/online-interior-designers">
                         <a className="text-white">
                           <div className="group w-full h-full rounded-xl overflow-hidden bg-yellow-300 flex items-end justify-end">
-                            <p className=" px-10 py-6 text-5xl font-bold">
+                            <p className=" px-10 py-6 text-3xl xl:text-5xl font-bold">
                               Team{' '}
                               <ArrowNarrowRightIcon className="inline h-8 w-8 transition group-hover:translate-x-1" />
                             </p>
