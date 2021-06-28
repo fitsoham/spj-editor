@@ -38,7 +38,7 @@ export default class MyDocument extends Document {
             type="text/css"
             href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
           />
-          <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js" noModule />
+          <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
         </Head>
         <body>
           <Main />
