@@ -1,4 +1,3 @@
-import MindBlowing from '@components/Pricing/MindBlowing';
 import Packages from '@components/Pricing/Packages';
 import { PricingData } from '@components/Pricing/PricingTypes';
 import Layout from '@components/Shared/Layout';
@@ -9,8 +8,11 @@ import { publicRoutes } from '@utils/constants/api';
 import fetcher from '@utils/fetcher';
 import { PricingPageSEO } from '@utils/SEO';
 import { InferGetStaticPropsType } from 'next';
+import dynamic from 'next/dynamic';
 import React from 'react';
 import PackagesAdvantages from '../components/Pricing/PackagesAdvantages';
+
+const DynamicMindBlowingWithNoSSR = dynamic(() => import('@components/Pricing/MindBlowing'), { ssr: false });
 
 export const pricing = ({ pricingData }: InferGetStaticPropsType<typeof getStaticProps>): JSX.Element => {
   const seoTitle = `Online Interior Design Packages Starting at ${pricingData[0]?.price?.value} on ${company.product} | Start a Project`;
@@ -30,7 +32,7 @@ export const pricing = ({ pricingData }: InferGetStaticPropsType<typeof getStati
         <Layout.Banner />
         <Layout.Header />
         <Layout.Body>
-          <MindBlowing />
+          <DynamicMindBlowingWithNoSSR />
           <Packages pricingData={pricingData} />
           <PackagesAdvantages />
           <PreFooter />
