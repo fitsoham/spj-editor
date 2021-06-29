@@ -1,4 +1,4 @@
-import { Advantage, ChooseUs, Featured, Hero1, Testimonials } from '@components/Home';
+import { Advantage, ChooseUs, Hero1, Testimonials } from '@components/Home';
 import Layout from '@components/Shared/Layout';
 import PreFooter from '@components/Shared/PreFooter';
 import SEOWrapper from '@components/Shared/SEO/SEOWrapper';
@@ -8,6 +8,7 @@ import React from 'react';
 
 const DynamicProcessWithNoSSR = dynamic(() => import('@components/Home/Process'), { ssr: false });
 const DynamicTeamWithNoSSR = dynamic(() => import('@components/Home/Team'), { ssr: false });
+const DynamicFeaturedWithNoSSR = dynamic(() => import('@components/Home/Featured'), { ssr: false });
 const DynamicOutputWithNoSSR = dynamic(() => import('@components/Home/Output'), { ssr: false });
 
 export const Home = (): JSX.Element => (
@@ -24,7 +25,7 @@ export const Home = (): JSX.Element => (
         <Testimonials />
         <Advantage />
         <DynamicOutputWithNoSSR />
-        <Featured />
+        <DynamicFeaturedWithNoSSR />
         <PreFooter />
       </Layout.Body>
       <Layout.Footer />
