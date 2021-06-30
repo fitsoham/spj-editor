@@ -15,7 +15,7 @@ export interface DesignCardInterface {
 const DesignCard: React.FC<DesignCardInterface> = ({ cardData }) => {
   return (
     <div className="cursor-pointer">
-      <div className="next-image-fix rounded-xl overflow-hidden relative border border-gray-200">
+      <div className="next-image-fix rounded-lg overflow-hidden relative border border-gray-200">
         <div className="absolute inset-0 bg-gray-200 animate-pulse" />
         <Image
           className="object-cover transition-transform duration-700 transform hover:scale-105"
@@ -26,8 +26,9 @@ const DesignCard: React.FC<DesignCardInterface> = ({ cardData }) => {
         />
       </div>
       <div className="flex items-center my-2">
-        <div className="flex-1">
+        <div className="flex-1 mr-2">
           <p className="text-gray-500 text-sm capitalize">{cardData?.room?.roomType}</p>
+          <p className="text-gray-800 mt-1">{cardData?.name}</p>
         </div>
         <div>
           <button
@@ -35,18 +36,17 @@ const DesignCard: React.FC<DesignCardInterface> = ({ cardData }) => {
             className="focus:outline-none text-gray-700 text-xs py-2 px-2 rounded-full hover:shadow-sm hover:bg-gray-100"
           >
             <span className="sr-only">Like</span>
-            <HeartIcon className="w-4 h-4" />
+            <HeartIcon className="w-5 h-5" />
           </button>
           <button
             type="button"
             className="focus:outline-none text-gray-700 text-xs py-2 px-2 rounded-full hover:shadow-sm hover:bg-gray-100"
           >
             <span className="sr-only">Share</span>
-            <ShareIcon className="w-4 h-4" />
+            <ShareIcon className="w-5 h-5" />
           </button>
         </div>
       </div>
-      <p className="text-gray-800">{cardData?.name}</p>
     </div>
   );
 };

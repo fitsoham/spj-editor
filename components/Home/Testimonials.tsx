@@ -13,7 +13,7 @@ const Slide = ({ testimonial }) => (
       ))}
     </div>
     <blockquote className="mt-6 md:flex-grow md:flex md:flex-col">
-      <h3 className="text-2xl text-gray-800">{testimonial?.shortDescription}</h3>
+      <h3 className="text-2xl text-gray-800 max-w-3xl mx-auto">{testimonial?.shortDescription}</h3>
       <div className="relative md:flex-grow">
         <svg
           className="absolute top-3 left-0 transform -translate-x-3 -translate-y-2 h-8 w-8 text-red-300"
@@ -55,7 +55,7 @@ const Testimonials = (): JSX.Element => (
       description="Our design experts will transform any room in your home on our smart 3D desktop App. Shop handpicked products within your budget and style, directly from your room design, within Spacejoy."
     />
     <div className="relative">
-      <Carousel centerPadding="25%" centerMode customButtons position={position.top}>
+      <Carousel centerPadding="20%" centerMode customButtons position={position.top}>
         {TestimonialData.map((testimonial) => (
           <Slide key={testimonial.id} testimonial={testimonial} />
         ))}

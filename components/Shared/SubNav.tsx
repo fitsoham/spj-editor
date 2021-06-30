@@ -28,7 +28,7 @@ const SubNav = ({ subNavState, closeSubNav }: { subNavState: boolean; closeSubNa
             leaveFrom="opacity-100 translate-y-0"
             leaveTo="opacity-0 -translate-y-60"
           >
-            <div className="w-full overflow-hidden relative top-20 py-16 text-left align-middle transition-all transform bg-white shadow-xl">
+            <div className="w-full overflow-hidden relative top-20 py-16 text-left bg-white shadow-xl">
               <div className="container mx-auto px-4">
                 <Dialog.Title as="h3" className="text-3xl mb-6">
                   Spacejoy Stories
@@ -55,14 +55,14 @@ const SubNav = ({ subNavState, closeSubNav }: { subNavState: boolean; closeSubNa
                         </p>
                         <button
                           type="button"
-                          className="shadow-xs hover:shadow-md text-xs text-white py-2 px-5 rounded-full bg-gray-900 tracking-wide focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+                          className="shadow-xs hover:shadow-md text-xs text-white py-2 px-5 rounded-full bg-gray-900 tracking-wide focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
                           onClick={closeSubNav}
                         >
                           Read my story
                         </button>
                         <button
                           type="button"
-                          className="text-gray-700 text-xs py-2 px-5 ml-4 rounded-full border border-gray-600 hover:bg-gray-50 tracking-wide focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+                          className="text-gray-700 text-xs py-2 px-5 ml-4 rounded-full border border-gray-600 hover:bg-gray-50 tracking-wide focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
                           onClick={closeSubNav}
                         >
                           Read all stories

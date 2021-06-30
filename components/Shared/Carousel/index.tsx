@@ -52,7 +52,7 @@ const Carousel: React.FC<CarouselInterface> = ({ children, centerPadding, center
   const sliderRef = useRef<Slider>(null);
 
   const renderButtons = () => (
-    <div className="grid gap-8 grid-cols-2 mx-auto w-full absolute lg:-top-12 -top-10">
+    <div className="grid gap-8 grid-cols-2 mx-auto w-full absolute -top-10 lg:-top-14 ">
       <CarouselNavButton flow="left" onClick={() => sliderRef?.current?.slickPrev()} />
       <CarouselNavButton flow="right" onClick={() => sliderRef?.current?.slickNext()} />
     </div>
