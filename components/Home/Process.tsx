@@ -16,6 +16,26 @@ const Process: React.FC = () => {
       />
       <Controller>
         <div className="relative container mx-auto px-4">
+          <div className="flex space-x-10 max-w-5xl mx-auto mb-28">
+            <div className="flex-1">
+              <h3 className="text-lg mb-2 text-gray-900">1. Tell us what you like </h3>
+              <p className="text-gray-600">
+                Go through our onboarding questionnaire and let us know what interior style suits you.
+              </p>
+            </div>
+            <div className="flex-1">
+              <h3 className="text-lg mb-2 text-gray-900">2. Upload your floor plan </h3>
+              <p className="text-gray-600">
+                Based on your floor plan, we generate a 3D model of your apartment and generate realistic renderings.
+              </p>
+            </div>
+            <div className="flex-1">
+              <h3 className="text-lg mb-2 text-gray-900">3. Interiors as a subscription</h3>
+              <p className="text-gray-600">
+                Happy with our proposal? Lay back and relax! We’ll ship the furniture and assemble it for you.
+              </p>
+            </div>
+          </div>
           <Scene duration={3000} triggerHook="onLeave" pin={true} indicators={false} offset={-80}>
             <Timeline
               labels={[

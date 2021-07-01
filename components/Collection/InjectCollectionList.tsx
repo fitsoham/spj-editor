@@ -96,7 +96,7 @@ const CollectionList: React.FC<DesignListInterface> = ({ feedData }) => {
             </div>
           </div>
           <div className="relative">
-            <AnimateBox className="grid grid-cols-6 gap-8 my-6">
+            <AnimateBox className="grid grid-cols-6 gap-4 xl:gap-4 2xl:gap-4 xl:my-4 2xl:my-6">
               {list.map((collection) => (
                 <CollectionCard key={collection?._id} cardData={collection} inset />
               ))}

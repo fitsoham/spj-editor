@@ -40,7 +40,7 @@ const SubNav = ({ subNavState, closeSubNav }: { subNavState: boolean; closeSubNa
                         <div className="next-image-fix bg-gray-200 rounded-xl">
                           <Image
                             className="rounded-xl filter contrast-125"
-                            src="https://res.cloudinary.com/spacejoy/image/upload/c_fill,g_face,h_300,w_300/v1617712377/web/avatars/Final_Edits_To_Headshots-0018_-_elisabeth_populo_kucasa.jpg"
+                            src="https://res.cloudinary.com/spacejoy/image/upload/c_fill,g_face,h_300,w_300/v1624244229/web/avatars/Monica-Hall_ld1m5a.jpg"
                             alt="spacejoy happy customer"
                             height={'300'}
                             width={'300'}
