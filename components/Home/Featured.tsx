@@ -14,7 +14,7 @@ const Featured: React.FC = () => {
       />
       <div className="container mx-auto px-4">
         <div className="-mb-56 xl:-mb-72 max-w-7xl mx-auto z-10 relative">
-          <div className="bg-white p-4 xl:p-8 shadow-lg rounded-lg border border-gray-200">
+          <div className="p-4 xl:p-8 shadow-lg rounded-lg border border-gray-100 bg-gradient-to-r from-blue-50 to-pink-50">
             <ScrollTrigger start="-500px center" end="-100px center">
               <div className="grid gap-4 xl:gap-8 grid-cols-4">
                 <Tween
@@ -24,7 +24,7 @@ const Featured: React.FC = () => {
                   duration={1}
                 >
                   {FeaturedData.map((item) => (
-                    <div className="col-span-1 flex justify-center py-0 px-8 rounded-md bg-gray-200" key={item.id}>
+                    <div className="col-span-1 flex justify-center py-0 px-8 rounded-md bg-white" key={item.id}>
                       <Image src={item.logo} alt="spacejoy happy customer" height={'130'} width={'200'} />
                     </div>
                   ))}
