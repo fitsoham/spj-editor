@@ -41,7 +41,6 @@ const Advantage: React.FC = () => {
   return (
     <div>
       <SectionTitle
-        accent="indigo"
         feature="Advantages"
         title="Design + Shopping + Spacejoy = 😍"
         description="Our design experts will transform any room in your home on our smart 3D desktop App. Shop handpicked products within your budget and style, directly from your room design, within Spacejoy."

@@ -8,17 +8,15 @@ const Featured: React.FC = () => {
   return (
     <>
       <SectionTitle
-        accent="yellow"
         feature="Media"
-        title="We are proud to be Featured in"
-        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis reprehenderit reiciendis officia vero ab nostrum
-      asperiores aperiam? Illo vitae recusandae, incidunt quas sapiente quo maxime impedit cum, hic odio temporibus!"
+        title="Where Have We Been Mentioned?"
+        description="Some of the world’s leading design publications."
       />
       <div className="container mx-auto px-4">
-        <div className="-mb-72 max-w-7xl mx-auto z-10 relative">
-          <div className="bg-white p-8 shadow-lg rounded-lg border border-gray-200">
+        <div className="-mb-56 xl:-mb-72 max-w-7xl mx-auto z-10 relative">
+          <div className="bg-white p-4 xl:p-8 shadow-lg rounded-lg border border-gray-200">
             <ScrollTrigger start="-500px center" end="-100px center">
-              <div className="grid gap-8 grid-cols-4">
+              <div className="grid gap-4 xl:gap-8 grid-cols-4">
                 <Tween
                   from={{ scale: 0.95, opacity: 0, y: 50 }}
                   to={{ scale: 1, opacity: 1, y: 0 }}

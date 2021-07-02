@@ -8,7 +8,6 @@ const DesignTeam: React.FC = () => (
   <div className="bg-white">
     <div className="container mx-auto px-4">
       <SectionTitle
-        accent="indigo"
         feature="The People"
         title="Meet our growing team of interior designers"
         description="Spacejoy's interior designers are handpicked from across the country. While our team is a diverse mix of professionals with varied interests, there is a common thread - They are all passionate about interior and design and love transforming spaces. Our designers continue to design homes across the country to bring our clients' vision to life through mindful and personalized designs. Start a project and allow them to work their magic in your actual space."

@@ -25,7 +25,6 @@ const career: React.FC = () => {
           />
           <div className="bg-white">
             <SectionTitle
-              accent="yellow"
               feature="Workplace"
               title="Best place to work & Grow"
               description="We care deeply about building the company we want to work at. We believe that our culture is shaped by every member of the team. If you join us, you'll have the opportunity to shape how we work and collaborate."

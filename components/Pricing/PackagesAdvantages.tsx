@@ -6,7 +6,6 @@ const PackagesAdvantages = () => {
     <div className="container mx-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
-          accent="red"
           feature="Extra Benefits"
           title="A better way to design home"
           description="Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam voluptatum cupiditate veritatis in

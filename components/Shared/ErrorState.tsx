@@ -9,7 +9,6 @@ const ErrorState = ({ status }: { status: number }): JSX.Element => {
         <LottieAnimation />
       </div>
       <SectionTitle
-        accent="red"
         title="There is an error"
         feature={`${status}`}
         description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem aliquid quam eveniet, voluptatum animi ducimus fugit odit modi molestiae fugiat pariatur laudantium sunt laborum sapiente quo. Consequatur veniam debitis reprehenderit?"

@@ -49,7 +49,6 @@ const Slide = ({ testimonial }) => (
 const Testimonials = (): JSX.Element => (
   <div>
     <SectionTitle
-      accent="red"
       feature="Testimonials"
       title="Hear it from our customers"
       description="Our design experts will transform any room in your home on our smart 3D desktop App. Shop handpicked products within your budget and style, directly from your room design, within Spacejoy."

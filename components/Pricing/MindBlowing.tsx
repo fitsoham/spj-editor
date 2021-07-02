@@ -51,7 +51,6 @@ const MindBlowing: React.FC = () => {
         <rect width="404" height="784" fill="url(#8b1b5f72-e944-4457-af67-0c6d15a99f38)" />
       </svg>
       <SectionTitle
-        accent="indigo"
         title="We are Awesome!"
         description="Pick from one of our three online interior design packages, custom-made keeping your budget, style and interior design needs in mind"
       />
