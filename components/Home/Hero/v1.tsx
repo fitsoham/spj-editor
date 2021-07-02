@@ -45,11 +45,11 @@ const v1: React.FC = () => {
               </p>
             </Tween>
           </div>
-          <div className="overflow-hidden pb-6 pt-1 pl-1">
+          <div className="overflow-hidden pb-6 pt-1">
             <Tween from={{ opacity: 0, y: 100 }} to={{ opacity: 1, y: 0 }} duration={0.5} delay={0.5}>
               <button
                 type="button"
-                className="group overflow-hidden shadow-sm hover:shadow-lg text-base text-white py-3 xl:py-5 px-4 xl:px-10 rounded-xl bg-gray-900 tracking-wide focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+                className="group overflow-hidden shadow-sm hover:shadow-lg text-base text-white py-3 xl:py-5 px-4 xl:px-10 rounded-xl bg-gray-900 tracking-wide focus:ml-0.5 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
               >
                 Start Project Now{' '}
                 <ArrowNarrowRightIcon className="inline h-4 w-4 transition group-hover:translate-x-1" />

@@ -12,7 +12,7 @@ const Process: React.FC = () => {
       />
 
       <div className="relative container mx-auto px-4">
-        <div className="flex space-x-10 max-w-7xl mx-auto mb-28">
+        <div className="flex space-x-10 max-w-7xl mx-auto">
           <div className="flex-1">
             <div className="text-center">
               <Image
