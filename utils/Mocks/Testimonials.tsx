@@ -1,46 +1,5 @@
 const data = [
   {
-    id: '1',
-    name: 'Kayla',
-    dp: 'v1595828399/web/testimonial/Kayla_j0mayq.jpg',
-    address: 'Washington State',
-    roomType: 'Living room',
-    ratings: 5,
-    bg: 'red',
-    shortDescription:
-      'It was so helpful seeing the room in 3D, and getting links to each of the products used made it so easy to order the exact products',
-    description:
-      'My experience with Spacejoy was fantastic! Our home was in need of a refresh and Spacejoy’s service was just what we were looking for! Our designer, Sarah completely matched the designs to our style and vision and was very responsive to all of our questions. It was so helpful seeing the room in 3D, and getting links to each of the products used made it so easy to order the exact products and make the design become a reality! We wouldn’t hesitate to hire Spacejoy again for all of our interior design needs!',
-    before: {
-      img: 'v1595828656/web/testimonial/Kayla-Before_obtbsb.jpg',
-      alt: 'Spacejoy review of living room design by Kayla',
-    },
-    after: {
-      img: 'v1595828657/web/testimonial/Kayla-Render_euv1cj.jpg',
-      alt: "Living room design for Kayla by Spacejoy's online interior designer ",
-    },
-  },
-  {
-    id: '2',
-    name: 'Caroline Sferruzzo',
-    dp: 'v1578230231/web/testimonial/Caroline_zcvlkh.jpg',
-    address: 'Raleigh, NC',
-    roomType: 'Bedroom',
-    ratings: 5,
-    bg: 'blue',
-    shortDescription: 'We truly enjoyed working with the Spacejoy team',
-    description:
-      'We truly enjoyed working with the Spacejoy team! Our master bedroom has never felt right and our designer, Lauren, was able to give us the vision that we were missing. Being able to see our room transformed in 3D made it so easy to decide on the design concept that best suited our style. The process is super simple, the team is quick and responsive and the overall results were impressive. Thank you Spacejoy!',
-    before: {
-      img: 'v1578230230/web/testimonial/Caroline-Before_pr4lym.jpg',
-      alt: 'Spacejoy review of master bedroom room design by Caroline Stfanno ',
-    },
-    after: {
-      img: 'v1578230229/web/testimonial/Caroline-After_bhhgtp.jpg',
-      alt: "Master bedroom design for Caroline Stfanno by spacejoy's online interior designer ",
-    },
-  },
-  {
     id: '3',
     name: 'Trinity Harding',
     dp: 'v1574266287/web/testimonial/TrinityHarding_kwc74s.jpg',
@@ -123,6 +82,47 @@ const data = [
     after: {
       img: 'v1574864751/web/testimonial/Kimberly_After_zhluna.jpg',
       alt: "Living room design for Kimberly  by spacejoy's online interior designer",
+    },
+  },
+  {
+    id: '1',
+    name: 'Kayla',
+    dp: 'v1595828399/web/testimonial/Kayla_j0mayq.jpg',
+    address: 'Washington State',
+    roomType: 'Living room',
+    ratings: 5,
+    bg: 'red',
+    shortDescription:
+      'It was so helpful seeing the room in 3D, and getting links to each of the products used made it so easy to order the exact products',
+    description:
+      'My experience with Spacejoy was fantastic! Our home was in need of a refresh and Spacejoy’s service was just what we were looking for! Our designer, Sarah completely matched the designs to our style and vision and was very responsive to all of our questions. It was so helpful seeing the room in 3D, and getting links to each of the products used made it so easy to order the exact products and make the design become a reality! We wouldn’t hesitate to hire Spacejoy again for all of our interior design needs!',
+    before: {
+      img: 'v1595828656/web/testimonial/Kayla-Before_obtbsb.jpg',
+      alt: 'Spacejoy review of living room design by Kayla',
+    },
+    after: {
+      img: 'v1595828657/web/testimonial/Kayla-Render_euv1cj.jpg',
+      alt: "Living room design for Kayla by Spacejoy's online interior designer ",
+    },
+  },
+  {
+    id: '2',
+    name: 'Caroline Sferruzzo',
+    dp: 'v1578230231/web/testimonial/Caroline_zcvlkh.jpg',
+    address: 'Raleigh, NC',
+    roomType: 'Bedroom',
+    ratings: 5,
+    bg: 'blue',
+    shortDescription: 'We truly enjoyed working with the Spacejoy team',
+    description:
+      'We truly enjoyed working with the Spacejoy team! Our master bedroom has never felt right and our designer, Lauren, was able to give us the vision that we were missing. Being able to see our room transformed in 3D made it so easy to decide on the design concept that best suited our style. The process is super simple, the team is quick and responsive and the overall results were impressive. Thank you Spacejoy!',
+    before: {
+      img: 'v1578230230/web/testimonial/Caroline-Before_pr4lym.jpg',
+      alt: 'Spacejoy review of master bedroom room design by Caroline Stfanno ',
+    },
+    after: {
+      img: 'v1578230229/web/testimonial/Caroline-After_bhhgtp.jpg',
+      alt: "Master bedroom design for Caroline Stfanno by spacejoy's online interior designer ",
     },
   },
 ];

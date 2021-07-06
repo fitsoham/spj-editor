@@ -115,7 +115,7 @@ const Header: React.FC = () => {
                 </ul>
               </nav>
             </div>
-            <div className="text-right">
+            <div className="w-2/5 text-right">
               <Link href="/search">
                 <a
                   className={`text-gray-700 text-xs py-2 px-2 mx-2 rounded-full border hover:shadow-xl hover:border-gray-200 focus:ring-1 focus:ring-gray-900 focus:outline-none ${
