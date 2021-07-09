@@ -1,4 +1,3 @@
-import { ArrowNarrowDownIcon } from '@heroicons/react/outline';
 import { cloudinary } from '@utils/config';
 import Image from 'next/image';
 import React from 'react';
@@ -52,11 +51,6 @@ const CollectionBanner: React.FC<BannerProps> = ({ data }) => {
             <p className="h-24 mt-4 overflow-hidden overflow-ellipsis text-justify text-sm max-w-xl">
               {data?.description}
             </p>
-          </Tween>
-          <Tween from={{ opacity: 0, y: -50 }} to={{ opacity: 1, y: 0 }} duration={1} delay={0.5}>
-            <div>
-              <ArrowNarrowDownIcon className="w-4 h-4 mt-4 animate-bounce" />
-            </div>
           </Tween>
         </div>
       </div>
