@@ -15,19 +15,28 @@ export interface DesignCardInterface {
 const DesignCard: React.FC<DesignCardInterface> = ({ cardData }) => {
   return (
     <div className="cursor-pointer">
-      <div className="next-image-fix rounded-lg overflow-hidden relative border border-gray-200">
+      <div className="next-image-fix rounded-sm overflow-hidden relative border border-gray-200">
         <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+        <div className="absolute inset-0">
+          <Image
+            className="object-cover transition-transform duration-700 transform blur"
+            alt={cardData?.name}
+            src={`https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,f_auto,q_auto,w_30,h_50/${cardData?.cdnRender[0]}`}
+            height={300}
+            width={500}
+          />
+        </div>
         <Image
           className="object-cover transition-transform duration-700 transform hover:scale-105"
-          alt="tmp"
-          src={`https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto/c_scale,w_950/${cardData?.cdnRender[0]}`}
-          height="300"
-          width="500"
+          alt={cardData?.name}
+          src={`https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_1000,h_600/${cardData?.cdnRender[0]}`}
+          height={300}
+          width={500}
         />
       </div>
       <div className="flex items-center my-2">
         <div className="flex-1 mr-2">
-          <p className="text-gray-500 text-sm capitalize">{cardData?.room?.roomType}</p>
+          <p className="text-gray-500 text-xs capitalize">{cardData?.room?.roomType}</p>
           <p className="text-gray-800 mt-1">{cardData?.name}</p>
         </div>
         <div>
