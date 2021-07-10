@@ -2,7 +2,7 @@ import React from 'react';
 
 const DesignCardDimmer: React.FC = () => {
   return (
-    <div className="h-96 animate-pulse">
+    <div className="h-80 animate-pulse">
       <div className="h-3/4 bg-gray-200 rounded-sm" />
       <div className="space-y-3 pt-4">
         <div className="flex space-x-3">
