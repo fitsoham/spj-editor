@@ -13,8 +13,10 @@ const PaginationButton: React.FC<PaginationButtonInterface> = ({ label, onClick,
   return (
     <button
       aria-current="page"
-      className={`hover:bg-gray-50 relative focus:outline-none inline-flex items-center px-4 py-2 border text-sm font-medium first:rounded-l-md last:rounded-r-md disabled:opacity-50  ${
-        active ? 'z-10 bg-red-50 border-red-500 text-red-600 relative' : 'bg-white border-gray-300 text-gray-500'
+      className={`relative focus:outline-none inline-flex items-center px-4 py-2 border text-sm font-medium first:rounded-l-md last:rounded-r-md disabled:opacity-50  ${
+        active
+          ? 'z-10 bg-red-50 border-red-500 text-red-600 relative hover:bg-red-100 '
+          : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50 '
       }`}
       disabled={disabled}
       onClick={() => onClick(buttonIndex)}

@@ -8,7 +8,7 @@ const PreFooter: React.FC = () => (
         <h2 className="text-3xl font-bold text-gray-700 mb-7 tracking-tight text-4xl">Ready to get started</h2>
         <button
           type="button"
-          className="shadow-xs hover:shadow-md text-base text-white py-3 px-12 rounded-full bg-gray-900 focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+          className="shadow-xs hover:shadow-md text-base text-white py-3 px-12 rounded-xl bg-gray-900 focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
         >
           Start Project
         </button>

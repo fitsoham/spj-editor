@@ -1,7 +1,7 @@
 import { PricingData } from '@components/Pricing/PricingTypes';
 import SectionTitle from '@components/Shared/SectionTitle';
 import React from 'react';
-import { PricingCard } from './PricingCard';
+import PricingCard from './PricingCard';
 
 interface PricingProps {
   pricingData: Array<PricingData>;
