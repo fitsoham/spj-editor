@@ -45,24 +45,23 @@ const v1: React.FC = () => {
               </p>
             </Tween>
           </div>
-          <div className="overflow-hidden pb-6 pt-1">
+          <div className="overflow-hidden pb-4 pt-1">
             <Tween from={{ opacity: 0, y: 100 }} to={{ opacity: 1, y: 0 }} duration={0.5} delay={0.5}>
               <button
                 type="button"
-                className="group overflow-hidden shadow-sm hover:shadow-lg text-base text-white py-3 xl:py-5 px-4 xl:px-10 rounded-xl bg-gray-900 tracking-wide focus:ml-0.5 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
+                className="group overflow-hidden shadow-sm hover:shadow-lg text-base text-white py-3 xl:py-4 px-4 xl:px-10 rounded-xl bg-gray-900 tracking-wide focus:ml-0.5 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
               >
                 Start Project Now{' '}
                 <ArrowNarrowRightIcon className="inline h-4 w-4 transition group-hover:translate-x-1" />
               </button>
             </Tween>
           </div>
-          <div className="overflow-hidden py-1">
+          <div className="overflow-hidden">
             <Tween from={{ opacity: 0, y: 100 }} to={{ opacity: 1, y: 0 }} duration={0.5} delay={0.65}>
-              <p className="text-sm text-gray-700">
-                Price starts from $99.00,{' '}
+              <p>
                 <Link href="/pricing">
-                  <a className="text-red-500 px-1 focus:ring-1 focus:ring-gray-500 focus:outline-none rounded-md">
-                    checkout now
+                  <a className="text-gray-600 text-sm rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                    Checkout packages now
                   </a>
                 </Link>
               </p>
@@ -74,16 +73,16 @@ const v1: React.FC = () => {
             <div className="relative overflow-hidden rounded-2xl">
               <div className="next-image-fix filter blur-sm bg-gray-100">
                 <Image
-                  className="object-cover"
+                  className="object-cover filter contrast-115 brightness-110"
                   src={blurredBg}
                   alt="spacejoy happy customer"
                   height={'700'}
                   width={'1114'}
                 />
               </div>
-              <div className="absolute inset-0">
+              <div className="absolute next-image-fix inset-0">
                 <Image
-                  className="object-cover"
+                  className="object-cover filter contrast-115 brightness-110"
                   src="https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,f_auto,q_auto,h_1050,w_1671/v1622172527/spj-v2/spj-happy-customer_ahkoxm.jpg"
                   alt="spacejoy happy customer"
                   height={'700'}

@@ -18,7 +18,7 @@ const DesignCard: React.FC<DesignCardInterface> = ({ cardData }) => {
       <div className="next-image-fix rounded-sm overflow-hidden relative border border-gray-200 transition group-hover:shadow-md">
         <div className="absolute inset-0 bg-gray-200 animate-pulse" />
         <Image
-          className="object-cover transition duration-700 filter transform hover:brightness-110"
+          className="object-cover transition duration-700 filter transform group-hover:brightness-110"
           alt={cardData?.name}
           src={`https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,q_auto,w_1000,h_600/${cardData?.cdnRender[0]}`}
           height="300"

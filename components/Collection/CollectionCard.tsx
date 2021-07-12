@@ -14,11 +14,11 @@ const CollectionCard: React.FC<CollectionCardInterface> = ({ cardData, inset }) 
   return (
     <li>
       <Link href={`/collection/${cardData?.slug}`}>
-        <a className="rounded-lg inline-block focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400 focus:outline-none">
+        <a className="rounded-lg inline-block focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-700 focus:outline-none">
           <div className="group next-image-fix rounded-lg relative overflow-hidden bg-gray-200 transition-all transform duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 border border-gray-300">
             <Image
               className="rounded-lg object-cover"
-              alt="tmp"
+              alt={cardData?.name}
               src={`${cloudinary.baseDeliveryURL}/${cardData?.cdnThumbnail}`}
               height="300"
               width="225"

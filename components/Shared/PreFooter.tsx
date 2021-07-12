@@ -12,11 +12,10 @@ const PreFooter: React.FC = () => (
         >
           Start Project
         </button>
-        <p className="mt-5 text-gray-700 text-sm">
-          Price starts from $99.00,{' '}
+        <p className="mt-5">
           <Link href="/pricing">
-            <a className="text-red-500 px-1 focus:ring-1 focus:ring-gray-500 focus:outline-none rounded-md">
-              checkout now
+            <a className="text-gray-600 text-sm rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+              Checkout packages now
             </a>
           </Link>
         </p>
