@@ -27,7 +27,7 @@ const Header: React.FC = () => {
             <Link href="/">
               <a className="focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-900 focus:outline-none inline-block rounded-md mr-10">
                 <div className="next-image-fix mr-1">
-                  <svg width="165" height="36" viewBox="0 0 291 63" fill="none" baseProfile="full">
+                  <svg height="30" width="139" viewBox="0 0 291 63" fill="none" baseProfile="full">
                     <path
                       d="M51 0H12C5.373 0 0 5.373 0 12v39c0 6.627 5.373 12 12 12h39c6.627 0 12-5.373 12-12V12c0-6.627-5.373-12-12-12z"
                       fill="url(#paint0_linear)"
