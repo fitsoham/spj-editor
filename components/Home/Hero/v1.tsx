@@ -60,7 +60,7 @@ const v1: React.FC = () => {
             <Tween from={{ opacity: 0, y: 100 }} to={{ opacity: 1, y: 0 }} duration={0.5} delay={0.65}>
               <p>
                 <Link href="/pricing">
-                  <a className="text-gray-600 text-sm rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+                  <a className="px-1 text-gray-600 text-sm rounded hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Checkout packages now
                   </a>
                 </Link>

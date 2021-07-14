@@ -14,7 +14,7 @@ const PreFooter: React.FC = () => (
         </button>
         <p className="mt-5">
           <Link href="/pricing">
-            <a className="text-gray-600 text-sm rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
+            <a className="px-1 text-gray-600 text-sm rounded hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
               Checkout packages now
             </a>
           </Link>

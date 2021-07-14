@@ -78,7 +78,7 @@ const CollectionList: React.FC<DesignListInterface> = ({ feedData }) => {
   const { list } = feedData;
   return (
     <section className="interior-design-section">
-      <div className="py-4 bg-red-50">
+      <div className="py-4 bg-gray-100">
         <div className="container mx-auto px-4 pt-4">
           <div className="flex items-end">
             <div className="flex-1">
