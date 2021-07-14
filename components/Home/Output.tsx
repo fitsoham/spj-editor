@@ -17,7 +17,7 @@ const OutputGallery = styled.div`
   picture {
     vertical-align: middle;
     transform: translateZ(0);
-    animation: ${MoveSlideshow} 40s linear infinite;
+    animation: ${MoveSlideshow} 120s linear infinite;
     img {
       max-width: initial;
     }
