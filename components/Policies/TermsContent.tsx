@@ -7,7 +7,7 @@ const currentYear = currentDate.getFullYear();
 
 const TermsContent: React.FC = () => {
   return (
-    <div className="container mx-auto px-4">
+    <div className="container mx-auto px-4 antialiased">
       <SectionTitle
         title="Spacejoy EULA and Terms of Service"
         description="Spacejoy uses cookies to enhance performance and improve your user experience, to provide certain user

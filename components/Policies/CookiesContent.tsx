@@ -6,7 +6,7 @@ const currentYear = currentDate.getFullYear();
 
 const CookiesContent: React.FC = () => {
   return (
-    <div className="container mx-auto px-4">
+    <div className="container mx-auto px-4 antialiased">
       <SectionTitle
         title="Cookie Statement"
         description="Spacejoy uses cookies to enhance performance and improve your user experience, to provide certain user
