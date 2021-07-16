@@ -13,7 +13,7 @@ const Process: React.FC = () => {
 
       <div className="relative container mx-auto px-4">
         <div className="flex space-x-10 max-w-7xl mx-auto">
-          <div className="flex-1">
+          <div className="flex-1 py-14">
             <div className="text-center">
               <Image
                 src="https://res.cloudinary.com/spacejoy/image/upload/v1625204341/spj-v2/process/upload-floor-plan_v4jnzx"
@@ -27,7 +27,7 @@ const Process: React.FC = () => {
               Go through our onboarding questionnaire and let us know what interior style suits you.
             </p>
           </div>
-          <div className="flex-1">
+          <div className="flex-1 py-14">
             <div className="text-center">
               <Image
                 src="https://res.cloudinary.com/spacejoy/image/upload/v1625204341/spj-v2/process/interior-subscription_jskxct"
@@ -41,7 +41,7 @@ const Process: React.FC = () => {
               Based on your floor plan, we generate a 3D model of your apartment and generate realistic renderings.
             </p>
           </div>
-          <div className="flex-1">
+          <div className="flex-1 py-14">
             <div className="text-center">
               <Image
                 src="https://res.cloudinary.com/spacejoy/image/upload/v1625204341/spj-v2/process/tell-what-you-like_hzb7qb"

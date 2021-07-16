@@ -24,7 +24,11 @@ const Modal: React.FC = () => {
         Filter <FilterIcon className="inline w-4 h-4" />
       </button>
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="fixed  bg-gray-900 bg-opacity-95 inset-0 z-50 overflow-y-auto" onClose={closeModal}>
+        <Dialog
+          as="div"
+          className="fixed  bg-gray-900 bg-opacity-75 inset-0 z-50 overflow-y-auto backdrop-filter backdrop-blur firefox:bg-opacity-90"
+          onClose={closeModal}
+        >
           <div className="min-h-screen px-4 text-center">
             <Transition.Child
               as={Fragment}

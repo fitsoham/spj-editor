@@ -59,7 +59,7 @@ const Header: React.FC = () => {
                     <Link href="/interior-designs">
                       <a
                         className={`text-sm py-1 px-2.5 hover:text-red-600 rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
-                          router.asPath === '/interior-designs' ? 'text-red-500' : 'text-gray-700'
+                          router.asPath === '/interior-designs' ? 'text-red-500' : 'text-gray-900'
                         }`}
                       >
                         Ideas
@@ -70,7 +70,7 @@ const Header: React.FC = () => {
                     <Link href="/collection">
                       <a
                         className={`text-sm py-1 px-2.5 hover:text-red-600 rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
-                          router.asPath === '/collection' ? 'text-red-500' : 'text-gray-700'
+                          router.asPath === '/collection' ? 'text-red-500' : 'text-gray-900'
                         }`}
                       >
                         Collection
@@ -97,7 +97,7 @@ const Header: React.FC = () => {
                     <Link href="/pricing">
                       <a
                         className={`text-sm py-1 px-2.5 hover:text-red-600 rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
-                          router.asPath === '/pricing' ? 'text-red-500' : 'text-gray-700'
+                          router.asPath === '/pricing' ? 'text-red-500' : 'text-gray-900'
                         }`}
                       >
                         Pricing
@@ -108,7 +108,7 @@ const Header: React.FC = () => {
                     <Link href="/help">
                       <a
                         className={`text-sm py-1 px-2.5 hover:text-red-600 rounded-md focus:ring-1 focus:ring-gray-900 focus:outline-none ${
-                          router.asPath === '/help' ? 'text-red-500' : 'text-gray-700'
+                          router.asPath === '/help' ? 'text-red-500' : 'text-gray-900'
                         }`}
                       >
                         Help

@@ -6,7 +6,11 @@ import React, { Fragment } from 'react';
 const SubNav = ({ subNavState, closeSubNav }: { subNavState: boolean; closeSubNav: () => void }): JSX.Element => {
   return (
     <Transition appear show={subNavState} as={Fragment}>
-      <Dialog as="div" className="fixed bg-gray-900 bg-opacity-75 inset-0 z-40 overflow-y-auto" onClose={closeSubNav}>
+      <Dialog
+        as="div"
+        className="fixed bg-gray-900 bg-opacity-75 inset-0 z-40 overflow-y-auto backdrop-filter backdrop-blur firefox:bg-opacity-90"
+        onClose={closeSubNav}
+      >
         <div className="min-h-screen text-center" aria-label="secondary">
           <Transition.Child
             as={Fragment}
@@ -28,7 +32,7 @@ const SubNav = ({ subNavState, closeSubNav }: { subNavState: boolean; closeSubNa
             leaveFrom="opacity-100 translate-y-0"
             leaveTo="opacity-0 -translate-y-60"
           >
-            <div className="w-full overflow-hidden relative top-20 py-16 text-left bg-white shadow-xl">
+            <div className="w-full overflow-hidden relative pt-36 pb-16 text-left bg-white shadow-xl">
               <div className="container mx-auto px-4">
                 <Dialog.Title as="h3" className="text-3xl mb-6">
                   Spacejoy Stories
