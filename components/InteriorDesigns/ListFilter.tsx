@@ -3,8 +3,8 @@ import React from 'react';
 
 const ListFilter: React.FC = () => {
   return (
-    <section className="interior-design-section sticky top-4 z-10 bg-white">
-      <div className="container mx-auto px-4 pt-16 pb-6">
+    <section className="interior-design-section sticky top-20 z-10 bg-white bg-opacity-50 backdrop-filter backdrop-blur firefox:bg-opacity-90">
+      <div className="container mx-auto p-4">
         <div className="flex items-end">
           <div className="flex-1">
             <p className="text-gray-500">10,000+ Designs</p>
