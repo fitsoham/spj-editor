@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { NextSeo, ArticleJsonLd, CorporateContactJsonLd } from 'next-seo';
+import { ArticleJsonLd, CorporateContactJsonLd, NextSeo } from 'next-seo';
+import React from 'react';
 
 interface SEOObject {
   [key: string]: any;
@@ -13,7 +13,7 @@ interface IAppProps {
   jsonLD?: Array<SEOObject>;
 }
 
-const SEOWrapper = (props: IAppProps) => {
+const SEOWrapper = (props: IAppProps): JSX.Element => {
   const { seoProps = {}, jsonLD = [] } = props;
 
   const renderJSONLD = (item, index) => {

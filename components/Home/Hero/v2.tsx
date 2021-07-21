@@ -1,6 +1,6 @@
 import React from 'react';
 
-const v2 = () => {
+const v2: React.FC = () => {
   return <div>2</div>;
 };
 

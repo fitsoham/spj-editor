@@ -6,9 +6,9 @@ import PreFooter from '@components/Shared/PreFooter';
 import { internalPages } from '@utils/config';
 import { publicRoutes } from '@utils/constants/api';
 import fetcher from '@utils/fetcher';
+import topCollections from '@utils/Mocks/topCollections';
 import Head from 'next/head';
 import React from 'react';
-import topCollections from '@utils/Mocks/topCollections';
 
 const InteriorDesigns = ({ designFeedData }): JSX.Element => {
   return (

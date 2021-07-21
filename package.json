@@ -9,7 +9,7 @@
     "start": "next start",
     "type-check": "tsc --pretty --noEmit",
     "format": "prettier --write .",
-    "lint": "eslint . --ext ts --ext tsx --ext js",
+    "lint": "next lint",
     "test": "jest",
     "test-all": "yarn lint && yarn type-check && yarn test",
     "export": "cross-env NEXT_EXPORT=true next build && cross-env NEXT_EXPORT=true next export"
@@ -22,8 +22,8 @@
   },
   "lint-staged": {
     "*.@(ts|tsx)": [
-      "yarn run lint",
-      "yarn run format"
+      "yarn lint",
+      "yarn format"
     ]
   },
   "dependencies": {
@@ -60,8 +60,6 @@
     "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "^7.31.0",
     "eslint-config-next": "^11.0.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-react": "^7.24.0",
     "husky": "^7.0.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.0.6",
