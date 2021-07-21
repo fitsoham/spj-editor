@@ -28,7 +28,7 @@ const Header: React.FC = () => {
           <div className="h-20 flex items-center">
             <Link href="/">
               <a
-                className="focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-900 focus:outline-none inline-block rounded-md mr-10"
+                className="focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-900 focus:outline-none inline-block rounded-md pr-1 mr-10"
                 aria-label="logo"
               >
                 <svg height="30" width="139" viewBox="0 0 291 63" fill="none" baseProfile="full">
