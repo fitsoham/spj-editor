@@ -41,6 +41,7 @@ const CarouselNavButton: React.FC<CarouselNavButton> = ({ onClick, flow }) => {
           <button
             className="relative z-10 lg:h-28 lg:w-28 h-20 w-20 bg-white shadow-lg border border-bg-50 transition hover:shadow-sm rounded-2xl flex items-center justify-center hover:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none rounded-md px-1"
             onClick={onClick}
+            aria-label={flow}
           >
             {flow === 'left' && (
               <>
@@ -61,4 +62,4 @@ const CarouselNavButton: React.FC<CarouselNavButton> = ({ onClick, flow }) => {
   );
 };
 
-export default CarouselNavButton;
+export default React.memo(CarouselNavButton);

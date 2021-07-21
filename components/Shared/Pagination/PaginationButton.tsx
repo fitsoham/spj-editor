@@ -21,6 +21,7 @@ const PaginationButton: React.FC<PaginationButtonInterface> = ({ label, onClick,
       disabled={disabled}
       onClick={() => onClick(buttonIndex)}
     >
+      <span className="sr-only">{label}</span>
       {label === 'Prev' && <ChevronLeftIcon className="w-4 h-4" />}
       {label !== 'Prev' && label !== 'Next' && label}
       {label === 'Next' && <ChevronRightIcon className="w-4 h-4" />}
