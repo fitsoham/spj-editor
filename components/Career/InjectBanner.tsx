@@ -1,4 +1,5 @@
 import { ExternalLinkIcon } from '@heroicons/react/outline';
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
@@ -6,10 +7,12 @@ const career: React.FC = () => {
   return (
     <div className="relative antialiased bg-gray-100 mt-28">
       <div className="h-56 bg-indigo-600 sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2">
-        <img
+        <Image
+          height="100"
+          width="100"
           className="w-full h-full object-cover"
           src="https://images.unsplash.com/photo-1487611459768-bd414656ea10?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2880&q=80"
-          alt=""
+          alt="full design banner"
         />
       </div>
       <div className="relative max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 lg:py-16">

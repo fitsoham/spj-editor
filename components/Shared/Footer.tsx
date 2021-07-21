@@ -23,61 +23,43 @@ const Footer: React.FC = () => {
             <h3 className="mb-2 px-1">Quick Links</h3>
             <ul>
               <li>
-                <Link href="/pricing" as="/pricing">
-                  <a
-                    className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
-                    href="/pricing"
-                  >
+                <Link href="/pricing">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Pricing
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="/customer-stories" as="/customer-stories">
-                  <a
-                    className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
-                    href="/customer-stories"
-                  >
+                <Link href="/customer-stories">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Customer Stories
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="/interior-designs" as="/interior-designs">
-                  <a
-                    className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
-                    href="/interior-designs"
-                  >
+                <Link href="/interior-designs">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Interior Designs Ideas
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="/purchase-gift-card" as="/purchase-gift-card">
-                  <a
-                    className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
-                    href="/purchase-gift-card"
-                  >
+                <Link href="/purchase-gift-card">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Gift Cards
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="/online-room-design" as="/online-room-design">
-                  <a
-                    className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
-                    href="/online-room-design"
-                  >
+                <Link href="/online-room-design">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Design Process
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="/online-interior-designers" as="/online-interior-designers">
-                  <a
-                    className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
-                    href="/online-interior-designers"
-                  >
+                <Link href="/online-interior-designers">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Meet The Team
                   </a>
                 </Link>
@@ -92,12 +74,8 @@ const Footer: React.FC = () => {
                   href={{
                     pathname: '/interior-designs-blog',
                   }}
-                  as="/interior-designs-blog"
                 >
-                  <a
-                    className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
-                    href="/interior-designs-blog"
-                  >
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Online Interior Design Blog
                   </a>
                 </Link>
@@ -188,41 +166,29 @@ const Footer: React.FC = () => {
             <h3 className="mb-2 px-1">Support</h3>
             <ul>
               <li>
-                <Link href="/help" as="/help">
-                  <a
-                    className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
-                    href="/help"
-                  >
+                <Link href="/help">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Help
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="/terms" as="/terms">
-                  <a
-                    className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
-                    href="/terms"
-                  >
+                <Link href="/terms">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Privacy Policy
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="/terms" as="/terms">
-                  <a
-                    className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
-                    href="/terms"
-                  >
+                <Link href="/terms">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Terms of Service
                   </a>
                 </Link>
               </li>
               <li>
-                <Link href="/cookies" as="/cookies">
-                  <a
-                    className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
-                    href="/cookies"
-                  >
+                <Link href="/cookies">
+                  <a className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none">
                     Cookie Statement
                   </a>
                 </Link>

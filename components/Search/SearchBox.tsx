@@ -6,7 +6,7 @@ import useSearch from '@hooks/useSearch';
 import TopSearches from '@utils/Mocks/TopSearches';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Tween } from 'react-gsap';
 import styled, { keyframes } from 'styled-components';
 import ListItem from './ListItem';
@@ -49,19 +49,19 @@ const SearchBox: React.FC = () => {
 
   const router = useRouter();
 
-  const goBack = () => router.back();
+  const goBack = useCallback(() => router.back(), [router]);
 
   useEffect(() => {
     if (autoCompleteResults.length && downPress) {
       setCursor((prevState) => (prevState < autoCompleteResults.length - 1 ? prevState + 1 : prevState));
     }
-  }, [downPress]);
+  }, [downPress, autoCompleteResults.length]);
 
   useEffect(() => {
     if (autoCompleteResults.length && upPress) {
       setCursor((prevState) => (prevState > 0 ? prevState - 1 : prevState));
     }
-  }, [upPress]);
+  }, [upPress, autoCompleteResults.length]);
 
   useEffect(() => {
     if (autoCompleteResults?.length && enterPress) {
@@ -70,19 +70,17 @@ const SearchBox: React.FC = () => {
       setSelectedSearchQuery(autoCompleteResults[indexVal]);
       setSearchString(autoCompleteResults[indexVal]?.value);
     }
-  }, [cursor, enterPress]);
+  }, [cursor, enterPress, autoCompleteResults?.length, autoCompleteResults, setSelectedSearchQuery, setSearchString]);
 
   useEffect(() => {
     if (autoCompleteResults.length && hovered) {
       setCursor(autoCompleteResults.indexOf(hovered));
     }
-  }, [hovered]);
+  }, [autoCompleteResults, hovered]);
 
   useEffect(() => {
-    if (escPress) {
-      goBack();
-    }
-  }, [escPress]);
+    if (escPress) goBack();
+  }, [escPress, goBack]);
 
   const clear = () => setSearchString('');
 

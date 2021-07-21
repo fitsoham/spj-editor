@@ -22,6 +22,7 @@ const career: React.FC = () => {
             src="https://images.unsplash.com/photo-1558403194-611308249627?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3600&q=80"
             height="400"
             width="1500"
+            alt="career banner"
           />
           <div className="bg-white">
             <SectionTitle

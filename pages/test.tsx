@@ -1,3 +1,4 @@
+import ThemeDisplay from '@components/Home/ThemeDisplay';
 import Layout from '@components/Shared/Layout';
 import PreFooter from '@components/Shared/PreFooter';
 import React from 'react';
@@ -8,6 +9,7 @@ export const Test = (): JSX.Element => (
       <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
+        <ThemeDisplay />
         <PreFooter />
       </Layout.Body>
       <Layout.Footer />
