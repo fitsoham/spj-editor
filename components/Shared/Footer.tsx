@@ -12,11 +12,10 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="py-12 grid grid-cols-6 gap-4">
           <div className="col-span-2 xl:w-3/4">
-            <h3 className="mb-2 px-1">About</h3>
+            <h3 className="mb-2">About Us</h3>
             <p className="leading-relaxed text-sm text-gray-600">
-              Spacejoy is an online interior design studio. Sign up and work 1:1 with our design experts to transform
-              your home. See your room designed in 3D curated with handpicked products that you shop right away from our
-              platform.
+              Spacejoy is an online interior design studio. See your room designed in 3D curated with handpicked
+              products that you shop right away from our platform.
             </p>
             <SocialLinks />
           </div>
@@ -60,16 +59,6 @@ const Footer: React.FC = () => {
                     href="/purchase-gift-card"
                   >
                     Gift Cards
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/balance-check" as="/balance-check">
-                  <a
-                    className="px-1 text-sm text-gray-600 leading-7 rounded-md hover:text-red-500 focus:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none"
-                    href="/balance-check"
-                  >
-                    Check Card Balance
                   </a>
                 </Link>
               </li>

@@ -6,7 +6,7 @@ const SocialLinks: React.FC = () => {
     <div className="mt-6 flex space-x-3">
       <a
         href={company.social.sites.facebook}
-        className="text-gray-700 hover:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none rounded-full"
+        className="text-gray-800 bg-gray-100 p-2 hover:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none rounded"
       >
         <span className="sr-only">Facebook</span>
         <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 512 512" aria-hidden="true">
@@ -18,7 +18,7 @@ const SocialLinks: React.FC = () => {
       </a>
       <a
         href={company.social.sites.instagram}
-        className="text-gray-700 hover:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none rounded-full"
+        className="text-gray-800 bg-gray-100 p-2 hover:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none rounded"
       >
         <span className="sr-only">Instagram</span>
         <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 512 512" aria-hidden="true">
@@ -27,7 +27,7 @@ const SocialLinks: React.FC = () => {
       </a>
       <a
         href={company.social.sites.twitter}
-        className="text-gray-700 hover:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none rounded-full"
+        className="text-gray-800 bg-gray-100 p-2 hover:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none rounded"
       >
         <span className="sr-only">Twitter</span>
         <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 512 512" aria-hidden="true">
@@ -36,7 +36,7 @@ const SocialLinks: React.FC = () => {
       </a>
       <a
         href={company.social.sites.linkedin}
-        className="text-gray-700 hover:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none rounded-full"
+        className="text-gray-800 bg-gray-100 p-2 hover:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none rounded"
       >
         <span className="sr-only">LinkedIn</span>
         <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 512 512" aria-hidden="true">
@@ -45,7 +45,7 @@ const SocialLinks: React.FC = () => {
       </a>
       <a
         href={company.social.sites.pinterest}
-        className="text-gray-700 hover:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none rounded-full"
+        className="text-gray-800 bg-gray-100 p-2 hover:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none rounded"
       >
         <span className="sr-only">Pinterest</span>
         <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 512 512" aria-hidden="true">
