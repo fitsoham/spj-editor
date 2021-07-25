@@ -6,10 +6,10 @@ import { HomePageSEO } from '@utils/SEO'; // can also have jsonLD config
 import dynamic from 'next/dynamic';
 import React from 'react';
 
-const DynamicProcessWithNoSSR = dynamic(() => import('@components/Home/Process'), { ssr: true });
-const DynamicTeamWithNoSSR = dynamic(() => import('@components/Home/Team'), { ssr: true });
-const DynamicFeaturedWithNoSSR = dynamic(() => import('@components/Home/Featured'), { ssr: true });
-const DynamicOutputWithNoSSR = dynamic(() => import('@components/Home/Output'), { ssr: true });
+const DynamicProcessWithNoSSR = dynamic(() => import('@components/Home/Process'), { ssr: false });
+const DynamicTeamWithNoSSR = dynamic(() => import('@components/Home/Team'), { ssr: false });
+const DynamicFeaturedWithNoSSR = dynamic(() => import('@components/Home/Featured'), { ssr: false });
+const DynamicOutputWithNoSSR = dynamic(() => import('@components/Home/Output'), { ssr: false });
 
 export const Home = (): JSX.Element => (
   <>
