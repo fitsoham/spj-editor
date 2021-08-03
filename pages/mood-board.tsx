@@ -10,12 +10,18 @@ const PlaygroundWithNoSSR = dynamic(() => import('@components/Playground'), { ss
 
 const MoodBoard: React.FC = () => {
   const PlaygroundWrapperRef = useRef<HTMLDivElement>(null);
-  const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
+  const [size, setSize] = useState([0, 0]);
+
+  const updateSize = () =>
+    setSize([
+      PlaygroundWrapperRef.current.getClientRects()[0].width,
+      PlaygroundWrapperRef.current.getClientRects()[0].height,
+    ]);
 
   useEffect(() => {
-    setHeight(PlaygroundWrapperRef.current.getClientRects()[0].height);
-    setWidth(PlaygroundWrapperRef.current.getClientRects()[0].width);
+    updateSize();
+    window.addEventListener('resize', updateSize);
+    return () => window.removeEventListener('resize', updateSize);
   }, []);
 
   return (
@@ -24,10 +30,12 @@ const MoodBoard: React.FC = () => {
         <Header />
         <div className="flex">
           <SideNav />
-          <NavPanel />
-          <div className="bg-gray-100 diy-h-free flex-1 py-4 pl-4">
+          <div className="relative bg-gray-200 overflow-y-scroll diy-h-free w-80 flex-1 max-w-sm">
+            <NavPanel />
+          </div>
+          <div className="bg-gray-100 diy-h-free w-3/4 py-4 pl-4">
             <div className="bg-white h-full shadow-sm" ref={PlaygroundWrapperRef}>
-              <PlaygroundWithNoSSR h={height} w={width} />
+              <PlaygroundWithNoSSR w={size[0]} h={size[1]} />
             </div>
           </div>
           <MoreActions />

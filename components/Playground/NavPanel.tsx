@@ -6,7 +6,7 @@ import ProductCard from './ProductCard';
 
 const NavPanel: React.FC = () => {
   return (
-    <div className="relative bg-gray-200 overflow-y-scroll diy-h-free w-80">
+    <>
       <div className="h-16 p-4 flex justify-between items-center">
         <p className="">Collages</p>
         <FilterIcon className="h-4 w-4" />
@@ -27,7 +27,7 @@ const NavPanel: React.FC = () => {
           <span className="text-xs text-gray-600">1293 results found</span>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-1 px-1 pb-1">
+      <div className="grid grid-cols-1 2xl:grid-cols-2 gap-1 px-1 pb-1">
         <Tween from={{ opacity: 0, y: 50 }} to={{ opacity: 1, y: 0 }} duration={2} ease="back.out(1.7)" stagger={0.2}>
           {ProductList.map((product) => (
             <div key={product.id}>
@@ -36,7 +36,7 @@ const NavPanel: React.FC = () => {
           ))}
         </Tween>
       </div>
-    </div>
+    </>
   );
 };
 
