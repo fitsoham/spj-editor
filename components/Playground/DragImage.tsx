@@ -4,11 +4,11 @@ import useImage from 'use-image';
 
 interface DragImageInterface {
   image: {
-    id: number;
+    id: string;
     src: string;
     x: number;
     y: number;
-    isDragging: false;
+    isDragging?: false;
   };
 }
 
