@@ -21,3 +21,7 @@ h3 {
 .min-h-free {
   min-height: calc(100vh - 125px);
 }
+
+.diy-h-free {
+  height: calc(100vh - 4rem);
+}
