@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { SelectedIndexContext } from './SelectedIndex';
 
 const PlaygroundAssetsContext = React.createContext([]);
 
@@ -43,8 +44,7 @@ const initData = [
 
 const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
   const [PlaygroundAssets, setPlaygroundAssets] = useState(initData);
-
-  const selectedIndex = 0;
+  const [selectedIndex] = useContext(SelectedIndexContext);
 
   const deleteAsset = () => {
     const tmpAssetList = [...PlaygroundAssets];
