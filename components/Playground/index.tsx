@@ -1,5 +1,5 @@
 import { Stage as StageType } from 'konva/lib/Stage';
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { Layer, Stage } from 'react-konva';
 import { DataBusContext } from 'store';
 import DragImage from './DragImage';
@@ -53,10 +53,6 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
   const stageRef = useRef<StageType>();
   const [images, setImages] = useState(initData);
   const [selectedAssetId, setSelectAssetId] = useState('');
-
-  useEffect(() => {
-    console.log(`images`, images);
-  }, [images]);
 
   const checkDeselect = (e): void => {
     if (e.target === e.target?.getStage()) {
