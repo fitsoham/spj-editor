@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic';
 import React, { useEffect, useRef, useState } from 'react';
 import { DataBusContextProvider } from 'store';
 import { PlaygroundAssetsContextProvider } from 'store/PlaygroundAssets';
-import { SelectedIndexContextProvider } from 'store/SelectedIndex';
+import { SelectedIdContextProvider } from 'store/SelectedId';
 
 const PlaygroundWithNoSSR = dynamic(() => import('@components/Playground'), { ssr: false });
 
@@ -28,7 +28,7 @@ const MoodBoard: React.FC = () => {
   }, []);
 
   return (
-    <SelectedIndexContextProvider>
+    <SelectedIdContextProvider>
       <PlaygroundAssetsContextProvider>
         <DataBusContextProvider>
           <div className="h-screen">
@@ -49,7 +49,7 @@ const MoodBoard: React.FC = () => {
           </div>
         </DataBusContextProvider>
       </PlaygroundAssetsContextProvider>
-    </SelectedIndexContextProvider>
+    </SelectedIdContextProvider>
   );
 };
 
