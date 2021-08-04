@@ -3,6 +3,7 @@ import { Image, Transformer } from 'react-konva';
 import useImage from 'use-image';
 
 interface DragImageInterface {
+  index: number;
   image: {
     id: string;
     src: string;
@@ -39,11 +40,11 @@ const reducer = (state, action) => {
   }
 };
 
-const DragImage: React.FC<DragImageInterface> = ({ image, isSelected, onSelect, onChange }) => {
+const DragImage: React.FC<DragImageInterface> = ({ index, image, isSelected, onSelect, onChange }) => {
+  const [state, dispatch] = useReducer(reducer, image || initialState);
   const trRef = useRef(null);
   const AssetRef = useRef(null);
   const [img] = useImage(image.src);
-  const [state, dispatch] = useReducer(reducer, image || initialState);
 
   useEffect(() => {
     if (trRef && isSelected) {
@@ -52,7 +53,7 @@ const DragImage: React.FC<DragImageInterface> = ({ image, isSelected, onSelect, 
     } else {
       trRef?.current?.nodes([]);
     }
-  }, [isSelected]);
+  }, [index, isSelected]);
 
   return (
     <>

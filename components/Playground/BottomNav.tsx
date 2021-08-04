@@ -1,9 +1,12 @@
 import { ColorSwatchIcon, EyeIcon, SortAscendingIcon, SortDescendingIcon, TrashIcon } from '@heroicons/react/outline';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Tween } from 'react-gsap';
+import { PlaygroundAssetsContext } from 'store/PlaygroundAssets';
 import UnitActionButton from './UnitActionButton';
 
 const BottomNav: React.FC = () => {
+  const [, , deleteAsset, moveAssetBehind, moveAssetForward] = useContext(PlaygroundAssetsContext);
+
   return (
     <div className="p-2 bg-white rounded-full shadow-sm mx-auto flex space-x-2">
       <Tween
@@ -14,17 +17,17 @@ const BottomNav: React.FC = () => {
         stagger={0.5}
       >
         <div>
-          <UnitActionButton>
+          <UnitActionButton onClick={moveAssetBehind}>
             <SortDescendingIcon className="h-4 w-4" />
           </UnitActionButton>
         </div>
         <div>
-          <UnitActionButton>
+          <UnitActionButton onClick={moveAssetForward}>
             <SortAscendingIcon className="h-4 w-4" />
           </UnitActionButton>
         </div>
         <div>
-          <UnitActionButton>
+          <UnitActionButton onClick={deleteAsset}>
             <EyeIcon className="h-4 w-4" />
           </UnitActionButton>
         </div>
