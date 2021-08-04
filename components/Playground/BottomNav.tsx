@@ -1,5 +1,6 @@
 import {
   ColorSwatchIcon,
+  MinusCircleIcon,
   RewindIcon,
   SortAscendingIcon,
   SortDescendingIcon,
@@ -8,11 +9,14 @@ import {
 import React, { useContext } from 'react';
 import { Tween } from 'react-gsap';
 import { PlaygroundAssetsContext } from 'store/PlaygroundAssets';
+import { SelectedIdContext } from 'store/SelectedId';
 import UnitActionButton from './UnitActionButton';
 
 const BottomNav: React.FC = () => {
-  const [, , deleteAsset, moveAssetBehind, moveAssetForward, moveAssetTop, moveAssetLast] =
+  const [, , deleteAsset, moveAssetBehind, moveAssetForward, moveAssetTop, moveAssetLast, clearBoard] =
     useContext(PlaygroundAssetsContext);
+
+  const [selectedId] = useContext(SelectedIdContext);
 
   return (
     <div className="p-2 bg-white rounded-full shadow-sm mx-auto flex space-x-2">
@@ -24,35 +28,41 @@ const BottomNav: React.FC = () => {
         stagger={0.5}
       >
         <div>
-          <UnitActionButton onClick={moveAssetLast}>
+          <UnitActionButton onClick={moveAssetLast} disabled={selectedId === ''}>
             <RewindIcon className="h-4 w-4 transform -rotate-90" />
           </UnitActionButton>
         </div>
         <div>
-          <UnitActionButton onClick={moveAssetBehind}>
+          <UnitActionButton onClick={moveAssetBehind} disabled={selectedId === ''}>
             <SortDescendingIcon className="h-4 w-4" />
           </UnitActionButton>
         </div>
         <div>
-          <UnitActionButton onClick={moveAssetForward}>
+          <UnitActionButton onClick={moveAssetForward} disabled={selectedId === ''}>
             <SortAscendingIcon className="h-4 w-4" />
           </UnitActionButton>
         </div>
         <div>
-          <UnitActionButton onClick={moveAssetTop}>
+          <UnitActionButton onClick={moveAssetTop} disabled={selectedId === ''}>
             <RewindIcon className="h-4 w-4 transform rotate-90" />
           </UnitActionButton>
         </div>
         <div className="border border-r border-dashed" />
         <div>
-          <UnitActionButton onClick={deleteAsset}>
-            <TrashIcon className="h-4 w-4 hover:text-red-500" />
+          <UnitActionButton onClick={deleteAsset} disabled={selectedId === ''}>
+            <MinusCircleIcon className="h-4 w-4" />
           </UnitActionButton>
         </div>
         <div className="border border-r border-dashed" />
         <div>
           <UnitActionButton>
             <ColorSwatchIcon className="h-4 w-4" />
+          </UnitActionButton>
+        </div>
+        <div className="border border-r border-dashed" />
+        <div>
+          <UnitActionButton onClick={clearBoard}>
+            <TrashIcon className="h-4 w-4" />
           </UnitActionButton>
         </div>
       </Tween>

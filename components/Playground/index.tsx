@@ -32,7 +32,11 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
           PlaygroundAssets.concat([
             {
               ...stageRef?.current?.getPointerPosition(),
-              id: `in-playground-asset-${PlaygroundAssets.length}`,
+              id:
+                PlaygroundAssets.filter((item) => item.id === `in-playground-asset-${PlaygroundAssets.length}`)
+                  .length === 0
+                  ? `in-playground-asset-${PlaygroundAssets.length}`
+                  : `in-playground-asset-${PlaygroundAssets.length}-${Math.random()}`,
               src,
             },
           ])

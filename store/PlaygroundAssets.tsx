@@ -89,6 +89,8 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
     setPlaygroundAssets(tmpAssetList);
   };
 
+  const clearBoard = () => setPlaygroundAssets([]);
+
   return (
     <PlaygroundAssetsContext.Provider
       value={[
@@ -99,6 +101,7 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
         moveAssetForward,
         moveAssetTop,
         moveAssetLast,
+        clearBoard,
       ]}
     >
       {children}
