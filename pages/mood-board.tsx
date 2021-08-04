@@ -1,3 +1,4 @@
+import BottomNav from '@components/Playground/BottomNav';
 import Header from '@components/Playground/Header';
 import MoreActions from '@components/Playground/MoreActions';
 import NavPanel from '@components/Playground/NavPanel';
@@ -33,10 +34,11 @@ const MoodBoard: React.FC = () => {
           <div className="relative bg-gray-200 overflow-y-scroll diy-h-free w-80 flex-1 max-w-sm">
             <NavPanel />
           </div>
-          <div className="bg-gray-100 diy-h-free w-3/4 py-4 pl-4">
-            <div className="bg-white h-full shadow-sm" ref={PlaygroundWrapperRef}>
+          <div className="bg-gray-100 diy-h-free w-3/4 py-4 pl-4 flex flex-col space-y-4">
+            <div className="relative z-10 bg-white h-full flex-1 shadow-sm" ref={PlaygroundWrapperRef}>
               <PlaygroundWithNoSSR w={size[0]} h={size[1]} />
             </div>
+            <BottomNav />
           </div>
           <MoreActions />
         </div>
