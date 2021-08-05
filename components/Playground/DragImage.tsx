@@ -75,6 +75,9 @@ const DragImage: React.FC<DragImageInterface> = ({ index, image, isSelected, onS
     });
   };
 
+  const width = state.width || img?.width;
+  const height = state.height || img?.height;
+
   return (
     <>
       <Image
@@ -85,12 +88,12 @@ const DragImage: React.FC<DragImageInterface> = ({ index, image, isSelected, onS
         x={state.x}
         y={state.y}
         id={state.id}
-        width={state.width}
-        height={state.height}
+        width={width}
+        height={height}
         scaleX={state.width ? 1 : 0.5}
         scaleY={state.height ? 1 : 0.5}
-        offsetX={img ? img.width / 2 : 0}
-        offsetY={img ? img.height / 2 : 0}
+        offsetX={width ? width / 2 : 0}
+        offsetY={height ? height / 2 : 0}
         isSelected={isSelected}
         onClick={onSelect}
         onTap={onSelect}
