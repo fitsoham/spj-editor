@@ -8,7 +8,7 @@ const NavPanel: React.FC = () => {
   return (
     <>
       <div className="h-16 p-4 flex justify-between items-center">
-        <p className="">Collages</p>
+        <p className="">Store</p>
         <FilterIcon className="h-4 w-4" />
       </div>
       <div className="sticky top-0 z-10 bg-gray-200">

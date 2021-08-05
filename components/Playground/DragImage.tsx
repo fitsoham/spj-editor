@@ -44,7 +44,7 @@ const DragImage: React.FC<DragImageInterface> = ({ index, image, isSelected, onS
   const [state, dispatch] = useReducer(reducer, image || initialState);
   const trRef = useRef(null);
   const AssetRef = useRef(null);
-  const [img] = useImage(image.src);
+  const [img] = useImage(image.src, 'Anonymous');
 
   useEffect(() => {
     if (trRef && isSelected) {

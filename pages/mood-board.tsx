@@ -43,8 +43,7 @@ const MoodBoard: React.FC = () => {
               <div className="bg-gray-100 diy-h-free w-3/4 py-4 pl-4 flex flex-col space-y-4">
                 <div className="bg-white shadow-sm p-4" ref={PlaygroundWrapperRef}>
                   <p>
-                    <span className="text-gray-600">Total Cost </span>{' '}
-                    <strong className="text-gray-800">$19000.00</strong>{' '}
+                    <span className="text-gray-600">Budget: </span> <strong className="text-gray-800">$19000.00</strong>{' '}
                   </p>
                 </div>
                 <div className="bg-white shadow-sm h-full flex-1" ref={PlaygroundWrapperRef}>
