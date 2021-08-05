@@ -70,7 +70,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
         onTouchStart={checkDeselect}
       >
         <Layer>
-          <Circle x={sceneWidth / 1.5} y={h / 4} radius={h / 3} fill="#FDF2F8" listening={false} />
+          <Circle x={sceneWidth / 1.5} y={sceneWidth / 6} radius={sceneWidth / 6} fill="#FDF2F8" listening={false} />
           {PlaygroundAssets?.map((image, i) => (
             <DragImage
               index={i}
