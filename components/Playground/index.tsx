@@ -27,7 +27,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
   };
 
   const checkDeselect = (e): void => {
-    if (e.target !== e.target?.getStage()) {
+    if (e.target === e.target?.getStage()) {
       setSelectedId('');
     }
   };
@@ -59,8 +59,8 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
       </button>
       <Stage width={w} height={h} ref={stageRef} onMouseDown={checkDeselect} onTouchStart={checkDeselect}>
         <Layer>
-          <Rect x={0} y={0} width={w} height={h} fill="white" />
-          <Circle x={w / 1.5} y={h / 4} radius={h / 3} fill="#FDF2F8" />
+          <Rect x={0} y={0} width={w} height={h} fill="white" listening={false} />
+          <Circle x={w / 1.5} y={h / 4} radius={h / 3} fill="#FDF2F8" listening={false} />
           {PlaygroundAssets?.map((image, i) => (
             <DragImage
               index={i}

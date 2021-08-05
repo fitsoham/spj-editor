@@ -107,6 +107,8 @@ const DragImage: React.FC<DragImageInterface> = ({ index, image, isSelected, onS
       {isSelected && (
         <Transformer
           ref={trRef}
+          keepRatio={true}
+          enabledAnchors={['top-left', 'top-right', 'bottom-left', 'bottom-right']}
           boundBoxFunc={(oldBox, newBox) => {
             if (newBox.width < 50 || newBox.height < 50) {
               return oldBox;
