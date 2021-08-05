@@ -2,7 +2,7 @@ import { DownloadIcon } from '@heroicons/react/outline';
 import { downloadURI } from '@utils/helpers';
 import { Stage as StageType } from 'konva/lib/Stage';
 import React, { useContext, useRef } from 'react';
-import { Circle, Layer, Rect, Stage } from 'react-konva';
+import { Circle, Layer, Stage } from 'react-konva';
 import { DataBusContext } from 'store';
 import { PlaygroundAssetsContext } from 'store/PlaygroundAssets';
 import { SelectedIdContext } from 'store/SelectedId';
@@ -70,8 +70,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
         onTouchStart={checkDeselect}
       >
         <Layer>
-          <Rect x={0} y={0} width={w} height={h} fill="white" listening={false} />
-          <Circle x={w / 1.5} y={h / 4} radius={h / 3} fill="#FDF2F8" listening={false} />
+          <Circle x={sceneWidth / 1.5} y={h / 4} radius={h / 3} fill="#FDF2F8" listening={false} />
           {PlaygroundAssets?.map((image, i) => (
             <DragImage
               index={i}
