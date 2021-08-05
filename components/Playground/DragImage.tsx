@@ -55,6 +55,26 @@ const DragImage: React.FC<DragImageInterface> = ({ index, image, isSelected, onS
     }
   }, [index, isSelected]);
 
+  const onAssetChange = () => {
+    // transformer is changing scale of the node
+    // and NOT its width or height
+    // but in the store we have only width and height
+    // to match the data better we will reset scale on transform end
+    const node = AssetRef.current;
+    const scaleX = node.scaleX();
+    const scaleY = node.scaleY();
+    // we will reset it back
+    node.scaleX(scaleX);
+    node.scaleY(scaleY);
+    onChange({
+      ...image,
+      x: node.x(),
+      y: node.y(),
+      width: Math.max(5, node.width() * scaleX),
+      height: Math.max(node.height() * scaleY),
+    });
+  };
+
   return (
     <>
       <Image
@@ -67,35 +87,21 @@ const DragImage: React.FC<DragImageInterface> = ({ index, image, isSelected, onS
         id={state.id}
         width={state.width}
         height={state.height}
-        scaleX={0.5}
-        scaleY={0.5}
+        scaleX={state.width ? 1 : 0.5}
+        scaleY={state.height ? 1 : 0.5}
         offsetX={img ? img.width / 2 : 0}
         offsetY={img ? img.height / 2 : 0}
         isSelected={isSelected}
         onClick={onSelect}
         onTap={onSelect}
         onDragStart={() => dispatch({ type: 'DRAG_START', payload: { isDragging: true } })}
-        onDragEnd={(e) =>
-          dispatch({ type: 'DRAG_END', payload: { isDragging: false, x: e.target.x(), y: e.target.y() } })
-        }
-        onTransformEnd={() => {
-          // transformer is changing scale of the node
-          // and NOT its width or height
-          // but in the store we have only width and height
-          // to match the data better we will reset scale on transform end
-          const node = AssetRef.current;
-          const scaleX = node.scaleX();
-          const scaleY = node.scaleY();
-          onChange({
-            ...image,
-            x: node.x(),
-            y: node.y(),
-            width: Math.max(5, node.width() * scaleX),
-            height: Math.max(node.height() * scaleY),
-          });
+        onDragEnd={(e) => {
+          onAssetChange();
+          dispatch({ type: 'DRAG_END', payload: { isDragging: false, x: e.target.x(), y: e.target.y() } });
         }}
+        onTransformEnd={onAssetChange}
       />
-      {true && (
+      {isSelected && (
         <Transformer
           ref={trRef}
           boundBoxFunc={(oldBox, newBox) => {

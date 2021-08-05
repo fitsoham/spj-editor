@@ -57,6 +57,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
                 const tmp = [...PlaygroundAssets];
                 tmp[i] = newAttrs;
                 setPlaygroundAssets(tmp);
+                console.log(`PlaygroundAssets`, PlaygroundAssets);
               }}
             />
           ))}

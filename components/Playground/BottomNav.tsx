@@ -13,8 +13,17 @@ import { SelectedIdContext } from 'store/SelectedId';
 import UnitActionButton from './UnitActionButton';
 
 const BottomNav: React.FC = () => {
-  const [, , deleteAsset, moveAssetBehind, moveAssetForward, moveAssetTop, moveAssetLast, clearBoard] =
-    useContext(PlaygroundAssetsContext);
+  const [
+    PlaygroundAssets,
+    setPlaygroundAssets,
+    deleteAsset,
+    updateAsset,
+    moveAssetBehind,
+    moveAssetForward,
+    moveAssetTop,
+    moveAssetLast,
+    clearBoard,
+  ] = useContext(PlaygroundAssetsContext);
 
   const [selectedId] = useContext(SelectedIdContext);
 

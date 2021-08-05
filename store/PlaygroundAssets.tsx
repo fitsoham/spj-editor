@@ -5,40 +5,36 @@ const PlaygroundAssetsContext = React.createContext([]);
 
 const initData = [
   {
-    x: 470,
-    y: 210,
+    x: 131.37072919940172,
+    y: 518.8690926283336,
     id: 'in-playground-asset-0',
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_250/v1628044308/spj-v2/DIY/painting-3_iierxb.png',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_250/v1628044308/spj-v2/DIY/painting-2_jmqbfd.png',
+    width: 98.3339173871015,
+    height: 131.76744929871597,
   },
   {
-    x: 600,
-    y: 210,
+    x: 234.86367462616448,
+    y: 517.9773239990608,
     id: 'in-playground-asset-1',
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_250/v1628044308/spj-v2/DIY/painting-3_iierxb.png',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_250/v1628044308/spj-v2/DIY/painting-2_jmqbfd.png',
+    width: 99.0399702929451,
+    height: 132.71356019254642,
   },
   {
-    x: 873,
-    y: 400,
+    x: 338.88036223984517,
+    y: 517.9796854013917,
     id: 'in-playground-asset-2',
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_350/v1628044306/spj-v2/DIY/floor-lamp-2_jmpe7t.png',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_250/v1628044308/spj-v2/DIY/painting-2_jmqbfd.png',
+    width: 98.56385907262307,
+    height: 132.0755711573149,
   },
   {
-    x: 200,
-    y: 600,
+    x: 903,
+    y: 264,
     id: 'in-playground-asset-3',
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_250/v1628044308/spj-v2/DIY/side-table-2_v7bhjf.png',
-  },
-  {
-    x: 200,
-    y: 450,
-    id: 'in-playground-asset-4',
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_200/v1628044309/spj-v2/DIY/table-lamp-2_wawq7o.png',
-  },
-  {
-    x: 550,
-    y: 550,
-    id: 'in-playground-asset-5',
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_1200/v1628044308/spj-v2/DIY/sofa-1_skkpax.png',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_350/v1628044306/spj-v2/DIY/floor-lamp-1_thurjj.png',
+    width: 175,
+    height: 380,
   },
 ];
 
@@ -52,6 +48,13 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
         return i;
       }
     }
+  };
+
+  const updateAsset = (data) => {
+    const tmpAssetList = [...PlaygroundAssets];
+    tmpAssetList.splice(getSelectedIndex(data?.id), 1);
+    tmpAssetList.splice(getSelectedIndex(selectedId) - 1, 0, data);
+    setPlaygroundAssets(tmpAssetList);
   };
 
   const deleteAsset = () => {
@@ -97,6 +100,7 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
         PlaygroundAssets,
         setPlaygroundAssets,
         deleteAsset,
+        updateAsset,
         moveAssetBehind,
         moveAssetForward,
         moveAssetTop,
