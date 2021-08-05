@@ -34,12 +34,20 @@ const MoodBoard: React.FC = () => {
           <div className="h-screen">
             <Header />
             <div className="flex">
-              <SideNav />
-              <div className="relative bg-gray-200 overflow-y-scroll diy-h-free w-80 flex-1 max-w-sm">
+              <div className="flex-shrink-0 w-16 bg-white ">
+                <SideNav />
+              </div>
+              <div className="relative flex-shrink-0 w-80 bg-gray-200 overflow-y-scroll diy-h-free">
                 <NavPanel />
               </div>
               <div className="bg-gray-100 diy-h-free w-3/4 py-4 pl-4 flex flex-col space-y-4">
-                <div className="relative z-10 bg-white h-full flex-1 shadow-sm" ref={PlaygroundWrapperRef}>
+                <div className="bg-white shadow-sm p-4" ref={PlaygroundWrapperRef}>
+                  <p>
+                    <span className="text-gray-600">Total Cost </span>{' '}
+                    <strong className="text-gray-800">$19000.00</strong>{' '}
+                  </p>
+                </div>
+                <div className="bg-white shadow-sm h-full flex-1" ref={PlaygroundWrapperRef}>
                   <PlaygroundWithNoSSR w={size[0]} h={size[1]} />
                 </div>
                 <BottomNav />

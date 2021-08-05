@@ -1,3 +1,5 @@
+import { ChevronDownIcon } from '@heroicons/react/outline';
+import Image from 'next/image';
 import React from 'react';
 
 const Header: React.FC = () => {
@@ -13,7 +15,18 @@ const Header: React.FC = () => {
         </svg>
       </div>
       <div className="p-4">
-        <button className="font-bold text-gray-700">Living Room Mood Board</button>
+        <p className="font-bold text-gray-700">Living Room Mood Board</p>
+      </div>
+      <div className="flex-1 mx-4 flex items-center justify-end">
+        <p className="text-gray-800 text-sm mr-1">Admin</p>
+        <ChevronDownIcon className="w-3 h-3 mr-3" />
+        <Image
+          className="rounded-full"
+          src="https://res.cloudinary.com/spacejoy/image/upload/v1621832684/maria_castillero_zzcgvs.png"
+          alt="Avatar"
+          height="35"
+          width="35"
+        />
       </div>
     </div>
   );
