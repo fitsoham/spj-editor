@@ -32,6 +32,10 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     }
   };
 
+  const sceneWidth = 1400;
+
+  const scale = w / sceneWidth;
+
   return (
     <div
       className="relative"
@@ -57,7 +61,14 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
       <button className="absolute right-4 top-4 bg-gray-100 p-2 rounded z-10" onClick={download}>
         <DownloadIcon className="w-4 h-4" />
       </button>
-      <Stage width={w} height={h} ref={stageRef} onMouseDown={checkDeselect} onTouchStart={checkDeselect}>
+      <Stage
+        ref={stageRef}
+        width={w}
+        height={h}
+        scale={{ x: scale, y: scale }}
+        onMouseDown={checkDeselect}
+        onTouchStart={checkDeselect}
+      >
         <Layer>
           <Rect x={0} y={0} width={w} height={h} fill="white" listening={false} />
           <Circle x={w / 1.5} y={h / 4} radius={h / 3} fill="#FDF2F8" listening={false} />

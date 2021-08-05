@@ -25,15 +25,15 @@ const data = [
   },
   {
     id: 'pid-12',
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_450/v1628044307/spj-v2/DIY/chair-1_a79bge.png',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_350/v1628044307/spj-v2/DIY/chair-1_a79bge.png',
   },
   {
     id: 'pid-1',
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_450/v1628044307/spj-v2/DIY/chair-2_fertcp.png',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_350/v1628044307/spj-v2/DIY/chair-2_fertcp.png',
   },
   {
     id: 'pid-13',
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_450/v1628044307/spj-v2/DIY/chair-3_vebxxd.png',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_350/v1628044307/spj-v2/DIY/chair-3_vebxxd.png',
   },
   {
     id: 'pid-17',
