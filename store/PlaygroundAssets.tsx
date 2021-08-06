@@ -11,6 +11,7 @@ const initData = [
     src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_350/v1628044306/spj-v2/DIY/floor-lamp-2_jmpe7t.png',
     width: 175,
     height: 432,
+    price: 15.0,
   },
   {
     x: 292,
@@ -19,6 +20,7 @@ const initData = [
     src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_250/v1628044308/spj-v2/DIY/side-table-2_v7bhjf.png',
     width: 125,
     height: 176,
+    price: 15.0,
   },
   {
     x: 615,
@@ -27,6 +29,7 @@ const initData = [
     src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_1200/v1628044308/spj-v2/DIY/sofa-1_skkpax.png',
     width: 600,
     height: 213.5,
+    price: 15.0,
   },
   {
     x: 296.6214944085189,
@@ -35,6 +38,7 @@ const initData = [
     src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_200/v1628044309/spj-v2/DIY/table-lamp-2_wawq7o.png',
     width: 96.75701118296212,
     height: 162.5517787873764,
+    price: 15.0,
   },
   {
     x: 371,
@@ -49,6 +53,7 @@ const initData = [
     src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_250/v1628044308/spj-v2/DIY/painting-2_jmqbfd.png',
     width: 125,
     height: 167.5,
+    price: 15.0,
   },
 ];
 

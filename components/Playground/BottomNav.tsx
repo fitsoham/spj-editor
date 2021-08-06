@@ -20,13 +20,7 @@ const BottomNav: React.FC = () => {
 
   return (
     <div className="p-2 bg-white rounded-full shadow-sm mx-auto flex space-x-2">
-      <Tween
-        from={{ opacity: 0, scale: 0 }}
-        to={{ opacity: 1, scale: 1 }}
-        duration={1}
-        ease="back.out(1.7)"
-        stagger={0.5}
-      >
+      <Tween from={{ opacity: 0, scale: 0 }} to={{ opacity: 1, scale: 1 }} duration={1} stagger={0.5}>
         <div>
           <UnitActionButton onClick={moveAssetLast} disabled={selectedId === ''}>
             <RewindIcon className="h-4 w-4 transform -rotate-90" />
