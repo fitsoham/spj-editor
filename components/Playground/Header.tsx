@@ -15,7 +15,7 @@ const Header: React.FC = () => {
         </svg>
       </div>
       <div className="p-4">
-        <p className="font-bold text-gray-700">Living Room Mood Board</p>
+        <p className="font-bold text-gray-700">Living Room - Visual Board</p>
       </div>
       <div className="flex-1 mx-4 flex items-center justify-end">
         <p className="text-gray-800 text-sm mr-1">Admin</p>
