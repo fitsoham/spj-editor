@@ -2,7 +2,7 @@ import { DownloadIcon } from '@heroicons/react/outline';
 import { downloadURI } from '@utils/helpers';
 import { Stage as StageType } from 'konva/lib/Stage';
 import React, { useContext, useRef } from 'react';
-import { Circle, Layer, Stage } from 'react-konva';
+import { Layer, Stage } from 'react-konva';
 import { DataBusContext } from 'store';
 import { PlaygroundAssetsContext } from 'store/PlaygroundAssets';
 import { SelectedIdContext } from 'store/SelectedId';
@@ -14,7 +14,7 @@ interface PlaygroundInterface {
 }
 
 const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
-  const [src] = useContext(DataBusContext);
+  const [busData] = useContext(DataBusContext);
   const [PlaygroundAssets, setPlaygroundAssets] = useContext(PlaygroundAssetsContext);
   const [selectedId, setSelectedId] = useContext(SelectedIdContext);
   const stageRef = useRef<StageType>();
@@ -42,25 +42,40 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
       onDrop={(e) => {
         e.preventDefault();
         stageRef?.current?.setPointersPositions(e);
-        setPlaygroundAssets(
-          PlaygroundAssets.concat([
-            {
-              ...stageRef?.current?.getPointerPosition(),
-              id:
-                PlaygroundAssets.filter((item) => item.id === `in-playground-asset-${PlaygroundAssets.length}`)
-                  .length === 0
-                  ? `in-playground-asset-${PlaygroundAssets.length}`
-                  : `in-playground-asset-${PlaygroundAssets.length}-${Math.random()}`,
-              src,
-            },
-          ])
-        );
+        if (busData.type === 'asset') {
+          setPlaygroundAssets(
+            PlaygroundAssets.concat([
+              {
+                ...stageRef?.current?.getPointerPosition(),
+                id:
+                  PlaygroundAssets.filter((item) => item.id === `in-playground-asset-${PlaygroundAssets.length}`)
+                    .length === 0
+                    ? `in-playground-asset-${PlaygroundAssets.length}`
+                    : `in-playground-asset-${PlaygroundAssets.length}-${Math.random()}`,
+                src: busData.src,
+              },
+            ])
+          );
+        }
+        if (busData.type === 'collage') {
+          const tmp = [...PlaygroundAssets];
+          busData.data.map((asset) =>
+            tmp.push({
+              ...asset,
+              id: `in-playground-asset-${PlaygroundAssets.length}-${Math.random()}`,
+            })
+          );
+          setPlaygroundAssets(tmp);
+        }
       }}
       onDragOver={(e) => e.preventDefault()}
     >
-      <button className="absolute right-4 top-4 bg-gray-100 p-2 rounded z-10" onClick={download}>
-        <DownloadIcon className="w-4 h-4" />
-      </button>
+      {PlaygroundAssets.length !== 0 && (
+        <button className="absolute right-4 top-4 bg-gray-100 p-2 rounded z-10" onClick={download}>
+          <DownloadIcon className="w-4 h-4" />
+        </button>
+      )}
+
       <Stage
         ref={stageRef}
         width={w}
@@ -70,7 +85,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
         onTouchStart={checkDeselect}
       >
         <Layer>
-          <Circle x={sceneWidth / 1.5} y={sceneWidth / 6} radius={sceneWidth / 6} fill="#FDF2F8" listening={false} />
+          {/* <Circle x={sceneWidth / 1.5} y={sceneWidth / 6} radius={sceneWidth / 6} fill="#FDF2F8" listening={false} /> */}
           {PlaygroundAssets?.map((image, i) => (
             <DragImage
               index={i}

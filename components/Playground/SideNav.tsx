@@ -7,7 +7,7 @@ const SideNav: React.FC = () => {
   return (
     <>
       <button
-        className={`w-16 h-16 flex justify-center items-center transition hover:bg-gray-900 hover:text-white ${
+        className={`w-16 h-16 flex justify-center items-center transition hover:bg-gray-200 ${
           nav === 'store' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'
         }`}
         onClick={() => setNav('store')}
@@ -15,7 +15,7 @@ const SideNav: React.FC = () => {
         <PuzzleIcon className="w-4 h-4" />
       </button>
       <button
-        className={`w-16 h-16 flex justify-center items-center transition hover:bg-gray-900 hover:text-white ${
+        className={`w-16 h-16 flex justify-center items-center transition hover:bg-gray-200 ${
           nav === 'collages' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'
         }`}
         onClick={() => setNav('collages')}
@@ -23,7 +23,7 @@ const SideNav: React.FC = () => {
         <CollectionIcon className="w-4 h-4" />
       </button>
       <button
-        className={`w-16 h-16 flex justify-center items-center transition hover:bg-gray-900 hover:text-white ${
+        className={`w-16 h-16 flex justify-center items-center transition hover:bg-gray-200 ${
           nav === 'upload' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'
         }`}
         onClick={() => setNav('upload')}
@@ -31,7 +31,7 @@ const SideNav: React.FC = () => {
         <UploadIcon className="w-4 h-4" />
       </button>
       <button
-        className={`w-16 h-16 flex justify-center items-center transition hover:bg-gray-900 hover:text-white ${
+        className={`w-16 h-16 flex justify-center items-center transition hover:bg-gray-200 ${
           nav === 'shop' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'
         }`}
         onClick={() => setNav('shop')}

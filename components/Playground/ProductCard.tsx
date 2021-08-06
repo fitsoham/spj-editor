@@ -11,13 +11,18 @@ interface ProductCardInterface {
 }
 
 const ProductCard: React.FC<ProductCardInterface> = ({ product }) => {
-  const [, setSrc] = useContext(DataBusContext);
+  const [, setBusData] = useContext(DataBusContext);
   return (
     <div
       data-pid={product.src}
       className="group bg-white p-4"
       draggable="true"
-      onDragStart={(e) => setSrc(e.currentTarget.dataset.pid)}
+      onDragStart={(e) =>
+        setBusData({
+          type: 'asset',
+          src: e.currentTarget?.dataset?.pid,
+        })
+      }
     >
       <Image
         src={product.src}
