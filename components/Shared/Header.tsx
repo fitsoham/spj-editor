@@ -136,9 +136,11 @@ const Header: React.FC = () => {
                   <ShoppingBagIcon className="inline h-4 w-4" />
                 </a>
               </Link>
-              <a className="text-white text-xs py-1.5 px-3 mx-2 rounded-lg border border-gray-900 bg-gray-900 hover:bg-gray-700">
-                Start Project
-              </a>
+              <Link href="/visual-board">
+                <a className="text-white text-xs py-1.5 px-3 mx-2 rounded-lg border border-gray-900 bg-gray-900 hover:bg-gray-700">
+                  Start Project
+                </a>
+              </Link>
               <a className="text-gray-700 text-xs py-1.5 px-3 ml-2 rounded-lg border border-gray-600 hover:bg-gray-50">
                 LOGIN
               </a>

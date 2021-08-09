@@ -21,12 +21,12 @@ const v1: React.FC = () => {
             </p>
           </div>
           <div className="overflow-hidden pb-4 pt-1">
-            <button
-              type="button"
-              className="group overflow-hidden shadow-sm hover:shadow-lg text-base text-white py-3 xl:py-4 px-4 xl:px-10 rounded-xl bg-gray-900 tracking-wide focus:ml-0.5 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-400 focus:outline-none"
-            >
-              Start Project Now <ArrowNarrowRightIcon className="inline h-4 w-4 transition group-hover:translate-x-1" />
-            </button>
+            <Link href="/visual-board">
+              <a className="group inline-block overflow-hidden shadow-sm hover:shadow-lg text-base text-white py-3 xl:py-4 px-4 xl:px-10 rounded-xl bg-gray-900 tracking-wide focus:ml-0.5 focus:ring-1 focus:ring-offset-1 focus:ring-offset-white focus:ring-gray-400 focus:outline-none">
+                Start Project Now{' '}
+                <ArrowNarrowRightIcon className="inline h-4 w-4 transition group-hover:translate-x-1" />
+              </a>
+            </Link>
           </div>
           <div className="overflow-hidden">
             <p>

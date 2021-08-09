@@ -1,6 +1,8 @@
+import { Transition } from '@headlessui/react';
 import { DownloadIcon } from '@heroicons/react/outline';
 import { downloadURI } from '@utils/helpers';
 import { Stage as StageType } from 'konva/lib/Stage';
+import Image from 'next/image';
 import React, { useContext, useRef } from 'react';
 import { Layer, Stage } from 'react-konva';
 import { DataBusContext } from 'store';
@@ -76,6 +78,30 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
         </button>
       )}
 
+      {PlaygroundAssets.length === 0 && (
+        <div className="absolute h-full w-full flex justify-center items-center">
+          <Transition
+            show
+            enter="transition-opacity duration-175"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="transition-opacity duration-150"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="h-80 w-80 bg-white">
+              <Image
+                src="https://res.cloudinary.com/spacejoy/image/upload/v1628474966/spj-v2/DIY/placeholder_d8oj7f.svg"
+                alt="begin design"
+                height={360}
+                width={320}
+              />
+              <p className="text-sm text-center text-gray-400">Drag and Drop assets from left panel</p>
+            </div>
+          </Transition>
+        </div>
+      )}
+
       <Stage
         ref={stageRef}
         width={w}
@@ -85,7 +111,6 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
         onTouchStart={checkDeselect}
       >
         <Layer>
-          {/* <Circle x={sceneWidth / 1.5} y={sceneWidth / 6} radius={sceneWidth / 6} fill="#FDF2F8" listening={false} /> */}
           {PlaygroundAssets?.map((image, i) => (
             <DragImage
               index={i}
