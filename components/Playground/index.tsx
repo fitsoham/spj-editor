@@ -1,9 +1,9 @@
-import { Transition } from '@headlessui/react';
 import { DownloadIcon } from '@heroicons/react/outline';
 import { downloadURI } from '@utils/helpers';
 import { Stage as StageType } from 'konva/lib/Stage';
 import Image from 'next/image';
 import React, { useContext, useRef } from 'react';
+import { Tween } from 'react-gsap';
 import { Layer, Stage } from 'react-konva';
 import { DataBusContext } from 'store';
 import { PlaygroundAssetsContext } from 'store/PlaygroundAssets';
@@ -80,25 +80,18 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
 
       {PlaygroundAssets.length === 0 && (
         <div className="absolute h-full w-full flex justify-center items-center">
-          <Transition
-            show
-            enter="transition-opacity duration-175"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="transition-opacity duration-150"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <div className="h-80 w-80 bg-white">
+          <Tween from={{ opacity: 0, y: 5 }} to={{ opacity: 1, y: 0 }} duration={1} delay={0.5}>
+            <div className="h-1/2 text-center">
               <Image
-                src="https://res.cloudinary.com/spacejoy/image/upload/v1628474966/spj-v2/DIY/placeholder_d8oj7f.svg"
+                className="object-cover"
+                src="https://res.cloudinary.com/spacejoy/image/upload/v1628488827/spj-v2/DIY/placeholder_gdkupl.svg"
                 alt="begin design"
-                height={360}
-                width={320}
+                width={286}
+                height={236}
               />
-              <p className="text-sm text-center text-gray-400">Drag and Drop assets from left panel</p>
+              <p className="text-sm mt-4 text-center text-gray-400">Drag and Drop assets from left panel</p>
             </div>
-          </Transition>
+          </Tween>
         </div>
       )}
 
