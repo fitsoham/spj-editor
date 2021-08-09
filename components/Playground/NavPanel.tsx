@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { NavSelectContext } from 'store/NavSelect';
 import CollagePanel from './CollagePanel';
-import StorePanel from './StorePanle';
+import StorePanel from './StorePanel';
 
 const NavPanel: React.FC = () => {
   const [nav] = useContext(NavSelectContext);

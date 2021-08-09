@@ -4,7 +4,7 @@ import { Stage as StageType } from 'konva/lib/Stage';
 import Image from 'next/image';
 import React, { useContext, useRef } from 'react';
 import { Tween } from 'react-gsap';
-import { Layer, Stage } from 'react-konva';
+import { Layer, Rect, Stage } from 'react-konva';
 import { DataBusContext } from 'store';
 import { PlaygroundAssetsContext } from 'store/PlaygroundAssets';
 import { SelectedIdContext } from 'store/SelectedId';
@@ -80,7 +80,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
 
       {PlaygroundAssets.length === 0 && (
         <div className="absolute h-full w-full flex justify-center items-center">
-          <Tween from={{ opacity: 0, y: 5 }} to={{ opacity: 1, y: 0 }} duration={1} delay={0.5}>
+          <Tween from={{ opacity: 0, y: 10 }} to={{ opacity: 1, y: 0 }} duration={1} delay={0.15}>
             <div className="h-1/2 text-center">
               <Image
                 className="object-cover"
@@ -104,6 +104,9 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
         onTouchStart={checkDeselect}
       >
         <Layer>
+          {PlaygroundAssets.length !== 0 && (
+            <Rect x={0} y={0} width={1400} height={1400} fill="#ffffff" listening={false} />
+          )}
           {PlaygroundAssets?.map((image, i) => (
             <DragImage
               index={i}
