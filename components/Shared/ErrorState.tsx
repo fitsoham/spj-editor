@@ -6,7 +6,7 @@ const ErrorState = ({ status }: { status: number }): JSX.Element => {
   return (
     <div className="container mx-auto px-4">
       <div className="h-1/3 w-1/3 mx-auto mt-28">
-        <LottieAnimation />
+        <LottieAnimation animation="empty" />
       </div>
       <SectionTitle
         title="There is an error"
