@@ -32,8 +32,8 @@ const data = [
         price: 15.0,
       },
       {
-        x: 296.6214944085189,
-        y: 379.7241106063118,
+        x: 290,
+        y: 380,
         id: 'in-playground-asset-2',
         src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_200/v1628044309/spj-v2/DIY/table-lamp-2_wawq7o.png',
         width: 96.75701118296212,
@@ -62,16 +62,16 @@ const data = [
     src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_350/v1628223519/spj-v2/DIY/collage/col-2_areqvt.png',
     data: [
       {
-        x: 1159.5792682926824,
-        y: 262.3963414634146,
+        x: 770,
+        y: 400,
         id: 'in-playground-asset-1',
         src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_350/v1628044306/spj-v2/DIY/floor-lamp-2_jmpe7t.png',
         width: 175,
         height: 432,
       },
       {
-        x: 1069.0548780487807,
-        y: 407.2439024390244,
+        x: 720,
+        y: 550,
         id: 'in-playground-asset-0',
         src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_350/v1628044307/spj-v2/DIY/chair-2_fertcp.png',
         width: 175,
