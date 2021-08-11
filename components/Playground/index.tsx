@@ -4,10 +4,11 @@ import { Stage as StageType } from 'konva/lib/Stage';
 import Image from 'next/image';
 import React, { useContext, useRef } from 'react';
 import { Tween } from 'react-gsap';
-import { Layer, Rect, Stage } from 'react-konva';
+import { Image as Img, Layer, Rect, Stage } from 'react-konva';
 import { DataBusContext } from 'store';
 import { PlaygroundAssetsContext } from 'store/PlaygroundAssets';
 import { SelectedIdContext } from 'store/SelectedId';
+import useImage from 'use-image';
 import DragImage from './DragImage';
 
 interface PlaygroundInterface {
@@ -16,6 +17,10 @@ interface PlaygroundInterface {
 }
 
 const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
+  const [img] = useImage(
+    'https://res.cloudinary.com/spacejoy/image/upload/w_1800/v1628659879/spj-v2/DIY/room-2_mewj3z.jpg',
+    'anonymous'
+  );
   const [busData] = useContext(DataBusContext);
   const [PlaygroundAssets, setPlaygroundAssets] = useContext(PlaygroundAssetsContext);
   const [selectedId, setSelectedId] = useContext(SelectedIdContext);
@@ -105,7 +110,10 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
       >
         <Layer>
           {PlaygroundAssets.length !== 0 && (
-            <Rect x={0} y={0} width={1400} height={1400} fill="#ffffff" listening={false} />
+            <>
+              <Rect x={0} y={0} width={1400} height={1400} fill="#ffffff" listening={false} />
+              <Img x={0} y={0} width={1400} height={h} image={img} listening={false} />
+            </>
           )}
           {PlaygroundAssets?.map((image, i) => (
             <DragImage

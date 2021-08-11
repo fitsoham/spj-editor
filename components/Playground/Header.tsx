@@ -3,7 +3,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-const Header: React.FC = () => {
+interface HeaderInterface {
+  roomTypeId?: string;
+  roomTypeTitle: string;
+}
+
+const Header: React.FC<HeaderInterface> = ({ roomTypeId, roomTypeTitle }) => {
   return (
     <div className="h-16 bg-white flex items-center">
       <Link href="/">
@@ -19,8 +24,8 @@ const Header: React.FC = () => {
           </div>
         </a>
       </Link>
-      <div className="p-4">
-        <p className="font-bold text-gray-700">Visual Board - Living Room</p>
+      <div className="p-4" id={roomTypeId}>
+        <p className="font-bold text-gray-700">Visual Board - {roomTypeTitle}</p>
       </div>
       <div className="flex-1 mx-4 flex items-center justify-end">
         <p className="text-gray-800 text-sm mr-1">Admin</p>
