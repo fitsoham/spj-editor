@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { SelectedIdContext } from './SelectedId';
 
 const PlaygroundAssetsContext = React.createContext([]);
@@ -8,6 +8,10 @@ const initData = [];
 const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
   const [PlaygroundAssets, setPlaygroundAssets] = useState(initData);
   const [selectedId, setSelectedId] = useContext(SelectedIdContext);
+
+  useEffect(() => {
+    console.log(`object`, PlaygroundAssets);
+  }, [PlaygroundAssets]);
 
   const getSelectedIndex = (id: string) => {
     for (let i = 0; i <= PlaygroundAssets.length; i++) {

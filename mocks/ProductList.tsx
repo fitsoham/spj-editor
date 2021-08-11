@@ -119,6 +119,36 @@ const data = [
     src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_400/v1628515973/spj-v2/DIY/office-chair-2_z5l7vb.png',
     price: '180.00',
   },
+  {
+    type: 'asset',
+    id: 'pid-21',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_350/v1628044310/spj-v2/DIY/til-chair-2_zzqdj9.png',
+    price: '115.00',
+  },
+  {
+    type: 'asset',
+    id: 'pid-22',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_400/v1628664946/spj-v2/DIY/sofa-6_pi2zvj.png',
+    price: '225.00',
+  },
+  {
+    type: 'asset',
+    id: 'pid-23',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_1200/v1628664946/spj-v2/DIY/sofa-4_s6swim.png',
+    price: '834.00',
+  },
+  {
+    type: 'asset',
+    id: 'pid-24',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_1200/v1628664945/spj-v2/DIY/sofa-3_a7tue7.png',
+    price: '180.00',
+  },
+  {
+    type: 'asset',
+    id: 'pid-25',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_1200/v1628665859/spj-v2/DIY/rug-1_xqxra9.png',
+    price: '180.00',
+  },
 ];
 
 export default data;
