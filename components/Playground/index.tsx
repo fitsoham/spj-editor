@@ -18,7 +18,7 @@ interface PlaygroundInterface {
 
 const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
   const [img] = useImage(
-    `https://res.cloudinary.com/spacejoy/image/upload/w_${w * 1.25}/v1628664294/spj-v2/DIY/room-3_hxged3.jpg`,
+    `https://res.cloudinary.com/spacejoy/image/upload/w_1400/v1628664294/spj-v2/DIY/room-3_hxged3.jpg`,
     'anonymous'
   );
   const [busData] = useContext(DataBusContext);
@@ -112,7 +112,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
           {PlaygroundAssets.length !== 0 && (
             <Rect x={0} y={0} width={w / scale} height={h / scale} fill="#ffffff" listening={false} />
           )}
-          <Img x={0} y={-100} width={w / scale} image={img} listening={false} />
+          <Img x={0} y={0} width={w / scale} image={img} listening={false} />
           {PlaygroundAssets?.map((image, i) => (
             <DragImage
               index={i}
