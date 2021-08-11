@@ -111,8 +111,8 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
         <Layer>
           {PlaygroundAssets.length !== 0 && (
             <>
-              <Rect x={0} y={0} width={1400} height={1400} fill="#ffffff" listening={false} />
-              <Img x={0} y={0} width={1400} height={h} image={img} listening={false} />
+              <Rect x={0} y={0} width={w / scale} height={h / scale} fill="#ffffff" listening={false} />
+              <Img x={0} y={-100} width={w / scale} image={img} listening={false} />
             </>
           )}
           {PlaygroundAssets?.map((image, i) => (
