@@ -34,7 +34,7 @@ const MoodBoard: React.FC = () => {
         <PlaygroundAssetsContextProvider>
           <DataBusContextProvider>
             <div className="h-screen">
-              <Header />
+              <Header roomTypeTitle="Living Room" />
               <div className="flex">
                 <div className="flex-shrink-0 w-16 bg-white diy-h-free">
                   <SideNav />

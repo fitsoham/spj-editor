@@ -5,7 +5,7 @@ import React from 'react';
 
 interface HeaderInterface {
   roomTypeId?: string;
-  roomTypeTitle: string;
+  roomTypeTitle?: string;
 }
 
 const Header: React.FC<HeaderInterface> = ({ roomTypeId, roomTypeTitle }) => {
