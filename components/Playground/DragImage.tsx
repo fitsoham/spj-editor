@@ -84,6 +84,7 @@ const DragImage: React.FC<DragImageInterface> = ({ index, image, isSelected, onS
         draggable
         ref={AssetRef}
         alt="Product Image"
+        name="object"
         image={img}
         x={state.x}
         y={state.y}
