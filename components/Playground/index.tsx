@@ -18,7 +18,7 @@ interface PlaygroundInterface {
 
 const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
   const [img] = useImage(
-    `https://res.cloudinary.com/spacejoy/image/upload/w_1400/v1628664294/spj-v2/DIY/room-3_hxged3.jpg`,
+    `https://res.cloudinary.com/spacejoy/image/upload/w_1400/v1628839257/spj-v2/DIY/room-4_c7bzdb.jpg`,
     'anonymous'
   );
   const stageRef = useRef<StageType>();
@@ -343,9 +343,11 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
       >
         <Layer onDragMove={(e) => onDragMove(e)} onDragEnd={onDragEnd}>
           {PlaygroundAssets.length !== 0 && (
-            <Rect x={0} y={0} width={w / scale} height={h / scale} fill="#ffffff" listening={false} />
+            <>
+              <Rect x={0} y={0} width={w / scale} height={h / scale} fill="#ffffff" listening={false} />
+              <Img x={0} y={0} width={w / scale} image={img} listening={false} />
+            </>
           )}
-          <Img x={0} y={0} width={w / scale} image={img} listening={false} />
           {guides.map((item, i) => {
             return <Line key={i} {...item} />;
           })}
