@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { NavSelectContext } from 'store/NavSelect';
 import CollagePanel from './CollagePanel';
+import PinterestPanel from './PinterestPanel';
 import StorePanel from './StorePanel';
 
 const NavPanel: React.FC = () => {
@@ -10,6 +11,9 @@ const NavPanel: React.FC = () => {
   }
   if (nav === 'collages') {
     return <CollagePanel />;
+  }
+  if (nav === 'pinterest') {
+    return <PinterestPanel />;
   }
   return null;
 };
