@@ -1,20 +1,25 @@
 import { SearchIcon } from '@heroicons/react/outline';
-import React, { useState } from 'react';
-import { Tween } from 'react-gsap';
+import Image from 'next/image';
+import React, { ChangeEvent, useState } from 'react';
 
 const PinterestPanel: React.FC = () => {
   const [pinList, setPinList] = useState([]);
 
-  const getBoardData = async (url) => {
-    await fetch(url)
-      .then((response) => response.json())
-      .then((json) => setPinList(json));
-
-    console.log(`res`, pinList);
+  const getBoardData = async (url: string) => {
+    try {
+      await fetch(url)
+        .then((response) => response.json())
+        .then((json) => {
+          setPinList(json.data.pins);
+        });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const handleChange = (e) => {
-    getBoardData(e.currentTarget.value);
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e?.currentTarget?.value)
+      getBoardData(`https://api.pinterest.com/v3/pidgets/boards/${e?.currentTarget?.value}/pins/?jsonp`);
   };
 
   return (
@@ -22,6 +27,7 @@ const PinterestPanel: React.FC = () => {
       <div className="p-4">
         <p className="">Find Your Inspiration</p>
         <small className="text-sm text-gray-500">Choose a Pinterest board that best represents your style.</small>
+        <p className="text-sm text-blue-900">Board Ex: spacejoyapp/how-to-style-design-guide</p>
       </div>
       <div className="sticky top-0 z-10 bg-gray-200">
         <div className="relative">
@@ -37,16 +43,23 @@ const PinterestPanel: React.FC = () => {
           </button>
         </div>
         <div className="text-right py-1 px-4">
-          <span className="text-xs text-gray-600">5 results found</span>
+          {pinList.length !== 0 && <span className="text-xs text-gray-600">{pinList.length} results found</span>}
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-1 px-1 pb-1">
-        <Tween from={{ opacity: 0, y: 50 }} to={{ opacity: 1, y: 0 }} duration={1} ease="back.out(1.7)" stagger={0.2}>
+      {pinList.length !== 0 && (
+        <div className="grid grid-cols-2 gap-1 px-1 pb-1">
           {pinList.map((pin) => (
-            <div key={pin.id}>s</div>
+            <div key={pin.id} className="next-image-fix">
+              <Image
+                src={pin.images['564x'].url}
+                alt="pin"
+                height={pin.images['564x'].height}
+                width={pin.images['564x'].width}
+              />
+            </div>
           ))}
-        </Tween>
-      </div>
+        </div>
+      )}
     </>
   );
 };

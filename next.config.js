@@ -5,7 +5,7 @@ const moduleExports = withOffline({
   poweredByHeader: false,
   crossOrigin: 'anonymous',
   images: {
-    domains: ['res.cloudinary.com', 'images.unsplash.com'],
+    domains: ['res.cloudinary.com', 'images.unsplash.com', 'i.pinimg.com'],
   },
   workboxOpts: {
     swDest: process.env.NEXT_EXPORT ? 'service-worker.js' : 'static/service-worker.js',
