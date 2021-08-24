@@ -61,7 +61,7 @@ const data = [
   },
   {
     id: 'col-2',
-    src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_350/v1628223519/spj-v2/DIY/collage/col-2_areqvt.png',
+    src: 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_350/v1629803079/spj-v2/DIY/collage/col-2_hnol3m.png',
     data: [
       {
         x: 557.8705198163465,
