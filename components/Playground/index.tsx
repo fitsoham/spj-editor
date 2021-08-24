@@ -11,6 +11,7 @@ import { SelectedIdContext } from 'store/SelectedId';
 import useImage from 'use-image';
 import DragImage from './DragImage';
 
+const sceneWidth = 1400;
 interface PlaygroundInterface {
   w: number;
   h: number;
@@ -18,7 +19,7 @@ interface PlaygroundInterface {
 
 const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
   const [img] = useImage(
-    'https://res.cloudinary.com/spacejoy/image/upload/w_1400/v1629790023/spj-v2/DIY/room-bg-2_d2nxon.jpg',
+    `https://res.cloudinary.com/spacejoy/image/upload/w_${sceneWidth}/v1629790023/spj-v2/DIY/room-bg-2_d2nxon.jpg`,
     'anonymous'
   );
   const stageRef = useRef<StageType>();
@@ -28,15 +29,13 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
   const [PlaygroundAssets, setPlaygroundAssets] = useContext(PlaygroundAssetsContext);
   const [selectedId, setSelectedId] = useContext(SelectedIdContext);
 
-  const sceneWidth = 1400;
-
   const scale = w / sceneWidth;
 
   const download = (): void => {
     const uri = stageRef?.current?.toDataURL({
       pixelRatio: 2, // or other value you need
     });
-    downloadURI(uri, 'spacejoy-demo');
+    downloadURI(uri, `spacejoy-demo-${Date.now()}`);
   };
 
   const checkDeselect = (e): void => {
@@ -344,8 +343,8 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
         <Layer onDragMove={(e) => onDragMove(e)} onDragEnd={onDragEnd}>
           {PlaygroundAssets.length !== 0 && (
             <>
-              <Rect x={0} y={0} width={w / scale} height={h / scale} fill="#ffffff" listening={false} />
-              <Img x={0} y={0} width={w / scale} image={img} listening={false} />
+              <Rect x={0} y={0} width={sceneWidth} height={h / scale} fill="#ffffff" listening={false} />
+              <Img x={0} y={0} width={sceneWidth} image={img} listening={false} />
             </>
           )}
           {guides.map((item, i) => {
