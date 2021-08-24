@@ -25,3 +25,17 @@ h3 {
 .diy-h-free {
   height: calc(100vh - 4rem);
 }
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 0.8rem;
+    height: 0.8rem;
+    cursor: ew-resize;
+    background: #111827;
+    border-radius: 1rem;
+    z-index: 1;
+    position: relative;
+  }
+}
