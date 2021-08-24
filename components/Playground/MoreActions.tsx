@@ -8,29 +8,29 @@ import {
 } from '@heroicons/react/outline';
 import Image from 'next/image';
 import React from 'react';
-import UnitActionButton from './UnitActionButton';
+import UnitAction from './UnitAction';
 
 const MoreActions: React.FC = () => {
   return (
     <div className="bg-gray-100 w-20 p-4 flex-col space-y-2">
       <div className="rounded-full bg-white p-2 flex-col space-y-2 shadow-sm">
-        <UnitActionButton>
+        <UnitAction title="Lock Design" onClick={() => null}>
           <LockClosedIcon className="h-4 w-4" />
-        </UnitActionButton>
-        <UnitActionButton>
+        </UnitAction>
+        <UnitAction title="Share" onClick={() => null}>
           <ShareIcon className="h-4 w-4" />
-        </UnitActionButton>
-        <UnitActionButton>
+        </UnitAction>
+        <UnitAction title="Magic" onClick={() => null}>
           <SparklesIcon className="h-4 w-4" />
-        </UnitActionButton>
+        </UnitAction>
       </div>
       <div className="rounded-full bg-white p-2 flex-col space-y-2 shadow-sm">
-        <UnitActionButton>
+        <UnitAction title="Ideas" onClick={() => null}>
           <LightBulbIcon className="h-4 w-4" />
-        </UnitActionButton>
-        <UnitActionButton>
+        </UnitAction>
+        <UnitAction title="Feedback" onClick={() => null}>
           <EmojiHappyIcon className="h-4 w-4" />
-        </UnitActionButton>
+        </UnitAction>
         <div className="next-image-fix">
           <Image
             src="https://res.cloudinary.com/spacejoy/image/upload/w_70/v1628138169/spj-v2/DIY/emojis/angry_i0zybg.png"
@@ -65,9 +65,9 @@ const MoreActions: React.FC = () => {
         </div>
       </div>
       <div className="rounded-full bg-white p-2 flex-col space-y-2 shadow-sm">
-        <UnitActionButton>
+        <UnitAction title="Help Chat" onClick={() => null}>
           <ChatAltIcon className="h-4 w-4" />
-        </UnitActionButton>
+        </UnitAction>
       </div>
     </div>
   );
