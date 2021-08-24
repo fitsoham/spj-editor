@@ -3,7 +3,7 @@ import React from 'react';
 interface UnitActionInterface {
   onClick?: () => void;
   disabled?: boolean;
-  title: string;
+  title?: string;
 }
 
 const UnitAction: React.FC<UnitActionInterface> = ({ children, onClick, disabled, title }) => {
