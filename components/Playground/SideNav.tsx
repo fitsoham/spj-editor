@@ -72,4 +72,4 @@ const SideNav: React.FC = () => {
   );
 };
 
-export default SideNav;
+export default React.memo(SideNav);

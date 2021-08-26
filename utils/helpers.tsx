@@ -1,11 +1,10 @@
-function debounce(func, wait) {
-  let timeout;
-  return function x(...args) {
-    if (timeout) clearTimeout(timeout);
-    timeout = setTimeout(() => {
-      timeout = null;
-      func.apply(this, args);
-    }, wait);
+function debounce<Params extends any[]>(func: (...args: Params) => any, timeout: number): (...args: Params) => void {
+  let timer: NodeJS.Timeout;
+  return (...args: Params) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func(...args);
+    }, timeout);
   };
 }
 

@@ -12,15 +12,12 @@ import { SelectedIdContextProvider } from 'store/SelectedId';
 
 const PlaygroundWithNoSSR = dynamic(() => import('@components/Playground'), { ssr: false });
 
-const MoodBoard: React.FC = () => {
+const VisualBoard: React.FC = () => {
   const PlaygroundWrapperRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState([0, 0]);
 
   const updateSize = () =>
-    setSize([
-      PlaygroundWrapperRef.current.getClientRects()[0].width,
-      PlaygroundWrapperRef.current.getClientRects()[0].height,
-    ]);
+    setSize([PlaygroundWrapperRef.current.offsetWidth, PlaygroundWrapperRef.current.offsetHeight]);
 
   useEffect(() => {
     updateSize();
@@ -43,7 +40,7 @@ const MoodBoard: React.FC = () => {
                   <NavPanel />
                 </div>
                 <div className="bg-gray-100 diy-h-free w-3/4 py-4 pl-4 flex flex-col space-y-4">
-                  <div className="bg-white shadow-sm p-4" ref={PlaygroundWrapperRef}>
+                  <div className="bg-white shadow-sm p-4">
                     <p className="text-sm text-gray-600">Budget: $19000.00</p>
                   </div>
                   <div className="bg-white shadow-sm h-full flex-1" ref={PlaygroundWrapperRef}>
@@ -61,4 +58,4 @@ const MoodBoard: React.FC = () => {
   );
 };
 
-export default MoodBoard;
+export default React.memo(VisualBoard);
