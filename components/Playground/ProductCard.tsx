@@ -1,39 +1,37 @@
 import { ExternalLinkIcon } from '@heroicons/react/outline';
+import AssetType from '@utils/types/AssetType';
 import Image from 'next/image';
 import React, { useContext } from 'react';
 import { DataBusContext } from 'store';
 
 interface ProductCardInterface {
-  product: {
-    src: string;
-    price: string;
-  };
+  product: AssetType;
 }
 
-const ProductCard: React.FC<ProductCardInterface> = ({ product }) => {
+const ProductCard: React.FC<ProductCardInterface> = ({ product = {} }) => {
   const [, setBusData] = useContext(DataBusContext);
   return (
     <div
-      data-pid={product.src}
-      className="group bg-white p-4"
+      data-pid={`https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_250/${product?.cdn}`}
+      className="group bg-white p-4 h-full"
       draggable="true"
       onDragStart={(e) =>
         setBusData({
           type: 'asset',
-          src: e.currentTarget?.dataset?.pid,
+          cdn: e.currentTarget?.dataset?.pid,
         })
       }
     >
       <Image
-        src={product.src}
+        src={`https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_250/${product?.cdn}`}
         width="300"
         height="300"
         alt="product"
         className="object-contain transition transform scale-95 group-hover:scale-100"
         draggable={false}
       />
-      <small className="text-xs text-gray-500">Article</small>
-      <p className="text-sm pb-1">Livia Natural Lounge Chair</p>
+      <small className="text-xs text-gray-500">{product?.retailer}</small>
+      <p className="text-sm pb-1 line-clamp-2">{product?.name}</p>
       <div className="flex justify-between items-center">
         <p className="text-sm font-bold">${product.price}</p>
         <a

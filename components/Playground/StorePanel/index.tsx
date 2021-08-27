@@ -1,13 +1,14 @@
 import { FilterIcon, SearchIcon } from '@heroicons/react/outline';
-import ProductList from '@mocks/ProductList';
 import React, { useState } from 'react';
 import { Tween } from 'react-gsap';
-import ProductCard from './ProductCard';
+import FilterSidebar from './FilterSidebar';
+import ProductListView from './ProductListView';
 
 const StorePanel: React.FC = () => {
   const [showPanel, setShowPanel] = useState(false);
+
   return (
-    <div className="store-panel relative">
+    <div className="store-panel relative flex flex-col h-full">
       <div className="relative h-16 p-4 flex justify-between items-center bg-white z-10">
         <p className="">Store</p>
         <button
@@ -33,20 +34,12 @@ const StorePanel: React.FC = () => {
           <span className="text-xs text-gray-600">1293 results found</span>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-1 px-1 pb-1">
-        <Tween from={{ opacity: 0, y: 50 }} to={{ opacity: 1, y: 0 }} duration={2} ease="back.out(1.7)" stagger={0.2}>
-          {ProductList.map((product) => (
-            <div key={product.id}>
-              <ProductCard product={product} />
-            </div>
-          ))}
-        </Tween>
+      <div className="h-full flex-grow">
+        <ProductListView />
       </div>
       {showPanel && (
         <Tween from={{ opacity: 0, y: 50 }} to={{ opacity: 1, y: 0 }} duration={0.5} ease="back.out(1.7)">
-          <div className="absolute z-10 top-14 p-4 inset-x-0 bg-white h-full bg-opacity-70 backdrop-filter backdrop-blur firefox:bg-opacity-70">
-            Price Range
-          </div>
+          <FilterSidebar />
         </Tween>
       )}
     </div>
