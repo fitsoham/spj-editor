@@ -1,4 +1,5 @@
-import { DownloadIcon } from '@heroicons/react/outline';
+import { DownloadIcon, UploadIcon } from '@heroicons/react/outline';
+import fetcher from '@utils/fetcher';
 import { downloadURI } from '@utils/helpers';
 import { Stage as StageType } from 'konva/lib/Stage';
 import Image from 'next/image';
@@ -18,16 +19,18 @@ interface PlaygroundInterface {
 }
 
 const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
-  const [img] = useImage(
-    `https://res.cloudinary.com/spacejoy/image/upload/w_${sceneWidth}/v1629790023/spj-v2/DIY/room-bg-2_d2nxon.jpg`,
-    'anonymous'
-  );
   const stageRef = useRef<StageType>();
   const GUIDELINE_OFFSET = 5;
   const [guides, setGuides] = useState([]);
   const [busData] = useContext(DataBusContext);
-  const [PlaygroundAssets, setPlaygroundAssets] = useContext(PlaygroundAssetsContext);
+  const [PlaygroundAssets, setPlaygroundAssets, , , , , , , ,bg, , getRotationValue ] = useContext(PlaygroundAssetsContext);
   const [selectedId, setSelectedId] = useContext(SelectedIdContext);
+  const { tmpBgImg, bgImgUrl} = bg
+  console.log('bg image ---', tmpBgImg || bgImgUrl);
+  const [img] = useImage(
+    tmpBgImg || bgImgUrl,
+    'anonymous'
+  );
 
   const scale = w / sceneWidth;
 
@@ -35,8 +38,15 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     const uri = stageRef?.current?.toDataURL({
       pixelRatio: 2, // or other value you need
     });
+    console.log(uri);
     downloadURI(uri, `spacejoy-demo-${Date.now()}`);
   };
+
+
+  const saveCollage = () => {
+    console.log('saving collage ----', PlaygroundAssets);
+  }
+
 
   const checkDeselect = (e): void => {
     if (e.target === e.target?.getStage()) {
@@ -276,44 +286,59 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     setGuides([]);
   };
 
+  const onDropEvent = async (e) => {
+    e.preventDefault();
+    stageRef?.current?.setPointersPositions(e);
+    if (busData.type === 'asset') {
+      const {assetId = ''} = busData;
+      const {data} = await fetcher({endPoint: `/v1/assets/${assetId}/stitchImages`, method: 'GET'});
+      const { height, count, image: {compressed = ''} = {}} = data || {};
+      setPlaygroundAssets(
+        PlaygroundAssets.concat([
+          {
+            ...stageRef?.current?.getPointerPosition(),
+            id:
+              PlaygroundAssets.filter((item) => item.id === `in-playground-asset-${PlaygroundAssets.length}`)
+                .length === 0
+                ? `in-playground-asset-${PlaygroundAssets.length}`
+                : `in-playground-asset-${PlaygroundAssets.length}-${Math.random()}`,
+            src: busData.src,
+            count,
+            height,
+            stitchedAssetImage: compressed,
+            assetId
+          },
+        ])
+      );
+    }
+    if (busData.type === 'collage') {
+      const tmp = [...PlaygroundAssets];
+      busData.data.map((asset) =>
+        tmp.push({
+          ...asset,
+          id: `in-playground-asset-${PlaygroundAssets.length}-${Math.random()}`,
+        })
+      );
+      setPlaygroundAssets(tmp);
+    }
+  }
+
+
   return (
     <div
       className="relative"
-      onDrop={(e) => {
-        e.preventDefault();
-        stageRef?.current?.setPointersPositions(e);
-        if (busData.type === 'asset') {
-          setPlaygroundAssets(
-            PlaygroundAssets.concat([
-              {
-                ...stageRef?.current?.getPointerPosition(),
-                id:
-                  PlaygroundAssets.filter((item) => item.id === `in-playground-asset-${PlaygroundAssets.length}`)
-                    .length === 0
-                    ? `in-playground-asset-${PlaygroundAssets.length}`
-                    : `in-playground-asset-${PlaygroundAssets.length}-${Math.random()}`,
-                src: busData.src,
-              },
-            ])
-          );
-        }
-        if (busData.type === 'collage') {
-          const tmp = [...PlaygroundAssets];
-          busData.data.map((asset) =>
-            tmp.push({
-              ...asset,
-              id: `in-playground-asset-${PlaygroundAssets.length}-${Math.random()}`,
-            })
-          );
-          setPlaygroundAssets(tmp);
-        }
-      }}
+      onDrop={onDropEvent}
       onDragOver={(e) => e.preventDefault()}
     >
       {PlaygroundAssets.length !== 0 && (
-        <button className="absolute right-4 top-4 bg-gray-100 p-2 rounded z-10" onClick={download}>
-          <DownloadIcon className="w-4 h-4" />
-        </button>
+        <>
+          <button className="absolute right-4 top-4 bg-gray-100 p-2 rounded z-10" onClick={download}>
+            <DownloadIcon className="w-4 h-4" />
+          </button>
+          <button className="absolute right-4 top-16 bg-gray-100 p-2 rounded z-10" onClick={saveCollage}>
+            <UploadIcon className="w-4 h-4" />
+          </button>
+        </>
       )}
       {PlaygroundAssets.length === 0 && (
         <div className="absolute h-full w-full flex justify-center items-center">
@@ -331,7 +356,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
           </Tween>
         </div>
       )}
-
+      {console.log('current image is----', img)}
       <Stage
         ref={stageRef}
         width={w}
@@ -352,6 +377,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
           })}
           {PlaygroundAssets?.map((image, i) => (
             <DragImage
+              rotationValue={getRotationValue(image?.id)}
               index={i}
               key={image.id}
               image={image}

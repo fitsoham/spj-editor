@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useRef } from 'react';
-import { Image, Transformer } from 'react-konva';
+import { Sprite, Transformer } from 'react-konva';
 import useImage from 'use-image';
 
 interface DragImageInterface {
@@ -12,10 +12,13 @@ interface DragImageInterface {
     height?: number;
     width?: number;
     isDragging?: false;
+    stitchedAssetImage?: string;
+    count?: number
   };
   isSelected: boolean;
   onSelect: () => void;
   onChange: (newAttrs) => void;
+  rotationValue?: string;
 }
 
 const initialState = {
@@ -40,11 +43,25 @@ const reducer = (state, action) => {
   }
 };
 
-const DragImage: React.FC<DragImageInterface> = ({ index, image, isSelected, onSelect, onChange }) => {
+const getAnimationObject = (boxSize) => {
+  const animationObject = {};
+  for (let i = 0; i <  100; i+=8) {
+    animationObject[i.toString()] = [Math.ceil(i/8) * boxSize, 0, boxSize, 10000];
+  }
+  animationObject['96'] = animationObject["0"];
+  return animationObject;
+}
+
+const DragImage: React.FC<DragImageInterface> = ({ index, image, isSelected, onSelect, onChange, rotationValue  = "0"}) => {
   const [state, dispatch] = useReducer(reducer, image || initialState);
   const trRef = useRef(null);
   const AssetRef = useRef(null);
-  const [img] = useImage(image.src, 'anonymous');
+  const [img] = useImage(image?.stitchedAssetImage, 'anonymous');
+  const {count} = image;
+  const imWidth = img?.width || 0;
+  const animations = getAnimationObject(imWidth / count);
+  
+
 
   useEffect(() => {
     if (trRef && isSelected) {
@@ -75,12 +92,11 @@ const DragImage: React.FC<DragImageInterface> = ({ index, image, isSelected, onS
     });
   };
 
-  const width = state.width || img?.width;
   const height = state.height || img?.height;
 
   return (
     <>
-      <Image
+      <Sprite
         draggable
         ref={AssetRef}
         alt="Product Image"
@@ -89,12 +105,9 @@ const DragImage: React.FC<DragImageInterface> = ({ index, image, isSelected, onS
         x={state.x}
         y={state.y}
         id={state.id}
-        width={width}
+        width={imWidth/count}
         height={height}
-        scaleX={state.width ? 1 : 0.5}
-        scaleY={state.height ? 1 : 0.5}
-        offsetX={width ? width / 2 : 0}
-        offsetY={height ? height / 2 : 0}
+        
         isSelected={isSelected}
         onClick={onSelect}
         onTap={onSelect}
@@ -104,6 +117,8 @@ const DragImage: React.FC<DragImageInterface> = ({ index, image, isSelected, onS
           dispatch({ type: 'DRAG_END', payload: { isDragging: false, x: e.target.x(), y: e.target.y() } });
         }}
         onTransformEnd={onAssetChange}
+        animations={animations}
+        animation={rotationValue}
       />
       {isSelected && (
         <Transformer

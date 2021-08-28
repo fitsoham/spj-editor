@@ -10,6 +10,7 @@ interface ProductCardInterface {
 
 const ProductCard: React.FC<ProductCardInterface> = ({ product = {} }) => {
   const [, setBusData] = useContext(DataBusContext);
+  const {_id: assetId = ''} = product;
   return (
     <div
       data-pid={`https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_250/${product?.cdn}`}
@@ -18,7 +19,8 @@ const ProductCard: React.FC<ProductCardInterface> = ({ product = {} }) => {
       onDragStart={(e) =>
         setBusData({
           type: 'asset',
-          cdn: e.currentTarget?.dataset?.pid,
+          src: e.currentTarget?.dataset?.pid,
+          assetId
         })
       }
     >

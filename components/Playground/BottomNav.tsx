@@ -1,47 +1,49 @@
+import BgSelector from '@components/Playground/BgSelector';
+import InputRange from '@components/Shared/InputRange';
+import { Popover } from '@headlessui/react';
 import {
   ColorSwatchIcon,
   RewindIcon,
   SortAscendingIcon,
   SortDescendingIcon,
-  TrashIcon,
+  TrashIcon
 } from '@heroicons/react/outline';
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Tween } from 'react-gsap';
 import { PlaygroundAssetsContext } from 'store/PlaygroundAssets';
 import { SelectedIdContext } from 'store/SelectedId';
 import UnitAction from './UnitAction';
 
-const FullRotationAngle = 360;
+
+
 
 const BottomNav: React.FC = () => {
-  const [, , deleteAsset, , moveAssetBehind, moveAssetForward, moveAssetTop, moveAssetLast, clearBoard] =
+  const [, , deleteAsset, , moveAssetBehind, moveAssetForward, moveAssetTop, moveAssetLast, clearBoard, ,rotateAndSaveRotation,getRotationValue] =
     useContext(PlaygroundAssetsContext);
 
   const [selectedId] = useContext(SelectedIdContext);
-
-  const [rotationValue, setRotationValue] = useState(FullRotationAngle / 2);
-
+  
+  
+  
+  // const [rotationValue, setRotationValue] = useState(0);
   return (
-    <div className="p-2 bg-white rounded-full shadow-sm mx-auto flex space-x-2">
-      <UnitAction>
-        <small className="text-xs text-gray-900 mr-4">Rotate</small>
-        <div className="-mt-1 relative">
-          <div
-            className="h-1 bg-gray-700 rounded absolute top-0"
-            style={{ width: `${100 / (FullRotationAngle / rotationValue)}%`, top: '13px' }}
-          />
-          <input
-            className="rounded appearance-none bg-gray-300 h-1 w-48"
-            type="range"
-            min="1"
-            max="360"
-            step="1"
-            value={rotationValue}
-            onChange={(e) => setRotationValue(parseInt(e?.currentTarget?.value))}
-          />
-        </div>
-      </UnitAction>
-      <Tween from={{ opacity: 0, scale: 0 }} to={{ opacity: 1, scale: 1 }} duration={1} stagger={0.5}>
+    <div className="p-2 bg-white rounded-full shadow-sm mx-auto flex space-x-2" >
+      {
+        selectedId && selectedId?.length && (
+          <UnitAction>
+            <small className="text-xs text-gray-900 mr-4">Rotate</small>
+            <div className="-mt-1 relative">
+              <div
+                className="h-1 bg-gray-700 rounded absolute top-0"
+                style={{width: `${getRotationValue(selectedId)}%`, top: '13px'}}
+              />
+              <InputRange updateProductRotation={rotateAndSaveRotation} value={getRotationValue(selectedId)} />
+            </div>
+          </UnitAction>
+        )
+      }
+      
+      <Tween from={{ opacity: 0, scale: 0 }} to={{ opacity: 1, scale: 1 }} duration={1} stagger={0.5} >
         <div className="border border-r border-dashed" />
         <div>
           <UnitAction onClick={moveAssetLast} disabled={selectedId === ''}>
@@ -71,9 +73,28 @@ const BottomNav: React.FC = () => {
         </div>
         <div className="border border-r border-dashed" />
         <div>
-          <UnitAction>
-            <ColorSwatchIcon className="h-4 w-4" />
-          </UnitAction>
+        <Popover className="relative">
+            {({ open }) => (
+              <>
+                <Popover.Button> 
+                  <UnitAction>
+                    <ColorSwatchIcon className="h-4 w-4" />
+                  </UnitAction>
+                </Popover.Button>
+                <Popover.Overlay
+                  className={`${
+                    open ? 'opacity-30 fixed inset-0 z-10' : 'opacity-0'
+                  } bg-black`}
+                />
+
+                <Popover.Panel className="absolute z-10 w-screen px-4 mt-3 transform -translate-x-1/2 left-1/2 sm:px-0 lg:max-w-3xl bottom-12">
+                  <div >
+                    <BgSelector />
+                  </div>
+                </Popover.Panel>
+              </>
+            )}
+        </Popover>
         </div>
         <div className="border border-r border-dashed" />
         <div>
