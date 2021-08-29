@@ -18,7 +18,8 @@ const fetcher = async ({
   isSocket = false,
   type = 'text',
 }: FetcherArgs): Promise<Record<string, any>> => {
-  const JWT = '';
+  // const JWT = '';
+  const JWT = "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYTg4M2IzYWZkNzBhYTFiODAwYjE1YSIsIl9pZCI6IjVkYTg4M2IzYWZkNzBhYTFiODAwYjE1YSIsIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5Ac3BhY2Vqb3kuY29tIiwicm9sZSI6Im93bmVyIiwiY3JlZGl0cyI6MCwic3RhdHVzIjoiYWN0aXZlIiwidG5jIjpmYWxzZSwicGhvbmUiOm51bGwsInRyaWFsRXhoYXVzdGVkIjpmYWxzZSwiaWF0IjoxNjMwMjIyNDEyLCJleHAiOjE2Mzg4NjI0MTJ9.5ZQxzJs_9LRaNCOeOFn5TU7w45q02mJBV9XxcLaJP6U";
   const contentType = type === 'file' ? '' : 'application/json';
 
   const headers = JWT ? { 'Content-Type': contentType, Authorization: JWT } : { 'Content-Type': contentType };
