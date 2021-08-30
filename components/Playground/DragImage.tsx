@@ -61,16 +61,16 @@ const DragImage: React.FC<DragImageInterface> = ({
   onChange,
   rotationValue = '0',
 }) => {
-  console.log(`image`, image);
   const [state, dispatch] = useReducer(reducer, image || initialState);
   const trRef = useRef(null);
   const AssetRef = useRef(null);
   const [img] = useImage(
-    `https://res.cloudinary.com/spacejoy/image/upload/w_${Math.ceil(image?.width) * image?.count * 250}/${
-      image?.stitchedAssetImage
+    `https://res.cloudinary.com/spacejoy/image/upload/w_${Math.ceil(state?.width) * state?.count * 250}/${
+      state?.stitchedAssetImage
     }`,
     'anonymous'
   );
+
   const animations = getAnimationObject(img?.width / image.count);
 
   useEffect(() => {
@@ -93,17 +93,20 @@ const DragImage: React.FC<DragImageInterface> = ({
     // we will reset it back
     node.scaleX(scaleX);
     node.scaleY(scaleY);
+    console.log(`node`, node);
     onChange({
       ...image,
       x: node.x(),
       y: node.y(),
-      width: Math.max(5, node.width() * scaleX),
+      offsetX: node.offsetX,
+      offsetY: node.offsetY,
+      width: Math.max(node.width() * scaleX),
       height: Math.max(node.height() * scaleY),
     });
   };
 
-  const height = img?.height;
-  const width = img?.width / image.count;
+  const height = img?.height || 0;
+  const width = img?.width / image.count || 0;
 
   console.log(`stare.isDragging`, state.isDragging);
 
