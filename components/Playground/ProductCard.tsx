@@ -11,10 +11,11 @@ interface ProductCardInterface {
 const ProductCard: React.FC<ProductCardInterface> = ({ product = {} }) => {
   const [, setBusData] = useContext(DataBusContext);
   const {_id: assetId = ''} = product;
+  const productThumbnail = product?.renderImages ? product?.renderImages[0]?.cdn : 'v1623166775/Untitled-1-12_iah06e.jpg';
   return (
     <div
-      data-pid={`https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_250/${product?.cdn}`}
-      className="group bg-white p-4 h-full"
+      data-pid={`https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_300/${productThumbnail}`}
+      className="group bg-white p-4 h-60 next-image-fix"
       draggable="true"
       onDragStart={(e) =>
         setBusData({
@@ -25,9 +26,9 @@ const ProductCard: React.FC<ProductCardInterface> = ({ product = {} }) => {
       }
     >
       <Image
-        src={`https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_250/${product?.cdn}`}
-        width="300"
-        height="300"
+        src={`https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_300/${productThumbnail}`}
+        width={product?.width * 576}
+        height={product?.height * 576}
         alt="product"
         className="object-contain transition transform scale-95 group-hover:scale-100"
         draggable={false}
