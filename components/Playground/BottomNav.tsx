@@ -1,5 +1,6 @@
 import BgSelector from '@components/Playground/BgSelector';
 import InputRange from '@components/Shared/InputRange';
+import Modal from '@components/Shared/Modal';
 import { Popover } from '@headlessui/react';
 import {
   ColorSwatchIcon,
@@ -97,11 +98,24 @@ const BottomNav: React.FC = () => {
         </Popover>
         </div>
         <div className="border border-r border-dashed" />
-        <div>
-          <UnitAction onClick={clearBoard}>
+        {/* <div>
+          <UnitAction>
             <svg height="16" width="16" viewBox="0 0 79.707 79.707">
               <path d="M67.239 79.707l-8.41-28.273c-.207-7.525-4.795-13.963-11.309-16.849V7.667C47.52 3.439 44.081 0 39.853 0c-4.227 0-7.666 3.439-7.666 7.667v26.918c-6.513 2.886-11.099 9.323-11.306 16.844l-8.413 28.275h54.771v.003zm-12.81-6l-3.431-12.806a1.994 1.994 0 00-2.449-1.413 1.997 1.997 0 00-1.414 2.448l3.152 11.771h-8.436v-12.29a2 2 0 00-4 0v12.287h-7.435l3.153-11.771a2 2 0 00-3.863-1.035l-3.431 12.806H20.51l5.579-18.75h27.527l5.575 18.75h-4.763l.001.003zM38.187 7.667c0-.919.748-1.667 1.666-1.667a1.67 1.67 0 011.667 1.667V33.04c-.55-.048-1.104-.084-1.666-.084s-1.117.036-1.667.084V7.667zm1.667 31.289c6.135 0 11.275 4.276 12.637 10H27.217c1.36-5.725 6.503-10 12.637-10z" />
             </svg>
+          </UnitAction>
+        </div> */}
+        <div>
+          <UnitAction>
+            <Modal onCloseCallback={clearBoard}>
+              <Modal.Button>
+                    <svg height="16" width="16" viewBox="0 0 79.707 79.707">
+                      <path d="M67.239 79.707l-8.41-28.273c-.207-7.525-4.795-13.963-11.309-16.849V7.667C47.52 3.439 44.081 0 39.853 0c-4.227 0-7.666 3.439-7.666 7.667v26.918c-6.513 2.886-11.099 9.323-11.306 16.844l-8.413 28.275h54.771v.003zm-12.81-6l-3.431-12.806a1.994 1.994 0 00-2.449-1.413 1.997 1.997 0 00-1.414 2.448l3.152 11.771h-8.436v-12.29a2 2 0 00-4 0v12.287h-7.435l3.153-11.771a2 2 0 00-3.863-1.035l-3.431 12.806H20.51l5.579-18.75h27.527l5.575 18.75h-4.763l.001.003zM38.187 7.667c0-.919.748-1.667 1.666-1.667a1.67 1.67 0 011.667 1.667V33.04c-.55-.048-1.104-.084-1.666-.084s-1.117.036-1.667.084V7.667zm1.667 31.289c6.135 0 11.275 4.276 12.637 10H27.217c1.36-5.725 6.503-10 12.637-10z" />
+                    </svg>
+              </Modal.Button>
+              <Modal.Header>Header</Modal.Header>
+              <Modal.Body>Are you sure you want to clear your board? this action cannot be undone</Modal.Body>
+            </Modal>
           </UnitAction>
         </div>
       </Tween>

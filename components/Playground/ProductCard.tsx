@@ -27,8 +27,8 @@ const ProductCard: React.FC<ProductCardInterface> = ({ product = {} }) => {
     >
       <Image
         src={`https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_300/${productThumbnail}`}
-        width={product?.width * 576}
-        height={product?.height * 576}
+        width="300"
+        height="300"
         alt="product"
         className="object-contain transition transform scale-95 group-hover:scale-100"
         draggable={false}

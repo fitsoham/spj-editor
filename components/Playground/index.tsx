@@ -26,7 +26,6 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
   const [PlaygroundAssets, setPlaygroundAssets, , , , , , , ,bg, , getRotationValue ] = useContext(PlaygroundAssetsContext);
   const [selectedId, setSelectedId] = useContext(SelectedIdContext);
   const { tmpBgImg, bgImgUrl} = bg
-  console.log('bg image ---', tmpBgImg || bgImgUrl);
   const [img] = useImage(
     tmpBgImg || bgImgUrl,
     'anonymous'
@@ -38,7 +37,6 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     const uri = stageRef?.current?.toDataURL({
       pixelRatio: 2, // or other value you need
     });
-    console.log(uri);
     downloadURI(uri, `spacejoy-demo-${Date.now()}`);
   };
 
@@ -356,7 +354,6 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
           </Tween>
         </div>
       )}
-      {console.log('current image is----', img)}
       <Stage
         ref={stageRef}
         width={w}
