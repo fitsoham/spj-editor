@@ -8,7 +8,8 @@ const initData = [];
 const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
   const [PlaygroundAssets, setPlaygroundAssets] = useState(initData);
   const [selectedId, setSelectedId] = useContext(SelectedIdContext);
-  const [bgImgUrl, setBgImgUrl] = useState('https://res.cloudinary.com/spacejoy/image/upload/v1630143026/spj-v2/DIY/room-bg/611b624e9d92ba0028e014a9__huzj9k.png');
+  // const [bgImgUrl, setBgImgUrl] = useState('https://res.cloudinary.com/spacejoy/image/upload/v1630143026/spj-v2/DIY/room-bg/611b624e9d92ba0028e014a9__huzj9k.png');
+  const [bgImgUrl, setBgImgUrl] = useState('');
   const [tmpBgImg, setTmpBgImg] = useState('');
 
 
