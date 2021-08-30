@@ -37,6 +37,8 @@ interface AssetType {
   };
   scraper?: { availabilityScore?: number };
   available: boolean;
+  width: number;
+  height: number;
   dimension: {
     depth: number;
     width: number;

@@ -16,11 +16,18 @@ const DesignCardRow: React.FC<{
   const { data } = useProductListContext();
   const productData = data?.[rowIndex * 2 + columnIndex];
   return (
-    <div className="overflow-hidden h-full w-full pb-1 even:px-1 odd:px-1 odd:pr-0" style={style}>
+    <div className="overflow-hidden h-full w-full pb-1 px-1 odd:pr-0.5 even:pl-0.5" style={style}>
       {productData && !isScrolling ? (
         <ProductCard product={productData} />
       ) : (
-        <div className="bg-gray-800 animate-pulse w-full h-full" />
+        <div className="bg-white p-4 w-full h-full">
+          <div className="animate-pulse">
+            <div className="bg-gray-200 h-32 rounded" />
+            <div className="bg-gray-200 h-2 rounded mt-2" />
+            <div className="bg-gray-200 h-6 rounded mt-2" />
+            <div className="bg-gray-200 h-3 w-10 rounded mt-3" />
+          </div>
+        </div>
       )}
     </div>
   );

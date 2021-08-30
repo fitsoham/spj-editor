@@ -8,31 +8,36 @@ interface ProductCardInterface {
   product: AssetType;
 }
 
-const ProductCard: React.FC<ProductCardInterface> = ({ product = {} }) => {
+const ProductCard: React.FC<ProductCardInterface> = ({ product }) => {
   const [, setBusData] = useContext(DataBusContext);
-  const {_id: assetId = ''} = product;
-  const productThumbnail = product?.renderImages ? product?.renderImages[0]?.cdn : 'v1623166775/Untitled-1-12_iah06e.jpg';
+  const productThumbnail = product?.renderImages
+    ? product?.renderImages[0]?.cdn
+    : 'v1623166775/Untitled-1-12_iah06e.jpg';
   return (
     <div
-      data-pid={`https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_300/${productThumbnail}`}
-      className="group bg-white p-4 h-60 next-image-fix"
+      className="group bg-white p-4 h-full"
       draggable="true"
-      onDragStart={(e) =>
+      onDragStart={() =>
         setBusData({
+          ...product,
+          dimension: {
+            height: product?.height,
+            width: product?.width,
+          },
           type: 'asset',
-          src: e.currentTarget?.dataset?.pid,
-          assetId
         })
       }
     >
-      <Image
-        src={`https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_300/${productThumbnail}`}
-        width="300"
-        height="300"
-        alt="product"
-        className="object-contain transition transform scale-95 group-hover:scale-100"
-        draggable={false}
-      />
+      <div className="next-image-fix h-32">
+        <Image
+          src={`https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_300/${productThumbnail}`}
+          width={150}
+          height={150}
+          alt={product?.name}
+          className="object-contain transition transform scale-95 group-hover:scale-100"
+          draggable={false}
+        />
+      </div>
       <small className="text-xs text-gray-500">{product?.retailer}</small>
       <p className="text-sm pb-1 line-clamp-2">{product?.name}</p>
       <div className="flex justify-between items-center">
@@ -50,4 +55,4 @@ const ProductCard: React.FC<ProductCardInterface> = ({ product = {} }) => {
   );
 };
 
-export default ProductCard;
+export default React.memo(ProductCard);
