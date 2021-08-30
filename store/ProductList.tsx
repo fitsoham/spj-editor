@@ -1,6 +1,6 @@
 import fetcher from '@utils/fetcher';
 import AssetType from '@utils/types/AssetType';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 interface ProductContext {
   setFilters: (filterValues) => void;
@@ -52,10 +52,6 @@ const ProductListContextProvider: React.FC = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [hasNextPage, setHasNextPage] = useState<boolean>(true);
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
   const loadMoreItems = async (startIndex: number, endIndex: number): Promise<void> => {
     if (loading) {
       return;
@@ -90,7 +86,6 @@ const ProductListContextProvider: React.FC = ({ children }) => {
       body: body,
     });
     const copyData = [...data];
-    console.log(`resData`, resData);
     if (resData.statusCode <= 300) {
       const responseData = resData?.data?.hits || [];
       setCount(resData?.data?.total as number);

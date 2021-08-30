@@ -13,7 +13,8 @@ interface DragImageInterface {
     width?: number;
     isDragging?: false;
     stitchedAssetImage?: string;
-    count?: number
+    count?: number;
+    boxSize?: number;
   };
   isSelected: boolean;
   onSelect: () => void;
@@ -45,23 +46,26 @@ const reducer = (state, action) => {
 
 const getAnimationObject = (boxSize) => {
   const animationObject = {};
-  for (let i = 0; i <  100; i+=8) {
-    animationObject[i.toString()] = [Math.ceil(i/8) * boxSize, 0, boxSize, 10000];
+  for (let i = 0; i < 100; i += 8) {
+    animationObject[i.toString()] = [Math.ceil(i / 8) * boxSize, 0, boxSize, 10000];
   }
-  animationObject['96'] = animationObject["0"];
+  animationObject['96'] = animationObject['0'];
   return animationObject;
-}
+};
 
-const DragImage: React.FC<DragImageInterface> = ({ index, image, isSelected, onSelect, onChange, rotationValue  = "0"}) => {
+const DragImage: React.FC<DragImageInterface> = ({
+  index,
+  image,
+  isSelected,
+  onSelect,
+  onChange,
+  rotationValue = '0',
+}) => {
   const [state, dispatch] = useReducer(reducer, image || initialState);
   const trRef = useRef(null);
   const AssetRef = useRef(null);
   const [img] = useImage(image?.stitchedAssetImage, 'anonymous');
-  const {count} = image;
-  const imWidth = img?.width || 0;
-  const animations = getAnimationObject(imWidth / count);
-  
-
+  const animations = getAnimationObject(state?.boxSize);
 
   useEffect(() => {
     if (trRef && isSelected) {
@@ -92,7 +96,10 @@ const DragImage: React.FC<DragImageInterface> = ({ index, image, isSelected, onS
     });
   };
 
-  const height = state.height || img?.height;
+  const height = img?.height;
+  const width = image?.boxSize;
+
+  console.log(`stare.isDragging`, state.isDragging);
 
   return (
     <>
@@ -105,9 +112,12 @@ const DragImage: React.FC<DragImageInterface> = ({ index, image, isSelected, onS
         x={state.x}
         y={state.y}
         id={state.id}
-        width={imWidth/count}
+        offsetX={width ? width / 2 : 0}
+        offsetY={height ? height / 2 : 0}
+        scaleX={0.75}
+        scaleY={0.75}
+        width={width}
         height={height}
-        
         isSelected={isSelected}
         onClick={onSelect}
         onTap={onSelect}
@@ -137,4 +147,4 @@ const DragImage: React.FC<DragImageInterface> = ({ index, image, isSelected, onS
   );
 };
 
-export default DragImage;
+export default React.memo(DragImage);
