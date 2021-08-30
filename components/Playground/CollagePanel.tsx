@@ -1,8 +1,6 @@
 import { FilterIcon, SearchIcon } from '@heroicons/react/outline';
-import CollageList from '@mocks/CollageList';
 import React from 'react';
-import { Tween } from 'react-gsap';
-import CollageCard from './CollageCard';
+import ListingView from './CollageListView';
 
 const CollagePanel: React.FC = () => {
   return (
@@ -28,13 +26,7 @@ const CollagePanel: React.FC = () => {
         </div>
       </div>
       <div className="grid grid-cols-2 gap-1 px-1 pb-1">
-        <Tween from={{ opacity: 0, y: 50 }} to={{ opacity: 1, y: 0 }} duration={1} ease="back.out(1.7)" stagger={0.2}>
-          {CollageList.map((collage) => (
-            <div key={collage.id}>
-              <CollageCard collage={collage} />
-            </div>
-          ))}
-        </Tween>
+          <ListingView />
       </div>
     </>
   );

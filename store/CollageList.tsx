@@ -2,8 +2,7 @@ import fetcher from '@utils/fetcher';
 import AssetType from '@utils/types/AssetType';
 import React, { useEffect, useState } from 'react';
 
-interface ProductContext {
-  setFilters: (filterValues) => void;
+interface CollageContext {
   isItemLoaded: (index: any) => boolean;
   loadMoreItems: (startIndex: number, endIndex: number) => Promise<void>;
   hasNextPage: boolean;
@@ -11,43 +10,18 @@ interface ProductContext {
   count: number;
 }
 
-const ProductListContext = React.createContext<ProductContext>({
-  setFilters: () => false,
+export const CollageListContext = React.createContext<CollageContext>({
   isItemLoaded: () => false,
   loadMoreItems: async () => {
     return;
   },
   hasNextPage: true,
   data: [],
-  count: 1000,
+  count: 5,
 });
 
-export const assetStoreInitialState = {
-  metaData: null,
-  loading: true,
-  status: 'active',
-  retailer: [],
-  price: [0, 50000],
-  height: [0, 360],
-  width: [0, 360],
-  depth: [0, 360],
-  wildcard: false,
-  searchText: '',
-  category: [],
-  subCategory: [],
-  verticals: [],
-  selectedAsset: '',
-  cartOpen: false,
-  preferredRetailer: true,
-};
-
-export const convertToFeet = (value: number): number => {
-  return parseFloat((value / 12).toFixed(8));
-};
-
-const ProductListContextProvider: React.FC = ({ children }) => {
+const CollageListContextProvider: React.FC = ({ children }) => {
   const [data, setData] = useState<AssetType[]>([]);
-  const [filter, setFilter] = useState(assetStoreInitialState);
   const [count, setCount] = useState(1000);
   const [loading, setLoading] = useState(false);
   const [hasNextPage, setHasNextPage] = useState<boolean>(true);
@@ -62,37 +36,14 @@ const ProductListContextProvider: React.FC = ({ children }) => {
     }
     setLoading(true);
     const endPoint = `/v1/collages?skip=${startIndex}&limit=${endIndex - startIndex + 1}`;
-    const body = {
-      searchText: (filter?.searchText || '')?.trim(),
-      sort: 'createdAt',
-      wildcard: filter?.wildcard,
-      ...{
-        ...(filter?.preferredRetailer ? { projectId: 'randomString' } : {}),
-      },
-      filters: {
-        retailer: filter.retailer,
-        category: filter.category,
-        subcategory: filter.subCategory,
-        vertical: filter.verticals,
-        price: filter.price,
-        depth: filter.depth.map(convertToFeet),
-        width: filter.width.map(convertToFeet),
-        height: filter.height.map(convertToFeet),
-        status: filter.status,
-        spriteAvailable: true,
-      },
-      spriteAvailable: true,
-    };
-
     const resData = await fetcher({
       endPoint,
-      method: 'POST',
-      body: body,
+      method: 'GET',
     });
     const copyData = [...data];
     if (resData.statusCode <= 300) {
-      const responseData = resData?.data?.hits || [];
-      setCount(resData?.data?.total as number);
+      const responseData = resData?.data || [];
+      setCount(resData?.data?.total as number || 1000);
 
       for (let i = startIndex, j = 0; i <= endIndex; i += 1, j += 1) {
         copyData[i] = responseData[j];
@@ -110,30 +61,19 @@ const ProductListContextProvider: React.FC = ({ children }) => {
     }
     setLoading(false);
   };
-
-  const setFilters = (filterValues) => {
-    setFilter({
-      ...filter,
-      ...filterValues,
-    });
-    setCount(0);
-    setData([]);
-    loadMoreItems(0, 149);
-  };
-
   const isItemLoaded = (index: number): boolean => {
     return !!data[index];
   };
 
   return (
-    <ProductListContext.Provider value={{ setFilters, isItemLoaded, loadMoreItems, hasNextPage, data, count }}>
+    <CollageListContext.Provider value={{ isItemLoaded, loadMoreItems, hasNextPage, data, count }}>
       {children}
-    </ProductListContext.Provider>
+    </CollageListContext.Provider>
   );
 };
 
-export const useProductListContext = (): ProductContext => {
-  return React.useContext(ProductListContext);
+export const useCollageListContext = (): CollageContext => {
+  return React.useContext(CollageListContext);
 };
 
-export default ProductListContextProvider;
+export default CollageListContextProvider;

@@ -11,7 +11,7 @@ interface ProductContext {
   count: number;
 }
 
-const ProductListContext = React.createContext<ProductContext>({
+export const ProductListContext = React.createContext<ProductContext>({
   setFilters: () => false,
   isItemLoaded: () => false,
   loadMoreItems: async () => {
@@ -57,6 +57,7 @@ const ProductListContextProvider: React.FC = ({ children }) => {
   }, [data]);
 
   const loadMoreItems = async (startIndex: number, endIndex: number): Promise<void> => {
+    console.log('load more data ---- products');
     if (loading) {
       return;
     }
