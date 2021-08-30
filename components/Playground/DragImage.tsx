@@ -61,11 +61,17 @@ const DragImage: React.FC<DragImageInterface> = ({
   onChange,
   rotationValue = '0',
 }) => {
+  console.log(`image`, image);
   const [state, dispatch] = useReducer(reducer, image || initialState);
   const trRef = useRef(null);
   const AssetRef = useRef(null);
-  const [img] = useImage(image?.stitchedAssetImage, 'anonymous');
-  const animations = getAnimationObject(state?.boxSize);
+  const [img] = useImage(
+    `https://res.cloudinary.com/spacejoy/image/upload/w_${Math.ceil(image?.width) * image?.count * 250}/${
+      image?.stitchedAssetImage
+    }`,
+    'anonymous'
+  );
+  const animations = getAnimationObject(img?.width / image.count);
 
   useEffect(() => {
     if (trRef && isSelected) {
@@ -97,7 +103,7 @@ const DragImage: React.FC<DragImageInterface> = ({
   };
 
   const height = img?.height;
-  const width = image?.boxSize;
+  const width = img?.width / image.count;
 
   console.log(`stare.isDragging`, state.isDragging);
 
@@ -114,8 +120,8 @@ const DragImage: React.FC<DragImageInterface> = ({
         id={state.id}
         offsetX={width ? width / 2 : 0}
         offsetY={height ? height / 2 : 0}
-        scaleX={0.75}
-        scaleY={0.75}
+        scaleX={0.25}
+        scaleY={0.25}
         width={width}
         height={height}
         isSelected={isSelected}

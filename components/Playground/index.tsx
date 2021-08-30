@@ -301,7 +301,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
             height: dimension?.height,
             width: dimension?.width,
             assetId: _id,
-            stitchedAssetImage: image?.compressed,
+            stitchedAssetImage: image?.compressedCdn,
           },
         ])
       );
