@@ -93,7 +93,6 @@ const DragImage: React.FC<DragImageInterface> = ({
     // we will reset it back
     node.scaleX(scaleX);
     node.scaleY(scaleY);
-    console.log(`node`, node);
     onChange({
       ...image,
       x: node.x(),
@@ -107,8 +106,6 @@ const DragImage: React.FC<DragImageInterface> = ({
 
   const height = img?.height || 0;
   const width = img?.width / image.count || 0;
-
-  console.log(`stare.isDragging`, state.isDragging);
 
   return (
     <>
