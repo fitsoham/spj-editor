@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useRef } from 'react';
-import { Image, Sprite, Transformer } from 'react-konva';
+import { Sprite, Transformer } from 'react-konva';
 import useImage from 'use-image';
 
 interface DragImageInterface {
@@ -114,22 +114,6 @@ const DragImage: React.FC<DragImageInterface> = ({
 
   return (
     <>
-      <Image
-        draggable
-        ref={AssetRef}
-        alt={state?.name}
-        name="object"
-        image={thumbnail}
-        x={state?.x}
-        y={state?.y}
-        id={state?.id}
-        offsetX={width ? width / 2 : 0}
-        offsetY={height ? height / 2 : 0}
-        scaleX={0.75}
-        scaleY={0.75}
-        width={width}
-        height={height}
-      />
       <Sprite
         draggable
         ref={AssetRef}
