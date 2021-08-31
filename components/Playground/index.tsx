@@ -40,7 +40,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
   };
 
   const saveCollage = async () => {
-    
+    console.log(PlaygroundAssets);
     const bg = img?.src;
     const payload = PlaygroundAssets.map((asset) => {
       return {
@@ -305,10 +305,9 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     e.preventDefault();
     stageRef?.current?.setPointersPositions(e);
     if (busData.type === 'asset') {
-      const { _id, dimension } = busData;
+      const { _id, dimension, renderImages } = busData;
       const { data } = await fetcher({ endPoint: `/v1/assets/${_id}/stitchImages`, method: 'GET' });
-      console.log('stitch data -', data);
-      const { count, boxSize, image, width:imgWidth } = data || {};
+      const { count, boxSize, image } = data;
       setPlaygroundAssets(
         PlaygroundAssets.concat([
           {
@@ -323,8 +322,8 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
             height: dimension?.height,
             width: dimension?.width,
             assetId: _id,
-            stitchedAssetImage: image?.compressedCdn,
-            imgWidth
+            productThumbnail: renderImages[0].cdn,
+            stitchedAssetImage: image?.originalCdn,
           },
         ])
       );
