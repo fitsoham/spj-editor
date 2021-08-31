@@ -53,7 +53,6 @@ const ProductListContextProvider: React.FC = ({ children }) => {
   const [hasNextPage, setHasNextPage] = useState<boolean>(true);
 
   const loadMoreItems = async (startIndex: number, endIndex: number): Promise<void> => {
-    console.log('load more data ---- products');
     if (loading) {
       return;
     }

@@ -1,4 +1,5 @@
 import { DownloadIcon, SaveIcon } from '@heroicons/react/outline';
+import { publicRoutes } from '@utils/constants/api';
 import fetcher from '@utils/fetcher';
 import { downloadURI } from '@utils/helpers';
 import { Stage as StageType } from 'konva/lib/Stage';
@@ -38,8 +39,28 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     downloadURI(uri, `spacejoy-demo-${Date.now()}`);
   };
 
-  const saveCollage = () => {
-    console.log('saving collage ----', PlaygroundAssets); 
+  const saveCollage = async () => {
+    
+    const bg = img?.src;
+    const payload = PlaygroundAssets.map((asset) => {
+      return {
+        ...(bg && {background: bg}),
+        translation: {
+          x: asset?.x,
+          y: asset?.y
+        },
+        rotation: (asset?.rotationValue || 0).toString(),
+        scale: {
+          height: asset?.height,
+          width: asset?.width,
+        },
+        id: asset?.id,
+        product: asset?.assetId,
+        imgSrc: asset?.stitchedAssetImage
+      }
+    })
+
+    const res = await fetcher({endPoint: publicRoutes?.saveCollages, method: 'POST', body: {view: [...payload]}});
   };
 
   const checkDeselect = (e): void => {
@@ -286,7 +307,8 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     if (busData.type === 'asset') {
       const { _id, dimension } = busData;
       const { data } = await fetcher({ endPoint: `/v1/assets/${_id}/stitchImages`, method: 'GET' });
-      const { count, boxSize, image } = data || {};
+      console.log('stitch data -', data);
+      const { count, boxSize, image, width:imgWidth } = data || {};
       setPlaygroundAssets(
         PlaygroundAssets.concat([
           {
@@ -302,6 +324,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
             width: dimension?.width,
             assetId: _id,
             stitchedAssetImage: image?.compressedCdn,
+            imgWidth
           },
         ])
       );
@@ -311,9 +334,10 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
       busData.data.map((asset) =>
         tmp.push({
           ...asset,
-          id: `in-playground-asset-${PlaygroundAssets.length}-${Math.random()}`,
+          // id: `in-playground-asset-${PlaygroundAssets.length}-${Math.random()}`,
         })
       );
+      
       setPlaygroundAssets(tmp);
     }
   };

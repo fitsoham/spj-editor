@@ -19,13 +19,12 @@ const CollageCard: React.FC<CollageType> = ({ collage }) => {
       y: parseFloat(yCoord),
       height: parseFloat(heightCoord),
       width: parseFloat(widthCoord),
-      rotation,
+      rotationValue: rotation,
       id,
-      stitchedAssetImage: imgSrc
+      stitchedAssetImage: imgSrc,
+      count: 12
     }
   });
-
-  console.log('processed view ---', processedView);
   return (
     <div
       data-cid={collage?._id}

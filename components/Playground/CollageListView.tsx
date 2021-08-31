@@ -16,16 +16,13 @@ const DesignCardRow: React.FC<{
   const { data } = useCollageListContext();
   const collageData = data?.[rowIndex * 2 + columnIndex];
   return (
-    <div className="overflow-hidden h-full w-full pb-1 even:px-1 odd:px-1 odd:pr-0" style={style}>
+    <div className="overflow-hidden h-full w-full odd:pr-0.5 even:pl-0.5" style={style}>
       {collageData && !isScrolling ? (
         <CollageCard collage={collageData} />
       ) : (
         <div className="bg-white p-4 w-full h-full">
           <div className="animate-pulse">
             <div className="bg-gray-200 h-32 rounded" />
-            <div className="bg-gray-200 h-2 rounded mt-2" />
-            <div className="bg-gray-200 h-6 rounded mt-2" />
-            <div className="bg-gray-200 h-3 w-10 rounded mt-3" />
           </div>
         </div>
       )}
@@ -43,9 +40,9 @@ const ProductListView: React.FC = () => {
 
   useEffect(() => {
     if (width > Breakpoints['2xl']) {
-      if (rowHeight !== 249) setRowHeight(249);
-    } else if (rowHeight !== 239) {
-      setRowHeight(239);
+      if (rowHeight !== 165) setRowHeight(165);
+    } else if (rowHeight !== 165) {
+      setRowHeight(170);
     }
   }, [width, rowHeight]);
 
@@ -56,7 +53,7 @@ const ProductListView: React.FC = () => {
           isItemLoaded={isItemLoaded}
           loadMoreItems={loadMoreItems}
           itemCount={count}
-          minimumBatchSize={2}
+          minimumBatchSize={20}
         >
           {({ onItemsRendered, ref }) => (
             <Grid

@@ -1,5 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { SelectedIdContext } from './SelectedId';
+
 
 const PlaygroundAssetsContext = React.createContext([]);
 
@@ -10,6 +11,11 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
   const [selectedId, setSelectedId] = useContext(SelectedIdContext);
   const [bgImgUrl, setBgImgUrl] = useState('');
   const [tmpBgImg, setTmpBgImg] = useState('');
+
+  useEffect(() => { 
+    console.log('object', PlaygroundAssets)
+  }, [PlaygroundAssets])
+
 
   const getSelectedIndex = (id: string) => {  
     for (let i = 0; i <= PlaygroundAssets.length; i++) {
@@ -74,7 +80,7 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
   };
 
   const getRotationValue = (selectedId) => {
-    return [...PlaygroundAssets].filter((item) => item?.id === selectedId)[0]?.rotationValue || 0;
+    return parseInt([...PlaygroundAssets].filter((item) => item?.id === selectedId)[0]?.rotationValue, 10) || 0;
   };
 
   return (

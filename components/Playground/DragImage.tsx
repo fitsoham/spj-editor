@@ -44,10 +44,10 @@ const reducer = (state, action) => {
   }
 };
 
-const getAnimationObject = (boxSize) => {
+const getAnimationObject = (boxSize, boxHeight) => {
   const animationObject = {};
   for (let i = 0; i < 100; i += 8) {
-    animationObject[i.toString()] = [Math.ceil(i / 8) * boxSize, 0, boxSize, 10000];
+    animationObject[i.toString()] = [Math.ceil(i / 8) * boxSize, 0, boxSize, boxHeight];
   }
   animationObject['96'] = animationObject['0'];
   return animationObject;
@@ -70,8 +70,11 @@ const DragImage: React.FC<DragImageInterface> = ({
     }`,
     'anonymous'
   );
+  useEffect(() => {
+    console.log('state value ---', state);
+  }, [state]);
 
-  const animations = getAnimationObject(img?.width / image.count);
+  const animations = getAnimationObject(img?.width / image.count, img?.height);
 
   useEffect(() => {
     if (trRef && isSelected) {
