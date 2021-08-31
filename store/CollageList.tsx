@@ -1,42 +1,43 @@
 import fetcher from '@utils/fetcher';
 import React, { useState } from 'react';
 
-
-export interface CollageType { 
+export interface CollageType {
   _id: string;
   description: string;
   background?: string;
   isActive?: boolean;
   name: string;
-  slug: string;createdAt: string;
+  slug: string;
+  createdAt: string;
   updatedAt: string;
+  imgSrc: string;
   meta: {
     view: [
       {
         _id: string;
-        translation: { 
+        translation: {
           x: {
             $numberDecimal: string;
-          },
+          };
           y: {
             $numberDecimal: string;
-          },
+          };
         };
         id: string;
         product: string;
         imgSrc: string;
         rotation?: string;
-        scale: { 
+        scale: {
           x: {
             $numberDecimal: string;
-          },
+          };
           y: {
             $numberDecimal: string;
-          },
-        },
+          };
+        };
       }
-    ]
-  }
+    ];
+  };
 }
 interface CollageContext {
   isItemLoaded: (index: any) => boolean;
@@ -55,7 +56,6 @@ export const CollageListContext = React.createContext<CollageContext>({
   data: [],
   count: 1000,
 });
-
 
 const CollageListContextProvider: React.FC = ({ children }) => {
   const [data, setData] = useState<CollageType[]>([]);
@@ -76,7 +76,7 @@ const CollageListContextProvider: React.FC = ({ children }) => {
     const copyData = [...data];
     if (resData.statusCode <= 300) {
       const responseData = resData?.data || [];
-      setCount(resData?.data?.total as number || 15);
+      setCount((resData?.data?.total as number) || 15);
 
       for (let i = startIndex, j = 0; i <= endIndex; i += 1, j += 1) {
         copyData[i] = responseData[j];
@@ -95,7 +95,7 @@ const CollageListContextProvider: React.FC = ({ children }) => {
     setLoading(false);
   };
 
- const isItemLoaded = (index: number): boolean => {
+  const isItemLoaded = (index: number): boolean => {
     return !!data[index];
   };
 

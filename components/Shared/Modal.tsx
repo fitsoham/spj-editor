@@ -1,74 +1,105 @@
 import { Dialog, Transition } from '@headlessui/react';
-import React, { Fragment } from 'react';
-interface ModalType {
-  className?: string;
-  onClose: () => void;
-  isOpen: boolean;
-  unmount: boolean;
+import React, { Fragment, useState } from 'react';
+
+interface ModalProps {
+  onCloseCallback: () => void;
+}
+interface StaticComponents {
+  Body?: React.FC;
+  Button?: React.FC;
+  Header?: React.FC;
 }
 
-interface ModalParts {
-  Title: React.FC<{ className?: string }>;
-  Body: React.FC<{ className?: string }>;
-  Footer: React.FC<{ className?: string }>;
-}
+const Modal: React.FC<ModalProps> & StaticComponents = ({ children, onCloseCallback }) => {
+  const [isOpen, setIsOpen] = useState(false);
 
-const Modal: React.FC<ModalType> & ModalParts = ({ children, className = '', onClose, isOpen, unmount }) => {
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function openModal() {
+    setIsOpen(true);
+  }
   return (
-    <Transition appear show={isOpen} as={Fragment}>
-      <Dialog as="div" className="fixed inset-0 z-40 overflow-y-auto" onClose={onClose} unmount={unmount}>
-        <div className="min-h-screen px-4 text-center">
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <Dialog.Overlay className="fixed inset-0 bg-black/80" />
-          </Transition.Child>
+    <>
+      {/* <button
+        type="button"
+        onClick={openModal}
+        className="focus:outline-none text-gray-700 hover:text-red-500 text-xs py-2 px-4 rounded-full hover:shadow-md border border-gray-500 hover:border-red-500"
+      >
+        <span className="sr-only">Filter</span>
+        Filter <FilterIcon className="inline w-4 h-4" />
+      </button> */}
+      <button onClick={openModal}>{children[0]}</button>
 
-          {/* This element is to trick the browser into centering the modal contents. */}
-          <span className="inline-block h-screen align-middle" aria-hidden="true">
-            &#8203;
-          </span>
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0 scale-95"
-            enterTo="opacity-100 scale-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100 scale-100"
-            leaveTo="opacity-0 scale-95"
-          >
-            <div
-              className={`inline-block w-full max-w-md my-8 overflow-hidden text-left text-gray-800 align-middle transition-all transform bg-white shadow-xl rounded-md ${className}`}
+      <Transition appear show={isOpen} as={Fragment}>
+        <Dialog
+          as="div"
+          className="fixed  bg-gray-900 bg-opacity-75 inset-0 z-50 overflow-y-auto backdrop-filter backdrop-blur firefox:bg-opacity-90"
+          onClose={closeModal}
+        >
+          <div className="min-h-screen px-4 text-center">
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
             >
-              {children}
-            </div>
-          </Transition.Child>
-        </div>
-      </Dialog>
-    </Transition>
+              <Dialog.Overlay className="fixed inset-0" />
+            </Transition.Child>
+            {/* This element is to trick the browser into centering the modal contents. */}
+            <span className="inline-block h-screen align-middle" aria-hidden="true">
+              &#8203;
+            </span>
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
+            >
+              <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+                <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900">
+                  {children[1]}
+                </Dialog.Title>
+                <div className="mt-2">{children[2]}</div>
+                <div className="mt-4 text-right">
+                  <button
+                    type="button"
+                    className="inline-flex justify-center px-4 py-2 text-sm font-medium text-gray-900  border border-transparent rounded-md hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                    onClick={closeModal}
+                  >
+                    Cancel
+                  </button>
+                  {onCloseCallback && (
+                    <button
+                      type="button"
+                      className="bg-black text-white inline-flex ml-2 justify-center px-4 py-2 text-sm font-medium text-gray-900 bg-gray-100 border border-transparent rounded-md  focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                      onClick={() => {
+                        closeModal();
+                        onCloseCallback();
+                      }}
+                    >
+                      Ok
+                    </button>
+                  )}
+                </div>
+              </div>
+            </Transition.Child>
+          </div>
+        </Dialog>
+      </Transition>
+    </>
   );
 };
 
-Modal.Title = function Title({ children, className = '' }) {
-  return (
-    <Dialog.Title as="h3" className={`text-lg font-medium leading-6 text-black ${className}`}>
-      {children}
-    </Dialog.Title>
-  );
-};
-
-Modal.Body = function Body({ children, className = '' }) {
-  return <div className={`${className}`}>{children}</div>;
-};
-
-Modal.Footer = function Footer({ children, className = '' }) {
-  return <div className={`${className}`}>{children}</div>;
-};
+Modal.Button = ({ children }) => <>{children}</>;
+Modal.Header = ({ children }) => <h2>{children}</h2>;
+Modal.Body = ({ children }) => <p>{children}</p>;
 
 export default Modal;

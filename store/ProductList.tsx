@@ -1,7 +1,7 @@
 import AssetStatus from '@components/FilterModal/FilterContext/types/AssetStatusEnum';
 import fetcher from '@utils/fetcher';
 import AssetType from '@utils/types/AssetType';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export const assetStoreInitialState = {
   status: AssetStatus.Active,
