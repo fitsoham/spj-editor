@@ -1,8 +1,9 @@
+import { MetaDataType } from '@components/FilterModal/FilterContext/types/MetadataType';
 import fetcher from '@utils/fetcher';
 import { useEffect, useState } from 'react';
 
-const useMetadata = () => {
-  const [meta, setMeta] = useState([]);
+const useMetadata = (): { meta: MetaDataType } => {
+  const [meta, setMeta] = useState<MetaDataType>(null);
 
   useEffect(() => {
     const fetchAllFilters = async () => {
@@ -18,7 +19,7 @@ const useMetadata = () => {
           }
         }
       } catch {
-        return setMeta([]);
+        return setMeta(null);
       }
     };
 

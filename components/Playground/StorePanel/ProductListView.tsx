@@ -1,3 +1,4 @@
+import EmptyState from '@components/Shared/EmptyState';
 import useWindowSize from '@hooks/useWindowSize';
 import Breakpoints from '@utils/constants/BreakPoints';
 import React, { CSSProperties, useEffect, useState } from 'react';
@@ -46,7 +47,20 @@ const ProductListView: React.FC = () => {
     }
   }, [width, rowHeight]);
 
-  return (
+  const gridRef = React.createRef<Grid<any>>();
+
+  const { data, loading } = useProductListContext();
+  useEffect(() => {
+    if (data?.length === 0 && loading) {
+      gridRef.current?.scrollToItem({
+        columnIndex: 0,
+        rowIndex: 0,
+      });
+    }
+  }, [gridRef, data?.length, loading]);
+  return !loading && data?.length === 0 ? (
+    <EmptyState title="Oh no!" message="No matching product found" />
+  ) : (
     <AutoSizer>
       {({ width, height }) => (
         <InfiniteLoader
@@ -55,32 +69,34 @@ const ProductListView: React.FC = () => {
           itemCount={count}
           minimumBatchSize={2}
         >
-          {({ onItemsRendered, ref }) => (
-            <Grid
-              height={height}
-              width={width}
-              onItemsRendered={({
-                visibleRowStartIndex,
-                visibleRowStopIndex,
-                overscanRowStopIndex,
-                overscanRowStartIndex,
-              }) => {
-                onItemsRendered({
-                  overscanStartIndex: overscanRowStartIndex * 2,
-                  overscanStopIndex: overscanRowStopIndex * 2,
-                  visibleStartIndex: visibleRowStartIndex * 2,
-                  visibleStopIndex: visibleRowStopIndex * 2,
-                });
-              }}
-              ref={ref}
-              rowCount={Math.ceil(count / 2)}
-              columnCount={2}
-              columnWidth={width / 2}
-              rowHeight={rowHeight}
-            >
-              {DesignCardRow}
-            </Grid>
-          )}
+          {({ onItemsRendered }) => {
+            return (
+              <Grid
+                height={height}
+                width={width}
+                onItemsRendered={({
+                  visibleRowStartIndex,
+                  visibleRowStopIndex,
+                  overscanRowStopIndex,
+                  overscanRowStartIndex,
+                }) => {
+                  onItemsRendered({
+                    overscanStartIndex: overscanRowStartIndex * 2,
+                    overscanStopIndex: overscanRowStopIndex * 2,
+                    visibleStartIndex: visibleRowStartIndex * 2,
+                    visibleStopIndex: visibleRowStopIndex * 2,
+                  });
+                }}
+                ref={gridRef}
+                rowCount={Math.ceil(count / 2)}
+                columnCount={2}
+                columnWidth={width / 2}
+                rowHeight={rowHeight}
+              >
+                {DesignCardRow}
+              </Grid>
+            );
+          }}
         </InfiniteLoader>
       )}
     </AutoSizer>

@@ -1,6 +1,21 @@
+import AssetStatus from '@components/FilterModal/FilterContext/types/AssetStatusEnum';
 import fetcher from '@utils/fetcher';
 import AssetType from '@utils/types/AssetType';
 import React, { useState } from 'react';
+
+export const assetStoreInitialState = {
+  status: AssetStatus.Active,
+  retailer: [],
+  price: [0, 50000],
+  height: [0, 360],
+  width: [0, 360],
+  depth: [0, 360],
+  wildcard: false,
+  category: [],
+  subCategory: [],
+  verticals: [],
+  preferredRetailer: true,
+};
 
 interface ProductContext {
   setFilters: (filterValues) => void;
@@ -9,6 +24,13 @@ interface ProductContext {
   hasNextPage: boolean;
   data: AssetType[];
   count: number;
+  filter: typeof assetStoreInitialState;
+  searchText: {
+    value: string;
+    set: (text: string) => void;
+  };
+  resetFilters: () => void;
+  loading: boolean;
 }
 
 export const ProductListContext = React.createContext<ProductContext>({
@@ -20,26 +42,18 @@ export const ProductListContext = React.createContext<ProductContext>({
   hasNextPage: true,
   data: [],
   count: 1000,
+  filter: assetStoreInitialState,
+  searchText: {
+    value: '',
+    set: () => {
+      return;
+    },
+  },
+  resetFilters: () => {
+    return;
+  },
+  loading: false,
 });
-
-export const assetStoreInitialState = {
-  metaData: null,
-  loading: true,
-  status: 'active',
-  retailer: [],
-  price: [0, 50000],
-  height: [0, 360],
-  width: [0, 360],
-  depth: [0, 360],
-  wildcard: false,
-  searchText: '',
-  category: [],
-  subCategory: [],
-  verticals: [],
-  selectedAsset: '',
-  cartOpen: false,
-  preferredRetailer: true,
-};
 
 export const convertToFeet = (value: number): number => {
   return parseFloat((value / 12).toFixed(8));
@@ -48,6 +62,7 @@ export const convertToFeet = (value: number): number => {
 const ProductListContextProvider: React.FC = ({ children }) => {
   const [data, setData] = useState<AssetType[]>([]);
   const [filter, setFilter] = useState(assetStoreInitialState);
+  const [searchText, setSearchText] = useState('');
   const [count, setCount] = useState(1000);
   const [loading, setLoading] = useState(false);
   const [hasNextPage, setHasNextPage] = useState<boolean>(true);
@@ -59,7 +74,7 @@ const ProductListContextProvider: React.FC = ({ children }) => {
     setLoading(true);
     const endPoint = `/v1/assets/search?skip=${startIndex}&limit=${endIndex - startIndex + 1}`;
     const body = {
-      searchText: (filter?.searchText || '')?.trim(),
+      searchText: (searchText || '')?.trim(),
       sort: 'createdAt',
       wildcard: filter?.wildcard,
       ...{
@@ -107,14 +122,29 @@ const ProductListContextProvider: React.FC = ({ children }) => {
     setLoading(false);
   };
 
+  useEffect(() => {
+    const resetData = () => {
+      setCount(50);
+      setData([]);
+      loadMoreItems(0, 50);
+    };
+    resetData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filter, searchText]);
+
   const setFilters = (filterValues) => {
     setFilter({
       ...filter,
       ...filterValues,
     });
-    setCount(0);
-    setData([]);
-    loadMoreItems(0, 149);
+  };
+
+  const resetFilters = () => {
+    setFilter(assetStoreInitialState);
+  };
+
+  const setSearchQuery = (text: string) => {
+    setSearchText(text);
   };
 
   const isItemLoaded = (index: number): boolean => {
@@ -122,7 +152,20 @@ const ProductListContextProvider: React.FC = ({ children }) => {
   };
 
   return (
-    <ProductListContext.Provider value={{ setFilters, isItemLoaded, loadMoreItems, hasNextPage, data, count }}>
+    <ProductListContext.Provider
+      value={{
+        setFilters,
+        resetFilters,
+        isItemLoaded,
+        loadMoreItems,
+        hasNextPage,
+        data,
+        count,
+        filter,
+        loading,
+        searchText: { value: searchText, set: setSearchQuery },
+      }}
+    >
       {children}
     </ProductListContext.Provider>
   );
