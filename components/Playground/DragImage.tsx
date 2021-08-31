@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useRef } from 'react';
-import { Sprite, Transformer } from 'react-konva';
+import { Image, Sprite, Transformer } from 'react-konva';
 import useImage from 'use-image';
 
 interface DragImageInterface {
@@ -64,14 +64,20 @@ const DragImage: React.FC<DragImageInterface> = ({
   const [state, dispatch] = useReducer(reducer, image || initialState);
   const trRef = useRef(null);
   const AssetRef = useRef(null);
+  const [thumbnail] = useImage(
+    `https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,f_auto,q_auto,w_300/${state?.productThumbnail}`,
+    'anonymous'
+  );
   const [img] = useImage(
-    `https://res.cloudinary.com/spacejoy/image/upload/w_${Math.ceil(state?.width) * state?.count * 250}/${
-      state?.stitchedAssetImage
-    }`,
+    `https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,f_auto,q_100,w_${
+      Math.ceil(state?.width) * state?.count * 100
+    }/${state?.stitchedAssetImage}`,
     'anonymous'
   );
 
-  const animations = getAnimationObject(img?.width / image.count);
+  console.log(`image`, image);
+
+  const animations = getAnimationObject(img?.width / image?.count);
 
   useEffect(() => {
     if (trRef && isSelected) {
@@ -97,8 +103,6 @@ const DragImage: React.FC<DragImageInterface> = ({
       ...image,
       x: node.x(),
       y: node.y(),
-      offsetX: node.offsetX,
-      offsetY: node.offsetY,
       width: Math.max(node.width() * scaleX),
       height: Math.max(node.height() * scaleY),
     });
@@ -109,19 +113,35 @@ const DragImage: React.FC<DragImageInterface> = ({
 
   return (
     <>
+      <Image
+        draggable
+        ref={AssetRef}
+        alt={state?.name}
+        name="object"
+        image={thumbnail}
+        x={state?.x}
+        y={state?.y}
+        id={state?.id}
+        offsetX={width ? width / 2 : 0}
+        offsetY={height ? height / 2 : 0}
+        scaleX={0.75}
+        scaleY={0.75}
+        width={width}
+        height={height}
+      />
       <Sprite
         draggable
         ref={AssetRef}
-        alt="Product Image"
+        alt={state?.name}
         name="object"
         image={img}
-        x={state.x}
-        y={state.y}
-        id={state.id}
+        x={state?.x}
+        y={state?.y}
+        id={state?.id}
         offsetX={width ? width / 2 : 0}
         offsetY={height ? height / 2 : 0}
-        scaleX={0.25}
-        scaleY={0.25}
+        scaleX={0.75}
+        scaleY={0.75}
         width={width}
         height={height}
         isSelected={isSelected}
@@ -141,12 +161,7 @@ const DragImage: React.FC<DragImageInterface> = ({
           ref={trRef}
           keepRatio={true}
           enabledAnchors={['top-left', 'top-right', 'bottom-left', 'bottom-right']}
-          boundBoxFunc={(oldBox, newBox) => {
-            if (newBox.width < 50 || newBox.height < 50) {
-              return oldBox;
-            }
-            return newBox;
-          }}
+          boundBoxFunc={(oldBox, newBox) => ((newBox.width < 50 || newBox.height) < 50 ? oldBox : newBox)}
         />
       )}
     </>

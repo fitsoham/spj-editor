@@ -6,7 +6,7 @@ import {
   RewindIcon,
   SortAscendingIcon,
   SortDescendingIcon,
-  TrashIcon
+  TrashIcon,
 } from '@heroicons/react/outline';
 import React, { useContext } from 'react';
 import { Tween } from 'react-gsap';
@@ -14,37 +14,42 @@ import { PlaygroundAssetsContext } from 'store/PlaygroundAssets';
 import { SelectedIdContext } from 'store/SelectedId';
 import UnitAction from './UnitAction';
 
-
-
-
 const BottomNav: React.FC = () => {
-  const [, , deleteAsset, , moveAssetBehind, moveAssetForward, moveAssetTop, moveAssetLast, clearBoard, ,rotateAndSaveRotation,getRotationValue] =
-    useContext(PlaygroundAssetsContext);
+  const [
+    ,
+    ,
+    deleteAsset,
+    ,
+    moveAssetBehind,
+    moveAssetForward,
+    moveAssetTop,
+    moveAssetLast,
+    clearBoard,
+    ,
+    rotateAndSaveRotation,
+    getRotationValue,
+  ] = useContext(PlaygroundAssetsContext);
 
   const [selectedId] = useContext(SelectedIdContext);
-  
-  
-  
+
   // const [rotationValue, setRotationValue] = useState(0);
   return (
-    <div className="p-2 bg-white rounded-full shadow-sm mx-auto flex space-x-2" >
-      {
-        selectedId && selectedId?.length && (
+    <div className="p-2 bg-white rounded-full shadow-sm mx-auto flex space-x-2">
+      {selectedId && selectedId?.length && (
+        <div>
           <UnitAction>
             <small className="text-xs text-gray-900 mr-4">Rotate</small>
             <div className="-mt-1 relative">
               <div
                 className="h-1 bg-gray-700 rounded absolute top-0"
-                style={{width: `${getRotationValue(selectedId)}%`, top: '13px'}}
+                style={{ width: `${getRotationValue(selectedId)}%`, top: '13px' }}
               />
               <InputRange updateProductRotation={rotateAndSaveRotation} value={getRotationValue(selectedId)} />
             </div>
           </UnitAction>
-        )
-      }
-      
-      <Tween from={{ opacity: 0, scale: 0 }} to={{ opacity: 1, scale: 1 }} duration={1} stagger={0.5} >
-        <div className="border border-r border-dashed" />
+        </div>
+      )}
+      <Tween from={{ opacity: 0, scale: 0 }} to={{ opacity: 1, scale: 1 }} duration={1} stagger={0.5}>
         <div>
           <UnitAction onClick={moveAssetLast} disabled={selectedId === ''}>
             <RewindIcon className="h-4 w-4 transform -rotate-90" />
@@ -73,28 +78,16 @@ const BottomNav: React.FC = () => {
         </div>
         <div className="border border-r border-dashed" />
         <div>
-        <Popover className="relative">
-            {({ open }) => (
-              <>
-                <Popover.Button> 
-                  <UnitAction>
-                    <ColorSwatchIcon className="h-4 w-4" />
-                  </UnitAction>
-                </Popover.Button>
-                <Popover.Overlay
-                  className={`${
-                    open ? 'opacity-30 fixed inset-0 z-10' : 'opacity-0'
-                  } bg-black`}
-                />
-
-                <Popover.Panel className="absolute z-10 w-screen px-4 mt-3 transform -translate-x-1/2 left-1/2 sm:px-0 lg:max-w-3xl bottom-12">
-                  <div >
-                    <BgSelector />
-                  </div>
-                </Popover.Panel>
-              </>
-            )}
-        </Popover>
+          <Popover>
+            <Popover.Button>
+              <UnitAction>
+                <ColorSwatchIcon className="h-4 w-4" />
+              </UnitAction>
+            </Popover.Button>
+            <Popover.Panel className="absolute inset-x-0 top-0 bottom-0">
+              <BgSelector />
+            </Popover.Panel>
+          </Popover>
         </div>
         <div className="border border-r border-dashed" />
         <div>

@@ -39,7 +39,7 @@ const VisualBoard: React.FC = () => {
                 <div className="relative flex-shrink-0 w-72 2xl:w-80 bg-gray-200 overflow-y-scroll diy-h-free">
                   <NavPanel />
                 </div>
-                <div className="bg-gray-100 diy-h-free w-3/4 py-4 pl-4 flex flex-col space-y-4">
+                <div className="relative bg-gray-100 diy-h-free w-3/4 py-4 pl-4 flex flex-col space-y-4">
                   <div className="bg-white shadow-sm p-4">
                     <p className="text-sm text-gray-600">Budget: $19000.00</p>
                   </div>
