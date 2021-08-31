@@ -59,7 +59,7 @@ const ProductListView: React.FC = () => {
     }
   }, [gridRef, data?.length, loading]);
   return !loading && data?.length === 0 ? (
-    <EmptyState title="Oh no!" message="No matching product found" />
+    <EmptyState title="Oops!" message="No matching products found" />
   ) : (
     <AutoSizer>
       {({ width, height }) => (

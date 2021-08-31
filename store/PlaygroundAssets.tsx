@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { SelectedIdContext } from './SelectedId';
 
-
 const PlaygroundAssetsContext = React.createContext([]);
 
 const initData = [];
@@ -12,12 +11,11 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
   const [bgImgUrl, setBgImgUrl] = useState('');
   const [tmpBgImg, setTmpBgImg] = useState('');
 
-  useEffect(() => { 
-    console.log('object', PlaygroundAssets)
-  }, [PlaygroundAssets])
+  useEffect(() => {
+    console.log('object', PlaygroundAssets);
+  }, [PlaygroundAssets]);
 
-
-  const getSelectedIndex = (id: string) => {  
+  const getSelectedIndex = (id: string) => {
     for (let i = 0; i <= PlaygroundAssets.length; i++) {
       if (PlaygroundAssets[i]?.id === id) {
         return i;

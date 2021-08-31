@@ -1,10 +1,10 @@
 enum Status {
-  active = "active",
-  pending = "pending",
-  suspended = "suspended",
-  closed = "closed",
-  inactive = "inactive",
-  completed = "completed",
+  active = 'active',
+  pending = 'pending',
+  suspended = 'suspended',
+  closed = 'closed',
+  inactive = 'inactive',
+  completed = 'completed',
 }
 
-export default Status
+export default Status;

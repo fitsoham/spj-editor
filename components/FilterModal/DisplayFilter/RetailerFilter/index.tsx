@@ -40,7 +40,6 @@ const RetailerFilter: React.FC = () => {
     } else {
       changedValue = value;
     }
-
     changeFilter({
       [key]: changedValue,
     });
@@ -48,13 +47,19 @@ const RetailerFilter: React.FC = () => {
 
   return (
     <div className="gap-4 flex flex-col relative flex-grow">
-      <div>
+      <div className="sticky top-3">
         <Tab.Group onChange={onTabChange}>
-          <Tab.List className="w-full bg-gray-100 flex p-1 rounded-full text-sm gap-2 overflow-x-auto ">
+          <Tab.List className="w-full bg-gray-100 flex p-2 rounded-full text-sm gap-2 overflow-x-auto ">
             {Object.entries(filterRegex).map(([label]) => (
               <Tab key={label}>
                 {({ selected }) => (
-                  <div className={`rounded-full border py-1 px-4 ${selected ? 'bg-warmgray-200' : ''}`}>{label}</div>
+                  <div
+                    className={`rounded-full border border-gray-400 py-0.5 px-4 ${
+                      selected ? 'bg-white text-red-500' : ''
+                    }`}
+                  >
+                    {label}
+                  </div>
                 )}
               </Tab>
             ))}

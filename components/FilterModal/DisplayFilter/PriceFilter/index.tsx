@@ -20,4 +20,4 @@ const PriceFilter: React.FC = () => {
   );
 };
 
-export default PriceFilter;
+export default React.memo(PriceFilter);

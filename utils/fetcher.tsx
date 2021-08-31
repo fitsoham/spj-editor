@@ -19,7 +19,7 @@ const fetcher = async ({
   type = 'text',
 }: FetcherArgs): Promise<Record<string, any>> => {
   const JWT = '';
-  
+
   const contentType = type === 'file' ? '' : 'application/json';
 
   const headers = JWT ? { 'Content-Type': contentType, Authorization: JWT } : { 'Content-Type': contentType };

@@ -1,4 +1,4 @@
-import { RefreshIcon, SearchIcon } from '@heroicons/react/outline';
+import { RefreshIcon, SearchIcon, XIcon } from '@heroicons/react/outline';
 import useDebounce from '@hooks/useDebounce';
 import React, { useEffect, useState } from 'react';
 import { useProductListContext } from 'store/ProductList';
@@ -15,10 +15,9 @@ const FilterSearchbar: React.FC = () => {
     data,
   } = useProductListContext();
 
-  const setValue = () => {
-    console.log(`searchText`, searchText);
-    set(searchText);
-  };
+  const setValue = () => set(searchText);
+
+  const ClearValue = () => setSearchText('');
 
   const onKeyDown = (e) => {
     if (e.key === 'Enter') {
@@ -31,13 +30,7 @@ const FilterSearchbar: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedSearchText]);
 
-  const onChange = (e) => {
-    const {
-      target: { value },
-    } = e;
-
-    setSearchText(value);
-  };
+  const onChange = (e) => setSearchText(e?.target?.value);
 
   return (
     <div className="sticky top-0 z-10 bg-gray-200">
@@ -49,19 +42,32 @@ const FilterSearchbar: React.FC = () => {
           onKeyDown={onKeyDown}
           placeholder="Search"
           defaultValue={value}
-          className="text-sm py-4 pr-10 bg-gray-50 outline-none block w-full caret-yellow-500 focus:ring-transparent border-none capitalize"
+          value={searchText}
+          className="text-sm text-gray-900 py-3 pr-10 bg-white outline-none block w-full caret-yellow-500 focus:ring-transparent border-none capitalize"
         />
-        <button className="absolute inset-y-0 right-0 px-3" onClick={setValue}>
-          {loading && data?.length === 0 ? (
-            <RefreshIcon className="w-4 h-4 animate-spin" />
-          ) : (
-            <SearchIcon className="w-4 h-4" />
-          )}
-        </button>
+        {debouncedSearchText ? (
+          <button className="absolute inset-y-0 right-0 px-3 text-gray-900" onClick={ClearValue}>
+            <XIcon className="w-4 h-4" />
+          </button>
+        ) : (
+          <button className="absolute inset-y-0 right-0 px-3 text-gray-900" onClick={setValue}>
+            {loading && data?.length === 0 ? (
+              <RefreshIcon className="w-4 h-4 animate-spin" />
+            ) : (
+              <SearchIcon className="w-4 h-4" />
+            )}
+          </button>
+        )}
       </div>
       <div className="text-right py-1 px-4">
         <span className="text-xs text-gray-600">
-          {loading && data?.length === 0 ? <>Searching</> : <>{count} results found</>}
+          {loading && data?.length === 0 ? (
+            <>{debouncedSearchText ? 'Searching' : 'Loading'}</>
+          ) : (
+            <>
+              {count} {debouncedSearchText ? 'results found' : 'Items'}
+            </>
+          )}
         </span>
       </div>
     </div>

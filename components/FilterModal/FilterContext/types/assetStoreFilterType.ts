@@ -1,4 +1,4 @@
-import AssetStatus from "./AssetStatusEnum";
+import AssetStatus from './AssetStatusEnum';
 
 interface StoreFilterType {
   status: AssetStatus;
@@ -14,4 +14,4 @@ interface StoreFilterType {
   preferredRetailer: boolean;
 }
 
-export default StoreFilterType
+export default StoreFilterType;

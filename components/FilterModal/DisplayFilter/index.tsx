@@ -17,7 +17,7 @@ const DisplayFilterComponent: React.FC<DisplayFilterType> = ({ filterKey }) => {
     case StoreFilterButtonIds.category:
       return <CategoryFilter />;
     default:
-      return <div>{filterKey}Not developed yet</div>;
+      return <div>{filterKey} Not developed yet</div>;
   }
 };
 
@@ -34,7 +34,7 @@ const DisplayFilter: React.FC<{
 }> = ({ tab }) => {
   return (
     <>
-      <h2 className="text-xl mb-4">Filter by {tab.label}</h2>
+      <h2 className="text-lg mb-2">Filter by {tab.label}</h2>
       <div className="my-2 flex-grow flex flex-col">
         <DisplayFilterComponent filterKey={tab?.id} />
       </div>

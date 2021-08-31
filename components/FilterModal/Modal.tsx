@@ -4,7 +4,6 @@ interface ModalType {
   className?: string;
   onClose: () => void;
   isOpen: boolean;
-  unmount: boolean;
 }
 
 interface ModalParts {
@@ -13,10 +12,10 @@ interface ModalParts {
   Footer: React.FC<{ className?: string }>;
 }
 
-const FilterModal: React.FC<ModalType> & ModalParts = ({ children, className = '', onClose, isOpen, unmount }) => {
+const FilterModal: React.FC<ModalType> & ModalParts = ({ children, className = '', onClose, isOpen }) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
-      <Dialog as="div" className="fixed inset-0 z-40 overflow-y-auto" onClose={onClose} unmount={unmount}>
+      <Dialog as="div" className="fixed inset-0 z-40 overflow-y-auto" onClose={onClose}>
         <div className="min-h-screen px-4 text-center">
           <Transition.Child
             as={Fragment}

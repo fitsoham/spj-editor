@@ -1,11 +1,10 @@
-import ImageType from "./ImageType";
-import Status from "./StatusEnum";
+import ImageType from './ImageType';
+import Status from './StatusEnum';
 
 export interface MetaDetailedType {
   _id: string;
   name: string;
 }
-
 
 interface AssetType {
   name: string;
@@ -72,4 +71,4 @@ interface AssetType {
   flatShipping?: number;
 }
 
-export default AssetType
+export default AssetType;

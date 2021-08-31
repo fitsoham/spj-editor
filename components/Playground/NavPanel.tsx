@@ -11,13 +11,11 @@ const NavPanel: React.FC = () => {
     return (
       <ProductListContextProvider>
         <StorePanel />
-       </ProductListContextProvider>
+      </ProductListContextProvider>
     );
   }
   if (nav === 'collages') {
-    return (
-        <CollagePanel />
-    );
+    return <CollagePanel />;
   }
   if (nav === 'pinterest') {
     return <PinterestPanel />;

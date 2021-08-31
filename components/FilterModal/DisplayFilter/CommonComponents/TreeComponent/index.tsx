@@ -26,7 +26,7 @@ const TreeComponent: React.FC<{
                       className={`block  ${grid || !entry?.children ? 'col-span-1' : 'col-span-full'} truncate`}
                     >
                       <button
-                        className="p-1 pl-0 flex items-center space-x-4 w-full"
+                        className="p-1 pl-0 flex items-center space-x-2 w-full"
                         onClick={() =>
                           onClick({
                             key: entry?.type,
@@ -40,13 +40,17 @@ const TreeComponent: React.FC<{
                         ) : (
                           <input
                             type="checkbox"
-                            className="form-checkbox rounded-md text-green-200 border border-gray-400 checked:border-gray-400 hover:checked:border-gray-400 focus:checked:border-gray-400 box-content"
+                            className="form-checkbox rounded text-red-100 border border-gray-400 checked:border-gray-400 hover:checked:border-gray-400 focus:checked:border-gray-400 box-content border border-transparent hover:shadow-xl hover:border-gray-200 focus:ring-1 focus:ring-gray-900 focus:outline-none"
                             checked={entry?.selected}
                             readOnly
                           />
                         )}
 
-                        <div className={`truncate text-sm capitalize ${entry?.selected ? 'font-bold' : ''}`}>
+                        <div
+                          className={`truncate text-sm capitalize ${
+                            entry?.selected ? 'text-red-500' : 'text-gray-900'
+                          }`}
+                        >
                           {entry?.name}
                         </div>
                       </button>

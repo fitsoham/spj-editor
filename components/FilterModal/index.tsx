@@ -27,11 +27,11 @@ const FilterModal: React.FC<FilterModal> = ({ isOpen, onClose, type, onApply, as
 
   return (
     <FilterContextProvider assetFilterState={assetFilterState}>
-      <Modal isOpen={isOpen} onClose={onClose} className="divide-y w-7/12  min-w-65" unmount>
+      <Modal isOpen={isOpen} onClose={onClose} className="divide-y w-7/12 min-w-65">
         <div className="p-4 divide-y">
           <Modal.Title className="flex pb-2 justify-between items-center">
-            <span className="font-bold">Filters</span>{' '}
-            <button aria-label="Close Modal" className="hover:bg-gray-200 p-2" onClick={onClose}>
+            <h3 className="text-lg">Filters</h3>{' '}
+            <button aria-label="Close Modal" className="rounded hover:bg-gray-200 p-2" onClick={onClose}>
               <XIcon className="w-4 h-4" />
             </button>
           </Modal.Title>
@@ -43,12 +43,12 @@ const FilterModal: React.FC<FilterModal> = ({ isOpen, onClose, type, onApply, as
                     <Tab key={tab?.id}>
                       {({ selected }) => (
                         <div
-                          className={`p-2 pl-0 w-64 flex items-center justify-between ${
-                            selected ? 'font-semibold' : ''
+                          className={`py-2 pr-2 w-64 flex items-center justify-between ${
+                            selected ? 'text-red-500' : 'text-gray-900'
                           }`}
                         >
                           <span>{tab.label}</span>
-                          <ChevronRightIcon className="w-4 font-bold h-4" />
+                          <ChevronRightIcon className="w-4 h-4" />
                         </div>
                       )}
                     </Tab>

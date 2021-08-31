@@ -2,8 +2,6 @@ import { FilterIcon, SearchIcon } from '@heroicons/react/outline';
 import React from 'react';
 import ListingView from './CollageListView';
 
-
-
 const CollagePanel: React.FC = () => {
   return (
     <>
@@ -28,7 +26,7 @@ const CollagePanel: React.FC = () => {
         </div>
       </div>
       <div className="grid grid-cols-2 gap-1 px-1 pb-1 h-full">
-          <ListingView />
+        <ListingView />
       </div>
     </>
   );

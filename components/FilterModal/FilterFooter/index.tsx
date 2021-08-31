@@ -18,7 +18,7 @@ const FilterFooter: React.FC<FilterFooterType> = ({ onApply }) => {
   };
   return (
     <div className="flex justify-end">
-      <button className="px-8 py-1  rounded-md bg-black text-white" onClick={handleApply}>
+      <button className="px-8 py-2 rounded-lg bg-gray-900 text-sm text-white" onClick={handleApply}>
         Apply
       </button>
     </div>

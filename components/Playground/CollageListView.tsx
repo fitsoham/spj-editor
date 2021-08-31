@@ -36,8 +36,6 @@ const ProductListView: React.FC = () => {
 
   const { width } = useWindowSize();
 
-  
-
   useEffect(() => {
     if (width > Breakpoints['2xl']) {
       if (rowHeight !== 165) setRowHeight(165);

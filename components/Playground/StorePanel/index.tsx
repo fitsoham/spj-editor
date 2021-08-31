@@ -19,10 +19,10 @@ const StorePanel: React.FC = () => {
   };
   return (
     <div className="store-panel relative flex flex-col h-full">
-      <div className="relative h-16 py-4 px-2 flex justify-between items-center bg-white z-10">
-        <p className="">Store</p>
+      <div className="relative h-16 py-4 px-4 flex justify-between items-center z-10">
+        <p className="text-gray-900">Store</p>
         <button
-          className={`p-2 rounded ${showPanel ? 'bg-gray-400' : 'bg-white'} hover:bg-gray-200`}
+          className={`p-2 rounded text-gray-900 ${showPanel ? 'bg-gray-400' : ''} hover:bg-gray-400`}
           onClick={() => setShowPanel((prev) => !prev)}
         >
           <FilterIcon className="h-4 w-4" />
