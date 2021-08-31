@@ -51,7 +51,7 @@ const ProductListView: React.FC = () => {
           isItemLoaded={isItemLoaded}
           loadMoreItems={loadMoreItems}
           itemCount={count}
-          minimumBatchSize={20}
+          minimumBatchSize={8}
         >
           {({ onItemsRendered, ref }) => (
             <Grid

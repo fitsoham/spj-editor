@@ -9,7 +9,6 @@ interface ProductCardInterface {
 }
 
 const ProductCard: React.FC<ProductCardInterface> = ({ product }) => {
-  console.log(`product`, product);
   const [, setBusData] = useContext(DataBusContext);
   const productThumbnail = product?.renderImages
     ? product?.renderImages[0]?.cdn

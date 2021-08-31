@@ -76,7 +76,7 @@ const CollageListContextProvider: React.FC = ({ children }) => {
     const copyData = [...data];
     if (resData.statusCode <= 300) {
       const responseData = resData?.data || [];
-      setCount((resData?.data?.total as number) || 15);
+      setCount((resData?.data?.total as number) || 1000);
 
       for (let i = startIndex, j = 0; i <= endIndex; i += 1, j += 1) {
         copyData[i] = responseData[j];

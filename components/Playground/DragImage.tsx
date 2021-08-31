@@ -61,9 +61,15 @@ const DragImage: React.FC<DragImageInterface> = ({
   onChange,
   rotationValue = '0',
 }) => {
+
+
+
   const [state, dispatch] = useReducer(reducer, image || initialState);
   const trRef = useRef(null);
   const AssetRef = useRef(null);
+
+  console.log(image);
+
   const [thumbnail] = useImage(
     `https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,f_auto,q_auto,w_300/${state?.productThumbnail}`,
     'anonymous'
@@ -74,9 +80,11 @@ const DragImage: React.FC<DragImageInterface> = ({
     }/${state?.stitchedAssetImage}`,
     'anonymous'
   );
-  useEffect(() => {
-    console.log('state value ---', state);
-  }, [state]);
+
+  console.log(`image`, image)
+  // useEffect(() => {
+  //   console.log('state ---- ', state)
+  // }, [state]);
 
   const animations = getAnimationObject(img?.width / image.count, img?.height);
 
@@ -104,8 +112,8 @@ const DragImage: React.FC<DragImageInterface> = ({
       ...image,
       x: node.x(),
       y: node.y(),
-      width: Math.max(node.width() * scaleX),
-      height: Math.max(node.height() * scaleY),
+      playgroundWidth: Math.max(node.width() * scaleX),
+      playgroundHeight: Math.max(node.height() * scaleY),
     });
   };
 
