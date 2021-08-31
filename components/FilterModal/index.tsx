@@ -1,4 +1,3 @@
-import Modal from '@components/Shared/Modal';
 import { Tab } from '@headlessui/react';
 import { ChevronRightIcon, XIcon } from '@heroicons/react/outline';
 import React, { useMemo } from 'react';
@@ -7,6 +6,7 @@ import DisplayFilter from './DisplayFilter';
 import FilterContextProvider from './FilterContext';
 import StoreFilterType from './FilterContext/types/assetStoreFilterType';
 import FilterFooter from './FilterFooter';
+import Modal from './Modal';
 
 interface FilterModal {
   isOpen: boolean;

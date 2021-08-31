@@ -3,17 +3,26 @@ import React, { useContext } from 'react';
 import { DataBusContext } from 'store';
 import { CollageType } from 'store/CollageList';
 
-const CollageCard: React.FC<CollageType> = ({ collage }) => {
+const CollageCard: React.FC<{ collage: CollageType }> = ({ collage }) => {
   const [, setBusData] = useContext(DataBusContext);
-  const {imgSrc = 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_350/v1628223802/spj-v2/DIY/collage/col-1_jt7bsc.png', meta: {view = []} = {}} = collage;
-  const processedView = view.map((object) => { 
+  const {
+    imgSrc = 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_350/v1628223802/spj-v2/DIY/collage/col-1_jt7bsc.png',
+    meta: { view = [] } = {},
+  } = collage;
+  const processedView = view.map((object) => {
     const {
-      translation: {x: {$numberDecimal: xCoord = ''}, y: {$numberDecimal: yCoord = ''}} = {},
-      scale: {height: {$numberDecimal: heightCoord = ''}, width: {$numberDecimal: widthCoord = ''}},
-      rotation = "0",
+      translation: {
+        x: { $numberDecimal: xCoord } = { $numberDecimal: '' },
+        y: { $numberDecimal: yCoord } = { $numberDecimal: '' },
+      } = {},
+      scale: {
+        height: { $numberDecimal: heightCoord = '' },
+        width: { $numberDecimal: widthCoord = '' },
+      },
+      rotation = '0',
       id,
       imgSrc,
-    } = object
+    } = object;
     return {
       x: parseFloat(xCoord),
       y: parseFloat(yCoord),
@@ -22,8 +31,8 @@ const CollageCard: React.FC<CollageType> = ({ collage }) => {
       rotationValue: rotation,
       id,
       stitchedAssetImage: imgSrc,
-      count: 12
-    }
+      count: 12,
+    };
   });
   return (
     <div

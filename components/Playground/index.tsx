@@ -44,10 +44,10 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     const bg = img?.src;
     const payload = PlaygroundAssets.map((asset) => {
       return {
-        ...(bg && {background: bg}),
+        ...(bg && { background: bg }),
         translation: {
           x: asset?.x,
-          y: asset?.y
+          y: asset?.y,
         },
         rotation: (asset?.rotationValue || 0).toString(),
         scale: {
@@ -56,11 +56,11 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
         },
         id: asset?.id,
         product: asset?.assetId,
-        imgSrc: asset?.stitchedAssetImage
-      }
-    })
+        imgSrc: asset?.stitchedAssetImage,
+      };
+    });
 
-    const res = await fetcher({endPoint: publicRoutes?.saveCollages, method: 'POST', body: {view: [...payload]}});
+    await fetcher({ endPoint: publicRoutes?.saveCollages, method: 'POST', body: { view: [...payload] } });
   };
 
   const checkDeselect = (e): void => {
@@ -336,7 +336,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
           // id: `in-playground-asset-${PlaygroundAssets.length}-${Math.random()}`,
         })
       );
-      
+
       setPlaygroundAssets(tmp);
     }
   };
