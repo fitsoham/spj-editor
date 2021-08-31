@@ -1,3 +1,4 @@
+import CollageCard from '@components/Playground/CollageCard';
 import useWindowSize from '@hooks/useWindowSize';
 import Breakpoints from '@utils/constants/BreakPoints';
 import React, { CSSProperties, useEffect, useState } from 'react';
@@ -5,7 +6,6 @@ import AutoSizer from 'react-virtualized-auto-sizer';
 import { FixedSizeGrid as Grid } from 'react-window';
 import InfiniteLoader from 'react-window-infinite-loader';
 import { useCollageListContext } from 'store/CollageList';
-import CollageCard from './CollageCard';
 
 const DesignCardRow: React.FC<{
   columnIndex: number;
@@ -14,13 +14,20 @@ const DesignCardRow: React.FC<{
   style: CSSProperties;
 }> = ({ columnIndex, rowIndex, style, isScrolling }) => {
   const { data } = useCollageListContext();
-  const productData = data?.[rowIndex * 2 + columnIndex];
+  const collageData = data?.[rowIndex * 2 + columnIndex];
   return (
     <div className="overflow-hidden h-full w-full pb-1 even:px-1 odd:px-1 odd:pr-0" style={style}>
-      {productData && !isScrolling ? (
-        <CollageCard product={productData} />
+      {collageData && !isScrolling ? (
+        <CollageCard collage={collageData} />
       ) : (
-        <div className="bg-gray-800 animate-pulse w-full h-full" />
+        <div className="bg-white p-4 w-full h-full">
+          <div className="animate-pulse">
+            <div className="bg-gray-200 h-32 rounded" />
+            <div className="bg-gray-200 h-2 rounded mt-2" />
+            <div className="bg-gray-200 h-6 rounded mt-2" />
+            <div className="bg-gray-200 h-3 w-10 rounded mt-3" />
+          </div>
+        </div>
       )}
     </div>
   );
@@ -28,10 +35,11 @@ const DesignCardRow: React.FC<{
 
 const ProductListView: React.FC = () => {
   const { isItemLoaded, loadMoreItems, count } = useCollageListContext();
-  console.log('in collage vire ---', isItemLoaded, loadMoreItems, count);
   const [rowHeight, setRowHeight] = useState(239);
 
   const { width } = useWindowSize();
+
+  
 
   useEffect(() => {
     if (width > Breakpoints['2xl']) {
@@ -48,7 +56,7 @@ const ProductListView: React.FC = () => {
           isItemLoaded={isItemLoaded}
           loadMoreItems={loadMoreItems}
           itemCount={count}
-          minimumBatchSize={5}
+          minimumBatchSize={2}
         >
           {({ onItemsRendered, ref }) => (
             <Grid

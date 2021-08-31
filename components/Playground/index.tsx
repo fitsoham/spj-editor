@@ -1,4 +1,4 @@
-import { DownloadIcon, UploadIcon } from '@heroicons/react/outline';
+import { DownloadIcon, SaveIcon } from '@heroicons/react/outline';
 import fetcher from '@utils/fetcher';
 import { downloadURI } from '@utils/helpers';
 import { Stage as StageType } from 'konva/lib/Stage';
@@ -39,7 +39,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
   };
 
   const saveCollage = () => {
-    console.log('saving collage ----', PlaygroundAssets);
+    console.log('saving collage ----', PlaygroundAssets); 
   };
 
   const checkDeselect = (e): void => {
@@ -326,7 +326,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
             <DownloadIcon className="w-4 h-4" />
           </button>
           <button className="absolute right-4 top-16 bg-gray-100 p-2 rounded z-10" onClick={saveCollage}>
-            <UploadIcon className="w-4 h-4" />
+            <SaveIcon className="w-4 h-4" />
           </button>
         </>
       )}

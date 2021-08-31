@@ -1,12 +1,48 @@
 import fetcher from '@utils/fetcher';
-import AssetType from '@utils/types/AssetType';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
+
+export interface CollageType { 
+  _id: string;
+  description: string;
+  background?: string;
+  isActive?: boolean;
+  name: string;
+  slug: string;createdAt: string;
+  updatedAt: string;
+  meta: {
+    view: [
+      {
+        _id: string;
+        translation: { 
+          x: {
+            $numberDecimal: string;
+          },
+          y: {
+            $numberDecimal: string;
+          },
+        };
+        id: string;
+        product: string;
+        imgSrc: string;
+        rotation?: string;
+        scale: { 
+          x: {
+            $numberDecimal: string;
+          },
+          y: {
+            $numberDecimal: string;
+          },
+        },
+      }
+    ]
+  }
+}
 interface CollageContext {
   isItemLoaded: (index: any) => boolean;
   loadMoreItems: (startIndex: number, endIndex: number) => Promise<void>;
   hasNextPage: boolean;
-  data: AssetType[];
+  data: CollageType[];
   count: number;
 }
 
@@ -17,18 +53,15 @@ export const CollageListContext = React.createContext<CollageContext>({
   },
   hasNextPage: true,
   data: [],
-  count: 5,
+  count: 1000,
 });
 
+
 const CollageListContextProvider: React.FC = ({ children }) => {
-  const [data, setData] = useState<AssetType[]>([]);
+  const [data, setData] = useState<CollageType[]>([]);
   const [count, setCount] = useState(1000);
   const [loading, setLoading] = useState(false);
   const [hasNextPage, setHasNextPage] = useState<boolean>(true);
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   const loadMoreItems = async (startIndex: number, endIndex: number): Promise<void> => {
     if (loading) {
@@ -43,7 +76,7 @@ const CollageListContextProvider: React.FC = ({ children }) => {
     const copyData = [...data];
     if (resData.statusCode <= 300) {
       const responseData = resData?.data || [];
-      setCount(resData?.data?.total as number || 1000);
+      setCount(resData?.data?.total as number || 5);
 
       for (let i = startIndex, j = 0; i <= endIndex; i += 1, j += 1) {
         copyData[i] = responseData[j];
@@ -61,7 +94,8 @@ const CollageListContextProvider: React.FC = ({ children }) => {
     }
     setLoading(false);
   };
-  const isItemLoaded = (index: number): boolean => {
+
+ const isItemLoaded = (index: number): boolean => {
     return !!data[index];
   };
 

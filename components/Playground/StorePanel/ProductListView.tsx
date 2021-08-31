@@ -38,7 +38,6 @@ const ProductListView: React.FC = () => {
   const [rowHeight, setRowHeight] = useState(239);
 
   const { width } = useWindowSize();
-
   useEffect(() => {
     if (width > Breakpoints['2xl']) {
       if (rowHeight !== 249) setRowHeight(249);
@@ -54,7 +53,7 @@ const ProductListView: React.FC = () => {
           isItemLoaded={isItemLoaded}
           loadMoreItems={loadMoreItems}
           itemCount={count}
-          minimumBatchSize={50}
+          minimumBatchSize={2}
         >
           {({ onItemsRendered, ref }) => (
             <Grid
