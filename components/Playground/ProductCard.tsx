@@ -9,7 +9,7 @@ interface ProductCardInterface {
 }
 
 const ProductCard: React.FC<ProductCardInterface> = ({ product }) => {
-  const [, setBusData] = useContext(DataBusContext);
+  const { setBusData } = useContext(DataBusContext);
   const productThumbnail = product?.renderImages
     ? product?.renderImages[0]?.cdn
     : 'v1623166775/Untitled-1-12_iah06e.jpg';
@@ -20,10 +20,16 @@ const ProductCard: React.FC<ProductCardInterface> = ({ product }) => {
       draggable="true"
       onDragStart={() =>
         setBusData({
-          ...product,
-          dimension: {
-            height: product?.height,
-            width: product?.width,
+          id: product._id,
+          data: {
+            ...product,
+            dimension: {
+              height: product?.height,
+              width: product?.width,
+            },
+            id: product?._id,
+            x: 0,
+            y: 0,
           },
           type: 'asset',
         })

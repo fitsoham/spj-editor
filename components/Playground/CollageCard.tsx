@@ -3,21 +3,33 @@ import React, { useContext } from 'react';
 import { DataBusContext } from 'store';
 import { CollageType } from 'store/CollageList';
 
+export interface ProcessedCollageType {
+  x: number;
+  y: number;
+  height: number;
+  width: number;
+  rotationValue: string;
+  id: string;
+  stitchedAssetImage: string;
+  count: number;
+}
+[];
+
 const CollageCard: React.FC<{ collage: CollageType }> = ({ collage }) => {
-  const [, setBusData] = useContext(DataBusContext);
+  const { setBusData } = useContext(DataBusContext);
   const {
     imgSrc = 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_350/v1628223802/spj-v2/DIY/collage/col-1_jt7bsc.png',
     meta: { view = [] } = {},
   } = collage;
-  const processedView = view.map((object) => {
+  const processedView: ProcessedCollageType[] = view.map((object) => {
     const {
       translation: {
         x: { $numberDecimal: xCoord } = { $numberDecimal: '' },
         y: { $numberDecimal: yCoord } = { $numberDecimal: '' },
       } = {},
       scale: {
-        height: { $numberDecimal: heightCoord = '' },
-        width: { $numberDecimal: widthCoord = '' },
+        x: { $numberDecimal: heightCoord = '' } = { $numberDecimal: '' },
+        y: { $numberDecimal: widthCoord = '' } = { $numberDecimal: '' },
       },
       rotation = '0',
       id,

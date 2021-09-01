@@ -1,7 +1,7 @@
 import { useFilterContext } from '@components/FilterModal/FilterContext';
 import StoreFilterType from '@components/FilterModal/FilterContext/types/assetStoreFilterType';
 import React from 'react';
-import TreeComponent from '../CommonComponents/TreeComponent';
+import TreeComponent from '../TreeComponent';
 
 const CategoryFilter: React.FC = () => {
   const {

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React, { useContext } from 'react';
 import { PlaygroundAssetsContext } from 'store/PlaygroundAssets';
-const TIMEOUT = 1500;
+// const TIMEOUT = 1500;
 
 const imgList = [
   {
@@ -34,7 +34,7 @@ const imgList = [
   },
 ];
 const BgSelector: React.FC = () => {
-  const [, , , , , , , , , bg] = useContext(PlaygroundAssetsContext);
+  const { bg } = useContext(PlaygroundAssetsContext);
   const { setTmpBgImg, setBgImgUrl } = bg;
 
   const setBgImg = (img) => {
