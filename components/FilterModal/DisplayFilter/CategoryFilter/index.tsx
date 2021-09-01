@@ -1,7 +1,7 @@
 import { useFilterContext } from '@components/FilterModal/FilterContext';
 import StoreFilterType from '@components/FilterModal/FilterContext/types/assetStoreFilterType';
 import React from 'react';
-import TreeComponent from '../TreeComponent';
+import TreeComponent from '../../components/TreeComponent';
 
 const CategoryFilter: React.FC = () => {
   const {
@@ -31,8 +31,6 @@ const CategoryFilter: React.FC = () => {
         removeListObj[key] = [];
       });
     }
-
-    console.log(`removeList, changedValue`, { ...removeListObj, [key]: changedValue });
 
     changeFilter({ ...removeListObj, [key]: changedValue });
   };

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { SelectedIdContext } from './SelectedId';
 
 // ========================= TYPES =========================
@@ -97,10 +97,6 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
   const [selectedId, setSelectedId] = useContext(SelectedIdContext);
   const [bgImgUrl, setBgImgUrl] = useState('');
   const [tmpBgImg, setTmpBgImg] = useState('');
-
-  useEffect(() => {
-    console.log('object', PlaygroundAssets);
-  }, [PlaygroundAssets]);
 
   const getSelectedIndex = (id: string) => {
     for (let i = 0; i <= PlaygroundAssets.length; i++) {

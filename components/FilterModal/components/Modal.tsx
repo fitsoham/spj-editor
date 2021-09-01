@@ -56,7 +56,7 @@ const FilterModal: React.FC<ModalType> & ModalParts = ({ children, className = '
 
 FilterModal.Title = function Title({ children, className = '' }) {
   return (
-    <Dialog.Title as="h3" className={`text-lg font-medium leading-6 text-black ${className}`}>
+    <Dialog.Title as="div" className={`text-lg font-medium leading-6 text-black ${className}`}>
       {children}
     </Dialog.Title>
   );
