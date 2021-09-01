@@ -369,7 +369,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
       busData.data.map((asset) =>
         tmp.push({
           ...asset,
-          // id: `in-playground-asset-${PlaygroundAssets.length}-${Math.random()}`,
+          id: `in-playground-asset-${PlaygroundAssets.length}-${Math.random()}`,
         })
       );
 

@@ -56,7 +56,7 @@ const Modal: React.FC<ModalProps> & StaticComponents = ({ children, onCloseCallb
               leaveTo="opacity-0 scale-95"
             >
               <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
-                <Dialog.Title as="h1" className="text-lg font-medium leading-6 text-gray-900">
+                <Dialog.Title as="h2" className="text-lg font-medium leading-6 text-gray-900">
                   {children[1]}
                 </Dialog.Title>
                 <div className="mt-4">{children[2]}</div>
@@ -91,7 +91,7 @@ const Modal: React.FC<ModalProps> & StaticComponents = ({ children, onCloseCallb
 };
 
 Modal.Button = ({ children }) => <>{children}</>;
-Modal.Header = ({ children }) => <h2 className="text-gray-900">{children}</h2>;
+Modal.Header = ({ children }) => <span className="text-gray-900">{children}</span>;
 Modal.Body = ({ children }) => <p className="text-gray-600 text-sm">{children}</p>;
 
 export default Modal;
