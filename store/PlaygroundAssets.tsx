@@ -21,6 +21,8 @@ export interface PlaygroundAssetType {
     height: number;
     width: number;
   };
+  playgroundHeight?: number;
+  playgroundWidth?: number;
   renderImages?: { cdn: string }[];
 }
 

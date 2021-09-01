@@ -51,7 +51,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     const fileRes = await b64toFile(uri);
     const payload = PlaygroundAssets.map((asset) => {
       return {
-        ...(asset.playgroundHeight && {playgroundScale: {width: asset?.playgroundWidth, height: asset?.playgroundHeight}}),
+        ...(asset?.playgroundHeight && {playgroundScale: {width: asset?.playgroundWidth, height: asset?.playgroundHeight}}),
         translation: {
           x: asset?.x,
           y: asset?.y,
