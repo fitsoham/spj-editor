@@ -1,12 +1,15 @@
 import { DownloadIcon, SaveIcon } from '@heroicons/react/outline';
 import { publicRoutes } from '@utils/constants/api';
 import fetcher from '@utils/fetcher';
-import { downloadURI } from '@utils/helpers';
+import fetchWithFile from '@utils/fetchFile';
+import { b64toFile, downloadURI } from '@utils/helpers';
 import { Stage as StageType } from 'konva/lib/Stage';
 import Image from 'next/image';
 import React, { useContext, useRef, useState } from 'react';
 import { Tween } from 'react-gsap';
 import { Image as Img, Layer, Line, Rect, Stage } from 'react-konva';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { DataBusContext } from 'store';
 import { PlaygroundAssetsContext } from 'store/PlaygroundAssets';
 import { SelectedIdContext } from 'store/SelectedId';
@@ -29,7 +32,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
   const [selectedId, setSelectedId] = useContext(SelectedIdContext);
   const { tmpBgImg, bgImgUrl } = bg;
   const [img] = useImage(tmpBgImg || bgImgUrl, 'anonymous');
-
+  const [selectedFile, setSelectedFile] = useState(null);
   const scale = w / sceneWidth;
 
   const download = (): void => {
@@ -40,11 +43,14 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
   };
 
   const saveCollage = async () => {
-    console.log(PlaygroundAssets);
     const bg = img?.src;
+    const uri = stageRef?.current?.toDataURL({
+      pixelRatio: 2, // or other value you need
+    });
+    const fileRes = await b64toFile(uri);
     const payload = PlaygroundAssets.map((asset) => {
       return {
-        ...(bg && { background: bg }),
+        ...(asset.playgroundHeight && {playgroundScale: {width: asset?.playgroundWidth, height: asset?.playgroundHeight}}),
         translation: {
           x: asset?.x,
           y: asset?.y,
@@ -59,9 +65,36 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
         imgSrc: asset?.stitchedAssetImage,
       };
     });
-
-    await fetcher({ endPoint: publicRoutes?.saveCollages, method: 'POST', body: { view: [...payload] } });
+    try {
+      const formData = new FormData();
+      formData.append('file', fileRes, fileRes?.name);
+      formData.append('data', JSON.stringify({view: [...payload]}));
+      const res = await fetchWithFile({ 
+        endPoint: publicRoutes?.saveCollages, 
+        method: 'POST',
+        body: formData
+      });
+      const {data, statusCode} = res;
+      if (statusCode > 300) { 
+        throw new Error();
+      } else { 
+        return data;
+      }
+    } catch {
+      throw new Error();
+    }
   };
+
+  const saveCollageWithNotification = async () => { 
+    const res = await toast.promise(
+      saveCollage,
+      {
+        pending: 'Saving your collage',
+        success: 'Collage saved successfully',
+        error: 'There was an error while saving your collage. Please try again.'
+      }
+  );
+  }
 
   const checkDeselect = (e): void => {
     if (e.target === e.target?.getStage()) {
@@ -342,69 +375,72 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
   };
 
   return (
-    <div className="relative" onDrop={onDropEvent} onDragOver={(e) => e.preventDefault()}>
-      {PlaygroundAssets.length !== 0 && (
-        <>
-          <button className="absolute right-4 top-4 bg-gray-100 p-2 rounded z-10" onClick={download}>
-            <DownloadIcon className="w-4 h-4" />
-          </button>
-          <button className="absolute right-4 top-16 bg-gray-100 p-2 rounded z-10" onClick={saveCollage}>
-            <SaveIcon className="w-4 h-4" />
-          </button>
-        </>
-      )}
-      {PlaygroundAssets.length === 0 && (
-        <div className="absolute h-full w-full flex justify-center items-center">
-          <Tween from={{ opacity: 0, y: 10 }} to={{ opacity: 1, y: 0 }} duration={1} delay={0.15}>
-            <div className="h-1/2 text-center">
-              <Image
-                className="object-cover"
-                src="https://res.cloudinary.com/spacejoy/image/upload/v1628488827/spj-v2/DIY/placeholder_gdkupl.svg"
-                alt="begin design"
-                width={286}
-                height={236}
+    <>
+      <ToastContainer />
+      <div className="relative" onDrop={onDropEvent} onDragOver={(e) => e.preventDefault()}>
+        {PlaygroundAssets.length !== 0 && (
+          <>
+            <button className="absolute right-4 top-4 bg-gray-100 p-2 rounded z-10" onClick={download}>
+              <DownloadIcon className="w-4 h-4" />
+            </button>
+            <button className="absolute right-4 top-16 bg-gray-100 p-2 rounded z-10" onClick={saveCollageWithNotification}>
+              <SaveIcon className="w-4 h-4" />
+            </button>
+          </>
+        )}
+        {PlaygroundAssets.length === 0 && (
+          <div className="absolute h-full w-full flex justify-center items-center">
+            <Tween from={{ opacity: 0, y: 10 }} to={{ opacity: 1, y: 0 }} duration={1} delay={0.15}>
+              <div className="h-1/2 text-center">
+                <Image
+                  className="object-cover"
+                  src="https://res.cloudinary.com/spacejoy/image/upload/v1628488827/spj-v2/DIY/placeholder_gdkupl.svg"
+                  alt="begin design"
+                  width={286}
+                  height={236}
+                />
+                <p className="text-sm mt-4 text-center text-gray-400">Drag and Drop assets from left panel</p>
+              </div>
+            </Tween>
+          </div>
+        )}
+        <Stage
+          ref={stageRef}
+          width={w}
+          height={h}
+          scale={{ x: scale, y: scale }}
+          onMouseDown={checkDeselect}
+          onTouchStart={checkDeselect}
+        >
+          <Layer onDragMove={(e) => onDragMove(e)} onDragEnd={onDragEnd}>
+            {PlaygroundAssets.length !== 0 && (
+              <>
+                <Rect x={0} y={0} width={sceneWidth} height={h / scale} fill="#ffffff" listening={false} />
+              </>
+            )}
+            <Img x={0} y={0} width={sceneWidth} image={img} listening={false} />
+            {guides.map((item, i) => {
+              return <Line key={i} {...item} />;
+            })}
+            {PlaygroundAssets?.map((image, i) => (
+              <DragImage
+                index={i}
+                key={image.id}
+                image={image}
+                rotationValue={getRotationValue(image?.id)}
+                isSelected={image.id === selectedId}
+                onSelect={() => setSelectedId(image.id)}
+                onChange={(newAttrs): void => {
+                  const tmp = [...PlaygroundAssets];
+                  tmp[i] = newAttrs;
+                  setPlaygroundAssets(tmp);
+                }}
               />
-              <p className="text-sm mt-4 text-center text-gray-400">Drag and Drop assets from left panel</p>
-            </div>
-          </Tween>
-        </div>
-      )}
-      <Stage
-        ref={stageRef}
-        width={w}
-        height={h}
-        scale={{ x: scale, y: scale }}
-        onMouseDown={checkDeselect}
-        onTouchStart={checkDeselect}
-      >
-        <Layer onDragMove={(e) => onDragMove(e)} onDragEnd={onDragEnd}>
-          {PlaygroundAssets.length !== 0 && (
-            <>
-              <Rect x={0} y={0} width={sceneWidth} height={h / scale} fill="#ffffff" listening={false} />
-            </>
-          )}
-          <Img x={0} y={0} width={sceneWidth} image={img} listening={false} />
-          {guides.map((item, i) => {
-            return <Line key={i} {...item} />;
-          })}
-          {PlaygroundAssets?.map((image, i) => (
-            <DragImage
-              index={i}
-              key={image.id}
-              image={image}
-              rotationValue={getRotationValue(image?.id)}
-              isSelected={image.id === selectedId}
-              onSelect={() => setSelectedId(image.id)}
-              onChange={(newAttrs): void => {
-                const tmp = [...PlaygroundAssets];
-                tmp[i] = newAttrs;
-                setPlaygroundAssets(tmp);
-              }}
-            />
-          ))}
-        </Layer>
-      </Stage>
-    </div>
+            ))}
+          </Layer>
+        </Stage>
+      </div>
+    </>
   );
 };
 

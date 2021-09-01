@@ -65,7 +65,7 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
     setPlaygroundAssets(tmpAssetList);
   };
 
-  const clearBoard = () => setPlaygroundAssets([]);
+  const clearBoard = () => {setPlaygroundAssets([]), setSelectedId('')};
 
   const rotateAndSaveRotation = (selectedId, rotationValue) => {
     const updatedAssets = [...PlaygroundAssets].map((asset) => {

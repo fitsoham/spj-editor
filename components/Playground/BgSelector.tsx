@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import React, { useContext } from 'react';
 import { PlaygroundAssetsContext } from 'store/PlaygroundAssets';
-const TIMEOUT = 1500;
 
 const imgList = [
   {

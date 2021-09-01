@@ -17,4 +17,14 @@ function downloadURI(uri, name) {
   document.body.removeChild(link);
 }
 
-export { debounce, downloadURI };
+const b64toFile = async (base64String) => { 
+  return fetch(base64String)
+  .then(res => res.blob())
+  .then(blob => {
+    const file = new File([blob], "File name",{ type: "image/png" })
+    return file;
+  })
+}
+
+
+export { debounce, downloadURI, b64toFile };

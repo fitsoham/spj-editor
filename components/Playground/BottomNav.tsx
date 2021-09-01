@@ -2,12 +2,13 @@ import BgSelector from '@components/Playground/BgSelector';
 import Drawer from '@components/Shared/Drawer';
 import InputRange from '@components/Shared/InputRange';
 import Modal from '@components/Shared/Modal';
+import PublishForm from '@components/Shared/PublishForm';
 import {
   ColorSwatchIcon,
-  RewindIcon,
+  EyeIcon, RewindIcon,
   SortAscendingIcon,
   SortDescendingIcon,
-  TrashIcon,
+  TrashIcon
 } from '@heroicons/react/outline';
 import React, { useContext, useState } from 'react';
 import { Tween } from 'react-gsap';
@@ -17,6 +18,7 @@ import UnitAction from './UnitAction';
 
 const BottomNav: React.FC = () => {
   const [
+    PlaygroundAssets
     ,
     ,
     deleteAsset,
@@ -34,7 +36,16 @@ const BottomNav: React.FC = () => {
   const [selectedId] = useContext(SelectedIdContext);
 
   const [isOpen, setIsOpen] = useState(false);
+  const [isPublishFormOpen, setPublishFormOpen] = useState(false);
 
+  function closeFormDrawer() {
+    setPublishFormOpen(false);
+  }
+
+  function openFormDrawer() {
+    setPublishFormOpen(true);
+  }
+    
   function closeDrawer() {
     setIsOpen(false);
   }
@@ -42,7 +53,6 @@ const BottomNav: React.FC = () => {
   function openDrawer() {
     setIsOpen(true);
   }
-
   return (
     <div className="p-2 bg-white rounded-full shadow-sm mx-auto flex space-x-2">
       {selectedId && selectedId?.length && (
@@ -103,7 +113,7 @@ const BottomNav: React.FC = () => {
         </div>
         <div className="border border-r border-dashed" />
         <div>
-          <Modal onCloseCallback={clearBoard}>
+          <Modal onCloseCallback={clearBoard} disabled={!PlaygroundAssets?.length}>
             <Modal.Button>
               <UnitAction>
                 <svg height="16" width="16" viewBox="0 0 79.707 79.707">
@@ -113,9 +123,24 @@ const BottomNav: React.FC = () => {
             </Modal.Button>
             <Modal.Header>Confirm</Modal.Header>
             <Modal.Body>
-              Are you sure you want to clear your board? <br /> This action cannot be undone.
+              Are you sure you want to clear this board? <br /> This action cannot be undone.
             </Modal.Body>
           </Modal>
+        </div>
+        <div className="border border-r border-dashed" />
+        <div>
+          <UnitAction onClick={openFormDrawer}>
+            <EyeIcon className="h-4 w-4" />
+          </UnitAction>
+          <Drawer isOpen={isPublishFormOpen} cb={closeFormDrawer}>
+            <Drawer.Header
+              title="Publish Your Collage"
+              description=""
+            />
+            <Drawer.Body>
+                <PublishForm/>
+            </Drawer.Body>
+          </Drawer>
         </div>
       </Tween>
     </div>

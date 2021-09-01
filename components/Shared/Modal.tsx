@@ -3,6 +3,7 @@ import React, { Fragment, useState } from 'react';
 
 interface ModalProps {
   onCloseCallback?: () => void;
+  disabled?: boolean;
 }
 interface StaticComponents {
   Body?: React.FC;
@@ -10,7 +11,7 @@ interface StaticComponents {
   Header?: React.FC;
 }
 
-const Modal: React.FC<ModalProps> & StaticComponents = ({ children, onCloseCallback }) => {
+const Modal: React.FC<ModalProps> & StaticComponents = ({ children, onCloseCallback, disabled }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   function closeModal() {
@@ -22,7 +23,7 @@ const Modal: React.FC<ModalProps> & StaticComponents = ({ children, onCloseCallb
   }
   return (
     <>
-      <button onClick={openModal}>{children[0]}</button>
+      <button disabled={disabled} onClick={openModal}>{children[0]}</button>
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog
           as="div"
@@ -55,7 +56,7 @@ const Modal: React.FC<ModalProps> & StaticComponents = ({ children, onCloseCallb
               leaveTo="opacity-0 scale-95"
             >
               <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
-                <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900">
+                <Dialog.Title as="h1" className="text-lg font-medium leading-6 text-gray-900">
                   {children[1]}
                 </Dialog.Title>
                 <div className="mt-4">{children[2]}</div>

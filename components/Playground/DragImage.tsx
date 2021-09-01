@@ -67,27 +67,13 @@ const DragImage: React.FC<DragImageInterface> = ({
   const [state, dispatch] = useReducer(reducer, image || initialState);
   const trRef = useRef(null);
   const AssetRef = useRef(null);
-
-  console.log(image);
-
-  const [thumbnail] = useImage(
-    `https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,f_auto,q_auto,w_300/${state?.productThumbnail}`,
-    'anonymous'
-  );
   const [img] = useImage(
     `https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,f_auto,q_100,w_${
-      Math.ceil(state?.width) * state?.count * 100
+      state?.playgroundWidth ? Math.ceil(state?.playgroundWidth * state.count): Math.ceil(state?.width) * state?.count * 100
     }/${state?.stitchedAssetImage}`,
     'anonymous'
   );
-
-  console.log(`image`, image)
-  // useEffect(() => {
-  //   console.log('state ---- ', state)
-  // }, [state]);
-
   const animations = getAnimationObject(img?.width / image.count, img?.height);
-
   useEffect(() => {
     if (trRef && isSelected) {
       trRef?.current?.nodes([AssetRef.current]);
@@ -96,7 +82,7 @@ const DragImage: React.FC<DragImageInterface> = ({
       trRef?.current?.nodes([]);
     }
   }, [index, isSelected]);
-
+  
   const onAssetChange = () => {
     // transformer is changing scale of the node
     // and NOT its width or height
@@ -120,6 +106,8 @@ const DragImage: React.FC<DragImageInterface> = ({
   const height = img?.height || 0;
   const width = img?.width / image.count || 0;
 
+
+
   return (
     <>
       <Sprite
@@ -133,8 +121,8 @@ const DragImage: React.FC<DragImageInterface> = ({
         id={state?.id}
         offsetX={width ? width / 2 : 0}
         offsetY={height ? height / 2 : 0}
-        scaleX={0.75}
-        scaleY={0.75}
+        scaleX={state?.playgroundWidth ? 1 : 0.75}
+        scaleY={state?.playgroundHeight ? 1 : 0.75}
         width={width}
         height={height}
         isSelected={isSelected}

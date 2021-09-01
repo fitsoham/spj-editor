@@ -6,7 +6,7 @@ import { CollageType } from 'store/CollageList';
 const CollageCard: React.FC<{ collage: CollageType }> = ({ collage }) => {
   const [, setBusData] = useContext(DataBusContext);
   const {
-    imgSrc = 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_350/v1628223802/spj-v2/DIY/collage/col-1_jt7bsc.png',
+    thumbnail = 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_350/v1628223802/spj-v2/DIY/collage/col-1_jt7bsc.png',
     meta: { view = [] } = {},
   } = collage;
   const processedView = view.map((object) => {
@@ -19,6 +19,10 @@ const CollageCard: React.FC<{ collage: CollageType }> = ({ collage }) => {
         height: { $numberDecimal: heightCoord = '' },
         width: { $numberDecimal: widthCoord = '' },
       },
+      playgroundScale: {
+        height: { $numberDecimal: actualHeightCoord = '' } = {},
+        width: { $numberDecimal: actualWidthCoord = '' } = {},
+      } = {},
       rotation = '0',
       id,
       imgSrc,
@@ -32,6 +36,8 @@ const CollageCard: React.FC<{ collage: CollageType }> = ({ collage }) => {
       id,
       stitchedAssetImage: imgSrc,
       count: 12,
+      ...(actualWidthCoord && {playgroundWidth: parseFloat(actualWidthCoord)}),
+      ...(actualHeightCoord && {playgroundHeight: parseFloat(actualHeightCoord)}),
     };
   });
   return (
@@ -48,9 +54,9 @@ const CollageCard: React.FC<{ collage: CollageType }> = ({ collage }) => {
       }
     >
       <Image
-        src={imgSrc}
-        width="300"
-        height="300"
+        src={`https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_1000/${thumbnail}`}
+        width="500"
+        height="500"
         alt="Collage"
         className="object-contain transition transform scale-95 group-hover:scale-100"
         draggable={false}
