@@ -1,7 +1,7 @@
 import FilterModal from '@components/FilterModal';
 import { FilterIcon } from '@heroicons/react/outline';
 import React, { useState } from 'react';
-import { useProductListContext } from 'store/ProductList';
+import { assetStoreInitialState, useProductListContext } from 'store/ProductList';
 import FilterSearchbar from './FilterSearchbar';
 import ProductListView from './ProductListView';
 
@@ -13,7 +13,7 @@ const StorePanel: React.FC = () => {
     setShowPanel((prevState) => !prevState);
   };
 
-  const onApply = (filter) => {
+  const onApply = (filter: typeof assetStoreInitialState) => {
     setFilters(filter);
     setShowPanel(false);
   };

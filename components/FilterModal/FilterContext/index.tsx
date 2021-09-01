@@ -42,7 +42,6 @@ const FilterContextProvider: React.FC<FilterContextProviderType> = ({ children, 
 
   const categoryMap: MetaTreeMap[] = useMemo(() => {
     if (meta) {
-      console.log(`fired`);
       return (meta as MetaDataType)?.categoryTree.map((category) => {
         return {
           key: category?._id,

@@ -1,19 +1,102 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { SelectedIdContext } from './SelectedId';
 
-const PlaygroundAssetsContext = React.createContext([]);
+// ========================= TYPES =========================
 
-const initData = [];
+export interface PlaygroundAssetType {
+  id: string;
+  src?: string;
+  x: number;
+  y: number;
+  height?: number;
+  assetId?: string;
+  width?: number;
+  isDragging?: false;
+  stitchedAssetImage?: string;
+  count?: number;
+  boxSize?: number;
+  rotationValue?: string;
+  productThumbnail?: string;
+  dimension?: {
+    height: number;
+    width: number;
+  };
+  renderImages?: { cdn: string }[];
+}
+
+interface PlaygroundAssetContextType {
+  PlaygroundAssets: PlaygroundAssetType[];
+  setPlaygroundAssets: React.Dispatch<React.SetStateAction<PlaygroundAssetType[]>>;
+  deleteAsset: () => void;
+  updateAsset: (data: PlaygroundAssetType) => void;
+  moveAssetBehind: () => void;
+  moveAssetForward: () => void;
+  moveAssetTop: () => void;
+  moveAssetLast: () => void;
+  clearBoard: () => void;
+  bg: {
+    tmpBgImg: string;
+    bgImgUrl: string;
+    setTmpBgImg: React.Dispatch<React.SetStateAction<string>>;
+    setBgImgUrl: React.Dispatch<React.SetStateAction<string>>;
+  };
+  rotateAndSaveRotation: (selectedId: string, rotationValue: string) => void;
+  getRotationValue: (selectedId: string) => number;
+}
+
+// ========================= TYPES =========================
+
+const PlaygroundAssetsContext = React.createContext<PlaygroundAssetContextType>({
+  PlaygroundAssets: [],
+  setPlaygroundAssets: () => {
+    return;
+  },
+  deleteAsset: () => {
+    return;
+  },
+  updateAsset: () => {
+    return;
+  },
+  moveAssetBehind: () => {
+    return;
+  },
+  moveAssetForward: () => {
+    return;
+  },
+  moveAssetTop: () => {
+    return;
+  },
+  moveAssetLast: () => {
+    return;
+  },
+  clearBoard: () => {
+    return;
+  },
+  bg: {
+    tmpBgImg: '',
+    bgImgUrl: '',
+    setTmpBgImg: () => {
+      return;
+    },
+    setBgImgUrl: () => {
+      return;
+    },
+  },
+  rotateAndSaveRotation: () => {
+    return;
+  },
+  getRotationValue: () => {
+    return -1;
+  },
+});
+
+const initData: PlaygroundAssetType[] = [];
 
 const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
-  const [PlaygroundAssets, setPlaygroundAssets] = useState(initData);
+  const [PlaygroundAssets, setPlaygroundAssets] = useState<PlaygroundAssetType[]>(initData);
   const [selectedId, setSelectedId] = useContext(SelectedIdContext);
   const [bgImgUrl, setBgImgUrl] = useState('');
   const [tmpBgImg, setTmpBgImg] = useState('');
-
-  useEffect(() => {
-    console.log('object', PlaygroundAssets);
-  }, [PlaygroundAssets]);
 
   const getSelectedIndex = (id: string) => {
     for (let i = 0; i <= PlaygroundAssets.length; i++) {
@@ -23,7 +106,7 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
     }
   };
 
-  const updateAsset = (data) => {
+  const updateAsset = (data: PlaygroundAssetType) => {
     const tmpAssetList = [...PlaygroundAssets];
     tmpAssetList.splice(getSelectedIndex(data?.id), 1);
     tmpAssetList.splice(getSelectedIndex(selectedId) - 1, 0, data);
@@ -67,7 +150,7 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
 
   const clearBoard = () => {setPlaygroundAssets([]), setSelectedId('')};
 
-  const rotateAndSaveRotation = (selectedId, rotationValue) => {
+  const rotateAndSaveRotation = (selectedId: string, rotationValue: string) => {
     const updatedAssets = [...PlaygroundAssets].map((asset) => {
       if (asset?.id === selectedId) {
         return { ...asset, rotationValue };
@@ -83,7 +166,7 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
 
   return (
     <PlaygroundAssetsContext.Provider
-      value={[
+      value={{
         PlaygroundAssets,
         setPlaygroundAssets,
         deleteAsset,
@@ -93,10 +176,10 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
         moveAssetTop,
         moveAssetLast,
         clearBoard,
-        { tmpBgImg, bgImgUrl, setTmpBgImg, setBgImgUrl },
+        bg: { tmpBgImg, bgImgUrl, setTmpBgImg, setBgImgUrl },
         rotateAndSaveRotation,
         getRotationValue,
-      ]}
+      }}
     >
       {children}
     </PlaygroundAssetsContext.Provider>

@@ -1,7 +1,7 @@
 import { useFilterContext } from '@components/FilterModal/FilterContext';
 import { Tab } from '@headlessui/react';
 import React, { useMemo, useState } from 'react';
-import TreeComponent from '../CommonComponents/TreeComponent';
+import TreeComponent from '../../components/TreeComponent';
 
 const filterRegex = {
   Popular: /^[tTpPwW]/,

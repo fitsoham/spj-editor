@@ -4,16 +4,14 @@ import React, { useEffect, useState } from 'react';
 import { useProductListContext } from 'store/ProductList';
 
 const FilterSearchbar: React.FC = () => {
-  const [searchText, setSearchText] = useState('');
-
-  const debouncedSearchText = useDebounce<string>(searchText, 500);
-
   const {
     count,
     searchText: { value, set },
     loading,
     data,
   } = useProductListContext();
+  const [searchText, setSearchText] = useState(value);
+  const debouncedSearchText = useDebounce<string>(searchText, 500);
 
   const setValue = () => set(searchText);
 
@@ -41,7 +39,6 @@ const FilterSearchbar: React.FC = () => {
           onChange={onChange}
           onKeyDown={onKeyDown}
           placeholder="Search"
-          defaultValue={value}
           value={searchText}
           className="text-sm text-gray-900 py-3 pr-10 bg-white outline-none block w-full caret-yellow-500 focus:ring-transparent border-none capitalize"
         />

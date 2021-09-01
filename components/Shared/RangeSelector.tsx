@@ -7,20 +7,30 @@ interface SliderType {
   minMax?: number[];
   value: number[];
   onChange?: (value: number[], index?: number) => void;
+  onAfterChange?: (value: number[], index?: number) => void;
 }
 
-const RangeSelector: React.FC<SliderType> = ({ minMax = [0, 100], value, onChange }) => {
-  const onAfterChange = (value) => {
-    if (onChange) onChange(value);
+const RangeSelector: React.FC<SliderType> = ({ minMax = [0, 100], value, onChange, onAfterChange }) => {
+  const onAfterChangeHandle = (changedValue) => {
+    if (onAfterChange) onAfterChange(changedValue);
   };
+
+  const onChangeHandle = (changedValue) => {
+    if (onChange) onChange(changedValue);
+  };
+
   return (
     <div className="bg-gray-100 p-3 rounded-full">
       <div className="bg-white py-4 px-2 rounded-full flex items-center">
         <div className="px-4">${minMax[0]}</div>
         <RangeWithTooltip
-          tipFormatter={(value) => `$${value}`}
+          tipFormatter={(value) => <>${value}</>}
+          tipProps={{
+            prefixCls: 'rc-slider-tooltip',
+          }}
           min={minMax?.[0]}
-          onAfterChange={onAfterChange}
+          onChange={onChangeHandle}
+          onAfterChange={onAfterChangeHandle}
           max={minMax?.[1]}
           trackStyle={[{ background: 'black' }]}
           handleStyle={[

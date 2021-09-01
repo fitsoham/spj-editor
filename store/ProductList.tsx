@@ -18,7 +18,7 @@ export const assetStoreInitialState = {
 };
 
 interface ProductContext {
-  setFilters: (filterValues) => void;
+  setFilters: (filterValues: typeof assetStoreInitialState) => void;
   isItemLoaded: (index: any) => boolean;
   loadMoreItems: (startIndex: number, endIndex: number) => Promise<void>;
   hasNextPage: boolean;
@@ -62,9 +62,9 @@ export const convertToFeet = (value: number): number => {
 const ProductListContextProvider: React.FC = ({ children }) => {
   const [data, setData] = useState<AssetType[]>([]);
   const [filter, setFilter] = useState(assetStoreInitialState);
-  const [searchText, setSearchText] = useState('');
-  const [count, setCount] = useState(1000);
-  const [loading, setLoading] = useState(false);
+  const [searchText, setSearchText] = useState<string>('');
+  const [count, setCount] = useState<number>(1000);
+  const [loading, setLoading] = useState<boolean>(false);
   const [hasNextPage, setHasNextPage] = useState<boolean>(true);
 
   const loadMoreItems = async (startIndex: number, endIndex: number): Promise<void> => {

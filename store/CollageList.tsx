@@ -12,31 +12,29 @@ export interface CollageType {
   updatedAt: string;
   thumbnail: string;
   meta: {
-    view: [
-      {
-        _id: string;
-        translation: {
-          x: {
-            $numberDecimal: string;
-          };
-          y: {
-            $numberDecimal: string;
-          };
+    view: {
+      _id: string;
+      translation: {
+        x: {
+          $numberDecimal: string;
         };
-        id: string;
-        product: string;
-        imgSrc: string;
-        rotation?: string;
-        scale: {
-          x: {
-            $numberDecimal: string;
-          };
-          y: {
-            $numberDecimal: string;
-          };
+        y: {
+          $numberDecimal: string;
         };
-      }
-    ];
+      };
+      id: string;
+      product: string;
+      imgSrc: string;
+      rotation?: string;
+      scale: {
+        x: {
+          $numberDecimal: string;
+        };
+        y: {
+          $numberDecimal: string;
+        };
+      };
+    }[];
   };
 }
 interface CollageContext {

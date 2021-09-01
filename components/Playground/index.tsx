@@ -3,6 +3,8 @@ import { publicRoutes } from '@utils/constants/api';
 import fetcher from '@utils/fetcher';
 import fetchWithFile from '@utils/fetchFile';
 import { b64toFile, downloadURI } from '@utils/helpers';
+import { KonvaEventObject } from 'konva/lib/Node';
+import { Shape, ShapeConfig } from 'konva/lib/Shape';
 import { Stage as StageType } from 'konva/lib/Stage';
 import Image from 'next/image';
 import React, { useContext, useRef, useState } from 'react';
@@ -26,9 +28,8 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
   const stageRef = useRef<StageType>();
   const GUIDELINE_OFFSET = 5;
   const [guides, setGuides] = useState([]);
-  const [busData] = useContext(DataBusContext);
-  const [PlaygroundAssets, setPlaygroundAssets, , , , , , , , bg, , getRotationValue] =
-    useContext(PlaygroundAssetsContext);
+  const { busData } = useContext(DataBusContext);
+  const { PlaygroundAssets, setPlaygroundAssets, bg, getRotationValue } = useContext(PlaygroundAssetsContext);
   const [selectedId, setSelectedId] = useContext(SelectedIdContext);
   const { tmpBgImg, bgImgUrl } = bg;
   const [img] = useImage(tmpBgImg || bgImgUrl, 'anonymous');
@@ -103,7 +104,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
   };
 
   // where can we snap our objects?
-  const getLineGuideStops = (skipShape) => {
+  const getLineGuideStops = (skipShape: Shape<ShapeConfig> | StageType) => {
     // we can snap to stage borders and the center of the stage
     const vertical: number[] = [0, stageRef.current.width() / 2, stageRef.current.width()];
     const horizontal: number[] = [0, stageRef.current.height() / 2, stageRef.current.height()];
@@ -255,7 +256,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     }
   };
 
-  const onDragMove = (e) => {
+  const onDragMove = (e: KonvaEventObject<DragEvent>) => {
     // clear all previous lines on the screen
     // layer.find('.guid-line').destroy();
 
@@ -338,8 +339,10 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     e.preventDefault();
     stageRef?.current?.setPointersPositions(e);
     if (busData.type === 'asset') {
-      const { _id, dimension, renderImages } = busData;
-      const { data } = await fetcher({ endPoint: `/v1/assets/${_id}/stitchImages`, method: 'GET' });
+      const {
+        data: { id, dimension, renderImages },
+      } = busData;
+      const { data } = await fetcher({ endPoint: `/v1/assets/${id}/stitchImages`, method: 'GET' });
       const { count, boxSize, image } = data;
       setPlaygroundAssets(
         PlaygroundAssets.concat([
@@ -354,7 +357,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
             boxSize,
             height: dimension?.height,
             width: dimension?.width,
-            assetId: _id,
+            assetId: id,
             productThumbnail: renderImages[0].cdn,
             stitchedAssetImage: image?.originalCdn,
           },

@@ -33,7 +33,7 @@ const imgList = [
   },
 ];
 const BgSelector: React.FC = () => {
-  const [, , , , , , , , , bg] = useContext(PlaygroundAssetsContext);
+  const { bg } = useContext(PlaygroundAssetsContext);
   const { setTmpBgImg, setBgImgUrl } = bg;
 
   const setBgImg = (img) => {

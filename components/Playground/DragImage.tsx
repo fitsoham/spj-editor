@@ -1,25 +1,15 @@
 import React, { useEffect, useReducer, useRef } from 'react';
 import { Sprite, Transformer } from 'react-konva';
+import { PlaygroundAssetType } from 'store/PlaygroundAssets';
 import useImage from 'use-image';
 
 interface DragImageInterface {
   index: number;
-  image: {
-    id: string;
-    src: string;
-    x: number;
-    y: number;
-    height?: number;
-    width?: number;
-    isDragging?: false;
-    stitchedAssetImage?: string;
-    count?: number;
-    boxSize?: number;
-  };
+  image: PlaygroundAssetType;
   isSelected: boolean;
   onSelect: () => void;
   onChange: (newAttrs) => void;
-  rotationValue?: string;
+  rotationValue?: number;
 }
 
 const initialState = {
@@ -61,9 +51,6 @@ const DragImage: React.FC<DragImageInterface> = ({
   onChange,
   rotationValue = '0',
 }) => {
-
-
-
   const [state, dispatch] = useReducer(reducer, image || initialState);
   const trRef = useRef(null);
   const AssetRef = useRef(null);
@@ -135,7 +122,7 @@ const DragImage: React.FC<DragImageInterface> = ({
         }}
         onTransformEnd={onAssetChange}
         animations={animations}
-        animation={rotationValue}
+        animation={rotationValue as string}
       />
       {isSelected && (
         <Transformer
