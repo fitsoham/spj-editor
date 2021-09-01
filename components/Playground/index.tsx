@@ -381,9 +381,9 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
           {PlaygroundAssets.length !== 0 && (
             <>
               <Rect x={0} y={0} width={sceneWidth} height={h / scale} fill="#ffffff" listening={false} />
-              <Img x={0} y={0} width={sceneWidth} image={img} listening={false} />
             </>
           )}
+          <Img x={0} y={0} width={sceneWidth} image={img} listening={false} />
           {guides.map((item, i) => {
             return <Line key={i} {...item} />;
           })}

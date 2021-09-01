@@ -2,7 +2,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import React, { Fragment, useState } from 'react';
 
 interface ModalProps {
-  onCloseCallback: () => void;
+  onCloseCallback?: () => void;
 }
 interface StaticComponents {
   Body?: React.FC;
@@ -22,16 +22,7 @@ const Modal: React.FC<ModalProps> & StaticComponents = ({ children, onCloseCallb
   }
   return (
     <>
-      {/* <button
-        type="button"
-        onClick={openModal}
-        className="focus:outline-none text-gray-700 hover:text-red-500 text-xs py-2 px-4 rounded-full hover:shadow-md border border-gray-500 hover:border-red-500"
-      >
-        <span className="sr-only">Filter</span>
-        Filter <FilterIcon className="inline w-4 h-4" />
-      </button> */}
       <button onClick={openModal}>{children[0]}</button>
-
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog
           as="div"
@@ -67,7 +58,7 @@ const Modal: React.FC<ModalProps> & StaticComponents = ({ children, onCloseCallb
                 <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900">
                   {children[1]}
                 </Dialog.Title>
-                <div className="mt-2">{children[2]}</div>
+                <div className="mt-4">{children[2]}</div>
                 <div className="mt-4 text-right">
                   <button
                     type="button"
@@ -85,7 +76,7 @@ const Modal: React.FC<ModalProps> & StaticComponents = ({ children, onCloseCallb
                         onCloseCallback();
                       }}
                     >
-                      Ok
+                      Continue
                     </button>
                   )}
                 </div>
@@ -99,7 +90,7 @@ const Modal: React.FC<ModalProps> & StaticComponents = ({ children, onCloseCallb
 };
 
 Modal.Button = ({ children }) => <>{children}</>;
-Modal.Header = ({ children }) => <h2>{children}</h2>;
-Modal.Body = ({ children }) => <p>{children}</p>;
+Modal.Header = ({ children }) => <h2 className="text-gray-900">{children}</h2>;
+Modal.Body = ({ children }) => <p className="text-gray-600 text-sm">{children}</p>;
 
 export default Modal;

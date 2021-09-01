@@ -1,4 +1,4 @@
-import { CollectionIcon, PuzzleIcon, ShoppingBagIcon, UploadIcon } from '@heroicons/react/outline';
+import { CollectionIcon, PuzzleIcon, ShoppingCartIcon, UploadIcon } from '@heroicons/react/outline';
 import React, { useContext } from 'react';
 import { NavSelectContext } from 'store/NavSelect';
 
@@ -66,7 +66,7 @@ const SideNav: React.FC = () => {
         }`}
         onClick={() => setNav('shop')}
       >
-        <ShoppingBagIcon className="w-4 h-4" />
+        <ShoppingCartIcon className="w-4 h-4" />
       </button>
     </>
   );
