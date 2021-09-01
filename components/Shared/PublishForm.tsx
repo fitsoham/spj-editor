@@ -2,16 +2,8 @@ import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
 import React, { Fragment, useEffect, useState } from 'react';
 
-const people = [
-  { name: 'Wade Cooper' },
-  { name: 'Arlene Mccoy' },
-  { name: 'Devon Webb' },
-  { name: 'Tom Cook' },
-  { name: 'Tanya Fox' },
-  { name: 'Hellen Schmidt' },
-]
 
-const MyListbox = ({data, onChange = () => {}}) => {
+const MyListbox = ({data, onChange}) => {
   // const [selected, setSelected] = useState({name: 'Default'});
   const selected = data?.length ? data.filter(item => item.selected)[0] : {};
   return (
@@ -76,7 +68,7 @@ const MyListbox = ({data, onChange = () => {}}) => {
 
 const PublishForm = () => {
 
-    const [categoryData, setCategoryData] = useState([]);
+    const [categoryData, ] = useState([]);
     
     const onChangeCallback = (value) => { 
       console.log('object', value);
@@ -84,6 +76,7 @@ const PublishForm = () => {
 
 
     useEffect(() => {
+      // WIP - Publish
       // // fetch category data
       // (async () => { 
       //   const categoryRes = await fetcher({endPoint: publicRoutes?.collageCategoryRoute, method: 'GET'});

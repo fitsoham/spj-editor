@@ -33,7 +33,6 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
   const [selectedId, setSelectedId] = useContext(SelectedIdContext);
   const { tmpBgImg, bgImgUrl } = bg;
   const [img] = useImage(tmpBgImg || bgImgUrl, 'anonymous');
-  const [selectedFile, setSelectedFile] = useState(null);
   const scale = w / sceneWidth;
 
   const download = (): void => {
@@ -44,7 +43,6 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
   };
 
   const saveCollage = async () => {
-    const bg = img?.src;
     const uri = stageRef?.current?.toDataURL({
       pixelRatio: 2, // or other value you need
     });
@@ -87,7 +85,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
   };
 
   const saveCollageWithNotification = async () => { 
-    const res = await toast.promise(
+    await toast.promise(
       saveCollage,
       {
         pending: 'Saving your collage',
