@@ -26,6 +26,14 @@ export interface CollageType {
       product: string;
       imgSrc: string;
       rotation?: string;
+      playgroundScale: {
+        height: {
+          $numberDecimal: string;
+        };
+        width: {
+          $numberDecimal: string;
+        };
+      };
       scale: {
         x: {
           $numberDecimal: string;
