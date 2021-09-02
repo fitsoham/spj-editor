@@ -16,6 +16,7 @@ const PlaygroundWithNoSSR = dynamic(() => import('@components/Playground'), { ss
 const VisualBoard: React.FC = () => {
   const PlaygroundWrapperRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState([0, 0]);
+  
 
   const updateSize = () =>
     setSize([PlaygroundWrapperRef.current.offsetWidth, PlaygroundWrapperRef.current.offsetHeight]);

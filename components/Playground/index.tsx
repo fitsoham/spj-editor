@@ -24,12 +24,54 @@ interface PlaygroundInterface {
   h: number;
 }
 
+export const saveCollage = async (stageRef, PlaygroundAssets, isCollageActive = true, selectedSubCategoryId = '') => {
+  const uri = stageRef?.current?.toDataURL({
+    pixelRatio: 2, // or other value you need
+  });
+  const fileRes = await b64toFile(uri);
+  const payload = PlaygroundAssets.map((asset) => {
+    return {
+      ...(asset?.playgroundHeight && {playgroundScale: {width: asset?.playgroundWidth, height: asset?.playgroundHeight}}),
+      translation: {
+        x: asset?.x,
+        y: asset?.y,
+      },
+      rotation: (asset?.rotationValue || 0).toString(),
+      scale: {
+        height: asset?.height,
+        width: asset?.width,
+      },
+      id: asset?.id,
+      product: asset?.assetId,
+      imgSrc: asset?.stitchedAssetImage,
+    };
+  });
+  try {
+    const formData = new FormData();
+    formData.append('file', fileRes, fileRes?.name);
+    formData.append('data', JSON.stringify({view: [...payload], isActive: isCollageActive, categoryMap: selectedSubCategoryId}));
+    const res = await fetchWithFile({ 
+      endPoint: publicRoutes?.saveCollages, 
+      method: 'POST',
+      body: formData
+    });
+    const {data, statusCode} = res;
+    if (statusCode > 300) { 
+      throw new Error();
+    } else { 
+      return data;
+    }
+  } catch {
+    throw new Error();
+  }
+};
+
 const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
   const stageRef = useRef<StageType>();
   const GUIDELINE_OFFSET = 5;
   const [guides, setGuides] = useState([]);
   const { busData } = useContext(DataBusContext);
-  const { PlaygroundAssets, setPlaygroundAssets, bg, getRotationValue } = useContext(PlaygroundAssetsContext);
+  const { PlaygroundAssets, setPlaygroundAssets, bg, getRotationValue, isCollageActive, selectedSubCategoryId } = useContext(PlaygroundAssetsContext);
   const [selectedId, setSelectedId] = useContext(SelectedIdContext);
   const { tmpBgImg, bgImgUrl } = bg;
   const [img] = useImage(tmpBgImg || bgImgUrl, 'anonymous');
@@ -42,51 +84,11 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     downloadURI(uri, `spacejoy-demo-${Date.now()}`);
   };
 
-  const saveCollage = async () => {
-    const uri = stageRef?.current?.toDataURL({
-      pixelRatio: 2, // or other value you need
-    });
-    const fileRes = await b64toFile(uri);
-    const payload = PlaygroundAssets.map((asset) => {
-      return {
-        ...(asset?.playgroundHeight && {playgroundScale: {width: asset?.playgroundWidth, height: asset?.playgroundHeight}}),
-        translation: {
-          x: asset?.x,
-          y: asset?.y,
-        },
-        rotation: (asset?.rotationValue || 0).toString(),
-        scale: {
-          height: asset?.height,
-          width: asset?.width,
-        },
-        id: asset?.id,
-        product: asset?.assetId,
-        imgSrc: asset?.stitchedAssetImage,
-      };
-    });
-    try {
-      const formData = new FormData();
-      formData.append('file', fileRes, fileRes?.name);
-      formData.append('data', JSON.stringify({view: [...payload]}));
-      const res = await fetchWithFile({ 
-        endPoint: publicRoutes?.saveCollages, 
-        method: 'POST',
-        body: formData
-      });
-      const {data, statusCode} = res;
-      if (statusCode > 300) { 
-        throw new Error();
-      } else { 
-        return data;
-      }
-    } catch {
-      throw new Error();
-    }
-  };
+  
 
   const saveCollageWithNotification = async () => { 
     await toast.promise(
-      saveCollage,
+      saveCollage(stageRef, PlaygroundAssets, isCollageActive, selectedSubCategoryId),
       {
         pending: 'Saving your collage',
         success: 'Collage saved successfully',

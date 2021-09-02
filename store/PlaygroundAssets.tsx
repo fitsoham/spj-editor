@@ -165,7 +165,9 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
   const getRotationValue = (selectedId) => {
     return parseInt([...PlaygroundAssets].filter((item) => item?.id === selectedId)[0]?.rotationValue, 10) || 0;
   };
-
+  const [selectedCategoryId, setSelectedCategoryId] = useState('');
+  const [selectedSubCategoryId, setSelectedSubCategoryId] = useState('');
+  const [isCollageActive, setCollageActiveStatus] = useState(true);
   return (
     <PlaygroundAssetsContext.Provider
       value={{
@@ -181,6 +183,12 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
         bg: { tmpBgImg, bgImgUrl, setTmpBgImg, setBgImgUrl },
         rotateAndSaveRotation,
         getRotationValue,
+        selectedCategoryId,
+        setSelectedCategoryId, 
+        selectedSubCategoryId,
+        setSelectedSubCategoryId,
+        isCollageActive,
+        setCollageActiveStatus,
       }}
     >
       {children}

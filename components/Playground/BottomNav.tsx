@@ -125,7 +125,7 @@ const BottomNav: React.FC = () => {
         </div>
         <div className="border border-r border-dashed" />
         <div>
-          <UnitAction onClick={openFormDrawer}>
+          <UnitAction onClick={openFormDrawer} disabled={!PlaygroundAssets?.length}>
             <EyeIcon className="h-4 w-4" />
           </UnitAction>
           <Drawer isOpen={isPublishFormOpen} cb={closeFormDrawer}>
