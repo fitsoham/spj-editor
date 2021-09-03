@@ -37,7 +37,7 @@ const ProductCard: React.FC<ProductCardInterface> = ({ product }) => {
     >
       <div className="next-image-fix h-32">
         <Image
-          src={`https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,f_auto,q_auto,w_300/${productThumbnail}`}
+          src={`https://res.cloudinary.com/spacejoy/image/upload/${productThumbnail}`}
           width={250}
           height={250}
           alt={product?.name}

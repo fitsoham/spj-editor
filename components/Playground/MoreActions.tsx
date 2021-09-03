@@ -14,21 +14,21 @@ const MoreActions: React.FC = () => {
   return (
     <div className="bg-gray-100 w-20 p-4 flex-col space-y-2">
       <div className="rounded-full bg-white p-2 flex-col space-y-2 shadow-sm">
-        <UnitAction title="Lock Design" onClick={() => null}>
+        <UnitAction position="left" title="Lock Design" onClick={() => null}>
           <LockClosedIcon className="h-4 w-4" />
         </UnitAction>
-        <UnitAction title="Share" onClick={() => null}>
+        <UnitAction position="left" title="Share" onClick={() => null}>
           <ShareIcon className="h-4 w-4" />
         </UnitAction>
-        <UnitAction title="Magic" onClick={() => null}>
+        <UnitAction position="left" title="Magic" onClick={() => null}>
           <SparklesIcon className="h-4 w-4" />
         </UnitAction>
       </div>
       <div className="rounded-full bg-white p-2 flex-col space-y-2 shadow-sm">
-        <UnitAction title="Ideas" onClick={() => null}>
+        <UnitAction position="left" title="Ideas" onClick={() => null}>
           <LightBulbIcon className="h-4 w-4" />
         </UnitAction>
-        <UnitAction title="Feedback" onClick={() => null}>
+        <UnitAction position="left" title="Feedback" onClick={() => null}>
           <EmojiHappyIcon className="h-4 w-4" />
         </UnitAction>
         <div className="next-image-fix">
@@ -65,7 +65,7 @@ const MoreActions: React.FC = () => {
         </div>
       </div>
       <div className="rounded-full bg-white p-2 flex-col space-y-2 shadow-sm">
-        <UnitAction title="Help Chat" onClick={() => null}>
+        <UnitAction position="left" title="Help Chat" onClick={() => null}>
           <ChatAltIcon className="h-4 w-4" />
         </UnitAction>
       </div>

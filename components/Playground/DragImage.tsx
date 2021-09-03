@@ -56,7 +56,9 @@ const DragImage: React.FC<DragImageInterface> = ({
   const AssetRef = useRef(null);
   const [img] = useImage(
     `https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,f_auto,q_100,w_${
-      state?.playgroundWidth ? Math.ceil(state?.playgroundWidth * state.count): Math.ceil(state?.width) * state?.count * 100
+      state?.playgroundWidth
+        ? Math.ceil(state?.playgroundWidth * state.count)
+        : Math.ceil(state?.width) * state?.count * 175
     }/${state?.stitchedAssetImage}`,
     'anonymous'
   );
@@ -69,7 +71,7 @@ const DragImage: React.FC<DragImageInterface> = ({
       trRef?.current?.nodes([]);
     }
   }, [index, isSelected]);
-  
+
   const onAssetChange = () => {
     // transformer is changing scale of the node
     // and NOT its width or height
@@ -93,8 +95,6 @@ const DragImage: React.FC<DragImageInterface> = ({
   const height = img?.height || 0;
   const width = img?.width / image.count || 0;
 
-
-
   return (
     <>
       <Sprite
@@ -108,8 +108,8 @@ const DragImage: React.FC<DragImageInterface> = ({
         id={state?.id}
         offsetX={width ? width / 2 : 0}
         offsetY={height ? height / 2 : 0}
-        scaleX={state?.playgroundWidth ? 1 : 0.75}
-        scaleY={state?.playgroundHeight ? 1 : 0.75}
+        scaleX={state?.playgroundWidth ? 1 : 0.5}
+        scaleY={state?.playgroundHeight ? 1 : 0.5}
         width={width}
         height={height}
         isSelected={isSelected}

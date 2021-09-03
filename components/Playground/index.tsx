@@ -17,6 +17,7 @@ import { PlaygroundAssetsContext } from 'store/PlaygroundAssets';
 import { SelectedIdContext } from 'store/SelectedId';
 import useImage from 'use-image';
 import DragImage from './DragImage';
+import UnitAction from './UnitAction';
 
 const sceneWidth = 1400;
 interface PlaygroundInterface {
@@ -31,7 +32,9 @@ export const saveCollage = async (stageRef, PlaygroundAssets, isCollageActive = 
   const fileRes = await b64toFile(uri);
   const payload = PlaygroundAssets.map((asset) => {
     return {
-      ...(asset?.playgroundHeight && {playgroundScale: {width: asset?.playgroundWidth, height: asset?.playgroundHeight}}),
+      ...(asset?.playgroundHeight && {
+        playgroundScale: { width: asset?.playgroundWidth, height: asset?.playgroundHeight },
+      }),
       translation: {
         x: asset?.x,
         y: asset?.y,
@@ -49,16 +52,19 @@ export const saveCollage = async (stageRef, PlaygroundAssets, isCollageActive = 
   try {
     const formData = new FormData();
     formData.append('file', fileRes, fileRes?.name);
-    formData.append('data', JSON.stringify({view: [...payload], isActive: isCollageActive, categoryMap: selectedSubCategoryId}));
-    const res = await fetchWithFile({ 
-      endPoint: publicRoutes?.saveCollages, 
+    formData.append(
+      'data',
+      JSON.stringify({ view: [...payload], isActive: isCollageActive, categoryMap: selectedSubCategoryId })
+    );
+    const res = await fetchWithFile({
+      endPoint: publicRoutes?.saveCollages,
       method: 'POST',
-      body: formData
+      body: formData,
     });
-    const {data, statusCode} = res;
-    if (statusCode > 300) { 
+    const { data, statusCode } = res;
+    if (statusCode > 300) {
       throw new Error();
-    } else { 
+    } else {
       return data;
     }
   } catch {
@@ -71,7 +77,8 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
   const GUIDELINE_OFFSET = 5;
   const [guides, setGuides] = useState([]);
   const { busData } = useContext(DataBusContext);
-  const { PlaygroundAssets, setPlaygroundAssets, bg, getRotationValue, isCollageActive, selectedSubCategoryId } = useContext(PlaygroundAssetsContext);
+  const { PlaygroundAssets, setPlaygroundAssets, bg, getRotationValue, isCollageActive, selectedSubCategoryId } =
+    useContext(PlaygroundAssetsContext);
   const [selectedId, setSelectedId] = useContext(SelectedIdContext);
   const { tmpBgImg, bgImgUrl } = bg;
   const [img] = useImage(tmpBgImg || bgImgUrl, 'anonymous');
@@ -84,18 +91,13 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     downloadURI(uri, `spacejoy-demo-${Date.now()}`);
   };
 
-  
-
-  const saveCollageWithNotification = async () => { 
-    await toast.promise(
-      saveCollage(stageRef, PlaygroundAssets, isCollageActive, selectedSubCategoryId),
-      {
-        pending: 'Saving your collage',
-        success: 'Collage saved successfully',
-        error: 'There was an error while saving your collage. Please try again.'
-      }
-  );
-  }
+  const saveCollageWithNotification = async () => {
+    await toast.promise(saveCollage(stageRef, PlaygroundAssets, isCollageActive, selectedSubCategoryId), {
+      pending: 'Saving your collage',
+      success: 'Collage saved successfully',
+      error: 'There was an error while saving your collage. Please try again.',
+    });
+  };
 
   const checkDeselect = (e): void => {
     if (e.target === e.target?.getStage()) {
@@ -382,14 +384,14 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
       <ToastContainer />
       <div className="relative" onDrop={onDropEvent} onDragOver={(e) => e.preventDefault()}>
         {PlaygroundAssets.length !== 0 && (
-          <>
-            <button className="absolute right-4 top-4 bg-gray-100 p-2 rounded z-10" onClick={download}>
+          <div className="absolute right-4 top-4 z-10 flex flex-col space-y-2">
+            <UnitAction position="left" title="Download" onClick={download}>
               <DownloadIcon className="w-4 h-4" />
-            </button>
-            <button className="absolute right-4 top-16 bg-gray-100 p-2 rounded z-10" onClick={saveCollageWithNotification}>
+            </UnitAction>
+            <UnitAction position="left" title="Save Collage" onClick={saveCollageWithNotification}>
               <SaveIcon className="w-4 h-4" />
-            </button>
-          </>
+            </UnitAction>
+          </div>
         )}
         {PlaygroundAssets.length === 0 && (
           <div className="absolute h-full w-full flex justify-center items-center">
