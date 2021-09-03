@@ -51,6 +51,7 @@ interface CollageContext {
   hasNextPage: boolean;
   data: CollageType[];
   count: number;
+  setData: React.Dispatch<React.SetStateAction<CollageType[]>>;
 }
 
 export const CollageListContext = React.createContext<CollageContext>({
@@ -61,6 +62,7 @@ export const CollageListContext = React.createContext<CollageContext>({
   hasNextPage: true,
   data: [],
   count: 1000,
+  setData: () => {return}
 });
 
 const CollageListContextProvider: React.FC = ({ children }) => {
@@ -106,7 +108,7 @@ const CollageListContextProvider: React.FC = ({ children }) => {
   };
 
   return (
-    <CollageListContext.Provider value={{ isItemLoaded, loadMoreItems, hasNextPage, data, count }}>
+    <CollageListContext.Provider value={{ isItemLoaded, loadMoreItems, hasNextPage, data, count, setData }}>
       {children}
     </CollageListContext.Provider>
   );

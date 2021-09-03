@@ -14,6 +14,7 @@ import { Image as Img, Layer, Line, Rect, Stage } from 'react-konva';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { DataBusContext } from 'store';
+import { useCollageListContext } from 'store/CollageList';
 import { PlaygroundAssetsContext } from 'store/PlaygroundAssets';
 import { SelectedIdContext } from 'store/SelectedId';
 import useImage from 'use-image';
@@ -39,7 +40,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
   const { bgImgUrl : {value: bgValue, type:bgType} } = bg;
   const [img] = useImage(bgValue, 'anonymous');
   const scale = w / sceneWidth;
-
+  const { setData, data } = useCollageListContext();
   const download = (): void => {
     const uri = stageRef?.current?.toDataURL({
       pixelRatio: 2, // or other value you need
@@ -91,10 +92,11 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
         method: 'POST',
         body: formData,
       });
-      const { data, statusCode } = res;
+      const { data: savedCollageData, statusCode } = res;
       if (statusCode > 300) {
         throw new Error();
       } else {
+        setData([savedCollageData, ...data]);
         return data;
       }
     } catch {

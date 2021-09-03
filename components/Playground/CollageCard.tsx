@@ -39,12 +39,12 @@ const CollageCard: React.FC<{ collage: CollageType }> = ({ collage }) => {
       id,
       imgSrc,
     } = object;
-    console.log(object);
     return {
       x: parseFloat(xCoord),
       y: parseFloat(yCoord),
       height: parseFloat(heightCoord),
       width: parseFloat(widthCoord),
+      assetId: object?.product,
       rotationValue: rotation,
       id,
       stitchedAssetImage: imgSrc,
@@ -53,7 +53,6 @@ const CollageCard: React.FC<{ collage: CollageType }> = ({ collage }) => {
       ...(actualHeightCoord && {playgroundHeight: parseFloat(actualHeightCoord)}),
     };
   });
-  console.log('processed view', processedView);
   return (
     <div
       data-cid={collage?._id}
