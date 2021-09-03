@@ -1,5 +1,6 @@
 import { DownloadIcon, SaveIcon } from '@heroicons/react/outline';
 import { publicRoutes } from '@utils/constants/api';
+import { off, on } from '@utils/events';
 import fetcher from '@utils/fetcher';
 import fetchWithFile from '@utils/fetchFile';
 import { b64toFile, downloadURI } from '@utils/helpers';
@@ -25,52 +26,7 @@ interface PlaygroundInterface {
   h: number;
 }
 
-export const saveCollage = async (stageRef, PlaygroundAssets, isCollageActive = true, selectedSubCategoryId = '') => {
-  const uri = stageRef?.current?.toDataURL({
-    pixelRatio: 2, // or other value you need
-  });
-  const fileRes = await b64toFile(uri);
-  const payload = PlaygroundAssets.map((asset) => {
-    return {
-      ...(asset?.playgroundHeight && {
-        playgroundScale: { width: asset?.playgroundWidth, height: asset?.playgroundHeight },
-      }),
-      translation: {
-        x: asset?.x,
-        y: asset?.y,
-      },
-      rotation: (asset?.rotationValue || 0).toString(),
-      scale: {
-        height: asset?.height,
-        width: asset?.width,
-      },
-      id: asset?.id,
-      product: asset?.assetId,
-      imgSrc: asset?.stitchedAssetImage,
-    };
-  });
-  try {
-    const formData = new FormData();
-    formData.append('file', fileRes, fileRes?.name);
-    formData.append(
-      'data',
-      JSON.stringify({ view: [...payload], isActive: isCollageActive, categoryMap: selectedSubCategoryId })
-    );
-    const res = await fetchWithFile({
-      endPoint: publicRoutes?.saveCollages,
-      method: 'POST',
-      body: formData,
-    });
-    const { data, statusCode } = res;
-    if (statusCode > 300) {
-      throw new Error();
-    } else {
-      return data;
-    }
-  } catch {
-    throw new Error();
-  }
-};
+
 
 const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
   const stageRef = useRef<StageType>();
@@ -80,8 +36,8 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
   const { PlaygroundAssets, setPlaygroundAssets, bg, getRotationValue, isCollageActive, selectedSubCategoryId } =
     useContext(PlaygroundAssetsContext);
   const [selectedId, setSelectedId] = useContext(SelectedIdContext);
-  const { tmpBgImg, bgImgUrl } = bg;
-  const [img] = useImage(tmpBgImg || bgImgUrl, 'anonymous');
+  const { bgImgUrl : {value: bgValue, type:bgType} } = bg;
+  const [img] = useImage(bgValue, 'anonymous');
   const scale = w / sceneWidth;
 
   const download = (): void => {
@@ -91,13 +47,69 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     downloadURI(uri, `spacejoy-demo-${Date.now()}`);
   };
 
-  const saveCollageWithNotification = async () => {
-    await toast.promise(saveCollage(stageRef, PlaygroundAssets, isCollageActive, selectedSubCategoryId), {
+  const saveCollage = React.useCallback(async () => {
+    const uri = stageRef?.current?.toDataURL({
+      pixelRatio: 2, // or other value you need
+    });
+    const fileRes = await b64toFile(uri);
+    const payload = PlaygroundAssets.map((asset) => {
+      return {
+        ...(asset?.playgroundHeight && {
+          playgroundScale: { width: asset?.playgroundWidth, height: asset?.playgroundHeight },
+        }),
+        translation: {
+          x: asset?.x,
+          y: asset?.y,
+        },
+        rotation: (asset?.rotationValue || 0).toString(),
+        scale: {
+          height: asset?.height,
+          width: asset?.width,
+        },
+        id: asset?.id,
+        product: asset?.assetId,
+        imgSrc: asset?.stitchedAssetImage,
+      };
+    });
+    try {
+      const formData = new FormData();
+      formData.append('file', fileRes, fileRes?.name);
+      formData.append(
+        'data',
+        JSON.stringify({ view: [...payload], isActive: isCollageActive, categoryMap: selectedSubCategoryId })
+      );
+      const res = await fetchWithFile({
+        endPoint: publicRoutes?.saveCollages,
+        method: 'POST',
+        body: formData,
+      });
+      const { data, statusCode } = res;
+      if (statusCode > 300) {
+        throw new Error();
+      } else {
+        return data;
+      }
+    } catch {
+      throw new Error();
+    }
+  }, [PlaygroundAssets, isCollageActive, selectedSubCategoryId]);
+
+  const saveCollageWithNotification = React.useCallback(async () => {
+    await toast.promise(saveCollage, {
       pending: 'Saving your collage',
       success: 'Collage saved successfully',
       error: 'There was an error while saving your collage. Please try again.',
     });
-  };
+  }, [ saveCollage]);
+
+
+
+  React.useEffect(() => {
+    on('publish',saveCollageWithNotification)
+    return () => { 
+      off('publish',saveCollageWithNotification)
+    }
+  }, [PlaygroundAssets, saveCollageWithNotification, selectedSubCategoryId])
 
   const checkDeselect = (e): void => {
     if (e.target === e.target?.getStage()) {
@@ -379,6 +391,12 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     }
   };
 
+
+  // save collage
+  
+
+
+
   return (
     <>
       <ToastContainer />
@@ -420,10 +438,20 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
           <Layer onDragMove={(e) => onDragMove(e)} onDragEnd={onDragEnd}>
             {PlaygroundAssets.length !== 0 && (
               <>
-                <Rect x={0} y={0} width={sceneWidth} height={h / scale} fill="#ffffff" listening={false} />
+                {
+                  bgType === 'bg-color' && (
+                    <Rect x={0} y={0} width={sceneWidth} height={h / scale} fill={bgValue} listening={false} />
+                  )
+                }
+                
               </>
             )}
-            <Img x={0} y={0} width={sceneWidth} image={img} listening={false} />
+            {
+              bgType === 'bg-img' && (
+                <Img x={0} y={0} width={sceneWidth} image={img} listening={false} />
+              )
+            }
+            
             {guides.map((item, i) => {
               return <Line key={i} {...item} />;
             })}

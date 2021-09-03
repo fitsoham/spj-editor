@@ -1,11 +1,15 @@
 import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
 import { publicRoutes } from '@utils/constants/api';
+import { trigger } from '@utils/events';
 import fetcher from '@utils/fetcher';
 import React, { Fragment, useContext, useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import { PlaygroundAssetsContext } from 'store/PlaygroundAssets';
 
+
+const defaultCategoryData = [{id: 1, name: 'Choose a Category', disabled: true}];
+const defaultSubCategoryData = [{id: 1, name: 'Please select a room type', disabled: true}];
 
 const ListBox = ({data, onChange}) => {
   const [selected, setSelected] = useState({});
@@ -13,8 +17,8 @@ const ListBox = ({data, onChange}) => {
   useEffect(() => { 
     if (data && data?.length) { 
       setSelected(data[0]);
-      if (data[0]?.id) { 
-        onChange({_id: data[0]?.id});
+      if (data[0]?._id) { 
+        onChange({_id: data[0]?._id});
       }
     }
   }, [data])
@@ -81,8 +85,8 @@ const ListBox = ({data, onChange}) => {
 
 const PublishForm = () => {
 
-    const [categoryData, setCategoryData] = useState([{_id: 1, name: 'Choose a Category', disabled: true}]);
-    const [subCategoryData, setSubCategoryData] = useState([]);
+    const [categoryData, setCategoryData] = useState(defaultCategoryData);
+    const [subCategoryData, setSubCategoryData] = useState(defaultSubCategoryData);
     const { selectedCategoryId,
       setSelectedCategoryId, 
       selectedSubCategoryId,
@@ -93,9 +97,8 @@ const PublishForm = () => {
       setSelectedCategoryId(categoryId);
     }
     const onSubCategoryChangeCallback = (value) => { 
-      const {_id: categoryId} = value;
-      console.log('value---', value);
-      setSelectedSubCategoryId(categoryId);
+      const {_id: subCategoryId} = value;
+      setSelectedSubCategoryId(subCategoryId);
     }
 
     useEffect(() => {
@@ -119,19 +122,31 @@ const PublishForm = () => {
         const {data, statusCode} = categoryRes;
         if (statusCode < 301) {
           const categoryDataView = data.map((item) => {return {...item, selected: false}});
-          setCategoryData([...categoryData, ...categoryDataView]);
+          setCategoryData([...defaultCategoryData, ...categoryDataView]);
         }
       })()
     }, [])
 
+    useEffect(() => { 
+      return () => { 
+        setCategoryData(defaultCategoryData);
+        setSubCategoryData(defaultSubCategoryData);
+        setSelectedCategoryId('');
+        setSelectedSubCategoryId('');
+      }
+    }, [])
+    
+
     const publishCollage = () =>{
-      console.log(`saving collage`);
+      trigger('publish', {});
     }
 
     const handleCheckboxChange = (e) =>{
       setCollageActiveStatus(e.target.checked);
     }
-
+    
+    const isButtonDisabled = !(selectedSubCategoryId && selectedCategoryId?.length);
+    console.log(`subcat`, selectedSubCategoryId, isButtonDisabled);
     return (
       <>
         <ToastContainer />
@@ -158,8 +173,9 @@ const PublishForm = () => {
             
             <button
               type="button"
-              className=" inline-flex ml-2 justify-center px-4 py-2 text-sm font-medium text-white bg-black border border-transparent rounded-md  focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+              className={`inline-flex ml-2 justify-center px-4 py-2 text-sm font-medium text-white border border-transparent rounded-md  focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 ${isButtonDisabled ? 'bg-gray-300': 'bg-black'}`}
               onClick={publishCollage}
+              disabled={isButtonDisabled}
             >
               Publish
             </button>

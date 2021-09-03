@@ -27,33 +27,74 @@ const imgList = [
     id: 5,
     url: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,f_auto,q_auto,w_1400/v1630143026/spj-v2/DIY/room-bg/611baa309d92ba0028e0173d__khy5ii',
   },
-  {
-    id: 6,
-    url: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,f_auto,q_auto,w_1400/v1630143025/spj-v2/DIY/room-bg/60ff62e76c22210023ffda8f__tru3hl',
-  },
+  
 ];
+
+const colorList = [{
+  id: 1, 
+  colorHex: '#dc143c'
+}, {
+  id: 2, 
+  colorHex: '#0690A6'
+}, {
+  id: 3, 
+  colorHex: '#EBEE05 '
+}, {
+  id: 4, 
+  colorHex: '#000000'
+}, {
+  id: 5, 
+  colorHex: '#35D3C9'
+}, {
+  id: 6, 
+  colorHex: '#35D362'
+}]
+
+
 const BgSelector: React.FC = () => {
   const { bg } = useContext(PlaygroundAssetsContext);
-  const { setTmpBgImg, setBgImgUrl } = bg;
+  const { setBgImgUrl } = bg;
 
-  const setBgImg = (img) => {
-    setTmpBgImg('');
-    setBgImgUrl(img);
+  const setBg = (valueString, type) => {
+    setBgImgUrl(valueString, type);
   };
 
   return (
-    <div className="overflow-scroll grid grid-cols-3 gap-4">
-      {imgList.map((img) => {
-        return (
-          <div
-            onClick={() => setBgImg(img.url)}
-            key={img.id}
-            className="border-transparent box-border flex-shrink-0 h-36 last:mr-0 relative cursor-pointer"
-          >
-            <Image src={img.url} layout="fill" alt="name" objectFit="cover" quality={100} className="rounded" />
-          </div>
-        );
-      })}
+    <div className="grid-cols-1 gap-8">
+      <div>
+        <h2>Rooms</h2>
+        <div className="overflow-scroll grid grid-cols-3 gap-4">
+          {imgList.map((img) => {
+            return (
+              <div
+                onClick={() => setBg(img.url, 'bg-img')}
+                key={img.id}
+                className="border-transparent box-border flex-shrink-0 h-36 last:mr-0 relative cursor-pointer"
+              >
+                <Image src={img.url} layout="fill" alt="name" objectFit="cover" quality={100} className="rounded" />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <div className="mt-4">
+        <h2>Colors</h2>
+        <div className="overflow-scroll grid grid-cols-4 gap-4">
+          {
+            colorList.map((item) => {
+              return (
+                <div
+                  key={item?.id}
+                  onClick={() => setBg(item?.colorHex, 'bg-color')}
+                  className="border-transparent box-border flex-shrink-0 h-24 last:mr-0 relative cursor-pointer rounded-md"
+                  style={{backgroundColor: `${item?.colorHex}`}}
+                />
+              )
+            })
+          }
+        </div>
+      </div>
+      
     </div>
   );
 };

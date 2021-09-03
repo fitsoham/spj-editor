@@ -37,10 +37,8 @@ interface PlaygroundAssetContextType {
   moveAssetLast: () => void;
   clearBoard: () => void;
   bg: {
-    tmpBgImg: string;
-    bgImgUrl: string;
-    setTmpBgImg: React.Dispatch<React.SetStateAction<string>>;
-    setBgImgUrl: React.Dispatch<React.SetStateAction<string>>;
+    bgImgUrl: Record<string, string>;
+    setBgImgUrl: (value: string, type: string) => void;
   };
   rotateAndSaveRotation: (selectedId: string, rotationValue: string) => void;
   getRotationValue: (selectedId: string) => number;
@@ -75,11 +73,7 @@ const PlaygroundAssetsContext = React.createContext<PlaygroundAssetContextType>(
     return;
   },
   bg: {
-    tmpBgImg: '',
     bgImgUrl: '',
-    setTmpBgImg: () => {
-      return;
-    },
     setBgImgUrl: () => {
       return;
     },
@@ -97,8 +91,11 @@ const initData: PlaygroundAssetType[] = [];
 const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
   const [PlaygroundAssets, setPlaygroundAssets] = useState<PlaygroundAssetType[]>(initData);
   const [selectedId, setSelectedId] = useContext(SelectedIdContext);
-  const [bgImgUrl, setBgImgUrl] = useState('');
-  const [tmpBgImg, setTmpBgImg] = useState('');
+  const [bgImgUrl, setBg] = useState({value: '', type: 'bg-img'});
+  
+  const setBgImgUrl = (value, type) => { 
+    setBg({value, type});
+  }
 
   const getSelectedIndex = (id: string) => {
     for (let i = 0; i <= PlaygroundAssets.length; i++) {
@@ -107,6 +104,9 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
       }
     }
   };
+  React.useEffect(() => { 
+    console.log(`PlaygroundAssets`, PlaygroundAssets)
+  }, [PlaygroundAssets])
 
   const updateAsset = (data: PlaygroundAssetType) => {
     const tmpAssetList = [...PlaygroundAssets];
@@ -180,7 +180,7 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
         moveAssetTop,
         moveAssetLast,
         clearBoard,
-        bg: { tmpBgImg, bgImgUrl, setTmpBgImg, setBgImgUrl },
+        bg: { bgImgUrl, setBgImgUrl },
         rotateAndSaveRotation,
         getRotationValue,
         selectedCategoryId,
