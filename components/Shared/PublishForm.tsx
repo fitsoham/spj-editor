@@ -19,6 +19,7 @@ interface ListInterface {
 interface BoxData {
   name: string;
   _id: string;
+  disabled?: boolean;
 }
 
 const ListBox: React.FC<ListInterface> = ({data, onChange}) => {
