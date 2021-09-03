@@ -48,10 +48,16 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
   };
 
   const saveCollage = React.useCallback(async () => {
+    stageRef.current?.findOne(".background-image")?.hide();
+    stageRef.current?.findOne(".background-color-wall")?.hide();
     const uri = stageRef?.current?.toDataURL({
       pixelRatio: 2, // or other value you need
     });
+    stageRef.current?.findOne(".background-image")?.show();
+    stageRef.current?.findOne(".background-color-wall")?.show();
     const fileRes = await b64toFile(uri);
+    
+
     const payload = PlaygroundAssets.map((asset) => {
       return {
         ...(asset?.playgroundHeight && {
@@ -382,7 +388,6 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     }
     if (busData.type === 'collage') {
       const tmp = [...PlaygroundAssets];
-      console.log('collage data ----', tmp);
       busData.data.map((asset) =>
         tmp.push({
           ...asset,
@@ -442,7 +447,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
               <>
                 {
                   bgType === 'bg-color' && (
-                    <Rect x={0} y={0} width={sceneWidth} height={h / scale} fill={bgValue} listening={false} />
+                    <Rect x={0} y={0} width={sceneWidth} height={h / scale} fill={bgValue} listening={false} name="background-color-wall"/>
                   )
                 }
                 
@@ -450,7 +455,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
             )}
             {
               bgType === 'bg-img' && (
-                <Img x={0} y={0} width={sceneWidth} image={img} listening={false} />
+                <Img x={0} y={0} width={sceneWidth} image={img} listening={false} name="background-image"/>
               )
             }
             
