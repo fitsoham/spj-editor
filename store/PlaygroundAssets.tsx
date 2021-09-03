@@ -42,11 +42,23 @@ interface PlaygroundAssetContextType {
   };
   rotateAndSaveRotation: (selectedId: string, rotationValue: string) => void;
   getRotationValue: (selectedId: string) => number;
+  isCollageActive: boolean;
+  selectedCategoryId: string;
+  setSelectedCategoryId: React.Dispatch<React.SetStateAction<string>>;
+  selectedSubCategoryId: string;
+  setSelectedSubCategoryId: React.Dispatch<React.SetStateAction<string>>;
+  setCollageActiveStatus: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 // ========================= TYPES =========================
 
 const PlaygroundAssetsContext = React.createContext<PlaygroundAssetContextType>({
+  setCollageActiveStatus: () => { return },
+  setSelectedSubCategoryId: () => { return },
+  selectedSubCategoryId: '',
+  setSelectedCategoryId: () => { return},
+  selectedCategoryId: '',
+  isCollageActive: true,
   PlaygroundAssets: [],
   setPlaygroundAssets: () => {
     return;
@@ -73,7 +85,7 @@ const PlaygroundAssetsContext = React.createContext<PlaygroundAssetContextType>(
     return;
   },
   bg: {
-    bgImgUrl: '',
+    bgImgUrl: {},
     setBgImgUrl: () => {
       return;
     },

@@ -76,7 +76,9 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
       formData.append('file', fileRes, fileRes?.name);
       formData.append(
         'data',
-        JSON.stringify({ view: [...payload], isActive: isCollageActive, categoryMap: selectedSubCategoryId })
+        JSON.stringify({ view: [...payload], 
+        ...(selectedSubCategoryId && selectedSubCategoryId?.length && {isActive: isCollageActive, categoryMap:selectedSubCategoryId })
+        })
       );
       const res = await fetchWithFile({
         endPoint: publicRoutes?.saveCollages,
@@ -380,13 +382,13 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     }
     if (busData.type === 'collage') {
       const tmp = [...PlaygroundAssets];
+      console.log('collage data ----', tmp);
       busData.data.map((asset) =>
         tmp.push({
           ...asset,
           id: `in-playground-asset-${PlaygroundAssets.length}-${Math.random()}`,
         })
       );
-
       setPlaygroundAssets(tmp);
     }
   };

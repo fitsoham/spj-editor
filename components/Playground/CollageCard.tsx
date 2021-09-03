@@ -28,8 +28,8 @@ const CollageCard: React.FC<{ collage: CollageType }> = ({ collage }) => {
         y: { $numberDecimal: yCoord } = { $numberDecimal: '' },
       } = {},
       scale: {
-        x: { $numberDecimal: heightCoord = '' } = { $numberDecimal: '' },
-        y: { $numberDecimal: widthCoord = '' } = { $numberDecimal: '' },
+        height: { $numberDecimal: heightCoord = '' } ,
+        width: { $numberDecimal: widthCoord = '' } ,
       },
       playgroundScale: {
         height: { $numberDecimal: actualHeightCoord = '' } = {},
@@ -39,6 +39,7 @@ const CollageCard: React.FC<{ collage: CollageType }> = ({ collage }) => {
       id,
       imgSrc,
     } = object;
+    console.log(object);
     return {
       x: parseFloat(xCoord),
       y: parseFloat(yCoord),
@@ -52,6 +53,7 @@ const CollageCard: React.FC<{ collage: CollageType }> = ({ collage }) => {
       ...(actualHeightCoord && {playgroundHeight: parseFloat(actualHeightCoord)}),
     };
   });
+  console.log('processed view', processedView);
   return (
     <div
       data-cid={collage?._id}

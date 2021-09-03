@@ -8,25 +8,35 @@ import { ToastContainer } from 'react-toastify';
 import { PlaygroundAssetsContext } from 'store/PlaygroundAssets';
 
 
-const defaultCategoryData = [{id: 1, name: 'Choose a Category', disabled: true}];
-const defaultSubCategoryData = [{id: 1, name: 'Please select a room type', disabled: true}];
+const defaultCategoryData = [{_id: '1', name: 'Choose a Category', disabled: true}];
+const defaultSubCategoryData = [{_id: '1', name: 'Please select a room type', disabled: true}];
 
-const ListBox = ({data, onChange}) => {
-  const [selected, setSelected] = useState({});
+interface ListInterface { 
+  onChange: ({_id: string}) => void;
+  data: Array<{_id: string, disabled?: boolean, name: string;}>
+}
+
+interface BoxData {
+  name: string;
+  _id: string;
+}
+
+const ListBox: React.FC<ListInterface> = ({data, onChange}) => {
+  const [selected, setSelected] = useState<BoxData>({name: '', _id: ''});
 
   useEffect(() => { 
     if (data && data?.length) { 
       setSelected(data[0]);
-      if (data[0]?._id) { 
+      if (data[0]?._id && data[0]?._id !== '1') { 
         onChange({_id: data[0]?._id});
       }
     }
   }, [data])
   return (
     <div className="w-72 top-16">
-      <Listbox value={selected} onChange={(value) => {onChange(value); setSelected(value);}}>
+      <Listbox value={selected} onChange={(value) => { setSelected(value); onChange({...value})}}>
         <div className="relative mt-1">
-          <Listbox.Button className={`relative w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-md cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm ${selected?.disabled ? 'text-gray-500': ''}`}>
+          <Listbox.Button className={`relative w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg border border-gray-300 cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm ${selected?.disabled ? 'text-gray-500': ''}`}>
             <span className="block truncate capitalize">{selected?.name}</span>
             <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
               <SelectorIcon
@@ -83,7 +93,7 @@ const ListBox = ({data, onChange}) => {
   )
 }
 
-const PublishForm = () => {
+const PublishForm: React.FC = () => {
 
     const [categoryData, setCategoryData] = useState(defaultCategoryData);
     const [subCategoryData, setSubCategoryData] = useState(defaultSubCategoryData);
@@ -107,7 +117,6 @@ const PublishForm = () => {
         (async () => { 
           const subCategoryRes = await fetcher({endPoint: `${publicRoutes?.collageCategoryRoute}/${selectedCategoryId}/subCategories`, method: 'GET'});
           const {data, statusCode} = subCategoryRes;
-          console.log(subCategoryRes);
           if (statusCode < 301) { 
             const subCategories = data.map((item) => {return {...item, name: item?.subCategory?.name}})
             setSubCategoryData(subCategories);

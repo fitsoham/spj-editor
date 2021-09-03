@@ -35,10 +35,10 @@ export interface CollageType {
         };
       };
       scale: {
-        x: {
+        height: {
           $numberDecimal: string;
         };
-        y: {
+        width: {
           $numberDecimal: string;
         };
       };
