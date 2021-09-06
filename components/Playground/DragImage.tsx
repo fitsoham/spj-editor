@@ -94,7 +94,6 @@ const DragImage: React.FC<DragImageInterface> = ({
 
   const height = img?.height || 0;
   const width = img?.width / image.count || 0;
-
   return (
     <>
       <Sprite

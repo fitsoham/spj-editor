@@ -24,6 +24,7 @@ export interface PlaygroundAssetType {
   playgroundHeight?: number;
   playgroundWidth?: number;
   renderImages?: { cdn: string }[];
+  price: number;
 }
 
 interface PlaygroundAssetContextType {

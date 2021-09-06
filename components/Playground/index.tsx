@@ -47,8 +47,8 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     });
     downloadURI(uri, `spacejoy-demo-${Date.now()}`);
   };
-
-  const saveCollage = React.useCallback(async () => {
+  
+  const saveCollage = React.useCallback(async ({collageName, collageDescription, selectedTags, selectedThemes}) => {
     stageRef.current?.findOne(".background-image")?.hide();
     stageRef.current?.findOne(".background-color-wall")?.hide();
     const uri = stageRef?.current?.toDataURL({
@@ -84,6 +84,10 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
       formData.append(
         'data',
         JSON.stringify({ view: [...payload], 
+        ...(collageName && collageName?.length && {name: collageName}),
+        ...(collageDescription && collageDescription?.length && {description: collageDescription}),
+        ...(selectedThemes && selectedThemes?.length && {themes: selectedThemes}),
+        ...(selectedTags && selectedTags?.length && {tags: selectedTags}),
         ...(selectedSubCategoryId && selectedSubCategoryId?.length && {isActive: isCollageActive, categoryMap:selectedSubCategoryId })
         })
       );
@@ -102,10 +106,11 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     } catch {
       throw new Error();
     }
-  }, [PlaygroundAssets, isCollageActive, selectedSubCategoryId]);
+  }, [PlaygroundAssets, isCollageActive, selectedSubCategoryId, data, setData]);
 
-  const saveCollageWithNotification = React.useCallback(async () => {
-    await toast.promise(saveCollage, {
+  const saveCollageWithNotification = React.useCallback(async (args) => {
+    const {detail: {collageName ='', collageDescription = '', selectedThemes = [], selectedTags = []} = {}} = args;
+    await toast.promise(saveCollage({collageName, collageDescription, selectedTags, selectedThemes}), {
       pending: 'Saving your collage',
       success: 'Collage saved successfully',
       error: 'There was an error while saving your collage. Please try again.',
@@ -363,8 +368,9 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     e.preventDefault();
     stageRef?.current?.setPointersPositions(e);
     if (busData.type === 'asset') {
+      console.log('bus data is ---', busData);
       const {
-        data: { id, dimension, renderImages },
+        data: { id, dimension, renderImages, price },
       } = busData;
       const { data } = await fetcher({ endPoint: `/v1/assets/${id}/stitchImages`, method: 'GET' });
       const { count, boxSize, image } = data;
@@ -384,6 +390,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
             assetId: id,
             productThumbnail: renderImages[0].cdn,
             stitchedAssetImage: image?.originalCdn,
+            price
           },
         ])
       );
@@ -394,6 +401,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
         tmp.push({
           ...asset,
           id: `in-playground-asset-${PlaygroundAssets.length}-${Math.random()}`,
+          price: 0
         })
       );
       setPlaygroundAssets(tmp);
@@ -415,7 +423,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
             <UnitAction position="left" title="Download" onClick={download}>
               <DownloadIcon className="w-4 h-4" />
             </UnitAction>
-            <UnitAction position="left" title="Save Collage" onClick={saveCollageWithNotification}>
+            <UnitAction position="left" title="Save Collage" onClick={() => saveCollageWithNotification({})}>
               <SaveIcon className="w-4 h-4" />
             </UnitAction>
           </div>

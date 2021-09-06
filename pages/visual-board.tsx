@@ -17,7 +17,6 @@ const VisualBoard: React.FC = () => {
   const PlaygroundWrapperRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState([0, 0]);
   
-
   const updateSize = () =>
     setSize([PlaygroundWrapperRef.current.offsetWidth, PlaygroundWrapperRef.current.offsetHeight]);
 
@@ -26,6 +25,8 @@ const VisualBoard: React.FC = () => {
     window.addEventListener('resize', updateSize);
     return () => window.removeEventListener('resize', updateSize);
   }, []);
+
+  
 
   return (
     <NavSelectContextProvider>

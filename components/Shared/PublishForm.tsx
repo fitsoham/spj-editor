@@ -1,3 +1,4 @@
+import MultiSelect from '@components/Shared/MultiSelect';
 import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
 import { publicRoutes } from '@utils/constants/api';
@@ -147,20 +148,56 @@ const PublishForm: React.FC = () => {
     }, [])
     
 
-    const publishCollage = () =>{
-      trigger('publish', {});
-    }
+    
 
     const handleCheckboxChange = (e) =>{
       setCollageActiveStatus(e.target.checked);
     }
     
     const isButtonDisabled = !(selectedSubCategoryId && selectedCategoryId?.length);
-    console.log(`subcat`, selectedSubCategoryId, isButtonDisabled);
+    const [tags, setTags] = useState([]);
+    const [selectedTags, setSelectedTags] = useState([]);
+    const getSuggestions = async (val) => { 
+      const res = await fetcher({endPoint: `/tags?name=${val}`, method: 'GET'});
+      const {data, statusCode} = res;
+      if (statusCode < 300) {
+        setTags(data?.tags.map(item => item?.name));
+      }
+    }
+
+    const [themeSuggestions, setThemeSuggestions]= useState([]);
+    const [selectedThemes, setSelectedThemes] = useState([])
+    const getThemeSuggestions = async (val) => { 
+      const res = await fetcher({endPoint: `/v1/themes/suggestions?name=${val}`, method: 'GET'});
+      const {data, statusCode} = res;
+      if (statusCode < 300) {
+        setThemeSuggestions(data?.map(item => item?.name));
+      }
+    }
+
+    const updateSelections = (selectionArray) => { 
+      setSelectedTags(selectionArray);
+    }
+    const updateThemeSelections = (selectionArray) => {
+      setSelectedThemes(selectionArray);
+    }
+
+    const [collageName, setCollageName] = useState('');
+    const [collageDescription, setCollageDescription] = useState('');
+
+    const publishCollage = () =>{
+      trigger('publish', {collageName, collageDescription, selectedThemes, selectedTags});
+    }
+
+
     return (
       <>
         <ToastContainer />
         <div className="grid grid-cols-1 gap-8">
+          <div>
+            <h2>Collage Name</h2>
+            <input type="text" value={collageName} onChange={(e) => setCollageName(e?.target?.value)}/>
+          </div>
           <div>
             <h2>Select a Room Type</h2>
             <ListBox data={categoryData} onChange={onCategoryChangeCallback}/>
@@ -168,6 +205,16 @@ const PublishForm: React.FC = () => {
           <div className="text-red">
             <h2>Select a Room Sections</h2>
             <ListBox data={subCategoryData} onChange={onSubCategoryChangeCallback}/>
+          </div>
+          <div>
+            <MultiSelect triggerSearch={getSuggestions} suggestions={tags} updateSelections={updateSelections} label="Tag your collage"/>
+          </div>
+          <div>
+            <MultiSelect triggerSearch={getThemeSuggestions} suggestions={themeSuggestions} updateSelections={updateThemeSelections} label="Tag themes"/>
+          </div>
+          <div>
+            <h2>Collage Description</h2>
+            <textarea className="w-full" onChange={(e) => setCollageDescription(e?.target?.value)}>{collageDescription}</textarea>
           </div>
           <div className="flex align-center justify-between items-center">
             <div>
