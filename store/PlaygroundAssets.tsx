@@ -49,11 +49,15 @@ interface PlaygroundAssetContextType {
   selectedSubCategoryId: string;
   setSelectedSubCategoryId: React.Dispatch<React.SetStateAction<string>>;
   setCollageActiveStatus: React.Dispatch<React.SetStateAction<boolean>>;
+  setPlaygroundTotal: React.Dispatch<React.SetStateAction<number>>;
+  playgroundTotal: number;
 }
 
 // ========================= TYPES =========================
 
 const PlaygroundAssetsContext = React.createContext<PlaygroundAssetContextType>({
+  playgroundTotal: 0,
+  setPlaygroundTotal: () => {return},
   setCollageActiveStatus: () => { return },
   setSelectedSubCategoryId: () => { return },
   selectedSubCategoryId: '',
@@ -105,7 +109,10 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
   const [PlaygroundAssets, setPlaygroundAssets] = useState<PlaygroundAssetType[]>(initData);
   const [selectedId, setSelectedId] = useContext(SelectedIdContext);
   const [bgImgUrl, setBg] = useState({value: '', type: 'bg-img'});
-  
+  const [playgroundTotal, setPlaygroundTotal] = useState(0);
+
+
+
   const setBgImgUrl = (value, type) => { 
     setBg({value, type});
   }
@@ -118,7 +125,14 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
     }
   };
   React.useEffect(() => { 
-    console.log(`PlaygroundAssets`, PlaygroundAssets)
+    if (!PlaygroundAssets.length) {
+      setPlaygroundTotal(0);
+    } else {
+      const currentPlaygroundTotal = PlaygroundAssets.reduce((acc, currValue) => {
+        return acc + currValue?.price;
+      }, 0);
+      setPlaygroundTotal(currentPlaygroundTotal);
+    }
   }, [PlaygroundAssets])
 
   const updateAsset = (data: PlaygroundAssetType) => {
@@ -202,6 +216,8 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
         setSelectedSubCategoryId,
         isCollageActive,
         setCollageActiveStatus,
+        playgroundTotal,
+        setPlaygroundTotal,
       }}
     >
       {children}

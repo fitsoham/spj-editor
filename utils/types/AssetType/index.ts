@@ -39,6 +39,7 @@ interface AssetType {
   available: boolean;
   width: number;
   height: number;
+  depth: number;
   dimension: {
     depth: number;
     width: number;

@@ -4,12 +4,11 @@ import React, { useState } from 'react';
 // import { comboboxStyles, items, menuStyles } from './utils';
 
 const selectedItemStyles = {
-  marginLeft: '5px',
-  backgroundColor: 'aliceblue',
+  marginRight: '5px',
   borderRadius: '10px',
 };
 
-const selectedItemIconStyles = { cursor: 'pointer' };
+const selectedItemIconStyles = { cursor: 'pointer', marginLeft: '5px' };
 
 const comboboxStyles = { display: 'inline-block', marginLeft: '0' };
 
@@ -86,6 +85,7 @@ const DropdownMultipleCombobox: React.FC = ({ triggerSearch, suggestions, update
             style={selectedItemStyles}
             key={`selected-item-${index}`}
             {...getSelectedItemProps({ selectedItem, index })}
+            className="text-sm py-2 px-4 ml-0 bg-gray-300 mb-2 inline-block"
           >
             {selectedItem}
             <span
@@ -106,11 +106,12 @@ const DropdownMultipleCombobox: React.FC = ({ triggerSearch, suggestions, update
           />
         </div>
       </div>
-      <ul {...getMenuProps()} className="absolute left-0 w-full z-10 bg-white px-2">
+      <ul {...getMenuProps()} className="absolute left-0 w-full z-10 bg-white  border-gray-300 shadow-lg overflow-scroll max-h-64">
         {isOpen &&
           getFilteredItems().map((item, index) => (
             <li
               style={highlightedIndex === index ? { backgroundColor: '#bde4ff' } : {}}
+              className="py-2 px-2 cursor-pointer"
               key={`${item}${index}`}
               {...getItemProps({ item, index })}
             >

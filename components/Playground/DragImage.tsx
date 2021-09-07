@@ -1,5 +1,6 @@
 import React, { useEffect, useReducer, useRef } from 'react';
 import { Sprite, Transformer } from 'react-konva';
+import { toast } from 'react-toastify';
 import { PlaygroundAssetType } from 'store/PlaygroundAssets';
 import useImage from 'use-image';
 
@@ -51,6 +52,10 @@ const DragImage: React.FC<DragImageInterface> = ({
   onChange,
   rotationValue = '0',
 }) => {
+  const toastId = React.useRef(null);
+  const notify = () => toastId.current = toast("Please wait while we load the best product images for you!", {autoClose: false});
+  const dismiss = () =>  toast.dismiss(toastId.current);
+
   const [state, dispatch] = useReducer(reducer, image || initialState);
   const trRef = useRef(null);
   const AssetRef = useRef(null);
@@ -62,6 +67,13 @@ const DragImage: React.FC<DragImageInterface> = ({
     }/${state?.stitchedAssetImage}`,
     'anonymous'
   );
+  useEffect(() => { 
+    if (status === 'loading') { 
+      notify();
+    } else {
+      dismiss();
+    }
+  }, [status])
   const animations = getAnimationObject(img?.width / image.count, img?.height);
   useEffect(() => {
     if (trRef && isSelected) {
@@ -94,9 +106,10 @@ const DragImage: React.FC<DragImageInterface> = ({
 
   const height = img?.height || 0;
   const width = img?.width / image.count || 0;
-  console.log('loading status', status);
+  
   return (
     <>
+      
       <Sprite
         draggable
         ref={AssetRef}

@@ -49,6 +49,9 @@ const ProductCard: React.FC<ProductCardInterface> = ({ product }) => {
       <div className="p-2">
         <small className="text-xs text-gray-500">{product?.retailer}</small>
         <p className="text-sm pb-1 line-clamp-2 h-10">{product?.name}</p>
+        <p>
+          <small className="text-xs text-gray-500">{`${product?.height.toFixed(2).toString()}'H x ${product?.width.toFixed(2).toString()}'W x ${product?.depth.toFixed(2).toString()}'D`}</small>
+        </p>
         <div className="flex justify-between items-center">
           <p className="text-sm font-bold">${product.displayPrice}</p>
           <a

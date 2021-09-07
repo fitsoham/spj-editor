@@ -32,7 +32,7 @@ const ListBox: React.FC<ListInterface> = ({ data, onChange }) => {
         onChange({ _id: data[0]?._id });
       }
     }
-  }, [data, onChange]);
+  }, [data]);
 
   return (
     <div className="w-72 top-16">
@@ -150,7 +150,7 @@ const PublishForm: React.FC = () => {
       setSelectedCategoryId('');
       setSelectedSubCategoryId('');
     };
-  });
+  }, [setSelectedSubCategoryId, setSelectedCategoryId]);
 
   const isButtonDisabled = !(selectedSubCategoryId && selectedCategoryId?.length);
   const [tags, setTags] = useState([]);

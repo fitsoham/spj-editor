@@ -68,12 +68,13 @@ const CollageCard: React.FC<{ collage: CollageType }> = ({ collage }) => {
     >
       <Image
         src={`https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_1000/${thumbnail}`}
-        width="500"
-        height="500"
+        width="800"
+        height="800"
         alt="Collage"
         className="object-contain transition transform scale-95 group-hover:scale-100"
         draggable={false}
       />
+      <p className="text-sm pb-1 line-clamp-2 h-10">{collage?.name}</p>
     </div>
   );
 };

@@ -32,15 +32,14 @@ const DesignCardRow: React.FC<{
 
 const ProductListView: React.FC = () => {
   const { isItemLoaded, loadMoreItems, count } = useCollageListContext();
-  const [rowHeight, setRowHeight] = useState(239);
+  const [rowHeight, setRowHeight] = useState(205);
 
   const { width } = useWindowSize();
-
   useEffect(() => {
     if (width > Breakpoints['2xl']) {
-      if (rowHeight !== 165) setRowHeight(165);
-    } else if (rowHeight !== 165) {
-      setRowHeight(170);
+      if (rowHeight !== 205) setRowHeight(205);
+    } else if (rowHeight !== 205) {
+      setRowHeight(205);
     }
   }, [width, rowHeight]);
 

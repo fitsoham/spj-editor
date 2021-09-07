@@ -3,6 +3,7 @@ import Header from '@components/Playground/Header';
 import MoreActions from '@components/Playground/MoreActions';
 import NavPanel from '@components/Playground/NavPanel';
 import SideNav from '@components/Playground/SideNav';
+import BudgetCalculator from '@components/Shared/BudgetCalculator';
 import dynamic from 'next/dynamic';
 import React, { useEffect, useRef, useState } from 'react';
 import { DataBusContextProvider } from 'store';
@@ -10,6 +11,7 @@ import CollageListContextProvider from 'store/CollageList';
 import { NavSelectContextProvider } from 'store/NavSelect';
 import { PlaygroundAssetsContextProvider } from 'store/PlaygroundAssets';
 import { SelectedIdContextProvider } from 'store/SelectedId';
+
 
 const PlaygroundWithNoSSR = dynamic(() => import('@components/Playground'), { ssr: false });
 
@@ -25,8 +27,6 @@ const VisualBoard: React.FC = () => {
     window.addEventListener('resize', updateSize);
     return () => window.removeEventListener('resize', updateSize);
   }, []);
-
-  
 
   return (
     <NavSelectContextProvider>
@@ -44,9 +44,8 @@ const VisualBoard: React.FC = () => {
                     <NavPanel />
                   </div>
                   <div className="bg-gray-100 diy-h-free w-3/4 py-4 pl-4 flex flex-col space-y-4">
-                    <div className="bg-white shadow-sm p-4">
-                      <p className="text-sm text-gray-600">Budget: $19000.00</p>
-                    </div>
+                    
+                    <BudgetCalculator />
                     <div className="bg-white shadow-sm h-full flex-1" ref={PlaygroundWrapperRef}>
                       <PlaygroundWithNoSSR w={size[0]} h={size[1]} />
                     </div>
