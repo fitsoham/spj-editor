@@ -10,6 +10,7 @@ interface HeaderInterface {
 interface DrawerSubComponent {
   Header?: React.FC<HeaderInterface>;
   Body?: React.FC;
+  Footer?: React.FC;
 }
 interface DrawerInterface {
   isOpen: boolean;
@@ -25,7 +26,7 @@ const Drawer: React.FC<DrawerInterface> & DrawerSubComponent = ({ isOpen, cb, ch
     <Transition appear show={open} as={Fragment}>
       <Dialog
         as="div"
-        className="fixed inset-0 bg-gray-900 bg-opacity-75 inset-0 z-50 overflow-y-auto backdrop-filter backdrop-blur firefox:bg-opacity-90"
+        className="fixed inset-0 h-screen bg-gray-900 bg-opacity-75 z-50 overflow-y-auto backdrop-filter backdrop-blur firefox:bg-opacity-90"
         onClose={cb}
       >
         <Transition.Child
@@ -79,6 +80,8 @@ Drawer.Header = ({ title, description }) => (
   </div>
 );
 
-Drawer.Body = ({ children }) => <div className="px-6 h-2/3 overflow-scroll">{children}</div>;
+Drawer.Body = ({ children }) => <div className="px-6 overflow-scroll">{children}</div>;
+
+Drawer.Footer = ({ children }) => <div className="px-6 absolute inset-x-0 bottom-0">{children}</div>;
 
 export default Drawer;
