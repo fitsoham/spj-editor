@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useRef } from 'react';
-import { Sprite, Transformer } from 'react-konva';
+import { Circle, Sprite, Text, Transformer } from 'react-konva';
 import { toast } from 'react-toastify';
 import { PlaygroundAssetType } from 'store/PlaygroundAssets';
 import useImage from 'use-image';
@@ -53,12 +53,15 @@ const DragImage: React.FC<DragImageInterface> = ({
   rotationValue = '0',
 }) => {
   const toastId = React.useRef(null);
-  const notify = () => toastId.current = toast("Please wait while we load the best product images for you!", {autoClose: false});
-  const dismiss = () =>  toast.dismiss(toastId.current);
+  const notify = () =>
+    (toastId.current = toast('Please wait while we load the best product images for you!', { autoClose: false }));
+  const dismiss = () => toast.dismiss(toastId.current);
 
   const [state, dispatch] = useReducer(reducer, image || initialState);
+
   const trRef = useRef(null);
   const AssetRef = useRef(null);
+
   const [img, status] = useImage(
     `https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,f_auto,q_100,w_${
       state?.playgroundWidth
@@ -67,13 +70,15 @@ const DragImage: React.FC<DragImageInterface> = ({
     }/${state?.stitchedAssetImage}`,
     'anonymous'
   );
-  useEffect(() => { 
-    if (status === 'loading') { 
+
+  useEffect(() => {
+    if (status === 'loading') {
       notify();
     } else {
       dismiss();
     }
-  }, [status])
+  }, [status]);
+
   const animations = getAnimationObject(img?.width / image.count, img?.height);
   useEffect(() => {
     if (trRef && isSelected) {
@@ -106,37 +111,55 @@ const DragImage: React.FC<DragImageInterface> = ({
 
   const height = img?.height || 0;
   const width = img?.width / image.count || 0;
-  
+
   return (
     <>
-      
-      <Sprite
-        draggable
-        ref={AssetRef}
-        alt={state?.name}
-        name="object"
-        image={img}
-        x={state?.x}
-        y={state?.y}
-        id={state?.id}
-        offsetX={width ? width / 2 : 0}
-        offsetY={height ? height / 2 : 0}
-        scaleX={state?.playgroundWidth ? 1 : 0.5}
-        scaleY={state?.playgroundHeight ? 1 : 0.5}
-        width={width}
-        height={height}
-        isSelected={isSelected}
-        onClick={onSelect}
-        onTap={onSelect}
-        onDragStart={() => dispatch({ type: 'DRAG_START', payload: { isDragging: true } })}
-        onDragEnd={(e) => {
-          onAssetChange();
-          dispatch({ type: 'DRAG_END', payload: { isDragging: false, x: e.target.x(), y: e.target.y() } });
-        }}
-        onTransformEnd={onAssetChange}
-        animations={animations}
-        animation={rotationValue as string}
-      />
+      {status === 'loading' ? (
+        <>
+          <Circle
+            scaleX={state?.playgroundWidth ? 1 : 0.5}
+            scaleY={state?.playgroundHeight ? 1 : 0.5}
+            radius={10}
+            fill="#f2f2f2"
+          />
+          <Text
+            x={state?.x}
+            y={state?.y}
+            offsetX={width ? width / 2 : 0}
+            offsetY={height ? height / 2 : 0}
+            text="Loading..."
+          />
+        </>
+      ) : (
+        <Sprite
+          draggable
+          ref={AssetRef}
+          alt={state?.name}
+          name="object"
+          image={img}
+          id={state?.id}
+          x={state?.x}
+          y={state?.y}
+          offsetX={width ? width / 2 : 0}
+          offsetY={height ? height / 2 : 0}
+          scaleX={state?.playgroundWidth ? 1 : 0.5}
+          scaleY={state?.playgroundHeight ? 1 : 0.5}
+          width={width}
+          height={height}
+          isSelected={isSelected}
+          onClick={onSelect}
+          onTap={onSelect}
+          onDragStart={() => dispatch({ type: 'DRAG_START', payload: { isDragging: true } })}
+          onDragEnd={(e) => {
+            onAssetChange();
+            dispatch({ type: 'DRAG_END', payload: { isDragging: false, x: e.target.x(), y: e.target.y() } });
+          }}
+          onTransformEnd={onAssetChange}
+          animations={animations}
+          animation={rotationValue as string}
+        />
+      )}
+
       {isSelected && (
         <Transformer
           ref={trRef}
