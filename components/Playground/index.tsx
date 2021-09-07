@@ -405,7 +405,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
       const tmp = [...PlaygroundAssets];
       const productIds = busData?.data?.map(item => item?.assetId);
       // // fetch product prices
-      const res = await fetcher({endPoint: '/v1/getAssetsDetail', body:{assets: [...productIds]}, method: 'POST'});
+      const res = await fetcher({endPoint: '/v1/assets/getAssetsDetail', body:{assets: [...productIds]}, method: 'POST'});
       const {data, statusCode} = res;
       const isError = statusCode < 300 ? false :  true;
 

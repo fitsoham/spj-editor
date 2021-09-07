@@ -2,6 +2,7 @@ import fetcher from '@utils/fetcher';
 import React, { useState } from 'react';
 
 export interface CollageType {
+  price?: number;
   _id: string;
   description: string;
   background?: string;
