@@ -7,6 +7,7 @@ export interface MetaDetailedType {
 }
 
 interface AssetType {
+  displayPrice?: string;
   name: string;
   price: number;
   description: string;

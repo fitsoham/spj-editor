@@ -50,7 +50,7 @@ const ProductCard: React.FC<ProductCardInterface> = ({ product }) => {
         <small className="text-xs text-gray-500">{product?.retailer}</small>
         <p className="text-sm pb-1 line-clamp-2 h-10">{product?.name}</p>
         <div className="flex justify-between items-center">
-          <p className="text-sm font-bold">${product.price}</p>
+          <p className="text-sm font-bold">${product.displayPrice}</p>
           <a
             target="_blank"
             href="https://www.spacejoy.com/product-view/608ca48a6d61840042c33569"
