@@ -1,16 +1,7 @@
 import { useCombobox, useMultipleSelection } from 'downshift';
 import React, { useState } from 'react';
-// const items = ['Neptunium', 'Plutonium', 'Soham']
-// import { comboboxStyles, items, menuStyles } from './utils';
-
-const selectedItemStyles = {
-  marginRight: '5px',
-  borderRadius: '10px',
-};
 
 const selectedItemIconStyles = { cursor: 'pointer', marginLeft: '5px' };
-
-const comboboxStyles = { display: 'inline-block', marginLeft: '0' };
 
 interface DropDownProps { 
   triggerSearch: (text: string) => void;
@@ -88,10 +79,9 @@ const DropdownMultipleCombobox: React.FC<DropDownProps> = ({ triggerSearch, sugg
       <div className="w-full">
         {selectedItems.map((selectedItem, index) => (
           <span
-            style={selectedItemStyles}
             key={`selected-item-${index}`}
             {...getSelectedItemProps({ selectedItem, index })}
-            className="text-sm py-2 px-4 ml-0 bg-gray-300 mb-2 inline-block"
+            className="text-sm py-2 px-4 ml-0 bg-gray-300 mb-2 inline-block rounded-full mr-2"
           >
             {selectedItem}
             <span
@@ -105,7 +95,7 @@ const DropdownMultipleCombobox: React.FC<DropDownProps> = ({ triggerSearch, sugg
             </span>
           </span>
         ))}
-        <div style={comboboxStyles} {...getComboboxProps()} className="w-full">
+        <div {...getComboboxProps()} className="w-full inline-block ml-0">
           <input
             {...getInputProps(getDropdownProps({ preventKeyAction: isOpen }))}
             className="p-2 outline-none block w-full caret-yellow-500 focus:ring-transparent border border-gray-400 focus:border-gray-800 rounded text-sm capitalize"
