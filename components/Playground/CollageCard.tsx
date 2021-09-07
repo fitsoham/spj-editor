@@ -12,6 +12,7 @@ export interface ProcessedCollageType {
   id: string;
   stitchedAssetImage: string;
   count: number;
+  assetId: string;
 }
 [];
 

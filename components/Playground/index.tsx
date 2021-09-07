@@ -32,7 +32,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
   const GUIDELINE_OFFSET = 5;
   const [guides, setGuides] = useState([]);
   const { busData } = useContext(DataBusContext);
-  const { PlaygroundAssets, setPlaygroundAssets, bg, getRotationValue, isCollageActive, selectedSubCategoryId } =
+  const { PlaygroundAssets, setPlaygroundAssets, bg, getRotationValue, isCollageActive, selectedSubCategoryId, playgroundTotal } =
     useContext(PlaygroundAssetsContext);
   const [selectedId, setSelectedId] = useContext(SelectedIdContext);
   const {
@@ -85,6 +85,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
           'data',
           JSON.stringify({
             view: [...payload],
+            ...(playgroundTotal && {price: playgroundTotal}),
             ...(collageName && collageName?.length && { name: collageName }),
             ...(collageDescription && collageDescription?.length && { description: collageDescription }),
             ...(selectedThemes && selectedThemes?.length && { themes: selectedThemes }),
@@ -374,7 +375,6 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     e.preventDefault();
     stageRef?.current?.setPointersPositions(e);
     if (busData.type === 'asset') {
-      console.log('bus data is ---', busData);
       const {
         data: { id, dimension, renderImages, price },
       } = busData;
@@ -403,11 +403,17 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     }
     if (busData.type === 'collage') {
       const tmp = [...PlaygroundAssets];
+      const productIds = busData?.data?.map(item => item?.assetId);
+      // // fetch product prices
+      const res = await fetcher({endPoint: '/v1/getAssetsDetail', body:{assets: [...productIds]}, method: 'POST'});
+      const {data, statusCode} = res;
+      const isError = statusCode < 300 ? false :  true;
+
       busData.data.map((asset) =>
         tmp.push({
           ...asset,
           id: `in-playground-asset-${PlaygroundAssets.length}-${Math.random()}`,
-          price: 0,
+          price: !isError ? data[asset?.assetId]?.price : 0,
         })
       );
       setPlaygroundAssets(tmp);
