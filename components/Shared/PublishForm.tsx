@@ -1,5 +1,5 @@
 import MultiSelect from '@components/Shared/MultiSelect';
-import { Listbox, Transition } from '@headlessui/react';
+import { Listbox, Switch, Transition } from '@headlessui/react';
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
 import { publicRoutes } from '@utils/constants/api';
 import { trigger } from '@utils/events';
@@ -152,10 +152,6 @@ const PublishForm: React.FC = () => {
     };
   });
 
-  const handleCheckboxChange = (e) => {
-    setCollageActiveStatus(e.target.checked);
-  };
-
   const isButtonDisabled = !(selectedSubCategoryId && selectedCategoryId?.length);
   const [tags, setTags] = useState([]);
   const [selectedTags, setSelectedTags] = useState([]);
@@ -237,28 +233,35 @@ const PublishForm: React.FC = () => {
             {collageDescription}
           </textarea>
         </div>
-        <div className="flex align-center justify-between items-center">
-          <div>
-            <input
-              type="checkbox"
-              className="form-checkbox rounded text-red-100 ml-1 border-gray-400 checked:border-gray-400 hover:checked:border-gray-400 focus:checked:border-gray-400 box-content border border-transparent hover:shadow-xl hover:border-gray-200 focus:ring-1 focus:ring-gray-900 focus:outline-none"
+        <Switch.Group>
+          <div className="flex align-center justify-between items-center">
+            <Switch.Label className="mr-4">Active</Switch.Label>
+            <Switch
               checked={isCollageActive}
-              onChange={handleCheckboxChange}
-              id="active-filter"
-            />
-            <span className="pl-2">Active</span>
+              onChange={setCollageActiveStatus}
+              className={`${
+                isCollageActive ? 'bg-red-500' : 'bg-gray-200'
+              } relative inline-flex items-center h-6 rounded-full w-11`}
+            >
+              <span className="sr-only">Active</span>
+              <span
+                className={`${
+                  isCollageActive ? 'translate-x-6' : 'translate-x-1'
+                } inline-block w-4 h-4 transform bg-white rounded-full`}
+              />
+            </Switch>
           </div>
-          <button
-            type="button"
-            className={`inline-flex ml-2 justify-center px-4 py-2 text-sm font-medium text-white border border-transparent rounded-md  focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 ${
-              isButtonDisabled ? 'bg-gray-300' : 'bg-gray-900'
-            }`}
-            onClick={publishCollage}
-            disabled={isButtonDisabled}
-          >
-            Publish
-          </button>
-        </div>
+        </Switch.Group>
+        <button
+          type="button"
+          className={`inline-flex justify-center px-4 py-2 text-sm font-medium text-white border border-transparent rounded-md  focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 ${
+            isButtonDisabled ? 'bg-gray-300' : 'bg-gray-900'
+          }`}
+          onClick={publishCollage}
+          disabled={isButtonDisabled}
+        >
+          Publish
+        </button>
       </div>
     </>
   );
