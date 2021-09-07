@@ -455,25 +455,20 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
           onTouchStart={checkDeselect}
         >
           <Layer onDragMove={(e) => onDragMove(e)} onDragEnd={onDragEnd}>
-            {PlaygroundAssets.length !== 0 && (
-              <>
-                {bgType === 'bg-color' && (
-                  <Rect
-                    x={0}
-                    y={0}
-                    width={sceneWidth}
-                    height={h / scale}
-                    fill={bgValue}
-                    listening={false}
-                    name="background-color-wall"
-                  />
-                )}
-              </>
+            {PlaygroundAssets.length !== 0 && bgType === 'bg-color' && (
+              <Rect
+                x={0}
+                y={0}
+                width={sceneWidth}
+                height={h / scale}
+                fill={bgValue}
+                listening={false}
+                name="background-color-wall"
+              />
             )}
             {bgType === 'bg-img' && (
               <Img x={0} y={0} width={sceneWidth} image={img} listening={false} name="background-image" />
             )}
-
             {guides.map((item, i) => {
               return <Line key={i} {...item} />;
             })}
