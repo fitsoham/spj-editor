@@ -129,6 +129,11 @@ const DragImage: React.FC<DragImageInterface> = ({
           ref={trRef}
           keepRatio={true}
           enabledAnchors={['top-left', 'top-right', 'bottom-left', 'bottom-right']}
+          anchorStroke="#9CA3AF"
+          anchorFill="#F3F4F6"
+          borderStroke="#9CA3AF"
+          anchorSize={8}
+          borderDash={[3, 3]}
           boundBoxFunc={(oldBox, newBox) => ((newBox.width < 50 || newBox.height) < 50 ? oldBox : newBox)}
         />
       )}

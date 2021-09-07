@@ -27,29 +27,54 @@ const imgList = [
     id: 5,
     url: 'https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,f_auto,q_auto,w_1400/v1630143026/spj-v2/DIY/room-bg/611baa309d92ba0028e0173d__khy5ii',
   },
-  
 ];
 
-const colorList = [{
-  id: 1, 
-  colorHex: '#dc143c'
-}, {
-  id: 2, 
-  colorHex: '#0690A6'
-}, {
-  id: 3, 
-  colorHex: '#EBEE05 '
-}, {
-  id: 4, 
-  colorHex: '#000000'
-}, {
-  id: 5, 
-  colorHex: '#35D3C9'
-}, {
-  id: 6, 
-  colorHex: '#35D362'
-}]
-
+const colorList = [
+  {
+    id: 0,
+    colorHex: 'transparent',
+  },
+  {
+    id: 1,
+    colorHex: 'rgb(235, 241, 255)',
+  },
+  {
+    id: 2,
+    colorHex: 'rgb(246, 240, 255)',
+  },
+  {
+    id: 3,
+    colorHex: 'rgb(255, 254, 245)',
+  },
+  {
+    id: 4,
+    colorHex: 'rgb(255, 240, 253)',
+  },
+  {
+    id: 5,
+    colorHex: 'rgb(235, 255, 246)',
+  },
+  {
+    id: 6,
+    colorHex: 'rgb(255, 252, 230)',
+  },
+  {
+    id: 7,
+    colorHex: 'rgb(255, 241, 240)',
+  },
+  {
+    id: 8,
+    colorHex: 'rgb(235, 255, 248)',
+  },
+  {
+    id: 9,
+    colorHex: 'rgb(247, 235, 255)',
+  },
+  {
+    id: 10,
+    colorHex: 'rgb(242, 253, 255)',
+  },
+];
 
 const BgSelector: React.FC = () => {
   const { bg } = useContext(PlaygroundAssetsContext);
@@ -62,14 +87,14 @@ const BgSelector: React.FC = () => {
   return (
     <div className="grid-cols-1 gap-8">
       <div>
-        <h2>Rooms</h2>
-        <div className="overflow-scroll grid grid-cols-3 gap-4">
+        <h2 className="mb-1 font-normal">Rooms</h2>
+        <div className="overflow-scroll grid grid-cols-4 gap-4">
           {imgList.map((img) => {
             return (
               <div
                 onClick={() => setBg(img.url, 'bg-img')}
                 key={img.id}
-                className="border-transparent box-border flex-shrink-0 h-36 last:mr-0 relative cursor-pointer"
+                className="border-transparent box-border flex-shrink-0 h-24 last:mr-0 relative cursor-pointer"
               >
                 <Image src={img.url} layout="fill" alt="name" objectFit="cover" quality={100} className="rounded" />
               </div>
@@ -77,24 +102,21 @@ const BgSelector: React.FC = () => {
           })}
         </div>
       </div>
-      <div className="mt-4">
-        <h2>Colors</h2>
-        <div className="overflow-scroll grid grid-cols-4 gap-4">
-          {
-            colorList.map((item) => {
-              return (
-                <div
-                  key={item?.id}
-                  onClick={() => setBg(item?.colorHex, 'bg-color')}
-                  className="border-transparent box-border flex-shrink-0 h-24 last:mr-0 relative cursor-pointer rounded-md"
-                  style={{backgroundColor: `${item?.colorHex}`}}
-                />
-              )
-            })
-          }
+      <div className="mt-8">
+        <h2 className="mb-1 font-normal">Colors</h2>
+        <div className="overflow-scroll grid grid-cols-8 gap-4">
+          {colorList.map((item) => {
+            return (
+              <div
+                key={item?.id}
+                onClick={() => setBg(item?.colorHex, 'bg-color')}
+                className="border-transparent box-border flex-shrink-0 h-14 last:mr-0 relative cursor-pointer rounded border border-gray-200"
+                style={{ backgroundColor: `${item?.colorHex}` }}
+              />
+            );
+          })}
         </div>
       </div>
-      
     </div>
   );
 };

@@ -27,8 +27,6 @@ interface PlaygroundInterface {
   h: number;
 }
 
-
-
 const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
   const stageRef = useRef<StageType>();
   const GUIDELINE_OFFSET = 5;
@@ -37,7 +35,9 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
   const { PlaygroundAssets, setPlaygroundAssets, bg, getRotationValue, isCollageActive, selectedSubCategoryId } =
     useContext(PlaygroundAssetsContext);
   const [selectedId, setSelectedId] = useContext(SelectedIdContext);
-  const { bgImgUrl : {value: bgValue, type:bgType} } = bg;
+  const {
+    bgImgUrl: { value: bgValue, type: bgType },
+  } = bg;
   const [img] = useImage(bgValue, 'anonymous');
   const scale = w / sceneWidth;
   const { setData, data } = useCollageListContext();
@@ -47,84 +47,90 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     });
     downloadURI(uri, `spacejoy-demo-${Date.now()}`);
   };
-  
-  const saveCollage = React.useCallback(async ({collageName, collageDescription, selectedTags, selectedThemes}) => {
-    stageRef.current?.findOne(".background-image")?.hide();
-    stageRef.current?.findOne(".background-color-wall")?.hide();
-    const uri = stageRef?.current?.toDataURL({
-      pixelRatio: 2, // or other value you need
-    });
-    stageRef.current?.findOne(".background-image")?.show();
-    stageRef.current?.findOne(".background-color-wall")?.show();
-    const fileRes = await b64toFile(uri);
-    
 
-    const payload = PlaygroundAssets.map((asset) => {
-      return {
-        ...(asset?.playgroundHeight && {
-          playgroundScale: { width: asset?.playgroundWidth, height: asset?.playgroundHeight },
-        }),
-        translation: {
-          x: asset?.x,
-          y: asset?.y,
-        },
-        rotation: (asset?.rotationValue || 0).toString(),
-        scale: {
-          height: asset?.height,
-          width: asset?.width,
-        },
-        id: asset?.id,
-        product: asset?.assetId,
-        imgSrc: asset?.stitchedAssetImage,
-      };
-    });
-    try {
-      const formData = new FormData();
-      formData.append('file', fileRes, fileRes?.name);
-      formData.append(
-        'data',
-        JSON.stringify({ view: [...payload], 
-        ...(collageName && collageName?.length && {name: collageName}),
-        ...(collageDescription && collageDescription?.length && {description: collageDescription}),
-        ...(selectedThemes && selectedThemes?.length && {themes: selectedThemes}),
-        ...(selectedTags && selectedTags?.length && {tags: selectedTags}),
-        ...(selectedSubCategoryId && selectedSubCategoryId?.length && {isActive: isCollageActive, categoryMap:selectedSubCategoryId })
-        })
-      );
-      const res = await fetchWithFile({
-        endPoint: publicRoutes?.saveCollages,
-        method: 'POST',
-        body: formData,
+  const saveCollage = React.useCallback(
+    async ({ collageName, collageDescription, selectedTags, selectedThemes }) => {
+      stageRef.current?.findOne('.background-image')?.hide();
+      stageRef.current?.findOne('.background-color-wall')?.hide();
+      const uri = stageRef?.current?.toDataURL({
+        pixelRatio: 2, // or other value you need
       });
-      const { data: savedCollageData, statusCode } = res;
-      if (statusCode > 300) {
+      stageRef.current?.findOne('.background-image')?.show();
+      stageRef.current?.findOne('.background-color-wall')?.show();
+      const fileRes = await b64toFile(uri);
+
+      const payload = PlaygroundAssets.map((asset) => {
+        return {
+          ...(asset?.playgroundHeight && {
+            playgroundScale: { width: asset?.playgroundWidth, height: asset?.playgroundHeight },
+          }),
+          translation: {
+            x: asset?.x,
+            y: asset?.y,
+          },
+          rotation: (asset?.rotationValue || 0).toString(),
+          scale: {
+            height: asset?.height,
+            width: asset?.width,
+          },
+          id: asset?.id,
+          product: asset?.assetId,
+          imgSrc: asset?.stitchedAssetImage,
+        };
+      });
+      try {
+        const formData = new FormData();
+        formData.append('file', fileRes, fileRes?.name);
+        formData.append(
+          'data',
+          JSON.stringify({
+            view: [...payload],
+            ...(collageName && collageName?.length && { name: collageName }),
+            ...(collageDescription && collageDescription?.length && { description: collageDescription }),
+            ...(selectedThemes && selectedThemes?.length && { themes: selectedThemes }),
+            ...(selectedTags && selectedTags?.length && { tags: selectedTags }),
+            ...(selectedSubCategoryId &&
+              selectedSubCategoryId?.length && { isActive: isCollageActive, categoryMap: selectedSubCategoryId }),
+          })
+        );
+        const res = await fetchWithFile({
+          endPoint: publicRoutes?.saveCollages,
+          method: 'POST',
+          body: formData,
+        });
+        const { data: savedCollageData, statusCode } = res;
+        if (statusCode > 300) {
+          throw new Error();
+        } else {
+          setData([savedCollageData, ...data]);
+          return data;
+        }
+      } catch {
         throw new Error();
-      } else {
-        setData([savedCollageData, ...data]);
-        return data;
       }
-    } catch {
-      throw new Error();
-    }
-  }, [PlaygroundAssets, isCollageActive, selectedSubCategoryId, data, setData]);
+    },
+    [PlaygroundAssets, isCollageActive, selectedSubCategoryId, data, setData]
+  );
 
-  const saveCollageWithNotification = React.useCallback(async (args) => {
-    const {detail: {collageName ='', collageDescription = '', selectedThemes = [], selectedTags = []} = {}} = args;
-    await toast.promise(saveCollage({collageName, collageDescription, selectedTags, selectedThemes}), {
-      pending: 'Saving your collage',
-      success: 'Collage saved successfully',
-      error: 'There was an error while saving your collage. Please try again.',
-    });
-  }, [ saveCollage]);
-
-
+  const saveCollageWithNotification = React.useCallback(
+    async (args) => {
+      const { detail: { collageName = '', collageDescription = '', selectedThemes = [], selectedTags = [] } = {} } =
+        args;
+      await toast.promise(saveCollage({ collageName, collageDescription, selectedTags, selectedThemes }), {
+        pending: 'Saving your collage',
+        success: 'Collage saved successfully',
+        error: 'There was an error while saving your collage. Please try again.',
+      });
+    },
+    [saveCollage]
+  );
 
   React.useEffect(() => {
-    on('publish',saveCollageWithNotification)
-    return () => { 
-      off('publish',saveCollageWithNotification)
-    }
-  }, [PlaygroundAssets, saveCollageWithNotification, selectedSubCategoryId])
+    on('publish', saveCollageWithNotification);
+    return () => {
+      off('publish', saveCollageWithNotification);
+    };
+  }, [PlaygroundAssets, saveCollageWithNotification, selectedSubCategoryId]);
 
   const checkDeselect = (e): void => {
     if (e.target === e.target?.getStage()) {
@@ -261,10 +267,10 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
         if (lg.orientation === 'H') {
           const guide = {
             points: [-6000, 0, 6000, 0],
-            stroke: 'rgb(0, 161, 255)',
+            stroke: '#4B5563',
             strokeWidth: 1,
             name: 'guid-line',
-            dash: [4, 6],
+            dash: [3, 3],
             x: 0,
             y: lg.lineGuide,
           };
@@ -272,10 +278,10 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
         } else if (lg.orientation === 'V') {
           const guide = {
             points: [0, -6000, 0, 6000],
-            stroke: 'rgb(0, 161, 255)',
+            stroke: '#4B5563',
             strokeWidth: 1,
             name: 'guid-line',
-            dash: [4, 6],
+            dash: [3, 3],
             x: lg.lineGuide,
             y: 0,
           };
@@ -390,7 +396,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
             assetId: id,
             productThumbnail: renderImages[0].cdn,
             stitchedAssetImage: image?.originalCdn,
-            price
+            price,
           },
         ])
       );
@@ -401,18 +407,14 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
         tmp.push({
           ...asset,
           id: `in-playground-asset-${PlaygroundAssets.length}-${Math.random()}`,
-          price: 0
+          price: 0,
         })
       );
       setPlaygroundAssets(tmp);
     }
   };
 
-
   // save collage
-  
-
-
 
   return (
     <>
@@ -455,20 +457,23 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
           <Layer onDragMove={(e) => onDragMove(e)} onDragEnd={onDragEnd}>
             {PlaygroundAssets.length !== 0 && (
               <>
-                {
-                  bgType === 'bg-color' && (
-                    <Rect x={0} y={0} width={sceneWidth} height={h / scale} fill={bgValue} listening={false} name="background-color-wall"/>
-                  )
-                }
-                
+                {bgType === 'bg-color' && (
+                  <Rect
+                    x={0}
+                    y={0}
+                    width={sceneWidth}
+                    height={h / scale}
+                    fill={bgValue}
+                    listening={false}
+                    name="background-color-wall"
+                  />
+                )}
               </>
             )}
-            {
-              bgType === 'bg-img' && (
-                <Img x={0} y={0} width={sceneWidth} image={img} listening={false} name="background-image"/>
-              )
-            }
-            
+            {bgType === 'bg-img' && (
+              <Img x={0} y={0} width={sceneWidth} image={img} listening={false} name="background-image" />
+            )}
+
             {guides.map((item, i) => {
               return <Line key={i} {...item} />;
             })}

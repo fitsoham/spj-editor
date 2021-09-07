@@ -4,7 +4,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 
 interface HeaderInterface {
   title: string;
-  description: string;
+  description?: string;
 }
 
 interface DrawerSubComponent {

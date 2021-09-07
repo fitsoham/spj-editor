@@ -11,12 +11,12 @@ const selectedItemStyles = {
 
 const selectedItemIconStyles = { cursor: 'pointer' };
 
-const comboboxStyles = { display: 'inline-block', marginLeft: '5px' };
+const comboboxStyles = { display: 'inline-block', marginLeft: '0' };
 
-function DropdownMultipleCombobox({ triggerSearch, suggestions, updateSelections, label }) {
-  const [items, setitems] = useState([]);
+const DropdownMultipleCombobox: React.FC = ({ triggerSearch, suggestions, updateSelections, label }) => {
+  const [items, setItems] = useState([]);
   React.useEffect(() => {
-    setitems(suggestions);
+    setItems(suggestions);
   }, [suggestions]);
 
   const [inputValue, setInputValue] = useState('');
@@ -27,7 +27,8 @@ function DropdownMultipleCombobox({ triggerSearch, suggestions, updateSelections
 
   React.useEffect(() => {
     updateSelections(selectedItems);
-  }, [selectedItems]);
+  }, [selectedItems, updateSelections]);
+
   const {
     isOpen,
     // getToggleButtonProps,
@@ -119,6 +120,6 @@ function DropdownMultipleCombobox({ triggerSearch, suggestions, updateSelections
       </ul>
     </div>
   );
-}
+};
 
-export default DropdownMultipleCombobox;
+export default React.memo(DropdownMultipleCombobox);

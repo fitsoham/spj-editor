@@ -99,10 +99,7 @@ const BottomNav: React.FC = () => {
             <ColorSwatchIcon className="h-4 w-4" />
           </UnitAction>
           <Drawer isOpen={isOpen} cb={closeDrawer}>
-            <Drawer.Header
-              title="Apply Background"
-              description="You can change 10 free backgrounds, Unlock 1000+ more background with $5.00"
-            />
+            <Drawer.Header title="Apply Background" />
             <Drawer.Body>
               <BgSelector />
             </Drawer.Body>
