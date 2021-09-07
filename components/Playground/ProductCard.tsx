@@ -13,7 +13,6 @@ const ProductCard: React.FC<ProductCardInterface> = ({ product }) => {
   const productThumbnail = product?.renderImages
     ? product?.renderImages[0]?.cdn
     : 'v1623166775/Untitled-1-12_iah06e.jpg';
-  console.log(product);
   return (
     <div
       title={product?.name}

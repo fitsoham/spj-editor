@@ -12,7 +12,14 @@ const selectedItemIconStyles = { cursor: 'pointer', marginLeft: '5px' };
 
 const comboboxStyles = { display: 'inline-block', marginLeft: '0' };
 
-const DropdownMultipleCombobox: React.FC = ({ triggerSearch, suggestions, updateSelections, label }) => {
+interface DropDownProps { 
+  triggerSearch: () => void;
+  label: string;
+  updateSelections: (any) => void;
+  suggestions: any
+}
+
+const DropdownMultipleCombobox: React.FC<DropDownProps> = ({ triggerSearch, suggestions, updateSelections, label }) => {
   const [items, setItems] = useState([]);
   React.useEffect(() => {
     setItems(suggestions);
@@ -55,7 +62,6 @@ const DropdownMultipleCombobox: React.FC = ({ triggerSearch, suggestions, update
       return changes;
     },
     onStateChange: ({ inputValue, type, selectedItem }) => {
-      console.log(type);
       switch (type) {
         case useCombobox.stateChangeTypes.InputChange:
           setInputValue(inputValue);

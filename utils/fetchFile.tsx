@@ -34,7 +34,6 @@ const fetcher = async ({
           headers,
           body
         };
-  console.log('options', options);
   delete headers['Content-Type'];
   const finalAPIBaseUrl = isSocket ? page.apiSocketUrl : page.apiBaseUrl;
   const response = await fetch(finalAPIBaseUrl + endPoint, options);
