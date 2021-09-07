@@ -30,7 +30,7 @@ const DesignCardRow: React.FC<{
   );
 };
 
-const ProductListView: React.FC = () => {
+const CollageListView: React.FC = () => {
   const { isItemLoaded, loadMoreItems, count } = useCollageListContext();
   const [rowHeight, setRowHeight] = useState(225);
 
@@ -44,44 +44,46 @@ const ProductListView: React.FC = () => {
   }, [width, rowHeight]);
 
   return (
-    <AutoSizer>
-      {({ width, height }) => (
-        <InfiniteLoader
-          isItemLoaded={isItemLoaded}
-          loadMoreItems={loadMoreItems}
-          itemCount={count}
-          minimumBatchSize={8}
-        >
-          {({ onItemsRendered, ref }) => (
-            <Grid
-              height={height}
-              width={width}
-              onItemsRendered={({
-                visibleRowStartIndex,
-                visibleRowStopIndex,
-                overscanRowStopIndex,
-                overscanRowStartIndex,
-              }) => {
-                onItemsRendered({
-                  overscanStartIndex: overscanRowStartIndex * 2,
-                  overscanStopIndex: overscanRowStopIndex * 2,
-                  visibleStartIndex: visibleRowStartIndex * 2,
-                  visibleStopIndex: visibleRowStopIndex * 2,
-                });
-              }}
-              ref={ref}
-              rowCount={Math.ceil(count / 2)}
-              columnCount={2}
-              columnWidth={width / 2}
-              rowHeight={rowHeight}
-            >
-              {DesignCardRow}
-            </Grid>
-          )}
-        </InfiniteLoader>
-      )}
-    </AutoSizer>
+    <>
+      <AutoSizer>
+        {({ width, height }) => (
+          <InfiniteLoader
+            isItemLoaded={isItemLoaded}
+            loadMoreItems={loadMoreItems}
+            itemCount={count}
+            minimumBatchSize={8}
+          >
+            {({ onItemsRendered, ref }) => (
+              <Grid
+                height={height}
+                width={width}
+                onItemsRendered={({
+                  visibleRowStartIndex,
+                  visibleRowStopIndex,
+                  overscanRowStopIndex,
+                  overscanRowStartIndex,
+                }) => {
+                  onItemsRendered({
+                    overscanStartIndex: overscanRowStartIndex * 2,
+                    overscanStopIndex: overscanRowStopIndex * 2,
+                    visibleStartIndex: visibleRowStartIndex * 2,
+                    visibleStopIndex: visibleRowStopIndex * 2,
+                  });
+                }}
+                ref={ref}
+                rowCount={Math.ceil(count / 2)}
+                columnCount={2}
+                columnWidth={width / 2}
+                rowHeight={rowHeight}
+              >
+                {DesignCardRow}
+              </Grid>
+            )}
+          </InfiniteLoader>
+        )}
+      </AutoSizer>
+    </>
   );
 };
 
-export default ProductListView;
+export default CollageListView;

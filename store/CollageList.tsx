@@ -1,5 +1,5 @@
 import fetcher from '@utils/fetcher';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export interface CollageType {
   price?: number;
@@ -53,9 +53,13 @@ interface CollageContext {
   data: CollageType[];
   count: number;
   setData: React.Dispatch<React.SetStateAction<CollageType[]>>;
+  setActiveCollages: React.Dispatch<React.SetStateAction<boolean>>;
+  isActiveCollages: boolean;
 }
 
 export const CollageListContext = React.createContext<CollageContext>({
+  setActiveCollages: () => {return},
+  isActiveCollages: false,
   isItemLoaded: () => false,
   loadMoreItems: async () => {
     return;
@@ -71,13 +75,21 @@ const CollageListContextProvider: React.FC = ({ children }) => {
   const [count, setCount] = useState(1000);
   const [loading, setLoading] = useState(false);
   const [hasNextPage, setHasNextPage] = useState<boolean>(true);
+  const [isActiveCollages, setActiveCollages] = useState(false);
+  
+  useEffect(() => {
+    setCount(10);
+    setData([]);
+    loadMoreItems(0, 50);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isActiveCollages]);
 
   const loadMoreItems = async (startIndex: number, endIndex: number): Promise<void> => {
     if (loading) {
       return;
     }
     setLoading(true);
-    const endPoint = `/v1/collages?skip=${startIndex}&limit=${endIndex - startIndex + 1}`;
+    const endPoint = `/v1/collages?skip=${startIndex}&limit=${endIndex - startIndex + 1}&isActive=${isActiveCollages}`;
     const resData = await fetcher({
       endPoint,
       method: 'GET',
@@ -109,7 +121,7 @@ const CollageListContextProvider: React.FC = ({ children }) => {
   };
 
   return (
-    <CollageListContext.Provider value={{ isItemLoaded, loadMoreItems, hasNextPage, data, count, setData }}>
+    <CollageListContext.Provider value={{ isItemLoaded, loadMoreItems, hasNextPage, data, count, setData, isActiveCollages, setActiveCollages }}>
       {children}
     </CollageListContext.Provider>
   );
