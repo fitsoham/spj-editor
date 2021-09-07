@@ -21,7 +21,7 @@ const CollageCard: React.FC<{ collage: CollageType }> = ({ collage }) => {
   const {
     thumbnail = 'https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_350/v1628223802/spj-v2/DIY/collage/col-1_jt7bsc.png',
     meta: { view = [] } = {},
-    price = 0
+    price = 0,
   } = collage;
   const processedView: ProcessedCollageType[] = view.map((object) => {
     const {

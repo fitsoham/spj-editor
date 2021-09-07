@@ -51,11 +51,15 @@ interface PlaygroundAssetContextType {
   setCollageActiveStatus: React.Dispatch<React.SetStateAction<boolean>>;
   setPlaygroundTotal: React.Dispatch<React.SetStateAction<number>>;
   playgroundTotal: number;
+  activeCollages: Array<string>;
+  setActiveCollages:  React.Dispatch<React.SetStateAction<Array<string>>>;
 }
 
 // ========================= TYPES =========================
 
 const PlaygroundAssetsContext = React.createContext<PlaygroundAssetContextType>({
+  activeCollages: [''],
+  setActiveCollages: () => {return},
   playgroundTotal: 0,
   setPlaygroundTotal: () => {return},
   setCollageActiveStatus: () => { return },
@@ -111,6 +115,7 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
   const [bgImgUrl, setBg] = useState({value: '', type: 'bg-img'});
   const [playgroundTotal, setPlaygroundTotal] = useState(0);
 
+  const [activeCollages, setActiveCollages] = useState([]);
 
 
   const setBgImgUrl = (value, type) => { 
@@ -218,6 +223,8 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
         setCollageActiveStatus,
         playgroundTotal,
         setPlaygroundTotal,
+        activeCollages,
+        setActiveCollages,
       }}
     >
       {children}

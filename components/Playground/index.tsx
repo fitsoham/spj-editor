@@ -32,7 +32,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
   const GUIDELINE_OFFSET = 5;
   const [guides, setGuides] = useState([]);
   const { busData } = useContext(DataBusContext);
-  const { PlaygroundAssets, setPlaygroundAssets, bg, getRotationValue, isCollageActive, selectedSubCategoryId, playgroundTotal } =
+  const { PlaygroundAssets, setPlaygroundAssets, bg, getRotationValue, isCollageActive, selectedSubCategoryId, playgroundTotal, setActiveCollages, activeCollages } =
     useContext(PlaygroundAssetsContext);
   const [selectedId, setSelectedId] = useContext(SelectedIdContext);
   const {
@@ -94,8 +94,9 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
               selectedSubCategoryId?.length && { isActive: isCollageActive, categoryMap: selectedSubCategoryId }),
           })
         );
+        const endPoint = activeCollages?.length === 1 ? `${publicRoutes?.saveCollages}/${activeCollages[0]}` : publicRoutes?.saveCollages;
         const res = await fetchWithFile({
-          endPoint: publicRoutes?.saveCollages,
+          endPoint,
           method: 'POST',
           body: formData,
         });
@@ -110,7 +111,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
         throw new Error();
       }
     },
-    [PlaygroundAssets, isCollageActive, selectedSubCategoryId, data, setData]
+    [PlaygroundAssets, isCollageActive, selectedSubCategoryId, data, setData, playgroundTotal]
   );
 
   const saveCollageWithNotification = React.useCallback(
@@ -403,6 +404,8 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     }
     if (busData.type === 'collage') {
       const tmp = [...PlaygroundAssets];
+      const {id} = busData;
+      setActiveCollages([...activeCollages, id]);
       const productIds = busData?.data?.map(item => item?.assetId);
       // // fetch product prices
       const res = await fetcher({endPoint: '/v1/assets/getAssetsDetail', body:{assets: [...productIds]}, method: 'POST'});
