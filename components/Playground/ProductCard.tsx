@@ -13,7 +13,6 @@ const ProductCard: React.FC<ProductCardInterface> = ({ product }) => {
   const productThumbnail = product?.renderImages
     ? product?.renderImages[0]?.cdn
     : 'v1623166775/Untitled-1-12_iah06e.jpg';
-  console.log(product);
   return (
     <div
       title={product?.name}
@@ -47,11 +46,14 @@ const ProductCard: React.FC<ProductCardInterface> = ({ product }) => {
         />
       </div>
       <div className="p-2">
-        <small className="text-xs text-gray-500">{product?.retailer}</small>
-        <p className="text-sm pb-1 line-clamp-2 h-10">{product?.name}</p>
-        <p>
-          <small className="text-xs text-gray-500">{`${product?.height.toFixed(2).toString()}'H x ${product?.width.toFixed(2).toString()}'W x ${product?.depth.toFixed(2).toString()}'D`}</small>
-        </p>
+        <small className="text-xs text-gray-500 group-hover:text-red-500">{product?.retailer}</small>
+        <p className="text-sm line-clamp-2 h-10">{product?.name}</p>
+        <small className="inline-block text-xs text-gray-500 leading-4 py-2">
+          H x W x D: <br />
+          {`${product?.height.toFixed(2).toString()}" x 
+          ${product?.width.toFixed(2).toString()}" x 
+          ${product?.depth.toFixed(2).toString()}"`}
+        </small>
         <div className="flex justify-between items-center">
           <p className="text-sm font-bold">${product.displayPrice}</p>
           <a
