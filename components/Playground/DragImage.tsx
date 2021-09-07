@@ -54,7 +54,7 @@ const DragImage: React.FC<DragImageInterface> = ({
   const [state, dispatch] = useReducer(reducer, image || initialState);
   const trRef = useRef(null);
   const AssetRef = useRef(null);
-  const [img] = useImage(
+  const [img, status] = useImage(
     `https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,f_auto,q_100,w_${
       state?.playgroundWidth
         ? Math.ceil(state?.playgroundWidth * state.count)
@@ -94,6 +94,7 @@ const DragImage: React.FC<DragImageInterface> = ({
 
   const height = img?.height || 0;
   const width = img?.width / image.count || 0;
+  console.log('loading status', status);
   return (
     <>
       <Sprite
