@@ -229,9 +229,10 @@ const PublishForm: React.FC = () => {
           <textarea
             className="p-2 outline-none block w-full caret-yellow-500 focus:ring-transparent border border-gray-400 focus:border-gray-800 rounded text-sm capitalize"
             onChange={(e) => setCollageDescription(e?.target?.value)}
-          >
-            {collageDescription}
-          </textarea>
+            value={collageDescription}
+          />
+            
+          
         </div>
         <Switch.Group>
           <div className="flex align-center justify-between items-center">
