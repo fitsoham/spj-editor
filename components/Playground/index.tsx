@@ -111,7 +111,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
         throw new Error();
       }
     },
-    [PlaygroundAssets, isCollageActive, selectedSubCategoryId, data, setData, playgroundTotal]
+    [PlaygroundAssets, isCollageActive, selectedSubCategoryId, data, setData, playgroundTotal, activeCollages]
   );
 
   const saveCollageWithNotification = React.useCallback(
