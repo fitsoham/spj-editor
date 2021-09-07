@@ -13,7 +13,7 @@ const selectedItemIconStyles = { cursor: 'pointer', marginLeft: '5px' };
 const comboboxStyles = { display: 'inline-block', marginLeft: '0' };
 
 interface DropDownProps { 
-  triggerSearch: () => void;
+  triggerSearch: (text: string) => void;
   label: string;
   updateSelections: (any) => void;
   suggestions: any
