@@ -7,6 +7,8 @@ import { FixedSizeGrid as Grid } from 'react-window';
 import InfiniteLoader from 'react-window-infinite-loader';
 import { useCollageListContext } from 'store/CollageList';
 
+const cardHeight = 225;
+
 const DesignCardRow: React.FC<{
   columnIndex: number;
   rowIndex: number;
@@ -20,9 +22,12 @@ const DesignCardRow: React.FC<{
       {collageData && !isScrolling ? (
         <CollageCard collage={collageData} />
       ) : (
-        <div className="bg-white p-4 w-full h-full">
+        <div className="bg-white p-4 w-full">
           <div className="animate-pulse">
             <div className="bg-gray-200 h-32 rounded" />
+            <div className="bg-gray-200 h-3 rounded mt-2 w-24" />
+            <div className="bg-gray-200 h-3 rounded mt-1 w-24" />
+            <div className="bg-gray-200 h-3 rounded mt-3 w-12" />
           </div>
         </div>
       )}
@@ -32,13 +37,13 @@ const DesignCardRow: React.FC<{
 
 const CollageListView: React.FC = () => {
   const { isItemLoaded, loadMoreItems, count } = useCollageListContext();
-  const [rowHeight, setRowHeight] = useState(225);
+  const [rowHeight, setRowHeight] = useState(cardHeight);
 
   const { width } = useWindowSize();
   useEffect(() => {
     if (width > Breakpoints['2xl']) {
-      if (rowHeight !== 225) setRowHeight(225);
-    } else if (rowHeight !== 225) {
+      if (rowHeight !== cardHeight) setRowHeight(cardHeight);
+    } else if (rowHeight !== cardHeight) {
       setRowHeight(205);
     }
   }, [width, rowHeight]);

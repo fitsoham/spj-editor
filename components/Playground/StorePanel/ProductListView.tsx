@@ -23,10 +23,12 @@ const DesignCardRow: React.FC<{
       ) : (
         <div className="bg-white p-4 w-full h-full">
           <div className="animate-pulse">
-            <div className="bg-gray-200 h-32 rounded" />
-            <div className="bg-gray-200 h-2 rounded mt-2" />
-            <div className="bg-gray-200 h-6 rounded mt-2" />
-            <div className="bg-gray-200 h-3 w-10 rounded mt-3" />
+            <div className="bg-gray-100 h-32 rounded" />
+            <div className="bg-gray-100 h-2 rounded mt-2 w-16" />
+            <div className="bg-gray-100 h-8 rounded mt-2" />
+            <div className="bg-gray-100 h-2 rounded mt-4 w-20" />
+            <div className="bg-gray-100 h-2 rounded mt-2" />
+            <div className="bg-gray-100 h-3 rounded mt-4 w-10 " />
           </div>
         </div>
       )}
