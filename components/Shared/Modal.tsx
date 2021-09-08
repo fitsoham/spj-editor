@@ -23,7 +23,9 @@ const Modal: React.FC<ModalProps> & StaticComponents = ({ children, onCloseCallb
   }
   return (
     <>
-      <button disabled={disabled} onClick={openModal}>{children[0]}</button>
+      <button disabled={disabled} onClick={openModal}>
+        {children[0]}
+      </button>
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog
           as="div"
@@ -71,7 +73,7 @@ const Modal: React.FC<ModalProps> & StaticComponents = ({ children, onCloseCallb
                   {onCloseCallback && (
                     <button
                       type="button"
-                      className=" inline-flex ml-2 justify-center px-4 py-2 text-sm font-medium text-gray-900 bg-gray-100 border border-transparent rounded-md  focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                      className=" inline-flex ml-2 justify-center px-4 py-2 text-sm font-medium bg-gray-900 text-white border border-transparent rounded-md  focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
                       onClick={() => {
                         closeModal();
                         onCloseCallback();
