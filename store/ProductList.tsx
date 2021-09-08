@@ -10,7 +10,7 @@ export const assetStoreInitialState = {
   height: [0, 360],
   width: [0, 360],
   depth: [0, 360],
-  wildcard: true,
+  wildcard: false,
   category: [],
   subCategory: [],
   verticals: [],
@@ -77,9 +77,6 @@ const ProductListContextProvider: React.FC = ({ children }) => {
       searchText: (searchText || '')?.trim(),
       sort: 'createdAt',
       wildcard: filter?.wildcard,
-      ...{
-        ...(filter?.preferredRetailer ? { projectId: 'randomString' } : {}),
-      },
       filters: {
         retailer: filter.retailer,
         category: filter.category,
@@ -89,7 +86,7 @@ const ProductListContextProvider: React.FC = ({ children }) => {
         depth: filter.depth.map(convertToFeet),
         width: filter.width.map(convertToFeet),
         height: filter.height.map(convertToFeet),
-        status: filter.status,
+        status: '',
         spriteAvailable: true,
       },
       spriteAvailable: true,

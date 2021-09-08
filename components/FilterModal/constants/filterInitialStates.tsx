@@ -8,7 +8,7 @@ const StoreFilterInitialState: StoreFilterType = {
   height: [0, 360],
   width: [0, 360],
   depth: [0, 360],
-  wildcard: true,
+  wildcard: false,
   category: [],
   subCategory: [],
   verticals: [],

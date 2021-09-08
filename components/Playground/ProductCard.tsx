@@ -58,7 +58,7 @@ const ProductCard: React.FC<ProductCardInterface> = ({ product }) => {
           <p className="text-sm font-bold">${product.displayPrice}</p>
           <a
             target="_blank"
-            href="https://www.spacejoy.com/product-view/608ca48a6d61840042c33569"
+            href={`https://www.spacejoy.com/product-view/${product._id}`}
             className="text-white scale-0 group-hover:text-gray-700 transition transform group-hover:scale-100"
             rel="noreferrer"
           >
