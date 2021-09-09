@@ -53,6 +53,7 @@ interface PlaygroundAssetContextType {
   playgroundTotal: number;
   activeCollages: Array<string>;
   setActiveCollages: React.Dispatch<React.SetStateAction<Array<string>>>;
+  copyAsset: (selectedId: string) => void;
 }
 
 // ========================= TYPES =========================
@@ -115,6 +116,7 @@ const PlaygroundAssetsContext = React.createContext<PlaygroundAssetContextType>(
   getRotationValue: () => {
     return -1;
   },
+  copyAsset: () => { return []}
 });
 
 const initData: PlaygroundAssetType[] = [];
@@ -139,6 +141,7 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
     }
   };
   React.useEffect(() => {
+    console.log(PlaygroundAssets);
     if (!PlaygroundAssets.length) {
       setPlaygroundTotal(0);
     } else {
@@ -191,6 +194,16 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
     setPlaygroundAssets(tmpAssetList);
   };
 
+  const copyAsset = (selectedId) => { 
+    const selectedIndex = getSelectedIndex(selectedId);
+    const selectedItem = [...PlaygroundAssets].filter((item) => item?.id === selectedId)[0];
+    const newItem = {...selectedItem, id: `in-playground-asset-${PlaygroundAssets.length}-${Math.random()}`, x: selectedItem?.x + 200, rotationValue:"0"};
+    const tmp = [...PlaygroundAssets];
+    tmp.splice(selectedIndex + 1, 1, newItem);
+    setPlaygroundAssets(tmp);
+  }
+
+
   const clearBoard = () => {
     setPlaygroundAssets([]), setSelectedId('');
   };
@@ -236,6 +249,7 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
         setPlaygroundTotal,
         activeCollages,
         setActiveCollages,
+        copyAsset
       }}
     >
       {children}

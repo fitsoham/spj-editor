@@ -5,11 +5,12 @@ import Modal from '@components/Shared/Modal';
 import PublishForm from '@components/Shared/PublishForm';
 import {
   ColorSwatchIcon,
+  DuplicateIcon,
   NewspaperIcon,
   RewindIcon,
   SortAscendingIcon,
   SortDescendingIcon,
-  TrashIcon,
+  TrashIcon
 } from '@heroicons/react/outline';
 import React, { useContext, useState } from 'react';
 import { Tween } from 'react-gsap';
@@ -28,6 +29,7 @@ const BottomNav: React.FC = () => {
     rotateAndSaveRotation,
     getRotationValue,
     PlaygroundAssets,
+    copyAsset
   } = useContext(PlaygroundAssetsContext);
 
   const [selectedId] = useContext(SelectedIdContext);
@@ -85,6 +87,11 @@ const BottomNav: React.FC = () => {
         <div>
           <UnitAction position="top" title="Pull Up" onClick={moveAssetTop} disabled={selectedId === ''}>
             <RewindIcon className="h-4 w-4 transform rotate-90" />
+          </UnitAction>
+        </div>
+        <div>
+          <UnitAction position="top" title="Duplicate" onClick={() => copyAsset(selectedId)} disabled={selectedId === ''}>
+            <DuplicateIcon className="h-4 w-4 transform rotate-90" />
           </UnitAction>
         </div>
         <div className="border border-r border-dashed" />
