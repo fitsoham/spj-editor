@@ -52,20 +52,30 @@ interface PlaygroundAssetContextType {
   setPlaygroundTotal: React.Dispatch<React.SetStateAction<number>>;
   playgroundTotal: number;
   activeCollages: Array<string>;
-  setActiveCollages:  React.Dispatch<React.SetStateAction<Array<string>>>;
+  setActiveCollages: React.Dispatch<React.SetStateAction<Array<string>>>;
 }
 
 // ========================= TYPES =========================
 
 const PlaygroundAssetsContext = React.createContext<PlaygroundAssetContextType>({
   activeCollages: [''],
-  setActiveCollages: () => {return},
+  setActiveCollages: () => {
+    return;
+  },
   playgroundTotal: 0,
-  setPlaygroundTotal: () => {return},
-  setCollageActiveStatus: () => { return },
-  setSelectedSubCategoryId: () => { return },
+  setPlaygroundTotal: () => {
+    return;
+  },
+  setCollageActiveStatus: () => {
+    return;
+  },
+  setSelectedSubCategoryId: () => {
+    return;
+  },
   selectedSubCategoryId: '',
-  setSelectedCategoryId: () => { return},
+  setSelectedCategoryId: () => {
+    return;
+  },
   selectedCategoryId: '',
   isCollageActive: true,
   PlaygroundAssets: [],
@@ -112,15 +122,14 @@ const initData: PlaygroundAssetType[] = [];
 const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
   const [PlaygroundAssets, setPlaygroundAssets] = useState<PlaygroundAssetType[]>(initData);
   const [selectedId, setSelectedId] = useContext(SelectedIdContext);
-  const [bgImgUrl, setBg] = useState({value: '', type: 'bg-img'});
+  const [bgImgUrl, setBg] = useState({ value: '', type: 'bg-img' });
   const [playgroundTotal, setPlaygroundTotal] = useState(0);
 
   const [activeCollages, setActiveCollages] = useState([]);
 
-
-  const setBgImgUrl = (value, type) => { 
-    setBg({value, type});
-  }
+  const setBgImgUrl = (value, type) => {
+    setBg({ value, type });
+  };
 
   const getSelectedIndex = (id: string) => {
     for (let i = 0; i <= PlaygroundAssets.length; i++) {
@@ -129,7 +138,7 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
       }
     }
   };
-  React.useEffect(() => { 
+  React.useEffect(() => {
     if (!PlaygroundAssets.length) {
       setPlaygroundTotal(0);
     } else {
@@ -138,7 +147,7 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
       }, 0);
       setPlaygroundTotal(currentPlaygroundTotal);
     }
-  }, [PlaygroundAssets])
+  }, [PlaygroundAssets]);
 
   const updateAsset = (data: PlaygroundAssetType) => {
     const tmpAssetList = [...PlaygroundAssets];
@@ -182,7 +191,9 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
     setPlaygroundAssets(tmpAssetList);
   };
 
-  const clearBoard = () => {setPlaygroundAssets([]), setSelectedId('')};
+  const clearBoard = () => {
+    setPlaygroundAssets([]), setSelectedId('');
+  };
 
   const rotateAndSaveRotation = (selectedId: string, rotationValue: string) => {
     const updatedAssets = [...PlaygroundAssets].map((asset) => {
@@ -216,7 +227,7 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
         rotateAndSaveRotation,
         getRotationValue,
         selectedCategoryId,
-        setSelectedCategoryId, 
+        setSelectedCategoryId,
         selectedSubCategoryId,
         setSelectedSubCategoryId,
         isCollageActive,

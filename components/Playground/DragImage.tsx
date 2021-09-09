@@ -53,8 +53,7 @@ const DragImage: React.FC<DragImageInterface> = ({
   rotationValue = '0',
 }) => {
   const toastId = React.useRef(null);
-  const notify = () =>
-    (toastId.current = toast('Please wait while we load the best product images for you!', { autoClose: false }));
+  const notify = () => (toastId.current = toast('Product is loading in background ', { autoClose: false }));
   const dismiss = () => toast.dismiss(toastId.current);
 
   const [state, dispatch] = useReducer(reducer, image || initialState);
@@ -72,11 +71,7 @@ const DragImage: React.FC<DragImageInterface> = ({
   );
 
   useEffect(() => {
-    if (status === 'loading') {
-      notify();
-    } else {
-      dismiss();
-    }
+    status === 'loading' ? notify() : dismiss();
   }, [status]);
 
   const animations = getAnimationObject(img?.width / image.count, img?.height);
@@ -116,12 +111,7 @@ const DragImage: React.FC<DragImageInterface> = ({
     <>
       {status === 'loading' ? (
         <>
-          <Circle
-            scaleX={state?.playgroundWidth ? 1 : 0.5}
-            scaleY={state?.playgroundHeight ? 1 : 0.5}
-            radius={10}
-            fill="#f2f2f2"
-          />
+          <Circle x={state?.x - 15} y={state?.y + 5} radius={5} fill="#FCD34D" />
           <Text
             x={state?.x}
             y={state?.y}
@@ -162,6 +152,7 @@ const DragImage: React.FC<DragImageInterface> = ({
 
       {isSelected && (
         <Transformer
+          className="transform-boundary"
           ref={trRef}
           keepRatio={true}
           enabledAnchors={['top-left', 'top-right', 'bottom-left', 'bottom-right']}

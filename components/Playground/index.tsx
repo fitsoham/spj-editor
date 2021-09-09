@@ -32,8 +32,17 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
   const GUIDELINE_OFFSET = 5;
   const [guides, setGuides] = useState([]);
   const { busData } = useContext(DataBusContext);
-  const { PlaygroundAssets, setPlaygroundAssets, bg, getRotationValue, isCollageActive, selectedSubCategoryId, playgroundTotal, setActiveCollages, activeCollages } =
-    useContext(PlaygroundAssetsContext);
+  const {
+    PlaygroundAssets,
+    setPlaygroundAssets,
+    bg,
+    getRotationValue,
+    isCollageActive,
+    selectedSubCategoryId,
+    playgroundTotal,
+    setActiveCollages,
+    activeCollages,
+  } = useContext(PlaygroundAssetsContext);
   const [selectedId, setSelectedId] = useContext(SelectedIdContext);
   const {
     bgImgUrl: { value: bgValue, type: bgType },
@@ -85,7 +94,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
           'data',
           JSON.stringify({
             view: [...payload],
-            ...(playgroundTotal && {price: playgroundTotal}),
+            ...(playgroundTotal && { price: playgroundTotal }),
             ...(collageName && collageName?.length && { name: collageName }),
             ...(collageDescription && collageDescription?.length && { description: collageDescription }),
             ...(selectedThemes && selectedThemes?.length && { themes: selectedThemes }),
@@ -94,7 +103,10 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
               selectedSubCategoryId?.length && { isActive: isCollageActive, categoryMap: selectedSubCategoryId }),
           })
         );
-        const endPoint = activeCollages?.length === 1 ? `${publicRoutes?.saveCollages}/${activeCollages[0]}` : publicRoutes?.saveCollages;
+        const endPoint =
+          activeCollages?.length === 1
+            ? `${publicRoutes?.saveCollages}/${activeCollages[0]}`
+            : publicRoutes?.saveCollages;
         const res = await fetchWithFile({
           endPoint,
           method: 'POST',
@@ -119,7 +131,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
       const { detail: { collageName = '', collageDescription = '', selectedThemes = [], selectedTags = [] } = {} } =
         args;
       await toast.promise(saveCollage({ collageName, collageDescription, selectedTags, selectedThemes }), {
-        pending: 'Saving your collage',
+        pending: 'Saving collage',
         success: 'Collage saved successfully',
         error: 'There was an error while saving your collage. Please try again.',
       });
@@ -404,13 +416,17 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     }
     if (busData.type === 'collage') {
       const tmp = [...PlaygroundAssets];
-      const {id} = busData;
+      const { id } = busData;
       setActiveCollages([...activeCollages, id]);
-      const productIds = busData?.data?.map(item => item?.assetId);
+      const productIds = busData?.data?.map((item) => item?.assetId);
       // // fetch product prices
-      const res = await fetcher({endPoint: '/v1/assets/getAssetsDetail', body:{assets: [...productIds]}, method: 'POST'});
-      const {data, statusCode} = res;
-      const isError = statusCode < 300 ? false :  true;
+      const res = await fetcher({
+        endPoint: '/v1/assets/getAssetsDetail',
+        body: { assets: [...productIds] },
+        method: 'POST',
+      });
+      const { data, statusCode } = res;
+      const isError = statusCode < 300 ? false : true;
 
       busData.data.map((asset) =>
         tmp.push({
@@ -427,7 +443,16 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
 
   return (
     <>
-      <ToastContainer />
+      <ToastContainer
+        theme="dark"
+        hideProgressBar
+        toastClassName={() => 'bg-gray-900 shadow rounded shadow p-4 flex flex-1 justify-between'}
+        bodyClassName={() => 'text-white antialiased text-sm flex flex-1 space-x-1'}
+        newestOnTop={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <div className="relative" onDrop={onDropEvent} onDragOver={(e) => e.preventDefault()}>
         {PlaygroundAssets.length !== 0 && (
           <div className="absolute right-4 top-4 z-10 flex flex-col space-y-2">

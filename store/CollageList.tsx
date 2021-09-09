@@ -58,7 +58,9 @@ interface CollageContext {
 }
 
 export const CollageListContext = React.createContext<CollageContext>({
-  setActiveCollages: () => {return},
+  setActiveCollages: () => {
+    return;
+  },
   isActiveCollages: false,
   isItemLoaded: () => false,
   loadMoreItems: async () => {
@@ -67,7 +69,9 @@ export const CollageListContext = React.createContext<CollageContext>({
   hasNextPage: true,
   data: [],
   count: 1000,
-  setData: () => {return}
+  setData: () => {
+    return;
+  },
 });
 
 const CollageListContextProvider: React.FC = ({ children }) => {
@@ -76,7 +80,7 @@ const CollageListContextProvider: React.FC = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [hasNextPage, setHasNextPage] = useState<boolean>(true);
   const [isActiveCollages, setActiveCollages] = useState(false);
-  
+
   useEffect(() => {
     setCount(10);
     setData([]);
@@ -97,7 +101,7 @@ const CollageListContextProvider: React.FC = ({ children }) => {
     const copyData = [...data];
     if (resData.statusCode <= 300) {
       const responseData = resData?.data?.data || [];
-      setCount((resData?.data?.count as number));
+      setCount(resData?.data?.count as number);
 
       for (let i = startIndex, j = 0; i <= endIndex; i += 1, j += 1) {
         copyData[i] = responseData[j];
@@ -121,7 +125,9 @@ const CollageListContextProvider: React.FC = ({ children }) => {
   };
 
   return (
-    <CollageListContext.Provider value={{ isItemLoaded, loadMoreItems, hasNextPage, data, count, setData, isActiveCollages, setActiveCollages }}>
+    <CollageListContext.Provider
+      value={{ isItemLoaded, loadMoreItems, hasNextPage, data, count, setData, isActiveCollages, setActiveCollages }}
+    >
       {children}
     </CollageListContext.Provider>
   );

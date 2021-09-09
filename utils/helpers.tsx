@@ -17,14 +17,13 @@ function downloadURI(uri, name) {
   document.body.removeChild(link);
 }
 
-const b64toFile = async (base64String) => { 
+const b64toFile = async (base64String) => {
   return fetch(base64String)
-  .then(res => res.blob())
-  .then(blob => {
-    const file = new File([blob], "File name",{ type: "image/png" })
-    return file;
-  })
-}
-
+    .then((res) => res.blob())
+    .then((blob) => {
+      const file = new File([blob], 'File name', { type: 'image/png' });
+      return file;
+    });
+};
 
 export { debounce, downloadURI, b64toFile };

@@ -12,13 +12,12 @@ import { NavSelectContextProvider } from 'store/NavSelect';
 import { PlaygroundAssetsContextProvider } from 'store/PlaygroundAssets';
 import { SelectedIdContextProvider } from 'store/SelectedId';
 
-
 const PlaygroundWithNoSSR = dynamic(() => import('@components/Playground'), { ssr: false });
 
 const VisualBoard: React.FC = () => {
   const PlaygroundWrapperRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState([0, 0]);
-  
+
   const updateSize = () =>
     setSize([PlaygroundWrapperRef.current.offsetWidth, PlaygroundWrapperRef.current.offsetHeight]);
 
@@ -44,7 +43,6 @@ const VisualBoard: React.FC = () => {
                     <NavPanel />
                   </div>
                   <div className="bg-gray-100 diy-h-free w-3/4 py-4 pl-4 flex flex-col space-y-4">
-                    
                     <BudgetCalculator />
                     <div className="bg-white shadow-sm h-full flex-1" ref={PlaygroundWrapperRef}>
                       <PlaygroundWithNoSSR w={size[0]} h={size[1]} />

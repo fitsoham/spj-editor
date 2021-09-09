@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 
 const selectedItemIconStyles = { cursor: 'pointer', marginLeft: '5px' };
 
-interface DropDownProps { 
+interface DropDownProps {
   triggerSearch: (text: string) => void;
   label: string;
   updateSelections: (any) => void;
-  suggestions: any
+  suggestions: any;
 }
 
 const DropdownMultipleCombobox: React.FC<DropDownProps> = ({ triggerSearch, suggestions, updateSelections, label }) => {
@@ -102,7 +102,10 @@ const DropdownMultipleCombobox: React.FC<DropDownProps> = ({ triggerSearch, sugg
           />
         </div>
       </div>
-      <ul {...getMenuProps()} className="absolute left-0 w-full z-10 bg-white  border-gray-300 shadow-lg overflow-scroll max-h-64">
+      <ul
+        {...getMenuProps()}
+        className="absolute left-0 w-full z-10 bg-white border-gray-300 shadow-lg overflow-scroll max-h-64"
+      >
         {isOpen &&
           getFilteredItems().map((item, index) => (
             <li

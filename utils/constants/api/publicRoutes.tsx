@@ -7,7 +7,6 @@ const searchResultsRoute = '/v1/seoKeywordDesignMappings/search';
 const saveCollages = '/v1/collages';
 const collageCategoryRoute = '/v1/collageCategories';
 
-
 export default {
   pricingRoute,
   designFeed,
@@ -16,5 +15,5 @@ export default {
   searchAutoCompleteRoute,
   searchResultsRoute,
   saveCollages,
-  collageCategoryRoute, 
+  collageCategoryRoute,
 };

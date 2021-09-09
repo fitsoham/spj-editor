@@ -30,8 +30,8 @@ const CollageCard: React.FC<{ collage: CollageType }> = ({ collage }) => {
         y: { $numberDecimal: yCoord } = { $numberDecimal: '' },
       } = {},
       scale: {
-        height: { $numberDecimal: heightCoord = '' } ,
-        width: { $numberDecimal: widthCoord = '' } ,
+        height: { $numberDecimal: heightCoord = '' },
+        width: { $numberDecimal: widthCoord = '' },
       },
       playgroundScale: {
         height: { $numberDecimal: actualHeightCoord = '' } = {},
@@ -51,8 +51,8 @@ const CollageCard: React.FC<{ collage: CollageType }> = ({ collage }) => {
       id,
       stitchedAssetImage: imgSrc,
       count: 12,
-      ...(actualWidthCoord && {playgroundWidth: parseFloat(actualWidthCoord)}),
-      ...(actualHeightCoord && {playgroundHeight: parseFloat(actualHeightCoord)}),
+      ...(actualWidthCoord && { playgroundWidth: parseFloat(actualWidthCoord) }),
+      ...(actualHeightCoord && { playgroundHeight: parseFloat(actualHeightCoord) }),
       price,
     };
   });

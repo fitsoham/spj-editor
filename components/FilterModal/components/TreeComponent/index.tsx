@@ -24,7 +24,7 @@ const TreeComponent: React.FC<{
                   <>
                     <Disclosure.Button
                       as="div"
-                      className={`block  ${grid || !entry?.children ? 'col-span-1' : 'col-span-full'} truncate`}
+                      className={`block ${grid || !entry?.children ? 'col-span-1' : 'col-span-full'} truncate`}
                     >
                       <button
                         className="p-1 pl-0 flex items-center space-x-2 w-full"

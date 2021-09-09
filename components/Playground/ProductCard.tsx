@@ -51,8 +51,8 @@ const ProductCard: React.FC<ProductCardInterface> = ({ product }) => {
         <small className="inline-block text-xs text-gray-500 leading-4 py-2">
           H x W x D: <br />
           {`${product?.height.toFixed(2).toString()}" x 
-          ${product?.width.toFixed(2).toString()}" x 
-          ${product?.depth.toFixed(2).toString()}"`}
+     ${product?.width.toFixed(2).toString()}" x 
+     ${product?.depth.toFixed(2).toString()}"`}
         </small>
         <div className="flex justify-between items-center">
           <p className="text-sm font-bold">${product.displayPrice}</p>

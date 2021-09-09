@@ -231,8 +231,6 @@ const PublishForm: React.FC = () => {
             onChange={(e) => setCollageDescription(e?.target?.value)}
             value={collageDescription}
           />
-            
-          
         </div>
         <Switch.Group>
           <div className="flex align-center justify-between items-center">

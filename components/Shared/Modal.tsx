@@ -29,7 +29,7 @@ const Modal: React.FC<ModalProps> & StaticComponents = ({ children, onCloseCallb
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog
           as="div"
-          className="fixed  bg-gray-900 bg-opacity-75 inset-0 z-50 overflow-y-auto backdrop-filter backdrop-blur firefox:bg-opacity-90"
+          className="fixed bg-gray-900 bg-opacity-75 inset-0 z-50 overflow-y-auto backdrop-filter backdrop-blur firefox:bg-opacity-90"
           onClose={closeModal}
         >
           <div className="min-h-screen px-4 text-center">
@@ -65,7 +65,7 @@ const Modal: React.FC<ModalProps> & StaticComponents = ({ children, onCloseCallb
                 <div className="mt-4 text-right">
                   <button
                     type="button"
-                    className="inline-flex justify-center px-4 py-2 text-sm font-medium text-gray-900  border border-transparent rounded-md hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                    className="inline-flex justify-center px-4 py-2 text-sm font-medium text-gray-900 border border-transparent rounded-md hover:bg-gray-200 focus:ring-1 focus-visible:ring-offset-2 focus:ring-gray-900 focus:outline-none"
                     onClick={closeModal}
                   >
                     Cancel
@@ -73,7 +73,7 @@ const Modal: React.FC<ModalProps> & StaticComponents = ({ children, onCloseCallb
                   {onCloseCallback && (
                     <button
                       type="button"
-                      className=" inline-flex ml-2 justify-center px-4 py-2 text-sm font-medium bg-gray-900 text-white border border-transparent rounded-md  focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                      className=" inline-flex ml-2 justify-center px-4 py-2 text-sm font-medium bg-gray-900 text-white border border-transparent rounded-md focus:ring-1 focus-visible:ring-offset-2 focus:ring-gray-900 focus:outline-none"
                       onClick={() => {
                         closeModal();
                         onCloseCallback();
