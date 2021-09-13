@@ -24,7 +24,7 @@ const UnitAction: React.FC<UnitActionInterface> = ({ children, onClick, disabled
           </span>
         )}
         <button
-          className="rounded-full h-8 px-2 bg-gray-100 text-gray-900 flex items-center justify-center transition hover:bg-red-500 hover:text-white disabled:cursor-not-allowed"
+          className="rounded-full h-8 px-2 bg-gray-100 text-gray-900 flex items-center justify-center transition group-hover:bg-gray-900 group-hover:text-white disabled:cursor-not-allowed"
           onClick={onClick}
           disabled={disabled}
         >

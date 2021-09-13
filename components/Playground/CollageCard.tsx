@@ -1,3 +1,4 @@
+import { blurredProduct } from '@public/images/bg-base-64';
 import Image from 'next/image';
 import React, { useContext } from 'react';
 import { DataBusContext } from 'store';
@@ -59,7 +60,7 @@ const CollageCard: React.FC<{ collage: CollageType }> = ({ collage }) => {
   return (
     <div
       data-cid={collage?._id}
-      className="group bg-white p-4"
+      className="group bg-white p-4 rounded-sm"
       draggable="true"
       onDragStart={(e) =>
         setBusData({
@@ -70,12 +71,14 @@ const CollageCard: React.FC<{ collage: CollageType }> = ({ collage }) => {
       }
     >
       <Image
-        src={`https://res.cloudinary.com/spacejoy/image/upload/c_scale,w_1000/${thumbnail}`}
-        width="800"
-        height="800"
+        src={`https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,f_auto,q_auto,w_300/${thumbnail}`}
+        width="150"
+        height="150"
         alt="Collage"
         className="object-contain transition transform scale-95 group-hover:scale-100"
         draggable={false}
+        blurDataURL={blurredProduct}
+        placeholder="blur"
       />
       <p className="text-sm pb-1 line-clamp-2 h-10">{collage?.name}</p>
       <p className="text-sm font-bold">${collage?.price?.toFixed(2) || 0}</p>

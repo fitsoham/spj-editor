@@ -7,10 +7,11 @@ import {
   ColorSwatchIcon,
   DuplicateIcon,
   NewspaperIcon,
+  ReceiptRefundIcon,
   RewindIcon,
   SortAscendingIcon,
   SortDescendingIcon,
-  TrashIcon
+  TrashIcon,
 } from '@heroicons/react/outline';
 import React, { useContext, useState } from 'react';
 import { Tween } from 'react-gsap';
@@ -29,7 +30,7 @@ const BottomNav: React.FC = () => {
     rotateAndSaveRotation,
     getRotationValue,
     PlaygroundAssets,
-    copyAsset
+    copyAsset,
   } = useContext(PlaygroundAssetsContext);
 
   const [selectedId] = useContext(SelectedIdContext);
@@ -71,30 +72,40 @@ const BottomNav: React.FC = () => {
       <Tween from={{ opacity: 0, scale: 0 }} to={{ opacity: 1, scale: 1 }} duration={1} stagger={0.5}>
         <div>
           <UnitAction position="top" title="Push Down" onClick={moveAssetLast} disabled={selectedId === ''}>
-            <RewindIcon className="h-4 w-4 transform -rotate-90" />
-          </UnitAction>
-        </div>
-        <div>
-          <UnitAction position="top" title="Step Down" onClick={moveAssetBehind} disabled={selectedId === ''}>
             <SortDescendingIcon className="h-4 w-4" />
           </UnitAction>
         </div>
         <div>
-          <UnitAction position="top" title="Step Up" onClick={moveAssetForward} disabled={selectedId === ''}>
-            <SortAscendingIcon className="h-4 w-4" />
+          <UnitAction position="top" title="Step Down" onClick={moveAssetBehind} disabled={selectedId === ''}>
+            <RewindIcon className="h-4 w-4 transform -rotate-90" />
           </UnitAction>
         </div>
         <div>
-          <UnitAction position="top" title="Pull Up" onClick={moveAssetTop} disabled={selectedId === ''}>
+          <UnitAction position="top" title="Step Up" onClick={moveAssetForward} disabled={selectedId === ''}>
             <RewindIcon className="h-4 w-4 transform rotate-90" />
           </UnitAction>
         </div>
         <div>
-          <UnitAction position="top" title="Duplicate" onClick={() => copyAsset(selectedId)} disabled={selectedId === ''}>
-            <DuplicateIcon className="h-4 w-4 transform rotate-90" />
+          <UnitAction position="top" title="Pull Up" onClick={moveAssetTop} disabled={selectedId === ''}>
+            <SortAscendingIcon className="h-4 w-4" />
           </UnitAction>
         </div>
         <div className="border border-r border-dashed" />
+        <div>
+          <UnitAction
+            position="top"
+            title="Duplicate"
+            onClick={() => copyAsset(selectedId)}
+            disabled={selectedId === ''}
+          >
+            <DuplicateIcon className="h-4 w-4 transform rotate-90" />
+          </UnitAction>
+        </div>
+        <div>
+          <UnitAction position="top" title="Swap" onClick={deleteAsset}>
+            <ReceiptRefundIcon className="h-4 w-4" />
+          </UnitAction>
+        </div>
         <div>
           <UnitAction position="top" title="Delete" onClick={deleteAsset} disabled={selectedId === ''}>
             <TrashIcon className="h-4 w-4" />

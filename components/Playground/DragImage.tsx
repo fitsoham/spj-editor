@@ -161,7 +161,7 @@ const DragImage: React.FC<DragImageInterface> = ({
           borderStroke="#9CA3AF"
           anchorSize={8}
           borderDash={[3, 3]}
-          boundBoxFunc={(oldBox, newBox) => ((newBox.width < 50 || newBox.height) < 50 ? oldBox : newBox)}
+          boundBoxFunc={(oldBox, newBox) => ((newBox.width < 10 || newBox.height) < 10 ? oldBox : newBox)}
         />
       )}
     </>

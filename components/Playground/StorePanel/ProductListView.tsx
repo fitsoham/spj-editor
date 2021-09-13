@@ -1,6 +1,4 @@
 import EmptyState from '@components/Shared/EmptyState';
-import useWindowSize from '@hooks/useWindowSize';
-import Breakpoints from '@utils/constants/BreakPoints';
 import React, { CSSProperties, useEffect, useState } from 'react';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import { FixedSizeGrid as Grid } from 'react-window';
@@ -26,8 +24,6 @@ const DesignCardRow: React.FC<{
             <div className="bg-gray-100 h-32 rounded" />
             <div className="bg-gray-100 h-2 rounded mt-2 w-16" />
             <div className="bg-gray-100 h-8 rounded mt-2" />
-            <div className="bg-gray-100 h-2 rounded mt-4 w-20" />
-            <div className="bg-gray-100 h-2 rounded mt-2" />
             <div className="bg-gray-100 h-3 rounded mt-4 w-10 " />
           </div>
         </div>
@@ -38,20 +34,12 @@ const DesignCardRow: React.FC<{
 
 const ProductListView: React.FC = () => {
   const { isItemLoaded, loadMoreItems, count } = useProductListContext();
-  const [rowHeight, setRowHeight] = useState(292);
-
-  const { width } = useWindowSize();
-  useEffect(() => {
-    if (width > Breakpoints['2xl']) {
-      if (rowHeight !== 292) setRowHeight(289);
-    } else if (rowHeight !== 292) {
-      setRowHeight(292);
-    }
-  }, [width, rowHeight]);
+  const [rowHeight] = useState(260);
 
   const gridRef = React.createRef<Grid<any>>();
 
   const { data, loading } = useProductListContext();
+
   useEffect(() => {
     if (data?.length === 0 && loading) {
       gridRef.current?.scrollToItem({
@@ -105,4 +93,4 @@ const ProductListView: React.FC = () => {
   );
 };
 
-export default ProductListView;
+export default React.memo(ProductListView);

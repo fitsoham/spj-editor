@@ -1,4 +1,5 @@
 import { ExternalLinkIcon } from '@heroicons/react/outline';
+import { blurredProduct } from '@public/images/bg-base-64';
 import AssetType from '@utils/types/AssetType';
 import Image from 'next/image';
 import React, { useContext } from 'react';
@@ -16,7 +17,7 @@ const ProductCard: React.FC<ProductCardInterface> = ({ product }) => {
   return (
     <div
       title={product?.name}
-      className="group bg-white p-2 h-full"
+      className="group bg-white h-full rounded-sm"
       draggable="true"
       onDragStart={() =>
         setBusData({
@@ -35,27 +36,23 @@ const ProductCard: React.FC<ProductCardInterface> = ({ product }) => {
         })
       }
     >
-      <div className="next-image-fix h-32">
+      <div className="next-image-fix p-4">
         <Image
           src={`https://res.cloudinary.com/spacejoy/image/upload/${productThumbnail}`}
-          width={250}
-          height={250}
+          width={150}
+          height={150}
           alt={product?.name}
           className="object-contain transition transform scale-95 group-hover:scale-100"
           draggable={false}
+          blurDataURL={blurredProduct}
+          placeholder="blur"
         />
       </div>
-      <div className="p-2">
-        <small className="text-xs text-gray-500 group-hover:text-red-500">{product?.retailer}</small>
+      <div className="px-4">
+        <small className="text-xs text-gray-500 capitalize">{product?.retailer}</small>
         <p className="text-sm line-clamp-2 h-10">{product?.name}</p>
-        <small className="inline-block text-xs text-gray-500 leading-4 py-2">
-          H x W x D: <br />
-          {`${product?.height.toFixed(2).toString()}" x 
-     ${product?.width.toFixed(2).toString()}" x 
-     ${product?.depth.toFixed(2).toString()}"`}
-        </small>
-        <div className="flex justify-between items-center">
-          <p className="text-sm font-bold">${product.displayPrice}</p>
+        <div className="flex justify-between items-center mt-1">
+          <p className="font-bold">${product.displayPrice}</p>
           <a
             target="_blank"
             href={`https://www.spacejoy.com/product-view/${product._id}`}
