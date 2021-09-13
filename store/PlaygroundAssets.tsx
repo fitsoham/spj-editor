@@ -116,7 +116,9 @@ const PlaygroundAssetsContext = React.createContext<PlaygroundAssetContextType>(
   getRotationValue: () => {
     return -1;
   },
-  copyAsset: () => { return []}
+  copyAsset: () => {
+    return [];
+  },
 });
 
 const initData: PlaygroundAssetType[] = [];
@@ -194,15 +196,20 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
     setPlaygroundAssets(tmpAssetList);
   };
 
-  const copyAsset = (selectedId) => { 
+  const copyAsset = (selectedId) => {
     const selectedIndex = getSelectedIndex(selectedId);
     const selectedItem = [...PlaygroundAssets].filter((item) => item?.id === selectedId)[0];
-    const newItem = {...selectedItem, id: `in-playground-asset-${PlaygroundAssets.length}-${Math.random()}`, x: selectedItem?.x + 200, rotationValue:"0"};
+    console.log(`selectedItem`, selectedItem);
+    const newItem = {
+      ...selectedItem,
+      id: `in-playground-asset-${PlaygroundAssets.length}-${Math.random()}`,
+      x: selectedItem?.x + 100 * Math.random(),
+      y: selectedItem?.y + 100 * Math.random(),
+    };
     const tmp = [...PlaygroundAssets];
     tmp.splice(selectedIndex + 1, 0, newItem);
     setPlaygroundAssets(tmp);
-  }
-
+  };
 
   const clearBoard = () => {
     setPlaygroundAssets([]), setSelectedId('');
@@ -249,7 +256,7 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
         setPlaygroundTotal,
         activeCollages,
         setActiveCollages,
-        copyAsset
+        copyAsset,
       }}
     >
       {children}
