@@ -199,7 +199,7 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
     const selectedItem = [...PlaygroundAssets].filter((item) => item?.id === selectedId)[0];
     const newItem = {...selectedItem, id: `in-playground-asset-${PlaygroundAssets.length}-${Math.random()}`, x: selectedItem?.x + 200, rotationValue:"0"};
     const tmp = [...PlaygroundAssets];
-    tmp.splice(selectedIndex + 1, 1, newItem);
+    tmp.splice(selectedIndex + 1, 0, newItem);
     setPlaygroundAssets(tmp);
   }
 
