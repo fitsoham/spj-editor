@@ -155,6 +155,7 @@ const DragImage: React.FC<DragImageInterface> = ({
           className="transform-boundary"
           ref={trRef}
           keepRatio={true}
+          rotationSnaps={[0, 45, 90, 135, 180, 225, 270]}
           enabledAnchors={['top-left', 'top-right', 'bottom-left', 'bottom-right']}
           anchorStroke="#9CA3AF"
           anchorFill="#F3F4F6"
