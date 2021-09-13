@@ -43,8 +43,10 @@ const VisualBoard: React.FC = () => {
                     <NavPanel />
                   </div>
                   <div className="bg-gray-100 diy-h-free w-3/4 py-4 pl-4 flex flex-col space-y-4">
-                    <BudgetCalculator />
-                    <div className="bg-white shadow-sm h-full flex-1" ref={PlaygroundWrapperRef}>
+                    <div className="bg-white shadow-sm p-4 rounded-sm">
+                      <BudgetCalculator />
+                    </div>
+                    <div className="bg-white shadow-sm h-full flex-1 rounded-sm" ref={PlaygroundWrapperRef}>
                       <PlaygroundWithNoSSR w={size[0]} h={size[1]} />
                     </div>
                     <BottomNav />
