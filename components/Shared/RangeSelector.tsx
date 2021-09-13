@@ -20,8 +20,8 @@ const RangeSelector: React.FC<SliderType> = ({ minMax = [0, 100], value, onChang
   };
 
   return (
-    <div className="bg-gray-100 p-3 rounded-full">
-      <div className="bg-white py-4 px-2 rounded-full flex items-center">
+    <div className="bg-white rounded-full">
+      <div className="py-4 px-2 rounded-full flex items-center">
         <div className="px-4">${minMax[0]}</div>
         <RangeWithTooltip
           tipFormatter={(value) => <>${value}</>}

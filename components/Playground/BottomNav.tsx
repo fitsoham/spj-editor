@@ -90,7 +90,7 @@ const BottomNav: React.FC = () => {
             <SortAscendingIcon className="h-4 w-4" />
           </UnitAction>
         </div>
-        <div className="border border-r border-dashed" />
+        <div className="border-px border-r border-dashed" />
         <div>
           <UnitAction
             position="top"
@@ -102,7 +102,7 @@ const BottomNav: React.FC = () => {
           </UnitAction>
         </div>
         <div>
-          <UnitAction position="top" title="Swap" onClick={deleteAsset}>
+          <UnitAction position="top" title="Swap" disabled>
             <ReceiptRefundIcon className="h-4 w-4" />
           </UnitAction>
         </div>
@@ -111,7 +111,7 @@ const BottomNav: React.FC = () => {
             <TrashIcon className="h-4 w-4" />
           </UnitAction>
         </div>
-        <div className="border border-r border-dashed" />
+        <div className="border-px border-r border-dashed" />
         <div>
           <UnitAction position="top" onClick={openDrawer} title="Room Views">
             <ColorSwatchIcon className="h-4 w-4" />
@@ -123,7 +123,7 @@ const BottomNav: React.FC = () => {
             </Drawer.Body>
           </Drawer>
         </div>
-        <div className="border border-r border-dashed" />
+        <div className="border-px border-r border-dashed" />
         <div>
           <Modal onCloseCallback={clearBoard} disabled={!PlaygroundAssets?.length}>
             <Modal.Button>
@@ -139,7 +139,7 @@ const BottomNav: React.FC = () => {
             </Modal.Body>
           </Modal>
         </div>
-        <div className="border border-r border-dashed" />
+        <div className="border-px border-r border-dashed" />
         <div>
           <UnitAction position="top" onClick={openFormDrawer} disabled={!PlaygroundAssets?.length} title="Publish">
             <NewspaperIcon className="h-4 w-4" />

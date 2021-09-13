@@ -24,7 +24,9 @@ const UnitAction: React.FC<UnitActionInterface> = ({ children, onClick, disabled
           </span>
         )}
         <button
-          className="rounded-full h-8 px-2 bg-gray-100 text-gray-900 flex items-center justify-center transition group-hover:bg-gray-900 group-hover:text-white disabled:cursor-not-allowed"
+          className={`rounded-full h-8 px-2 bg-gray-100 text-gray-900 flex items-center justify-center transition ${
+            !disabled && 'group-hover:bg-gray-900 group-hover:text-white'
+          } disabled:cursor-not-allowed disabled:opacity-50`}
           onClick={onClick}
           disabled={disabled}
         >
@@ -34,7 +36,13 @@ const UnitAction: React.FC<UnitActionInterface> = ({ children, onClick, disabled
     );
   }
   return (
-    <div className="rounded-full h-8 px-4 bg-gray-100 text-gray-900 flex items-center justify-center">{children}</div>
+    <div
+      className={`rounded-full h-8 px-4 bg-gray-100 text-gray-900 flex items-center justify-center ${
+        disabled && 'group-hover:bg-gray-900 group-hover:text-white opacity-50'
+      }`}
+    >
+      {children}
+    </div>
   );
 };
 

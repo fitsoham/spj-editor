@@ -49,7 +49,7 @@ const RetailerFilter: React.FC = () => {
     <div className="gap-4 flex flex-col relative flex-grow">
       <div className="sticky top-3">
         <Tab.Group onChange={onTabChange}>
-          <Tab.List className="w-full bg-gray-100 flex p-2 rounded-full text-sm gap-2 overflow-x-auto ">
+          <Tab.List className="w-full bg-white flex p-2 rounded-full text-sm gap-2 overflow-x-auto ">
             {Object.entries(filterRegex).map(([label]) => (
               <Tab key={label}>
                 {({ selected }) => (

@@ -25,15 +25,15 @@ const PriceFilter: React.FC = () => {
 
   return (
     <div className="h-full flex flex-col flex-grow justify-center items-center">
-      <div className="w-9/12 ">
+      <div className="w-9/12">
         <RangeSelector onChange={handleChange} value={value} minMax={[0, 5000]} />
-        <div className="flex justify-center gap-2 ">
-          <div className="bg-gray-100 rounded-b-xl px-2 flex justify-between flex-col">
-            <div className="w-full text-center text-xs text-gray-400">Selected range</div>
-            <div className="w-52 flex mx-auto justify-center">
-              <div className="p-2 text-sm w-2/5 flex-shrink-0">${value[0]}</div>
-              <div className="p-2 text-sm">to </div>
-              <div className="text-right p-2 text-sm w-2/5 flex-shrink-0">${value[1]}</div>
+        <div className="flex justify-center gap-2 mt-4">
+          <div className="flex justify-between flex-col">
+            <div className="w-full text-center text-xs text-gray-400">Selected price range</div>
+            <div className="flex mx-auto justify-center mt-1">
+              <div className="px-2 text-sm">${value[0]}</div>
+              <div className="px-2 text-sm">to </div>
+              <div className="text-right px-2 text-sm">${value[1]}</div>
             </div>
           </div>
         </div>

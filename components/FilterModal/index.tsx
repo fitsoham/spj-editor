@@ -54,7 +54,7 @@ const FilterModal: React.FC<FilterModal> = ({ isOpen, onClose, type, onApply, as
                     </Tab>
                   ))}
                 </Tab.List>
-                <Tab.Panels className="flex-grow h-full overflow-scroll">
+                <Tab.Panels className="flex-grow h-full overflow-scroll bg-gray-100">
                   {tabButtons.map((tab) => (
                     <Tab.Panel key={tab?.id} className="p-4 pr-0 h-full flex flex-col">
                       <div className="my-2 flex-grow flex flex-col">
