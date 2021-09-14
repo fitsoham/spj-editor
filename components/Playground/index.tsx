@@ -10,7 +10,7 @@ import { Stage as StageType } from 'konva/lib/Stage';
 import Image from 'next/image';
 import React, { useContext, useRef, useState } from 'react';
 import { Tween } from 'react-gsap';
-import { Image as Img, Layer, Line, Rect, Stage } from 'react-konva';
+import { Group, Image as Img, Layer, Line, Rect, Stage } from 'react-konva';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { DataBusContext } from 'store';
@@ -44,6 +44,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     activeCollages,
   } = useContext(PlaygroundAssetsContext);
   const [selectedId, setSelectedId] = useContext(SelectedIdContext);
+  const itemsRef = useRef([]);
   const {
     bgImgUrl: { value: bgValue, type: bgType },
   } = bg;
@@ -68,7 +69,16 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
       stageRef.current?.findOne('.background-color-wall')?.show();
       const fileRes = await b64toFile(uri);
 
-      const payload = PlaygroundAssets.map((asset) => {
+      const formatted = PlaygroundAssets.map((item) => { 
+        if (item?.type === 'collage') { 
+          return item?.data;
+        }
+        return {...item}
+      })
+      const mergedArray = [].concat(...formatted);
+
+
+      const payload = mergedArray.map((asset) => {
         return {
           ...(asset?.playgroundHeight && {
             playgroundScale: { width: asset?.playgroundWidth, height: asset?.playgroundHeight },
@@ -410,12 +420,12 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
             productThumbnail: renderImages[0].cdn,
             stitchedAssetImage: image?.originalCdn,
             price,
+            type: 'asset',
           },
         ])
       );
     }
     if (busData.type === 'collage') {
-      const tmp = [...PlaygroundAssets];
       const { id } = busData;
       setActiveCollages([...activeCollages, id]);
       const productIds = busData?.data?.map((item) => item?.assetId);
@@ -427,19 +437,54 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
       });
       const { data, statusCode } = res;
       const isError = statusCode < 300 ? false : true;
+      console.log('bus data ---', busData);
 
-      busData.data.map((asset) =>
-        tmp.push({
-          ...asset,
-          id: `in-playground-asset-${PlaygroundAssets.length}-${Math.random()}`,
-          price: !isError ? data[asset?.assetId]?.price : 0,
+      const collageData = { 
+        ...busData,
+        data: busData?.data?.map((item) => {
+          return {
+            ...item,
+            id: `in-playground-asset-${PlaygroundAssets.length}-${Math.random()}`,
+            price: !isError ? data[item?.assetId]?.price : 0,
+          }
         })
-      );
-      setPlaygroundAssets(tmp);
+      }
+
+      console.log(collageData);
+      const newPlaygroundData = [...PlaygroundAssets, collageData];
+      console.log(newPlaygroundData);
+      setPlaygroundAssets(newPlaygroundData);
+      // busData.data.map((asset) =>
+      //   tmp.push({
+      //     ...asset,
+      //     id: `in-playground-asset-${PlaygroundAssets.length}-${Math.random()}`,
+      //     price: !isError ? data[asset?.assetId]?.price : 0,
+      //   })
+      // );
+      // setPlaygroundAssets(tmp);
     }
   };
 
   // save collage
+
+  const onCollageDragEnd = (collageId, currentGroup) => {
+    const upatedAssetArray = [...PlaygroundAssets].map((item) => { 
+      if (item?.id === collageId) { 
+        return {
+          ...item, 
+          data: item?.data?.map((asset, index) => {
+            return {
+              ...asset,
+              x: currentGroup?.children[index].getAbsolutePosition().x,
+              y: currentGroup?.children[index].getAbsolutePosition().y,
+            }
+          })
+        }
+      }
+      return {...item}
+    })
+    setPlaygroundAssets(upatedAssetArray);
+  }
 
   return (
     <>
@@ -506,6 +551,52 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
             {guides.map((item, i) => {
               return <Line key={i} {...item} />;
             })}
+
+            {
+              PlaygroundAssets?.map((playgroundItem, index) => { 
+                return playgroundItem?.type === 'collage' ? (
+                  <Group draggable onDragEnd={() => onCollageDragEnd(playgroundItem?.id, itemsRef?.current[index])} ref={el => itemsRef.current[index] = el} >
+                    {
+                      playgroundItem?.data?.map((item, i) => { 
+                        return (
+                          <DragImage
+                            index={i}
+                            key={item.id}
+                            image={item}
+                            rotationValue={getRotationValue(item?.id)}
+                            isSelected={item.id === selectedId}
+                            onSelect={() => setSelectedId(item.id)}
+                            belongsToGroup
+                            onChange={(newAttrs): void => {
+                              const tmp = [...PlaygroundAssets];
+                              tmp[i] = newAttrs;
+                              setPlaygroundAssets(tmp);
+                            }}
+                          />
+                        )
+                      })
+                    }
+                  </Group>
+                ) : (
+                  <DragImage
+                    index={index}
+                    belongsToGroup={false}
+                    key={playgroundItem?.id}
+                    image={playgroundItem}
+                    rotationValue={getRotationValue(playgroundItem?.id)}
+                    isSelected={playgroundItem.id === selectedId}
+                    onSelect={() => setSelectedId(playgroundItem.id)}
+                    onChange={(newAttrs): void => {
+                      const tmp = [...PlaygroundAssets];
+                      tmp[index] = newAttrs;
+                      setPlaygroundAssets(tmp);
+                    }}
+                  />
+                )
+              })
+            }
+
+{/* 
             {PlaygroundAssets?.map((image, i) => (
               <DragImage
                 index={i}
@@ -520,7 +611,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
                   setPlaygroundAssets(tmp);
                 }}
               />
-            ))}
+            ))} */}
           </Layer>
         </Stage>
       </div>

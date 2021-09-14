@@ -11,6 +11,7 @@ interface DragImageInterface {
   onSelect: () => void;
   onChange: (newAttrs) => void;
   rotationValue?: number;
+  belongsToGroup: boolean;
 }
 
 const initialState = {
@@ -51,13 +52,12 @@ const DragImage: React.FC<DragImageInterface> = ({
   onSelect,
   onChange,
   rotationValue = '0',
+  belongsToGroup
 }) => {
   const toastId = React.useRef(null);
   const notify = () => (toastId.current = toast('Product is loading in background ', { autoClose: false }));
   const dismiss = () => toast.dismiss(toastId.current);
-
   const [state, dispatch] = useReducer(reducer, image || initialState);
-
   const trRef = useRef(null);
   const AssetRef = useRef(null);
 
@@ -106,7 +106,7 @@ const DragImage: React.FC<DragImageInterface> = ({
 
   const height = img?.height || 0;
   const width = img?.width / image.count || 0;
-
+  const draggableProps = {draggable: !belongsToGroup }
   return (
     <>
       {status === 'loading' ? (
@@ -122,7 +122,7 @@ const DragImage: React.FC<DragImageInterface> = ({
         </>
       ) : (
         <Sprite
-          draggable
+          {...draggableProps}
           ref={AssetRef}
           alt={state?.name}
           name="object"
@@ -150,7 +150,7 @@ const DragImage: React.FC<DragImageInterface> = ({
         />
       )}
 
-      {isSelected && (
+      {isSelected && !belongsToGroup && (
         <Transformer
           className="transform-boundary"
           ref={trRef}

@@ -143,11 +143,20 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
     }
   };
   React.useEffect(() => {
-    console.log(PlaygroundAssets);
-    if (!PlaygroundAssets.length) {
+    console.log('updated assets ---', PlaygroundAssets);
+    
+    const formatted = PlaygroundAssets.map((item) => { 
+      if (item?.type === 'collage') { 
+        return item?.data;
+      }
+      return {...item}
+    })
+    const mergedArray = [].concat(...formatted);
+
+    if (!mergedArray.length) {
       setPlaygroundTotal(0);
     } else {
-      const currentPlaygroundTotal = PlaygroundAssets.reduce((acc, currValue) => {
+      const currentPlaygroundTotal = mergedArray.reduce((acc, currValue) => {
         return acc + currValue?.price;
       }, 0);
       setPlaygroundTotal(currentPlaygroundTotal);
@@ -226,11 +235,33 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
   };
 
   const getRotationValue = (selectedId) => {
-    return parseInt([...PlaygroundAssets].filter((item) => item?.id === selectedId)[0]?.rotationValue, 10) || 0;
+    let rotationValue = 0;
+    PlaygroundAssets.forEach((item) => { 
+      if (item?.type === 'collage') {
+        item?.data?.forEach((collageItem) => { 
+          if (collageItem?.id === selectedId) { 
+            rotationValue = parseInt(collageItem?.rotationValue, 10) || 0;
+          }
+        })
+      } else if (item?.id === selectedId) {
+        rotationValue = parseInt(item?.rotationValue, 10) || 0;
+      } 
+    })
+    return rotationValue;
   };
   const [selectedCategoryId, setSelectedCategoryId] = useState('');
   const [selectedSubCategoryId, setSelectedSubCategoryId] = useState('');
   const [isCollageActive, setCollageActiveStatus] = useState(true);
+  const unGroupAssets = () => { 
+    const formatted = PlaygroundAssets.map((item) => { 
+      if (item?.type === 'collage') { 
+        return item?.data;
+      }
+      return {...item}
+    })
+    const mergedArray = [].concat(...formatted);
+    setPlaygroundAssets(mergedArray);
+  }
   return (
     <PlaygroundAssetsContext.Provider
       value={{
@@ -257,6 +288,7 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
         activeCollages,
         setActiveCollages,
         copyAsset,
+        unGroupAssets
       }}
     >
       {children}

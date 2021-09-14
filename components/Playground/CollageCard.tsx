@@ -1,8 +1,12 @@
 import { blurredProduct } from '@public/images/bg-base-64';
+import dayjs from 'dayjs';
+import RelativeTime from 'dayjs/plugin/relativeTime';
 import Image from 'next/image';
 import React, { useContext } from 'react';
 import { DataBusContext } from 'store';
 import { CollageType } from 'store/CollageList';
+
+dayjs.extend(RelativeTime);
 
 export interface ProcessedCollageType {
   x: number;
@@ -60,7 +64,7 @@ const CollageCard: React.FC<{ collage: CollageType }> = ({ collage }) => {
   return (
     <div
       data-cid={collage?._id}
-      className="group bg-white p-4 rounded-sm"
+      className="group bg-white p-4 rounded-sm relative"
       draggable="true"
       onDragStart={(e) =>
         setBusData({
@@ -69,7 +73,8 @@ const CollageCard: React.FC<{ collage: CollageType }> = ({ collage }) => {
           data: processedView,
         })
       }
-    >
+    > 
+      <span className="text-xs text-gray-500 absolute capitalize">{dayjs(new Date(collage?.createdAt)).fromNow(true)} ago</span>
       <Image
         src={`https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,f_auto,q_auto,w_300/${thumbnail}`}
         width="150"

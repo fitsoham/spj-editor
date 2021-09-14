@@ -6,12 +6,12 @@ import PublishForm from '@components/Shared/PublishForm';
 import {
   ColorSwatchIcon,
   DuplicateIcon,
-  NewspaperIcon,
+  LinkIcon, NewspaperIcon,
   ReceiptRefundIcon,
   RewindIcon,
   SortAscendingIcon,
   SortDescendingIcon,
-  TrashIcon,
+  TrashIcon
 } from '@heroicons/react/outline';
 import React, { useContext, useState } from 'react';
 import { Tween } from 'react-gsap';
@@ -31,7 +31,10 @@ const BottomNav: React.FC = () => {
     getRotationValue,
     PlaygroundAssets,
     copyAsset,
+    unGroupAssets
   } = useContext(PlaygroundAssetsContext);
+  const doesGroupedCollagedExist = PlaygroundAssets.some((item) => item?.type === 'collage');
+  console.log('does group exist', doesGroupedCollagedExist);
 
   const [selectedId] = useContext(SelectedIdContext);
 
@@ -104,6 +107,11 @@ const BottomNav: React.FC = () => {
         <div>
           <UnitAction position="top" title="Swap" disabled>
             <ReceiptRefundIcon className="h-4 w-4" />
+          </UnitAction>
+        </div>
+        <div>
+          <UnitAction position="top" title="Un Group" onClick={unGroupAssets} disabled={!doesGroupedCollagedExist}>
+            <LinkIcon className="h-4 w-4" />
           </UnitAction>
         </div>
         <div>
