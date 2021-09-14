@@ -1,15 +1,15 @@
 import React, { useContext } from 'react';
 import { PlaygroundAssetsContext } from 'store/PlaygroundAssets';
 
-const BudgetCalculator: React.FC = () => {
+const ProductProps: React.FC = () => {
   const { playgroundTotal } = useContext(PlaygroundAssetsContext);
   if (playgroundTotal)
     return (
       <p className="text-sm text-gray-900">
-        Budget: <strong>${playgroundTotal.toFixed(2)}</strong>{' '}
+        Name: <strong>${playgroundTotal.toFixed(2)}</strong>{' '}
       </p>
     );
-  else return <p className="text-sm text-gray-400 text-center">Estimated Budget</p>;
+  else return <p className="text-sm text-gray-400 text-center">Product Details</p>;
 };
 
-export default BudgetCalculator;
+export default ProductProps;

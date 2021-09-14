@@ -76,7 +76,7 @@ const DragImage: React.FC<DragImageInterface> = ({
 
   const animations = getAnimationObject(img?.width / image.count, img?.height);
   useEffect(() => {
-    if (trRef && isSelected) {
+    if (trRef && trRef?.current && isSelected) {
       trRef?.current?.nodes([AssetRef.current]);
       trRef?.current?.getLayer().batchDraw();
     } else {
@@ -157,9 +157,9 @@ const DragImage: React.FC<DragImageInterface> = ({
           keepRatio={true}
           rotationSnaps={[0, 45, 90, 135, 180, 225, 270]}
           enabledAnchors={['top-left', 'top-right', 'bottom-left', 'bottom-right']}
-          anchorStroke="#9CA3AF"
-          anchorFill="#F3F4F6"
-          borderStroke="#9CA3AF"
+          anchorFill="#FEE2E2"
+          anchorStroke="#EF4444"
+          borderStroke="#EF4444"
           anchorSize={8}
           borderDash={[3, 3]}
           boundBoxFunc={(oldBox, newBox) => ((newBox.width < 10 || newBox.height) < 10 ? oldBox : newBox)}

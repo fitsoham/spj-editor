@@ -17,7 +17,7 @@ const ProductCard: React.FC<ProductCardInterface> = ({ product }) => {
   return (
     <div
       title={product?.name}
-      className="group bg-white h-full rounded-sm"
+      className="relative group bg-white h-full rounded-sm cursor-move cursor-grab"
       draggable="true"
       onDragStart={() =>
         setBusData({
@@ -36,13 +36,20 @@ const ProductCard: React.FC<ProductCardInterface> = ({ product }) => {
         })
       }
     >
+      <div className="rounded-sm absolute inset-x-0 top-0 z-10 bg-gray-100 px-4 py-1 shadow-xs transition transform -translate-y-12 group-hover:translate-y-0">
+        <p className="text-center text-xs text-gray-500 leading-4">
+          {`${product?.height.toFixed(2).toString()}" x 
+          ${product?.width.toFixed(2).toString()}" x 
+          ${product?.depth.toFixed(2).toString()}"`}
+        </p>
+      </div>
       <div className="next-image-fix p-4">
         <Image
           src={`https://res.cloudinary.com/spacejoy/image/upload/${productThumbnail}`}
           width={150}
           height={150}
           alt={product?.name}
-          className="object-contain transition transform scale-95 group-hover:scale-100"
+          className="object-contain"
           draggable={false}
           blurDataURL={blurredProduct}
           placeholder="blur"
@@ -56,7 +63,7 @@ const ProductCard: React.FC<ProductCardInterface> = ({ product }) => {
           <a
             target="_blank"
             href={`https://www.spacejoy.com/product-view/${product._id}`}
-            className="text-white scale-0 group-hover:text-gray-700 transition transform group-hover:scale-100"
+            className="text-gray-500 transition transform translate-y-10 opacity-0 group-hover:opacity-100 group-hover:translate-y-0"
             rel="noreferrer"
           >
             <ExternalLinkIcon className="w-4 h-4" />

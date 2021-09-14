@@ -4,6 +4,7 @@ import MoreActions from '@components/Playground/MoreActions';
 import NavPanel from '@components/Playground/NavPanel';
 import SideNav from '@components/Playground/SideNav';
 import BudgetCalculator from '@components/Shared/BudgetCalculator';
+import ProductProps from '@components/Shared/ProductProps';
 import dynamic from 'next/dynamic';
 import React, { useEffect, useRef, useState } from 'react';
 import { DataBusContextProvider } from 'store';
@@ -43,8 +44,13 @@ const VisualBoard: React.FC = () => {
                     <NavPanel />
                   </div>
                   <div className="bg-gray-100 diy-h-free w-3/4 py-4 pl-4 flex flex-col space-y-4">
-                    <div className="bg-white shadow-sm p-4 rounded-sm">
-                      <BudgetCalculator />
+                    <div className="flex space-x-4 items-center">
+                      <div className="bg-white shadow-sm px-4 rounded-sm h-14 flex items-center w-60">
+                        <BudgetCalculator />
+                      </div>
+                      <div className="bg-white shadow-sm px-4 rounded-sm h-14 flex items-center flex-1">
+                        <ProductProps />
+                      </div>
                     </div>
                     <div className="bg-white shadow-sm h-full flex-1 rounded-sm" ref={PlaygroundWrapperRef}>
                       <PlaygroundWithNoSSR w={size[0]} h={size[1]} />
