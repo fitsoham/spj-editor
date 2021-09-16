@@ -69,14 +69,13 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
       stageRef.current?.findOne('.background-color-wall')?.show();
       const fileRes = await b64toFile(uri);
 
-      const formatted = PlaygroundAssets.map((item) => { 
-        if (item?.type === 'collage') { 
+      const formatted = PlaygroundAssets.map((item) => {
+        if (item?.type === 'collage') {
           return item?.data;
         }
-        return {...item}
-      })
+        return { ...item };
+      });
       const mergedArray = [].concat(...formatted);
-
 
       const payload = mergedArray.map((asset) => {
         return {
@@ -441,24 +440,24 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
       const { data, statusCode } = res;
       console.log('data is ---', data);
       const isError = statusCode < 300 ? false : true;
-      const collageData = { 
+      const collageData = {
         ...busData,
         data: busData?.data?.map((item) => {
-          console.log('asset item --',item);
+          console.log('asset item --', item);
           return {
             ...item,
             id: `in-playground-asset-${PlaygroundAssets.length}-${Math.random()}`,
             price: !isError ? data[item?.assetId]?.price : 0,
             displayPrice: !isError ? data[item?.assetId]?.price : 0,
             retailer: !isError ? data[item?.assetId]?.retailer?.name : '',
-            renderImages: !isError ? data[item?.assetId]?.renderImages : [{cdn: ''}],
+            renderImages: !isError ? data[item?.assetId]?.renderImages : [{ cdn: '' }],
             name: !isError ? data[item?.assetId]?.name : '',
             depth: !isError ? data[item?.assetId]?.dimension?.depth : 0,
-          }
-        })
-      }
+          };
+        }),
+      };
       const newPlaygroundData = [...PlaygroundAssets, collageData];
-      
+
       setPlaygroundAssets(newPlaygroundData);
       // busData.data.map((asset) =>
       //   tmp.push({
@@ -474,23 +473,23 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
   // save collage
 
   const onCollageDragEnd = (collageId, currentGroup) => {
-    const upatedAssetArray = [...PlaygroundAssets].map((item) => { 
-      if (item?.id === collageId) { 
+    const upatedAssetArray = [...PlaygroundAssets].map((item) => {
+      if (item?.id === collageId) {
         return {
-          ...item, 
+          ...item,
           data: item?.data?.map((asset, index) => {
             return {
               ...asset,
               x: currentGroup?.children[index].getAbsolutePosition().x,
               y: currentGroup?.children[index].getAbsolutePosition().y,
-            }
-          })
-        }
+            };
+          }),
+        };
       }
-      return {...item}
-    })
+      return { ...item };
+    });
     setPlaygroundAssets(upatedAssetArray);
-  }
+  };
 
   return (
     <>
@@ -558,51 +557,51 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
               return <Line key={i} {...item} />;
             })}
 
-            {
-              PlaygroundAssets?.map((playgroundItem, index) => { 
-                return playgroundItem?.type === 'collage' ? (
-                  <Group draggable onDragEnd={() => onCollageDragEnd(playgroundItem?.id, itemsRef?.current[index])} ref={el => itemsRef.current[index] = el} >
-                    {
-                      playgroundItem?.data?.map((item, i) => { 
-                        return (
-                          <DragImage
-                            index={i}
-                            key={item.id}
-                            image={item}
-                            rotationValue={getRotationValue(item?.id)}
-                            isSelected={item.id === selectedId}
-                            onSelect={() => setSelectedId(item.id)}
-                            belongsToGroup
-                            onChange={(newAttrs): void => {
-                              const tmp = [...PlaygroundAssets];
-                              tmp[i] = newAttrs;
-                              setPlaygroundAssets(tmp);
-                            }}
-                          />
-                        )
-                      })
-                    }
-                  </Group>
-                ) : (
-                  <DragImage
-                    index={index}
-                    belongsToGroup={false}
-                    key={playgroundItem?.id}
-                    image={playgroundItem}
-                    rotationValue={getRotationValue(playgroundItem?.id)}
-                    isSelected={playgroundItem.id === selectedId}
-                    onSelect={() => setSelectedId(playgroundItem.id)}
-                    onChange={(newAttrs): void => {
-                      const tmp = [...PlaygroundAssets];
-                      tmp[index] = newAttrs;
-                      setPlaygroundAssets(tmp);
-                    }}
-                  />
-                )
-              })
-            }
+            {PlaygroundAssets?.map((playgroundItem, index) => {
+              return playgroundItem?.type === 'collage' ? (
+                <Group
+                  draggable
+                  onDragEnd={() => onCollageDragEnd(playgroundItem?.id, itemsRef?.current[index])}
+                  ref={(el) => (itemsRef.current[index] = el)}
+                >
+                  {playgroundItem?.data?.map((item, i) => {
+                    return (
+                      <DragImage
+                        index={i}
+                        key={item.id}
+                        image={item}
+                        rotationValue={getRotationValue(item?.id)}
+                        isSelected={item.id === selectedId}
+                        onSelect={() => setSelectedId(item.id)}
+                        belongsToGroup
+                        onChange={(newAttrs): void => {
+                          const tmp = [...PlaygroundAssets];
+                          tmp[i] = newAttrs;
+                          setPlaygroundAssets(tmp);
+                        }}
+                      />
+                    );
+                  })}
+                </Group>
+              ) : (
+                <DragImage
+                  index={index}
+                  belongsToGroup={false}
+                  key={playgroundItem?.id}
+                  image={playgroundItem}
+                  rotationValue={getRotationValue(playgroundItem?.id)}
+                  isSelected={playgroundItem.id === selectedId}
+                  onSelect={() => setSelectedId(playgroundItem.id)}
+                  onChange={(newAttrs): void => {
+                    const tmp = [...PlaygroundAssets];
+                    tmp[index] = newAttrs;
+                    setPlaygroundAssets(tmp);
+                  }}
+                />
+              );
+            })}
 
-{/* 
+            {/* 
             {PlaygroundAssets?.map((image, i) => (
               <DragImage
                 index={i}

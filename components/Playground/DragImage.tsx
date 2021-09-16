@@ -52,7 +52,7 @@ const DragImage: React.FC<DragImageInterface> = ({
   onSelect,
   onChange,
   rotationValue = '0',
-  belongsToGroup
+  belongsToGroup,
 }) => {
   const toastId = React.useRef(null);
   const notify = () => (toastId.current = toast('Product is loading in background ', { autoClose: false }));
@@ -106,7 +106,7 @@ const DragImage: React.FC<DragImageInterface> = ({
 
   const height = img?.height || 0;
   const width = img?.width / image.count || 0;
-  const draggableProps = {draggable: !belongsToGroup }
+  const draggableProps = { draggable: !belongsToGroup };
   return (
     <>
       {status === 'loading' ? (
