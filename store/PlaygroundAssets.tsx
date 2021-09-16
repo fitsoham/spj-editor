@@ -4,10 +4,12 @@ import { SelectedIdContext } from './SelectedId';
 // ========================= TYPES =========================
 
 export interface PlaygroundAssetType {
+  type?: string;
+  data?: Array<PlaygroundAssetType>;
   id: string;
   src?: string;
-  x: number;
-  y: number;
+  x?: number;
+  y?: number;
   height?: number;
   assetId?: string;
   width?: number;
@@ -24,7 +26,8 @@ export interface PlaygroundAssetType {
   playgroundHeight?: number;
   playgroundWidth?: number;
   renderImages?: { cdn: string }[];
-  price: number;
+  price?: number;
+  selected?: boolean;
 }
 
 interface PlaygroundAssetContextType {
@@ -54,6 +57,7 @@ interface PlaygroundAssetContextType {
   activeCollages: Array<string>;
   setActiveCollages: React.Dispatch<React.SetStateAction<Array<string>>>;
   copyAsset: (selectedId: string) => void;
+  unGroupAssets: () => void;
 }
 
 // ========================= TYPES =========================
@@ -119,6 +123,7 @@ const PlaygroundAssetsContext = React.createContext<PlaygroundAssetContextType>(
   copyAsset: () => {
     return [];
   },
+  unGroupAssets: () => { return}
 });
 
 const initData: PlaygroundAssetType[] = [];
