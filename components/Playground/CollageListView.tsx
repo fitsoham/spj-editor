@@ -7,7 +7,7 @@ import { FixedSizeGrid as Grid } from 'react-window';
 import InfiniteLoader from 'react-window-infinite-loader';
 import { useCollageListContext } from 'store/CollageList';
 
-const cardHeight = 225;
+const cardHeight = 230;
 
 const DesignCardRow: React.FC<{
   columnIndex: number;
@@ -44,7 +44,7 @@ const CollageListView: React.FC = () => {
     if (width > Breakpoints['2xl']) {
       if (rowHeight !== cardHeight) setRowHeight(cardHeight);
     } else if (rowHeight !== cardHeight) {
-      setRowHeight(205);
+      setRowHeight(210);
     }
   }, [width, rowHeight]);
 

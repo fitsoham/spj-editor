@@ -7,17 +7,21 @@ import { DataBusContext } from 'store';
 
 interface ProductCardInterface {
   product: AssetType;
+  isDraggable: boolean;
 }
 
-const ProductCard: React.FC<ProductCardInterface> = ({ product }) => {
+const ProductCard: React.FC<ProductCardInterface> = ({ product, isDraggable }) => {
   const { setBusData } = useContext(DataBusContext);
   const productThumbnail = product?.renderImages
     ? product?.renderImages[0]?.cdn
     : 'v1623166775/Untitled-1-12_iah06e.jpg';
+  
+  
+
   return (
     <div
       title={product?.name}
-      className="relative group bg-white h-full rounded-sm cursor-move cursor-grab"
+      className="relative group bg-white h-full rounded-sm cursor-move cursor-grab overflow-hidden"
       draggable="true"
       onDragStart={() =>
         setBusData({
@@ -27,10 +31,12 @@ const ProductCard: React.FC<ProductCardInterface> = ({ product }) => {
             dimension: {
               height: product?.height,
               width: product?.width,
+              depth: product?.depth,
             },
             id: product?._id,
             x: 0,
             y: 0,
+            retailer: product?.retailer,
           },
           type: 'asset',
         })

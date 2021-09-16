@@ -17,7 +17,7 @@ const DesignCardRow: React.FC<{
   return (
     <div className="overflow-hidden h-full w-full pb-1 px-1 odd:pr-0.5 even:pl-0.5" style={style}>
       {productData && !isScrolling ? (
-        <ProductCard product={productData} />
+        <ProductCard product={productData} isDraggable/>
       ) : (
         <div className="bg-white p-4 w-full h-full">
           <div className="animate-pulse">

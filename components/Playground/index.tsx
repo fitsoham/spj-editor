@@ -399,7 +399,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     stageRef?.current?.setPointersPositions(e);
     if (busData.type === 'asset') {
       const {
-        data: { id, dimension, renderImages, price },
+        data: { id, dimension, renderImages, displayPrice, retailer, name },
       } = busData;
       const { data } = await fetcher({ endPoint: `/v1/assets/${id}/stitchImages`, method: 'GET' });
       const { count, boxSize, image } = data;
@@ -416,11 +416,14 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
             boxSize,
             height: dimension?.height,
             width: dimension?.width,
+            depth: dimension?.depth,
             assetId: id,
-            productThumbnail: renderImages[0].cdn,
+            renderImages,
             stitchedAssetImage: image?.originalCdn,
-            price,
+            displayPrice,
             type: 'asset',
+            retailer,
+            name,
           },
         ])
       );
@@ -432,27 +435,30 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
       // // fetch product prices
       const res = await fetcher({
         endPoint: '/v1/assets/getAssetsDetail',
-        body: { assets: [...productIds] },
+        body: { assets: [...productIds], fields: ['price', 'name', 'renderImages', 'retailer', 'dimension'] },
         method: 'POST',
       });
       const { data, statusCode } = res;
+      console.log('data is ---', data);
       const isError = statusCode < 300 ? false : true;
-      console.log('bus data ---', busData);
-
       const collageData = { 
         ...busData,
         data: busData?.data?.map((item) => {
+          console.log('asset item --',item);
           return {
             ...item,
             id: `in-playground-asset-${PlaygroundAssets.length}-${Math.random()}`,
             price: !isError ? data[item?.assetId]?.price : 0,
+            displayPrice: !isError ? data[item?.assetId]?.price : 0,
+            retailer: !isError ? data[item?.assetId]?.retailer?.name : '',
+            renderImages: !isError ? data[item?.assetId]?.renderImages : [{cdn: ''}],
+            name: !isError ? data[item?.assetId]?.name : '',
+            depth: !isError ? data[item?.assetId]?.dimension?.depth : 0,
           }
         })
       }
-
-      console.log(collageData);
       const newPlaygroundData = [...PlaygroundAssets, collageData];
-      console.log(newPlaygroundData);
+      
       setPlaygroundAssets(newPlaygroundData);
       // busData.data.map((asset) =>
       //   tmp.push({

@@ -13,6 +13,7 @@ export interface PlaygroundAssetType {
   height?: number;
   assetId?: string;
   width?: number;
+  depth?: number;
   isDragging?: false;
   stitchedAssetImage?: string;
   count?: number;

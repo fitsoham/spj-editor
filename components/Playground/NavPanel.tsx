@@ -3,6 +3,7 @@ import { NavSelectContext } from 'store/NavSelect';
 import ProductListContextProvider from '../../store/ProductList';
 import CollagePanel from './CollagePanel';
 import PinterestPanel from './PinterestPanel';
+import ShopPanel from './ShopPanel';
 import StorePanel from './StorePanel';
 
 const NavPanel: React.FC = () => {
@@ -19,6 +20,9 @@ const NavPanel: React.FC = () => {
   }
   if (nav === 'pinterest') {
     return <PinterestPanel />;
+  }
+  if (nav === 'shop') {
+    return <ShopPanel />;
   }
   return null;
 };
