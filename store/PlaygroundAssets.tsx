@@ -70,6 +70,7 @@ interface PlaygroundAssetContextType {
   updateCurrentVerticalForRecommendation: (selectedId: string) => void;
   currentVerticalForRecommendations: string;
   fetchProductReplacement: (assetId: string, product: PlaygroundAssetType) => Promise<void>;
+  currentlySelectedProduct: (selectedId: string) => PlaygroundAssetType;
 }
 
 // ========================= TYPES =========================
@@ -140,6 +141,9 @@ const PlaygroundAssetsContext = React.createContext<PlaygroundAssetContextType>(
   },
   updateCurrentVerticalForRecommendation: () => {
     return;
+  },
+  currentlySelectedProduct: () => {
+    return { id: '' };
   },
   currentVerticalForRecommendations: '',
   fetchProductReplacement: () => {
@@ -330,6 +334,13 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
     const mergedArray = [].concat(...formatted);
     setPlaygroundAssets(mergedArray);
   };
+  const currentlySelectedProduct = (selectedId) => {
+    if (selectedId) {
+      return PlaygroundAssets.filter((item) => item?.id === selectedId)[0];
+    }
+    return null;
+  };
+
   return (
     <PlaygroundAssetsContext.Provider
       value={{
@@ -360,6 +371,7 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
         updateCurrentVerticalForRecommendation,
         currentVerticalForRecommendations,
         fetchProductReplacement,
+        currentlySelectedProduct,
       }}
     >
       {children}
