@@ -6,12 +6,13 @@ import PublishForm from '@components/Shared/PublishForm';
 import {
   ColorSwatchIcon,
   DuplicateIcon,
-  LinkIcon, NewspaperIcon,
-  ReceiptRefundIcon,
+  LinkIcon,
+  NewspaperIcon,
   RewindIcon,
   SortAscendingIcon,
   SortDescendingIcon,
-  TrashIcon
+  SwitchHorizontalIcon,
+  TrashIcon,
 } from '@heroicons/react/outline';
 import React, { useContext, useState } from 'react';
 import { Tween } from 'react-gsap';
@@ -31,11 +32,10 @@ const BottomNav: React.FC = () => {
     getRotationValue,
     PlaygroundAssets,
     copyAsset,
-    unGroupAssets
+    unGroupAssets,
+    updateCurrentVerticalForRecommendation,
   } = useContext(PlaygroundAssetsContext);
   const doesGroupedCollagedExist = PlaygroundAssets.some((item) => item?.type === 'collage');
-  console.log('does group exist', doesGroupedCollagedExist);
-
   const [selectedId] = useContext(SelectedIdContext);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -105,8 +105,13 @@ const BottomNav: React.FC = () => {
           </UnitAction>
         </div>
         <div>
-          <UnitAction position="top" title="Swap" disabled>
-            <ReceiptRefundIcon className="h-4 w-4" />
+          <UnitAction
+            position="top"
+            title="Swap"
+            disabled={selectedId === ''}
+            onClick={() => updateCurrentVerticalForRecommendation(selectedId)}
+          >
+            <SwitchHorizontalIcon className="h-4 w-4" />
           </UnitAction>
         </div>
         <div>

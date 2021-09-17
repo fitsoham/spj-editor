@@ -42,6 +42,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     playgroundTotal,
     setActiveCollages,
     activeCollages,
+    clearBoard,
   } = useContext(PlaygroundAssetsContext);
   const [selectedId, setSelectedId] = useContext(SelectedIdContext);
   const itemsRef = useRef([]);
@@ -126,13 +127,23 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
           throw new Error();
         } else {
           setData([savedCollageData, ...data]);
+          clearBoard();
           return data;
         }
       } catch {
         throw new Error();
       }
     },
-    [PlaygroundAssets, isCollageActive, selectedSubCategoryId, data, setData, playgroundTotal, activeCollages]
+    [
+      PlaygroundAssets,
+      isCollageActive,
+      selectedSubCategoryId,
+      data,
+      setData,
+      playgroundTotal,
+      activeCollages,
+      clearBoard,
+    ]
   );
 
   const saveCollageWithNotification = React.useCallback(
@@ -398,8 +409,9 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     stageRef?.current?.setPointersPositions(e);
     if (busData.type === 'asset') {
       const {
-        data: { id, dimension, renderImages, displayPrice, retailer, name },
+        data: { id, dimension, renderImages, displayPrice, retailer, name, price, vertical = '' },
       } = busData;
+
       const { data } = await fetcher({ endPoint: `/v1/assets/${id}/stitchImages`, method: 'GET' });
       const { count, boxSize, image } = data;
       setPlaygroundAssets(
@@ -420,9 +432,11 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
             renderImages,
             stitchedAssetImage: image?.originalCdn,
             displayPrice,
+            price,
             type: 'asset',
             retailer,
             name,
+            vertical,
           },
         ])
       );
@@ -434,16 +448,14 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
       // // fetch product prices
       const res = await fetcher({
         endPoint: '/v1/assets/getAssetsDetail',
-        body: { assets: [...productIds], fields: ['price', 'name', 'renderImages', 'retailer', 'dimension'] },
+        body: { assets: [...productIds], fields: ['price', 'name', 'renderImages', 'retailer', 'dimension', 'meta'] },
         method: 'POST',
       });
       const { data, statusCode } = res;
-      console.log('data is ---', data);
       const isError = statusCode < 300 ? false : true;
       const collageData = {
         ...busData,
         data: busData?.data?.map((item) => {
-          console.log('asset item --', item);
           return {
             ...item,
             id: `in-playground-asset-${PlaygroundAssets.length}-${Math.random()}`,
@@ -453,20 +465,12 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
             renderImages: !isError ? data[item?.assetId]?.renderImages : [{ cdn: '' }],
             name: !isError ? data[item?.assetId]?.name : '',
             depth: !isError ? data[item?.assetId]?.dimension?.depth : 0,
+            vertical: !isError ? data[item?.assetId]?.meta?.vertical?.name : 0,
           };
         }),
       };
       const newPlaygroundData = [...PlaygroundAssets, collageData];
-
       setPlaygroundAssets(newPlaygroundData);
-      // busData.data.map((asset) =>
-      //   tmp.push({
-      //     ...asset,
-      //     id: `in-playground-asset-${PlaygroundAssets.length}-${Math.random()}`,
-      //     price: !isError ? data[asset?.assetId]?.price : 0,
-      //   })
-      // );
-      // setPlaygroundAssets(tmp);
     }
   };
 

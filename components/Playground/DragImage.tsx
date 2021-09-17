@@ -31,6 +31,10 @@ const reducer = (state, action) => {
       return { ...state, isDragging };
     case 'DRAG_END':
       return { ...state, isDragging, x, y };
+    case 'UPDATE_ASSET_IMAGE': {
+      const { payload } = action;
+      return { ...state, ...payload };
+    }
     default:
       throw new Error();
   }
@@ -71,7 +75,20 @@ const DragImage: React.FC<DragImageInterface> = ({
   );
 
   useEffect(() => {
+    dispatch({ type: 'UPDATE_ASSET_IMAGE', payload: image });
+  }, [image?.stitchedAssetImage]);
+
+  useEffect(() => {
     status === 'loading' ? notify() : dismiss();
+    if (status === 'loaded') {
+      trRef?.current?.forceUpdate();
+      if (trRef && trRef?.current && isSelected) {
+        trRef?.current?.nodes([AssetRef.current]);
+        trRef?.current?.getLayer().batchDraw();
+      } else {
+        trRef?.current?.nodes([]);
+      }
+    }
   }, [status]);
 
   const animations = getAnimationObject(img?.width / image.count, img?.height);
@@ -93,6 +110,7 @@ const DragImage: React.FC<DragImageInterface> = ({
     const scaleX = node.scaleX();
     const scaleY = node.scaleY();
     // we will reset it back
+
     node.scaleX(scaleX);
     node.scaleY(scaleY);
     onChange({
@@ -106,7 +124,19 @@ const DragImage: React.FC<DragImageInterface> = ({
 
   const height = img?.height || 0;
   const width = img?.width / image.count || 0;
-  const draggableProps = { draggable: !belongsToGroup };
+  const draggableProps = {
+    draggable: !belongsToGroup,
+    ...(!belongsToGroup && {
+      onClick: onSelect,
+      onTap: onSelect,
+      onDragStart: () => dispatch({ type: 'DRAG_START', payload: { isDragging: true } }),
+      onDragEnd: (e) => {
+        onAssetChange();
+        dispatch({ type: 'DRAG_END', payload: { isDragging: false, x: e.target.x(), y: e.target.y() } });
+      },
+      onTransformEnd: onAssetChange,
+    }),
+  };
   return (
     <>
       {status === 'loading' ? (
@@ -137,14 +167,6 @@ const DragImage: React.FC<DragImageInterface> = ({
           width={width}
           height={height}
           isSelected={isSelected}
-          onClick={onSelect}
-          onTap={onSelect}
-          onDragStart={() => dispatch({ type: 'DRAG_START', payload: { isDragging: true } })}
-          onDragEnd={(e) => {
-            onAssetChange();
-            dispatch({ type: 'DRAG_END', payload: { isDragging: false, x: e.target.x(), y: e.target.y() } });
-          }}
-          onTransformEnd={onAssetChange}
           animations={animations}
           animation={rotationValue as string}
         />

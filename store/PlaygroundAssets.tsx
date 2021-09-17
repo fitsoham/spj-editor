@@ -1,4 +1,7 @@
+import fetcher from '@utils/fetcher';
 import React, { useContext, useState } from 'react';
+import { toast } from 'react-toastify';
+import { NavSelectContext } from 'store/NavSelect';
 import { SelectedIdContext } from './SelectedId';
 
 // ========================= TYPES =========================
@@ -23,12 +26,17 @@ export interface PlaygroundAssetType {
   dimension?: {
     height: number;
     width: number;
+    depth?: number;
   };
   playgroundHeight?: number;
   playgroundWidth?: number;
   renderImages?: { cdn: string }[];
   price?: number;
   selected?: boolean;
+  displayPrice?: string;
+  retailer?: string;
+  name?: string;
+  vertical?: string;
 }
 
 interface PlaygroundAssetContextType {
@@ -59,6 +67,9 @@ interface PlaygroundAssetContextType {
   setActiveCollages: React.Dispatch<React.SetStateAction<Array<string>>>;
   copyAsset: (selectedId: string) => void;
   unGroupAssets: () => void;
+  updateCurrentVerticalForRecommendation: (selectedId: string) => void;
+  currentVerticalForRecommendations: string;
+  fetchProductReplacement: (assetId: string, product: PlaygroundAssetType) => Promise<void>;
 }
 
 // ========================= TYPES =========================
@@ -124,7 +135,18 @@ const PlaygroundAssetsContext = React.createContext<PlaygroundAssetContextType>(
   copyAsset: () => {
     return [];
   },
-  unGroupAssets: () => { return}
+  unGroupAssets: () => {
+    return;
+  },
+  updateCurrentVerticalForRecommendation: () => {
+    return;
+  },
+  currentVerticalForRecommendations: '',
+  fetchProductReplacement: () => {
+    return new Promise(() => {
+      return;
+    });
+  },
 });
 
 const initData: PlaygroundAssetType[] = [];
@@ -134,9 +156,19 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
   const [selectedId, setSelectedId] = useContext(SelectedIdContext);
   const [bgImgUrl, setBg] = useState({ value: '', type: 'bg-img' });
   const [playgroundTotal, setPlaygroundTotal] = useState(0);
+  const [currentVerticalForRecommendations, setCurrentProductVertical] = useState('');
+
+  const [, setNav] = useContext(NavSelectContext);
 
   const [activeCollages, setActiveCollages] = useState([]);
 
+  const updateCurrentVerticalForRecommendation = (selectedId) => {
+    // get current Product
+    setNav('recommendations');
+    const currentProduct = [...PlaygroundAssets].filter((item) => item?.id === selectedId)[0];
+    const { vertical = '' } = currentProduct;
+    setCurrentProductVertical(vertical);
+  };
   const setBgImgUrl = (value, type) => {
     setBg({ value, type });
   };
@@ -149,21 +181,20 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
     }
   };
   React.useEffect(() => {
-    console.log('updated assets ---', PlaygroundAssets);
-    
-    const formatted = PlaygroundAssets.map((item) => { 
-      if (item?.type === 'collage') { 
+    console.log('updated ----', PlaygroundAssets);
+    const formatted = PlaygroundAssets.map((item) => {
+      if (item?.type === 'collage') {
         return item?.data;
       }
-      return {...item}
-    })
+      return { ...item };
+    });
     const mergedArray = [].concat(...formatted);
 
     if (!mergedArray.length) {
       setPlaygroundTotal(0);
     } else {
       const currentPlaygroundTotal = mergedArray.reduce((acc, currValue) => {
-        return acc + currValue?.price;
+        return parseFloat(acc) + parseFloat(currValue?.price);
       }, 0);
       setPlaygroundTotal(currentPlaygroundTotal);
     }
@@ -214,7 +245,6 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
   const copyAsset = (selectedId) => {
     const selectedIndex = getSelectedIndex(selectedId);
     const selectedItem = [...PlaygroundAssets].filter((item) => item?.id === selectedId)[0];
-    console.log(`selectedItem`, selectedItem);
     const newItem = {
       ...selectedItem,
       id: `in-playground-asset-${PlaygroundAssets.length}-${Math.random()}`,
@@ -230,6 +260,38 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
     setPlaygroundAssets([]), setSelectedId('');
   };
 
+  const fetchProductReplacement = async (assetId, productData) => {
+    if (selectedId && selectedId.length) {
+      try {
+        const { data, statusCode } = await fetcher({ endPoint: `/v1/assets/${assetId}/stitchImages`, method: 'GET' });
+        if (statusCode < 300) {
+          const { count, boxSize, image: { originalCdn = '' } = {} } = data;
+          const updatedAssets = PlaygroundAssets.map((plAsset) => {
+            if (selectedId === plAsset?.id) {
+              console.log(assetId, plAsset);
+              return {
+                ...plAsset,
+                ...productData,
+                assetId: productData?._id,
+                stitchedAssetImage: originalCdn,
+                boxSize,
+                count,
+              };
+            }
+            return { ...plAsset };
+          });
+          setPlaygroundAssets(updatedAssets);
+        } else {
+          throw new Error();
+        }
+      } catch {
+        toast('Error while swapping. Please try again ', { autoClose: false });
+      }
+    } else {
+      toast('Please select a product to swap ', { autoClose: false });
+    }
+  };
+
   const rotateAndSaveRotation = (selectedId: string, rotationValue: string) => {
     const updatedAssets = [...PlaygroundAssets].map((asset) => {
       if (asset?.id === selectedId) {
@@ -242,32 +304,32 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
 
   const getRotationValue = (selectedId) => {
     let rotationValue = 0;
-    PlaygroundAssets.forEach((item) => { 
+    PlaygroundAssets.forEach((item) => {
       if (item?.type === 'collage') {
-        item?.data?.forEach((collageItem) => { 
-          if (collageItem?.id === selectedId) { 
+        item?.data?.forEach((collageItem) => {
+          if (collageItem?.id === selectedId) {
             rotationValue = parseInt(collageItem?.rotationValue, 10) || 0;
           }
-        })
+        });
       } else if (item?.id === selectedId) {
         rotationValue = parseInt(item?.rotationValue, 10) || 0;
-      } 
-    })
+      }
+    });
     return rotationValue;
   };
   const [selectedCategoryId, setSelectedCategoryId] = useState('');
   const [selectedSubCategoryId, setSelectedSubCategoryId] = useState('');
   const [isCollageActive, setCollageActiveStatus] = useState(true);
-  const unGroupAssets = () => { 
-    const formatted = PlaygroundAssets.map((item) => { 
-      if (item?.type === 'collage') { 
+  const unGroupAssets = () => {
+    const formatted = PlaygroundAssets.map((item) => {
+      if (item?.type === 'collage') {
         return item?.data;
       }
-      return {...item}
-    })
+      return { ...item };
+    });
     const mergedArray = [].concat(...formatted);
     setPlaygroundAssets(mergedArray);
-  }
+  };
   return (
     <PlaygroundAssetsContext.Provider
       value={{
@@ -294,7 +356,10 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
         activeCollages,
         setActiveCollages,
         copyAsset,
-        unGroupAssets
+        unGroupAssets,
+        updateCurrentVerticalForRecommendation,
+        currentVerticalForRecommendations,
+        fetchProductReplacement,
       }}
     >
       {children}

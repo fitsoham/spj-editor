@@ -7,14 +7,17 @@ export interface MetaDetailedType {
 }
 
 interface AssetType {
+  vertical?: string;
+
   displayPrice?: string;
   name: string;
   price: number;
   description: string;
-  retailer: {
-    _id: string;
-    name: string;
-  };
+  // retailer: {
+  //   _id: string;
+  //   name: string;
+  // };
+  retailer?: string;
   renderImages: [
     {
       _id: string;
