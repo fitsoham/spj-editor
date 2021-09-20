@@ -3,6 +3,7 @@ import Drawer from '@components/Shared/Drawer';
 import InputRange from '@components/Shared/InputRange';
 import Modal from '@components/Shared/Modal';
 import PublishForm from '@components/Shared/PublishForm';
+import { Switch } from '@headlessui/react';
 import {
   ColorSwatchIcon,
   DuplicateIcon,
@@ -14,10 +15,11 @@ import {
   SwitchHorizontalIcon,
   TrashIcon,
 } from '@heroicons/react/outline';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Tween } from 'react-gsap';
 import { PlaygroundAssetsContext } from 'store/PlaygroundAssets';
 import { SelectedIdContext } from 'store/SelectedId';
+import { ViewingModeContext } from 'store/ViewingModeContext';
 import UnitAction from './UnitAction';
 
 const BottomNav: React.FC = () => {
@@ -35,8 +37,22 @@ const BottomNav: React.FC = () => {
     unGroupAssets,
     updateCurrentVerticalForRecommendation,
   } = useContext(PlaygroundAssetsContext);
-  const doesGroupedCollagedExist = PlaygroundAssets.some((item) => item?.type === 'collage');
+  const doesGroupedCollagedExist = PlaygroundAssets?.some((item) => item?.type === 'collage');
   const [selectedId] = useContext(SelectedIdContext);
+  const [currentMode, , updateRoute] = useContext(ViewingModeContext);
+  const [enabled, setEnabled] = useState(false);
+  useEffect(() => {
+    if (currentMode === 'view') {
+      setEnabled(false);
+    } else {
+      setEnabled(true);
+    }
+  }, [currentMode]);
+
+  const updateSwitchState = (value) => {
+    updateRoute(value ? 'edit' : 'view');
+    setEnabled(value);
+  };
 
   const [isOpen, setIsOpen] = useState(false);
   const [isPublishFormOpen, setPublishFormOpen] = useState(false);
@@ -56,6 +72,7 @@ const BottomNav: React.FC = () => {
   function openDrawer() {
     setIsOpen(true);
   }
+
   return (
     <div className="p-2 bg-white rounded-full shadow-sm mx-auto flex space-x-2">
       {selectedId && selectedId?.length && (
@@ -74,22 +91,42 @@ const BottomNav: React.FC = () => {
       )}
       <Tween from={{ opacity: 0, scale: 0 }} to={{ opacity: 1, scale: 1 }} duration={1} stagger={0.5}>
         <div>
-          <UnitAction position="top" title="Push Down" onClick={moveAssetLast} disabled={selectedId === ''}>
+          <UnitAction
+            position="top"
+            title="Push Down"
+            onClick={moveAssetLast}
+            disabled={selectedId === '' || currentMode === 'view'}
+          >
             <SortDescendingIcon className="h-4 w-4" />
           </UnitAction>
         </div>
         <div>
-          <UnitAction position="top" title="Step Down" onClick={moveAssetBehind} disabled={selectedId === ''}>
+          <UnitAction
+            position="top"
+            title="Step Down"
+            onClick={moveAssetBehind}
+            disabled={selectedId === '' || currentMode === 'view'}
+          >
             <RewindIcon className="h-4 w-4 transform -rotate-90" />
           </UnitAction>
         </div>
         <div>
-          <UnitAction position="top" title="Step Up" onClick={moveAssetForward} disabled={selectedId === ''}>
+          <UnitAction
+            position="top"
+            title="Step Up"
+            onClick={moveAssetForward}
+            disabled={selectedId === '' || currentMode === 'view'}
+          >
             <RewindIcon className="h-4 w-4 transform rotate-90" />
           </UnitAction>
         </div>
         <div>
-          <UnitAction position="top" title="Pull Up" onClick={moveAssetTop} disabled={selectedId === ''}>
+          <UnitAction
+            position="top"
+            title="Pull Up"
+            onClick={moveAssetTop}
+            disabled={selectedId === '' || currentMode === 'view'}
+          >
             <SortAscendingIcon className="h-4 w-4" />
           </UnitAction>
         </div>
@@ -99,7 +136,7 @@ const BottomNav: React.FC = () => {
             position="top"
             title="Duplicate"
             onClick={() => copyAsset(selectedId)}
-            disabled={selectedId === ''}
+            disabled={selectedId === '' || currentMode === 'view'}
           >
             <DuplicateIcon className="h-4 w-4 transform rotate-90" />
           </UnitAction>
@@ -154,7 +191,12 @@ const BottomNav: React.FC = () => {
         </div>
         <div className="border-px border-r border-dashed" />
         <div>
-          <UnitAction position="top" onClick={openFormDrawer} disabled={!PlaygroundAssets?.length} title="Publish">
+          <UnitAction
+            position="top"
+            onClick={openFormDrawer}
+            disabled={!PlaygroundAssets?.length || currentMode === 'view'}
+            title="Publish"
+          >
             <NewspaperIcon className="h-4 w-4" />
           </UnitAction>
           <Drawer isOpen={isPublishFormOpen} cb={closeFormDrawer}>
@@ -163,6 +205,27 @@ const BottomNav: React.FC = () => {
               <PublishForm />
             </Drawer.Body>
           </Drawer>
+        </div>
+        <div className="border-px border-r border-dashed" />
+        <div className="flex items-center">
+          <Switch.Group>
+            <div className="flex items-center">
+              <Switch
+                checked={enabled}
+                onChange={updateSwitchState}
+                className={`${
+                  enabled ? 'bg-red-500' : 'bg-gray-200'
+                } relative inline-flex items-center h-6 rounded-full w-11 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
+              >
+                <span
+                  className={`${
+                    enabled ? 'translate-x-6' : 'translate-x-1'
+                  } inline-block w-4 h-4 transform bg-white rounded-full transition-transform`}
+                />
+              </Switch>
+              <Switch.Label className="mr-4 ml-2 text-xs">Edit</Switch.Label>
+            </div>
+          </Switch.Group>
         </div>
       </Tween>
     </div>

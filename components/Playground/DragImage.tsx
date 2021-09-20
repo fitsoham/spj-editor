@@ -83,7 +83,10 @@ const DragImage: React.FC<DragImageInterface> = ({
     if (status === 'loaded') {
       trRef?.current?.forceUpdate();
       if (trRef && trRef?.current && isSelected) {
-        trRef?.current?.nodes([AssetRef.current]);
+        if (trRef?.current?.nodes[0]) {
+          trRef?.current?.nodes([AssetRef?.current]);
+        }
+
         trRef?.current?.getLayer().batchDraw();
       } else {
         trRef?.current?.nodes([]);
@@ -94,7 +97,7 @@ const DragImage: React.FC<DragImageInterface> = ({
   const animations = getAnimationObject(img?.width / image.count, img?.height);
   useEffect(() => {
     if (trRef && trRef?.current && isSelected) {
-      trRef?.current?.nodes([AssetRef.current]);
+      trRef?.current?.nodes([AssetRef?.current]);
       trRef?.current?.getLayer().batchDraw();
     } else {
       trRef?.current?.nodes([]);

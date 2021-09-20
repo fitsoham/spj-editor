@@ -15,8 +15,9 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { DataBusContext } from 'store';
 import { useCollageListContext } from 'store/CollageList';
-import { PlaygroundAssetsContext } from 'store/PlaygroundAssets';
+import { PlaygroundAssetsContext, PlaygroundAssetType } from 'store/PlaygroundAssets';
 import { SelectedIdContext } from 'store/SelectedId';
+import { ViewingModeContext } from 'store/ViewingModeContext';
 import useImage from 'use-image';
 import DragImage from './DragImage';
 import UnitAction from './UnitAction';
@@ -25,13 +26,16 @@ const sceneWidth = 1400;
 interface PlaygroundInterface {
   w: number;
   h: number;
+  collageData?: PlaygroundAssetType;
 }
 
-const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
+const Playground: React.FC<PlaygroundInterface> = ({ h, w, collageData }) => {
   const stageRef = useRef<StageType>();
   const GUIDELINE_OFFSET = 5;
   const [guides, setGuides] = useState([]);
   const { busData } = useContext(DataBusContext);
+  const [currentMode] = useContext(ViewingModeContext);
+
   const {
     PlaygroundAssets,
     setPlaygroundAssets,
@@ -44,6 +48,19 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     activeCollages,
     clearBoard,
   } = useContext(PlaygroundAssetsContext);
+
+  React.useEffect(() => {
+    if (collageData) {
+      if (currentMode === 'view') {
+        setPlaygroundAssets([...collageData?.data]);
+      } else {
+        setPlaygroundAssets([collageData] || []);
+      }
+    } else {
+      setPlaygroundAssets([...PlaygroundAssets]);
+    }
+  }, [collageData, currentMode, setPlaygroundAssets]);
+
   const [selectedId, setSelectedId] = useContext(SelectedIdContext);
   const itemsRef = useRef([]);
   const {
@@ -58,7 +75,6 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
     });
     downloadURI(uri, `spacejoy-demo-${Date.now()}`);
   };
-
   const saveCollage = React.useCallback(
     async ({ collageName, collageDescription, selectedTags, selectedThemes }) => {
       stageRef.current?.findOne('.background-image')?.hide();
@@ -415,7 +431,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
       const { data } = await fetcher({ endPoint: `/v1/assets/${id}/stitchImages`, method: 'GET' });
       const { count, boxSize, image } = data;
       setPlaygroundAssets(
-        PlaygroundAssets.concat([
+        PlaygroundAssets?.concat([
           {
             ...stageRef?.current?.getPointerPosition(),
             id:
@@ -469,7 +485,8 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
           };
         }),
       };
-      const newPlaygroundData = [...PlaygroundAssets, collageData];
+      const newPlaygroundData =
+        currentMode === 'view' ? [...PlaygroundAssets, ...collageData?.data] : [...PlaygroundAssets, collageData];
       setPlaygroundAssets(newPlaygroundData);
     }
   };
@@ -508,17 +525,19 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
         pauseOnHover
       />
       <div className="relative" onDrop={onDropEvent} onDragOver={(e) => e.preventDefault()}>
-        {PlaygroundAssets.length !== 0 && (
+        {PlaygroundAssets?.length !== 0 && (
           <div className="absolute right-4 top-4 z-10 flex flex-col space-y-2">
             <UnitAction position="left" title="Download" onClick={download}>
               <DownloadIcon className="w-4 h-4" />
             </UnitAction>
-            <UnitAction position="left" title="Save Collage" onClick={() => saveCollageWithNotification({})}>
-              <SaveIcon className="w-4 h-4" />
-            </UnitAction>
+            {currentMode && currentMode === 'edit' && (
+              <UnitAction position="left" title="Save Collage" onClick={() => saveCollageWithNotification({})}>
+                <SaveIcon className="w-4 h-4" />
+              </UnitAction>
+            )}
           </div>
         )}
-        {PlaygroundAssets.length === 0 && (
+        {PlaygroundAssets?.length === 0 && (
           <div className="absolute h-full w-full flex justify-center items-center">
             <Tween from={{ opacity: 0, y: 10 }} to={{ opacity: 1, y: 0 }} duration={1} delay={0.15}>
               <div className="h-1/2 text-center">
@@ -543,7 +562,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w }) => {
           onTouchStart={checkDeselect}
         >
           <Layer onDragMove={(e) => onDragMove(e)} onDragEnd={onDragEnd}>
-            {PlaygroundAssets.length !== 0 && bgType === 'bg-color' && (
+            {PlaygroundAssets?.length !== 0 && bgType === 'bg-color' && (
               <Rect
                 x={0}
                 y={0}

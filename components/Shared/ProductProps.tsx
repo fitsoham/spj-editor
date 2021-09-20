@@ -11,7 +11,7 @@ const ProductProps: React.FC = () => {
     const product = currentlySelectedProduct(selectedId);
     setCurrentProduct(product);
   }, [selectedId, currentlySelectedProduct]);
-  console.log(currentProduct);
+
   return (
     <p>
       {currentProduct ? (

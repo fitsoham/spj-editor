@@ -185,14 +185,13 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
     }
   };
   React.useEffect(() => {
-    console.log('updated ----', PlaygroundAssets);
-    const formatted = PlaygroundAssets.map((item) => {
+    const formatted = PlaygroundAssets?.map((item) => {
       if (item?.type === 'collage') {
         return item?.data;
       }
       return { ...item };
     });
-    const mergedArray = [].concat(...formatted);
+    const mergedArray = [].concat(...(formatted || []));
 
     if (!mergedArray.length) {
       setPlaygroundTotal(0);
@@ -272,7 +271,6 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
           const { count, boxSize, image: { originalCdn = '' } = {} } = data;
           const updatedAssets = PlaygroundAssets.map((plAsset) => {
             if (selectedId === plAsset?.id) {
-              console.log(assetId, plAsset);
               return {
                 ...plAsset,
                 ...productData,

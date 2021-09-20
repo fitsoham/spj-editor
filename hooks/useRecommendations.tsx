@@ -124,7 +124,6 @@ const useRecommendations = () => {
     const copyData = [...assetData];
     if (resData.statusCode <= 300) {
       const responseData = resData?.data?.hits || [];
-      console.log(resData?.data?.total, resData?.data);
       setCount(resData?.data?.total as number);
 
       for (let i = startIndex, j = 0; i <= endIndex; i += 1, j += 1) {
@@ -145,7 +144,6 @@ const useRecommendations = () => {
       const resetData = () => {
         setCount(20);
         dispatch({ type: 'SET_RECOMMENDATION_DATA', payload: [] });
-        console.log('current filters', filter);
         loadMoreItems(0, 20);
       };
       resetData();
