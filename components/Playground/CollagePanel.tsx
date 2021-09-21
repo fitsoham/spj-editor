@@ -7,7 +7,7 @@ const CollagePanel: React.FC = () => {
   return (
     <div className="store-panel relative flex flex-col h-full">
       <div className="relative h-12 py-4 px-4 flex justify-between items-center z-10">
-        <p className="text-gray-900">Collages</p>
+        <p className="text-gray-900">Design Sets</p>
         <span className="text-xs text-gray-600">{count} results found</span>
       </div>
       <div className="py-2 px-1 flex overflow-scroll no-scrollbar">

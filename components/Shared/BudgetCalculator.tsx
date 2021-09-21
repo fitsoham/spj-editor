@@ -6,10 +6,10 @@ const BudgetCalculator: React.FC = () => {
   if (playgroundTotal)
     return (
       <p className="text-sm text-gray-900">
-        Total Budget: <strong>${playgroundTotal.toFixed(2)}</strong>{' '}
+        Cost: <strong>${playgroundTotal.toFixed(2)}</strong>{' '}
       </p>
     );
-  else return <p className="text-sm text-gray-400 text-center">Estimated Budget</p>;
+  else return <p className="text-sm text-gray-400 text-center">Cost</p>;
 };
 
 export default BudgetCalculator;

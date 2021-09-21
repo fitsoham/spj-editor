@@ -27,7 +27,7 @@ interface ProductContext {
   filter: typeof assetStoreInitialState;
   searchText: {
     value: string;
-    set: (text: string) => void;
+    setText: (text: string) => void;
   };
   resetFilters: () => void;
   loading: boolean;
@@ -45,7 +45,7 @@ export const ProductListContext = React.createContext<ProductContext>({
   filter: assetStoreInitialState,
   searchText: {
     value: '',
-    set: () => {
+    setText: () => {
       return;
     },
   },
@@ -160,7 +160,7 @@ const ProductListContextProvider: React.FC = ({ children }) => {
         count,
         filter,
         loading,
-        searchText: { value: searchText, set: setSearchQuery },
+        searchText: { value: searchText, setText: setSearchQuery },
       }}
     >
       {children}

@@ -52,7 +52,6 @@ export async function getServerSideProps(
     method: 'GET',
   });
   const productIds = res.data?.meta?.view?.map((asset) => asset.product);
-  console.log(`productIds`, productIds);
   const uniqueProductIds = (productIds || []).filter(onlyUnique);
 
   const response = await fetcher({

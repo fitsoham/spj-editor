@@ -12,13 +12,13 @@ const DesignCardRow: React.FC<{
   isScrolling?: boolean;
   style: CSSProperties;
 }> = ({ columnIndex, rowIndex, style, isScrolling }) => {
-  const { data } = useProductListContext();
+  const { data, loading } = useProductListContext();
   const productData = data?.[rowIndex * 2 + columnIndex];
   return (
     <div className="overflow-hidden h-full w-full pb-1 px-1 odd:pr-0.5 even:pl-0.5" style={style}>
       {productData && !isScrolling ? (
-        <ProductCard product={productData} isDraggable/>
-      ) : (
+        <ProductCard product={productData} isDraggable />
+      ) : loading ? (
         <div className="bg-white p-4 w-full h-full">
           <div className="animate-pulse">
             <div className="bg-gray-100 h-32 rounded" />
@@ -27,6 +27,8 @@ const DesignCardRow: React.FC<{
             <div className="bg-gray-100 h-3 rounded mt-4 w-10 " />
           </div>
         </div>
+      ) : (
+        <></>
       )}
     </div>
   );

@@ -13,11 +13,11 @@ interface CollageListInterface {
     list: CollagesListInterface[];
     filters?: any;
   };
+  bg?: string;
 }
 
-const CollageList: React.FC<CollageListInterface> = ({ feedData }) => {
+const CollageList: React.FC<CollageListInterface> = ({ feedData, bg }) => {
   const ref = useRef<HTMLDivElement>();
-
   const onButtonClick = () => {
     if (ref.current) {
       ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -45,7 +45,7 @@ const CollageList: React.FC<CollageListInterface> = ({ feedData }) => {
             </>
           )}
           {currentRenderList.map((design) => (
-            <CollageCard cardData={design} key={design?._id} />
+            <CollageCard bg={bg} cardData={design} key={design?._id} />
           ))}
         </div>
         <div className="mb-8">

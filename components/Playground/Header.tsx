@@ -23,7 +23,7 @@ const Header: React.FC<HeaderInterface> = ({ roomTypeId, roomTypeTitle }) => {
         </a>
       </Link>
       <div className="p-4" id={roomTypeId}>
-        <p className="font-bold text-gray-700">Visual Board - {roomTypeTitle}</p>
+        <p className="font-bold text-gray-700">{roomTypeTitle} - Design canvas </p>
       </div>
       {/* <div className="flex-1 mx-4 flex items-center justify-end">
         <p className="text-gray-800 text-sm mr-1">Admin</p>

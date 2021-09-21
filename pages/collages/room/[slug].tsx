@@ -2,13 +2,14 @@ import CollageList from '@components/Collages/CollageList';
 import CollageListComingSoon from '@components/Collages/CollageListComingSoon';
 import CollageListFilter from '@components/Collages/CollageListFilter';
 import { CollagesListInterface } from '@components/Collages/interface';
+import { colorList } from '@components/Playground/BgSelector';
 import Layout from '@components/Shared/Layout';
 import { internalPages } from '@utils/config';
 import { publicRoutes } from '@utils/constants/api';
 import fetcher from '@utils/fetcher';
 import { GetServerSidePropsContext, GetServerSidePropsResult, NextPage } from 'next';
 import Head from 'next/head';
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 
 interface CollageViewProps {
   feedData?: {
@@ -23,6 +24,8 @@ const CollageView: NextPage<CollageViewProps> = ({ slug, feedData }): JSX.Elemen
   const name = useMemo(() => {
     return slug.split('-').join(' ');
   }, [slug]);
+  const [bg, setBg] = useState(colorList[0].colorHex);
+
   return (
     <Layout>
       <Head>
@@ -31,8 +34,12 @@ const CollageView: NextPage<CollageViewProps> = ({ slug, feedData }): JSX.Elemen
       </Head>
       <Layout.Header />
       <Layout.Body>
-        <CollageListFilter title={name} count={feedData?.count} />
-        {feedData?.list ? <CollageList feedData={feedData} /> : <CollageListComingSoon />}
+        <CollageListFilter title={name} count={feedData?.count} bg={bg} setBg={setBg} />
+        {feedData?.list ? (
+          <CollageList bg={bg} feedData={feedData} />
+        ) : (
+          <CollageListComingSoon type={name.toLowerCase()} />
+        )}
       </Layout.Body>
       <Layout.Footer />
     </Layout>
@@ -46,7 +53,7 @@ export async function getServerSideProps(
   const { slug } = params;
   const { page = 1 } = query;
 
-  if (slug === 'living-room-collages') {
+  if (slug === 'living-room-design-sets') {
     try {
       const additionalParams = `?limit=${internalPages.Collages.DEFAULT_PAGE_SIZE}&skip=${
         (parseInt(page as string) - 1) * internalPages.Collages.DEFAULT_PAGE_SIZE
