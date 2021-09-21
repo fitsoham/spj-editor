@@ -51,6 +51,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w, collageData }) => {
 
   React.useEffect(() => {
     if (collageData) {
+      setActiveCollages([...activeCollages, collageData?.id]);
       if (currentMode === 'view') {
         setPlaygroundAssets([...collageData?.data]);
       } else {
@@ -59,7 +60,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w, collageData }) => {
     } else {
       setPlaygroundAssets([...PlaygroundAssets]);
     }
-  }, [collageData, currentMode, setPlaygroundAssets]);
+  }, [collageData]);
 
   const [selectedId, setSelectedId] = useContext(SelectedIdContext);
   const itemsRef = useRef([]);
@@ -142,7 +143,52 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w, collageData }) => {
         if (statusCode > 300) {
           throw new Error();
         } else {
-          setData([savedCollageData, ...data]);
+          const successData = {
+            ...savedCollageData,
+            meta: {
+              ...savedCollageData?.meta,
+              view: [...savedCollageData?.meta?.view].map((object) => {
+                const {
+                  translation: {
+                    x: { $numberDecimal: xCoord } = { $numberDecimal: '' },
+                    y: { $numberDecimal: yCoord } = { $numberDecimal: '' },
+                  } = {},
+                  scale: {
+                    height: { $numberDecimal: heightCoord = '' },
+                    width: { $numberDecimal: widthCoord = '' },
+                  },
+                  playgroundScale: {
+                    height: { $numberDecimal: actualHeightCoord = '' } = {},
+                    width: { $numberDecimal: actualWidthCoord = '' } = {},
+                  } = {},
+                  rotation = '0',
+                  imgSrc,
+                  id,
+                } = object;
+                return {
+                  translation: {
+                    x: xCoord,
+                    y: yCoord,
+                  },
+                  scale: {
+                    height: heightCoord,
+                    width: widthCoord,
+                  },
+                  ...(object?.playgroundScale && {
+                    playgroundScale: {
+                      height: actualHeightCoord,
+                      width: actualWidthCoord,
+                    },
+                  }),
+                  imgSrc,
+                  rotation,
+                  id,
+                  product: object?.product,
+                };
+              }),
+            },
+          };
+          setData([successData, ...data]);
           clearBoard();
           return data;
         }

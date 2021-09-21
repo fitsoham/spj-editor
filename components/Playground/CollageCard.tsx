@@ -30,40 +30,32 @@ const CollageCard: React.FC<{ collage: CollageType }> = ({ collage }) => {
   } = collage;
   const processedView: ProcessedCollageType[] = view.map((object) => {
     const {
-      translation: {
-        x: { $numberDecimal: xCoord } = { $numberDecimal: '' },
-        y: { $numberDecimal: yCoord } = { $numberDecimal: '' },
-      } = {},
-      scale: {
-        height: { $numberDecimal: heightCoord = '' },
-        width: { $numberDecimal: widthCoord = '' },
-      },
-      playgroundScale: {
-        height: { $numberDecimal: actualHeightCoord = '' } = {},
-        width: { $numberDecimal: actualWidthCoord = '' } = {},
-      } = {},
+      translation: { x: xCoord = 0, y: yCoord = 0 } = {},
+      scale: { height: heightCoord = 0, width: widthCoord = 0 },
+      playgroundScale: { height: actualHeightCoord = 0, width: actualWidthCoord = 0 } = {},
       rotation = '0',
       id,
       imgSrc,
     } = object;
     return {
-      x: parseFloat(xCoord),
-      y: parseFloat(yCoord),
-      height: parseFloat(heightCoord),
-      width: parseFloat(widthCoord),
+      x: xCoord,
+      y: yCoord,
+      height: heightCoord,
+      width: widthCoord,
       assetId: object?.product,
       rotationValue: rotation,
       id,
       stitchedAssetImage: imgSrc,
       count: 12,
-      ...(actualWidthCoord && { playgroundWidth: parseFloat(actualWidthCoord) }),
-      ...(actualHeightCoord && { playgroundHeight: parseFloat(actualHeightCoord) }),
+      ...(actualWidthCoord && { playgroundWidth: actualWidthCoord }),
+      ...(actualHeightCoord && { playgroundHeight: actualHeightCoord }),
       price,
     };
   });
   return (
     <div
       data-cid={collage?._id}
+      title={collage?.name}
       className="group bg-white p-4 rounded-sm relative cursor-move"
       draggable="true"
       onDragStart={(e) =>
@@ -87,7 +79,7 @@ const CollageCard: React.FC<{ collage: CollageType }> = ({ collage }) => {
         blurDataURL={blurredProduct}
         placeholder="blur"
       />
-      <p className="text-sm pb-1 line-clamp-2 h-10">{collage?.name}</p>
+      <p className="text-sm pb-1 line-clamp-2 h-10 capitalize">{collage?.name}</p>
       <p className="text-sm font-bold">${collage?.price?.toFixed(2) || 0}</p>
     </div>
   );

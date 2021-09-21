@@ -96,6 +96,7 @@ export const getStaticProps = async ({ params }) => {
       method: 'GET',
     });
     const { data = {}, statusCode } = collageRes;
+    console.log('data is -----', data, statusCode);
     if (statusCode <= 301) {
       const collageProductIds = data?.meta?.view?.map((product) => product?.product);
       const productRes = await fetcher({
@@ -163,10 +164,7 @@ export const getStaticProps = async ({ params }) => {
     }
   } catch (e) {
     return {
-      props: {
-        error: e.message || 'Something went wrong',
-      },
-      revalidate: 1, //TODO: Recheck the doc Data Fetching
+      notFound: true,
     };
   }
 };
