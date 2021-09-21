@@ -20,9 +20,9 @@ const ProductProps: React.FC = () => {
           <span className="ml-4 bg-gray-300 py-1 px-2 rounded-md"> ${currentProduct.displayPrice}</span>
           <span className="ml-4 bg-gray-300 py-1 px-2 rounded-md">
             {' '}
-            {`H: ${currentProduct?.height?.toFixed(2).toString()}" x 
-          W: ${currentProduct?.width?.toFixed(2).toString()}" x 
-          D: ${currentProduct?.depth?.toFixed(2).toString()}"`}
+            {`H: ${((currentProduct?.height || 0) * 12)?.toFixed(2).toString()}" x 
+          W: ${((currentProduct?.width || 0) * 12)?.toFixed(2).toString()}" x 
+          D: ${((currentProduct?.depth || 0) * 12)?.toFixed(2).toString()}"`}
           </span>
           <span className="ml-4 bg-gray-300 py-1 px-2 rounded-md capitalize">{currentProduct?.retailer}</span>
           <a

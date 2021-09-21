@@ -71,9 +71,9 @@ const ProductCard: React.FC<ProductCardInterface> = ({ product, isDraggable, has
 
       <div className="rounded-sm absolute inset-x-0 top-0 z-10 bg-gray-100 px-4 py-1 shadow-xs transition transform -translate-y-12 group-hover:translate-y-0">
         <p className="text-center text-xs text-gray-500 leading-4">
-          {`${product?.height.toFixed(2).toString()}" x 
-          ${product?.width.toFixed(2).toString()}" x 
-          ${product?.depth.toFixed(2).toString()}"`}
+          {`${((product?.height || 0) * 12)?.toFixed(2).toString()}" x 
+          ${((product?.width || 0) * 12)?.toFixed(2).toString()}" x 
+          ${((product?.depth || 0) * 12)?.toFixed(2).toString()}"`}
         </p>
       </div>
       <div className="next-image-fix p-4">

@@ -1,6 +1,5 @@
 import BottomNav from '@components/Playground/BottomNav';
 import Header from '@components/Playground/Header';
-import MoreActions from '@components/Playground/MoreActions';
 import NavPanel from '@components/Playground/NavPanel';
 import SideNav from '@components/Playground/SideNav';
 import BudgetCalculator from '@components/Shared/BudgetCalculator';
@@ -44,7 +43,7 @@ const VisualBoard: React.FC = () => {
                     <div className="relative flex-shrink-0 w-72 2xl:w-80 bg-gray-200 overflow-y-scroll diy-h-free">
                       <NavPanel />
                     </div>
-                    <div className="bg-gray-100 diy-h-free w-3/4 py-4 pl-4 flex flex-col space-y-4">
+                    <div className="bg-gray-100 diy-h-free w-full py-4 pl-4 flex flex-col space-y-4">
                       <div className="flex space-x-4 items-center">
                         <div className="bg-white shadow-sm px-4 rounded-sm h-14 flex items-center w-60">
                           <BudgetCalculator />
@@ -58,7 +57,7 @@ const VisualBoard: React.FC = () => {
                       </div>
                       <BottomNav />
                     </div>
-                    <MoreActions />
+                    {/* <MoreActions /> */}
                   </div>
                 </div>
               </CollageListContextProvider>
