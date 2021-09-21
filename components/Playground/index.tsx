@@ -71,20 +71,24 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w, collageData }) => {
   const scale = w / sceneWidth;
   const { setData, data } = useCollageListContext();
   const download = (): void => {
+    stageRef?.current?.findOne('Transformer').hide();
     const uri = stageRef?.current?.toDataURL({
       pixelRatio: 2, // or other value you need
     });
     downloadURI(uri, `spacejoy-demo-${Date.now()}`);
+    stageRef?.current?.findOne('Transformer').show();
   };
   const saveCollage = React.useCallback(
     async ({ collageName, collageDescription, selectedTags, selectedThemes }) => {
       stageRef.current?.findOne('.background-image')?.hide();
       stageRef.current?.findOne('.background-color-wall')?.hide();
+      stageRef?.current?.findOne('Transformer').hide();
       const uri = stageRef?.current?.toDataURL({
         pixelRatio: 2, // or other value you need
       });
       stageRef.current?.findOne('.background-image')?.show();
       stageRef.current?.findOne('.background-color-wall')?.show();
+      stageRef?.current?.findOne('Transformer').show();
       const fileRes = await b64toFile(uri);
 
       const formatted = PlaygroundAssets.map((item) => {
