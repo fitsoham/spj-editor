@@ -74,9 +74,9 @@ const CollageCard: React.FC<{ collage: CollageType }> = ({ collage }) => {
         })
       }
     >
-      <span className="text-xs text-gray-500 absolute capitalize">
+      {/* <span className="text-xs text-gray-500 absolute capitalize">
         {dayjs(new Date(collage?.createdAt)).fromNow(true)} ago
-      </span>
+      </span> */}
       <Image
         src={`https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,f_auto,q_auto,w_300/${thumbnail}`}
         width="150"

@@ -527,7 +527,7 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w, collageData }) => {
       <div className="relative" onDrop={onDropEvent} onDragOver={(e) => e.preventDefault()}>
         {PlaygroundAssets?.length !== 0 && (
           <div className="absolute right-4 top-4 z-10 flex flex-col space-y-2">
-            <UnitAction position="left" title="Download" onClick={download}>
+            <UnitAction position="left" title="Download design as an image" onClick={download}>
               <DownloadIcon className="w-4 h-4" />
             </UnitAction>
             {currentMode && currentMode === 'edit' && (

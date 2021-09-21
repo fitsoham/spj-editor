@@ -3,7 +3,7 @@ import React from 'react';
 
 const CollageListFilter: React.FC<{ count: number; title?: string; bg?: string; setBg?: React.Dispatch<string> }> = ({
   count,
-  title = 'Collages',
+  title = 'See all Design sets',
   bg,
   setBg,
 }) => {
@@ -14,7 +14,7 @@ const CollageListFilter: React.FC<{ count: number; title?: string; bg?: string; 
           <div className="flex-1">
             {/* {count && <p className="text-gray-500">{count}+ Collages</p>} */}
             <h2 className="mt-2 mb-2 text-3xl leading-8 font-bold tracking-tight capitalize text-gray-900">{title}</h2>
-            {<p className="text-gray-500">Lorem ipsum dolor sit amet, consectetur</p>}
+            {count > 0 && <p className="text-gray-500">Lots of nice designs here but pick one to get started</p>}
           </div>
           {/* <div className="text-right flex-1">
             <Modal />

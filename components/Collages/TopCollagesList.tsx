@@ -80,10 +80,10 @@ const TopCollagesList: React.FC<DesignListInterface> = ({ feedData }) => {
         <div className="container mx-auto px-4 pt-4">
           <div className="flex items-end">
             <div className="flex-1">
-              <p className="text-gray-500">Collages for every room</p>
-              <h1 className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                Hand Picked Collages
+              <h1 className="mb-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                Hand Crafted Design Sets
               </h1>
+              <p className="text-gray-500">Made to match every room</p>
             </div>
             {/* <div className="text-right flex-1">
               <Link href="/collection">

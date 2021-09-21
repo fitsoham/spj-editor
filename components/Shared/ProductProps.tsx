@@ -35,7 +35,7 @@ const ProductProps: React.FC = () => {
           </a>
         </p>
       ) : (
-        <p className="text-sm text-gray-400 text-center">Product Details</p>
+        <p className="text-sm text-gray-400 text-center">Select a product to see details</p>
       )}
     </div>
   );

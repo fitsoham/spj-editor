@@ -35,7 +35,11 @@ const CollageView: NextPage<CollageViewProps> = ({ slug, feedData }): JSX.Elemen
       <Layout.Header />
       <Layout.Body>
         <CollageListFilter title={name} count={feedData?.count} bg={bg} setBg={setBg} />
-        {feedData?.list ? <CollageList bg={bg} feedData={feedData} /> : <CollageListComingSoon />}
+        {feedData?.list ? (
+          <CollageList bg={bg} feedData={feedData} />
+        ) : (
+          <CollageListComingSoon type={name.toLowerCase()} />
+        )}
       </Layout.Body>
       <Layout.Footer />
     </Layout>
@@ -49,7 +53,7 @@ export async function getServerSideProps(
   const { slug } = params;
   const { page = 1 } = query;
 
-  if (slug === 'living-room-collages') {
+  if (slug === 'living-room-design-sets') {
     try {
       const additionalParams = `?limit=${internalPages.Collages.DEFAULT_PAGE_SIZE}&skip=${
         (parseInt(page as string) - 1) * internalPages.Collages.DEFAULT_PAGE_SIZE
