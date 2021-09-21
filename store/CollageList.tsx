@@ -169,7 +169,6 @@ const CollageListContextProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     const selectedCategories = collageCategories.filter((item) => item?.selected);
-    console.log(selectedCategories);
     if (selectedCategories?.length) {
       const categoryQuery = selectedCategories.map((item) => item?.name.toLowerCase());
       const updatedFilters = {

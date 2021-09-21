@@ -241,6 +241,7 @@ const BottomNav: React.FC = () => {
                 title="Mix and match products to create a look"
               >
                 <Switch
+                  as="div"
                   checked={enabled}
                   onChange={updateSwitchState}
                   className={`${
