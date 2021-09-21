@@ -81,7 +81,7 @@ const CollageCard: React.FC<{ collage: CollageType }> = ({ collage }) => {
         src={`https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,f_auto,q_auto,w_300/${thumbnail}`}
         width="150"
         height="150"
-        alt="Collage"
+        alt={collage?.name}
         className="object-contain transition transform scale-95 group-hover:scale-100"
         draggable={false}
         blurDataURL={blurredProduct}

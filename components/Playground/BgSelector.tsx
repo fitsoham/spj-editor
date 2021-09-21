@@ -116,7 +116,7 @@ const BgSelector: React.FC = () => {
                 key={img.id}
                 className="border-transparent box-border flex-shrink-0 h-24 last:mr-0 relative cursor-pointer"
               >
-                <Image src={img.url} layout="fill" alt="name" objectFit="cover" quality={100} className="rounded" />
+                <Image src={img.url} layout="fill" alt={img?.url} objectFit="cover" quality={100} className="rounded" />
               </div>
             );
           })}

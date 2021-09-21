@@ -10,7 +10,7 @@ const CollageProductCard: React.FC<{ productData: AssetType }> = ({ productData 
         <Image
           src={`${cloudinary.baseDeliveryURL}/ar_1,c_pad/${productData?.cdn}`}
           className="mx-auto my-auto rounded-t-2xl"
-          alt="name"
+          alt={productData?.name}
           layout="fill"
           objectFit="contain"
         />
