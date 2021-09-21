@@ -88,7 +88,6 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  console.log('in here');
   const { cid = [] } = params;
   const [collageId = '', mode = ''] = cid || {};
   try {
