@@ -115,6 +115,10 @@ const internalPages = {
     DEFAULT_PAGE_SIZE_BANNER: 6,
     DEFAULT_PAGE_SIZE: 24,
   },
+  Collages: {
+    DEFAULT_PAGE_SIZE: 18,
+    DEFAULT_PAGINATION_BUTTON_COUNT: 5,
+  },
 };
 
 export { company, page, cloudinary, internalPages };

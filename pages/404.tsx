@@ -10,7 +10,6 @@ const PageNotFound: React.FC = () => {
         <title>Page Not Found | Spacejoy</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout.Banner />
       <Layout.Header />
       <Layout.Body>
         <ErrorState status={404} />

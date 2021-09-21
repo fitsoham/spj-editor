@@ -131,8 +131,8 @@ const Playground: React.FC<PlaygroundInterface> = ({ h, w, collageData }) => {
         );
         const endPoint =
           activeCollages?.length === 1
-            ? `${publicRoutes?.saveCollages}/${activeCollages[0]}`
-            : publicRoutes?.saveCollages;
+            ? `${publicRoutes?.collageBase}/${activeCollages[0]}`
+            : publicRoutes?.collageBase;
         const res = await fetchWithFile({
           endPoint,
           method: 'POST',

@@ -1,6 +1,5 @@
 import React, { useEffect, useReducer, useRef } from 'react';
 import { Circle, Sprite, Text, Transformer } from 'react-konva';
-import { toast } from 'react-toastify';
 import { PlaygroundAssetType } from 'store/PlaygroundAssets';
 import useImage from 'use-image';
 
@@ -58,9 +57,6 @@ const DragImage: React.FC<DragImageInterface> = ({
   rotationValue = '0',
   belongsToGroup,
 }) => {
-  const toastId = React.useRef(null);
-  const notify = () => (toastId.current = toast('Product is loading in background ', { autoClose: false }));
-  const dismiss = () => toast.dismiss(toastId.current);
   const [state, dispatch] = useReducer(reducer, image || initialState);
   const trRef = useRef(null);
   const AssetRef = useRef(null);
@@ -80,7 +76,6 @@ const DragImage: React.FC<DragImageInterface> = ({
   }, [image?.stitchedAssetImage]);
 
   useEffect(() => {
-    status === 'loading' ? notify() : dismiss();
     if (status === 'loaded') {
       trRef?.current?.forceUpdate();
       if (trRef && trRef?.current && isSelected) {
