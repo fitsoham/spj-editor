@@ -1,4 +1,5 @@
 import fetcher from '@utils/fetcher';
+import AssetType from '@utils/types/AssetType';
 import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { NavSelectContext } from 'store/NavSelect';
@@ -69,7 +70,7 @@ interface PlaygroundAssetContextType {
   unGroupAssets: () => void;
   updateCurrentVerticalForRecommendation: (selectedId: string) => void;
   currentVerticalForRecommendations: string;
-  fetchProductReplacement: (assetId: string, product: PlaygroundAssetType) => Promise<void>;
+  fetchProductReplacement: (assetId: string, product: AssetType) => Promise<void>;
   currentlySelectedProduct: (selectedId: string) => PlaygroundAssetType;
 }
 
