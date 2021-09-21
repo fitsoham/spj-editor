@@ -2,6 +2,7 @@ import CollageList from '@components/Collages/CollageList';
 import CollageListFilter from '@components/Collages/CollageListFilter';
 import { CollagesStaticPropsInterface } from '@components/Collages/interface';
 import TopCollagesList from '@components/Collages/TopCollagesList';
+import { colorList } from '@components/Playground/BgSelector';
 import Layout from '@components/Shared/Layout';
 import { internalPages } from '@utils/config';
 import { publicRoutes } from '@utils/constants/api';
@@ -9,9 +10,10 @@ import fetcher from '@utils/fetcher';
 import topCollages from '@utils/Mocks/topCollages';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
-import React from 'react';
+import React, { useState } from 'react';
 
 const CollageListView = ({ feedData }): JSX.Element => {
+  const [bg, setBg] = useState(colorList[0].colorHex);
   return (
     <Layout>
       <Head>
@@ -21,8 +23,8 @@ const CollageListView = ({ feedData }): JSX.Element => {
       <Layout.Header />
       <Layout.Body>
         <TopCollagesList feedData={topCollages} />
-        <CollageListFilter count={feedData.count} />
-        <CollageList feedData={feedData} />
+        <CollageListFilter count={feedData.count} bg={bg} setBg={setBg} />
+        <CollageList feedData={feedData} bg={bg} />
       </Layout.Body>
       <Layout.Footer />
     </Layout>
@@ -37,7 +39,6 @@ export const getServerSideProps: GetServerSideProps<CollagesStaticPropsInterface
     const additionalParams = `?limit=${internalPages.Collages.DEFAULT_PAGE_SIZE}&skip=${
       (parseInt(page as string) - 1) * internalPages.Collages.DEFAULT_PAGE_SIZE
     }`;
-    console.log(`additionalParams`, additionalParams);
     const designRes = await fetcher({
       endPoint: `${publicRoutes.collageBase}${additionalParams}`,
       method: 'GET',

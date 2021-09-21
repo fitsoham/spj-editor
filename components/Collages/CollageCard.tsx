@@ -5,14 +5,15 @@ import { CollagesListInterface } from './interface';
 
 export interface CollageCardInterface {
   cardData: CollagesListInterface;
+  bg?: string;
 }
 
-const CollageCard: React.FC<CollageCardInterface> = ({ cardData }) => {
+const CollageCard: React.FC<CollageCardInterface> = ({ cardData, bg }) => {
   return (
     <a href={`/collages/${cardData?._id}`} target="_blank" rel="noopener noreferrer">
       <div className="cursor-pointer group">
         <div className="next-image-fix rounded overflow-hidden relative border border-gray-200 transition group-hover:shadow-md">
-          <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+          <div className="absolute inset-0 bg-gray-200 animate-pulse" style={{ backgroundColor: bg }} />
           <div className="relative aspect-w-15 aspect-h-9">
             <Image
               className="transition duration-700 filter transform group-hover:brightness-110"

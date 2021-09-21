@@ -49,7 +49,7 @@ const imgList = [
   },
 ];
 
-const colorList = [
+export const colorList = [
   {
     id: 0,
     colorHex: 'transparent',

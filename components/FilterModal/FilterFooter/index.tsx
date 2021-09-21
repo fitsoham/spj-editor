@@ -23,7 +23,7 @@ const FilterFooter: React.FC<FilterFooterType> = ({ onApply }) => {
       filter?.category.length > 0 ||
       filter.verticals.length > 0 ||
       filter.price[0] !== 0 ||
-      filter.price[1] !== 5000 ||
+      filter.price[1] !== 50000 ||
       filter?.retailer?.length > 0
     );
   }, [filter]);

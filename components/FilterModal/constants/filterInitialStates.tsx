@@ -4,7 +4,7 @@ import StoreFilterType from '../FilterContext/types/assetStoreFilterType';
 const StoreFilterInitialState: StoreFilterType = {
   status: AssetStatus.Active,
   retailer: [],
-  price: [0, 5000],
+  price: [0, 50000],
   height: [0, 360],
   width: [0, 360],
   depth: [0, 360],

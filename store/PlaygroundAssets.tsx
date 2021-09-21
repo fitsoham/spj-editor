@@ -197,7 +197,6 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
     }
   };
   React.useEffect(() => {
-    console.log(PlaygroundAssets);
     const formatted = PlaygroundAssets?.map((item) => {
       if (item?.type === 'collage') {
         return item?.data;
