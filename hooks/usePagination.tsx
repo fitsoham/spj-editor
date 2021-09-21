@@ -51,11 +51,11 @@ const fetchMoreData = async (api, skip, limit) => {
   try {
     const res = await fetcher({ endPoint, method, ...(method === 'POST' && { body: { ...payload } }) });
     const {
-      data: { list = [] },
+      data: { list = [], data = [] },
       statusCode,
     } = res;
     if (statusCode <= 301) {
-      return list;
+      return list.concat(data);
     } else {
       throw new Error();
     }
@@ -64,10 +64,10 @@ const fetchMoreData = async (api, skip, limit) => {
   }
 };
 
-const usePagination = (api, initialData, totalRecords, paginationButtonCount, pageSize) => {
+const usePagination = (api, initialData, totalRecords, paginationButtonCount, pageSize, options = {}) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [currentBtnWindow, setCurrentBtnWindow] = useState([]);
-
+  const { onButtonClick } = options as { onButtonClick: () => void };
   const router = useRouter();
 
   const { isFetching, currentPage, list } = state;
@@ -89,6 +89,9 @@ const usePagination = (api, initialData, totalRecords, paginationButtonCount, pa
       undefined,
       { shallow: true }
     );
+    if (onButtonClick) {
+      onButtonClick();
+    }
   };
 
   //read query params

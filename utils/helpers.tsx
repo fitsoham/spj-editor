@@ -26,4 +26,8 @@ const b64toFile = async (base64String) => {
     });
 };
 
-export { debounce, downloadURI, b64toFile };
+function onlyUnique(value, index, self): boolean {
+  return self.indexOf(value) === index;
+}
+
+export { debounce, downloadURI, b64toFile, onlyUnique };
