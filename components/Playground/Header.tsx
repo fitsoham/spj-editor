@@ -1,5 +1,3 @@
-import { ChevronDownIcon } from '@heroicons/react/outline';
-import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
@@ -27,7 +25,7 @@ const Header: React.FC<HeaderInterface> = ({ roomTypeId, roomTypeTitle }) => {
       <div className="p-4" id={roomTypeId}>
         <p className="font-bold text-gray-700">Visual Board - {roomTypeTitle}</p>
       </div>
-      <div className="flex-1 mx-4 flex items-center justify-end">
+      {/* <div className="flex-1 mx-4 flex items-center justify-end">
         <p className="text-gray-800 text-sm mr-1">Admin</p>
         <ChevronDownIcon className="w-3 h-3 mr-3" />
         <Image
@@ -37,7 +35,7 @@ const Header: React.FC<HeaderInterface> = ({ roomTypeId, roomTypeTitle }) => {
           height="35"
           width="35"
         />
-      </div>
+      </div> */}
     </div>
   );
 };

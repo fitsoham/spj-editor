@@ -1,11 +1,9 @@
 import EmptyState from '@components/Shared/EmptyState';
-import { SwitchHorizontalIcon } from '@heroicons/react/outline';
-import useRecommendations from '@hooks/useRecommendations';
-import React, { CSSProperties, useContext, useEffect, useState } from 'react';
+import React, { CSSProperties, useEffect, useState } from 'react';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import { FixedSizeGrid as Grid } from 'react-window';
 import InfiniteLoader from 'react-window-infinite-loader';
-import { PlaygroundAssetsContext, PlaygroundAssetType } from 'store/PlaygroundAssets';
+import { useRecommendationsListContext } from 'store/RecommendationsList';
 import ProductCard from '../ProductCard';
 
 const DesignCardRow: React.FC<{
@@ -13,22 +11,13 @@ const DesignCardRow: React.FC<{
   rowIndex: number;
   isScrolling?: boolean;
   style: CSSProperties;
-  fetchProductReplacement: (id: string, product: PlaygroundAssetType) => void;
-  data;
-}> = ({ columnIndex, rowIndex, style, isScrolling, data, fetchProductReplacement }) => {
+}> = ({ columnIndex, rowIndex, style, isScrolling }) => {
+  const { data } = useRecommendationsListContext();
   const productData = data?.[rowIndex * 2 + columnIndex];
   return (
     <div className="overflow-hidden h-full w-full pb-1 px-1 odd:pr-0.5 even:pl-0.5" style={style}>
       {productData && !isScrolling ? (
-        <ProductCard product={productData} isDraggable={false} isSwappable>
-          <button
-            className=" flex text-black text-xs py-1 px-3 ml-2 rounded-lg border border-black hover:bg-black hover:text-white"
-            onClick={() => fetchProductReplacement(productData?._id, productData)}
-          >
-            <SwitchHorizontalIcon className="h-4 w-4 mr-2" />
-            <span className="text-xs">Swap</span>
-          </button>
-        </ProductCard>
+        <ProductCard product={productData} isDraggable />
       ) : (
         <div className="bg-white p-4 w-full h-full">
           <div className="animate-pulse">
@@ -43,18 +32,12 @@ const DesignCardRow: React.FC<{
   );
 };
 
-const RecommendationsView: React.FC = () => {
-  const { currentVerticalForRecommendations, fetchProductReplacement } = useContext(PlaygroundAssetsContext);
-  const { isItemLoaded, loadMoreItems, count, data, loading, setFilters } = useRecommendations();
+const RecommendationsListView: React.FC = () => {
+  const { isItemLoaded, loadMoreItems, count } = useRecommendationsListContext();
   const [rowHeight] = useState(260);
-
-  useEffect(() => {
-    if (currentVerticalForRecommendations) {
-      setFilters({ verticals: [currentVerticalForRecommendations] });
-    }
-  }, [currentVerticalForRecommendations]);
-
   const gridRef = React.createRef<Grid<any>>();
+
+  const { data, loading } = useRecommendationsListContext();
 
   useEffect(() => {
     if (data?.length === 0 && loading) {
@@ -73,7 +56,7 @@ const RecommendationsView: React.FC = () => {
           isItemLoaded={isItemLoaded}
           loadMoreItems={loadMoreItems}
           itemCount={count}
-          minimumBatchSize={20}
+          minimumBatchSize={2}
         >
           {({ onItemsRendered }) => {
             return (
@@ -99,19 +82,7 @@ const RecommendationsView: React.FC = () => {
                 columnWidth={width / 2}
                 rowHeight={rowHeight}
               >
-                {/* {DesignCardRow} */}
-                {({ columnIndex, rowIndex, style, isScrolling }) => {
-                  return (
-                    <DesignCardRow
-                      columnIndex={columnIndex}
-                      rowIndex={rowIndex}
-                      style={style}
-                      isScrolling={isScrolling}
-                      fetchProductReplacement={fetchProductReplacement}
-                      data={data}
-                    />
-                  );
-                }}
+                {DesignCardRow}
               </Grid>
             );
           }}
@@ -121,4 +92,4 @@ const RecommendationsView: React.FC = () => {
   );
 };
 
-export default React.memo(RecommendationsView);
+export default React.memo(RecommendationsListView);

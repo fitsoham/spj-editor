@@ -13,7 +13,7 @@ const ProductProps: React.FC = () => {
   }, [selectedId, currentlySelectedProduct]);
 
   return (
-    <p>
+    <div>
       {currentProduct ? (
         <p className="flex justify-between items-center">
           <span className="truncate bg-gray-300 py-1 px-2 rounded-md"> {currentProduct.name}</span>
@@ -37,7 +37,7 @@ const ProductProps: React.FC = () => {
       ) : (
         <p className="text-sm text-gray-400 text-center">Product Details</p>
       )}
-    </p>
+    </div>
   );
 };
 

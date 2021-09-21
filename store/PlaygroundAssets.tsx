@@ -1,5 +1,5 @@
 import fetcher from '@utils/fetcher';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { NavSelectContext } from 'store/NavSelect';
 import { SelectedIdContext } from './SelectedId';
@@ -162,7 +162,7 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
   const [playgroundTotal, setPlaygroundTotal] = useState(0);
   const [currentVerticalForRecommendations, setCurrentProductVertical] = useState('');
 
-  const [, setNav] = useContext(NavSelectContext);
+  const [nav, setNav] = useContext(NavSelectContext);
 
   const [activeCollages, setActiveCollages] = useState([]);
 
@@ -173,6 +173,12 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
     const { vertical = '' } = currentProduct;
     setCurrentProductVertical(vertical);
   };
+  useEffect(() => {
+    if (selectedId && nav === 'recommendations') {
+      updateCurrentVerticalForRecommendation(selectedId);
+    }
+  }, [selectedId, nav]);
+
   const setBgImgUrl = (value, type) => {
     setBg({ value, type });
   };

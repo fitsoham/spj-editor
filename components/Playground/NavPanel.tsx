@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { NavSelectContext } from 'store/NavSelect';
+import RecommendationsListContextProvider from 'store/RecommendationsList';
 import ProductListContextProvider from '../../store/ProductList';
 import CollagePanel from './CollagePanel';
 import PinterestPanel from './PinterestPanel';
@@ -26,7 +27,11 @@ const NavPanel: React.FC = () => {
     return <ShopPanel />;
   }
   if (nav === 'recommendations') {
-    return <RecommendationsPanel />;
+    return (
+      <RecommendationsListContextProvider>
+        <RecommendationsPanel />
+      </RecommendationsListContextProvider>
+    );
   }
   return null;
 };
