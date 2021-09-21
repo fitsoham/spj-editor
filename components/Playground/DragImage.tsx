@@ -76,6 +76,7 @@ const DragImage: React.FC<DragImageInterface> = ({
 
   useEffect(() => {
     dispatch({ type: 'UPDATE_ASSET_IMAGE', payload: image });
+    trRef?.current?.forceUpdate();
   }, [image?.stitchedAssetImage]);
 
   useEffect(() => {
@@ -92,9 +93,10 @@ const DragImage: React.FC<DragImageInterface> = ({
         trRef?.current?.nodes([]);
       }
     }
-  }, [status]);
+  }, [status, isSelected]);
 
   const animations = getAnimationObject(img?.width / image.count, img?.height);
+
   useEffect(() => {
     if (trRef && trRef?.current && isSelected) {
       trRef?.current?.nodes([AssetRef?.current]);

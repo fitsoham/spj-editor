@@ -60,19 +60,27 @@ const RecommendationsListContextProvider: React.FC = ({ children }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [hasNextPage, setHasNextPage] = useState<boolean>(true);
   const [selectedId] = useContext(SelectedIdContext);
-  const { currentVerticalForRecommendations } = useContext(PlaygroundAssetsContext);
+  const { currentVerticalForRecommendations, updateCurrentVerticalForRecommendation } =
+    useContext(PlaygroundAssetsContext);
   const [nav] = useContext(NavSelectContext);
-
+  const verticalRef = React.useRef(null);
   useEffect(() => {
     if (!currentVerticalForRecommendations || !selectedId) {
       setData([]);
       setHasNextPage(false);
       setCount(0);
     } else if (nav === 'recommendations' && currentVerticalForRecommendations && selectedId) {
-      console.log('currentVerticalForRecommendations', currentVerticalForRecommendations);
-      setFilters({ ...assetStoreInitialState, verticals: [currentVerticalForRecommendations] });
+      if (verticalRef?.current !== currentVerticalForRecommendations) {
+        setFilters({ ...assetStoreInitialState, verticals: [currentVerticalForRecommendations] });
+        verticalRef.current = currentVerticalForRecommendations;
+      }
     }
   }, [currentVerticalForRecommendations, selectedId, nav]);
+  useEffect(() => {
+    if (!selectedId) {
+      updateCurrentVerticalForRecommendation('');
+    }
+  }, [selectedId]);
 
   const loadMoreItems = async (startIndex: number, endIndex: number): Promise<void> => {
     // if (loading || !selectedId) {

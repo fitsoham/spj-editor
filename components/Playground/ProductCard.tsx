@@ -1,4 +1,4 @@
-import { ExternalLinkIcon } from '@heroicons/react/outline';
+import { ExternalLinkIcon, SwitchHorizontalIcon } from '@heroicons/react/outline';
 import { blurredProduct } from '@public/images/bg-base-64';
 import AssetType from '@utils/types/AssetType';
 import Image from 'next/image';
@@ -8,11 +8,12 @@ import { DataBusContext } from 'store';
 interface ProductCardInterface {
   product: AssetType;
   isDraggable: boolean;
-  isSwappable?: boolean;
+  hasSwap?: boolean;
   children?: React.ReactNode;
+  onClick?: () => void;
 }
 
-const ProductCard: React.FC<ProductCardInterface> = ({ product, isDraggable, isSwappable, children }) => {
+const ProductCard: React.FC<ProductCardInterface> = ({ product, isDraggable, hasSwap: isSwappable, onClick }) => {
   const { setBusData } = useContext(DataBusContext);
   const productThumbnail = product?.renderImages
     ? product?.renderImages[0]?.cdn
@@ -28,9 +29,11 @@ const ProductCard: React.FC<ProductCardInterface> = ({ product, isDraggable, isS
   const hoverProps = {
     ...(isSwappable && { onMouseEnter: showOverlay, onMouseLeave: hideOverlay }),
   };
+
   return (
     <div
       title={product?.name}
+      onClick={onClick}
       className={`relative group bg-white h-full rounded-sm overflow-hidden ${
         isDraggable ? 'cursor-move' : 'cursor-pointer'
       }`}
@@ -58,8 +61,11 @@ const ProductCard: React.FC<ProductCardInterface> = ({ product, isDraggable, isS
       }
     >
       {isSwappable && isVisible && (
-        <div className="inset-0 absolute bg-white flex items-center justify-center h-full w-full z-10 bg-opacity-60">
-          {children}
+        <div className="inset-0 absolute bg-white flex items-center justify-center h-full w-full z-10 bg-opacity-75">
+          <p className="flex items-center">
+            <SwitchHorizontalIcon className="h-4 w-4 mr-2" />
+            Swap
+          </p>
         </div>
       )}
 

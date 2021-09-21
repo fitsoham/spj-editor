@@ -1,8 +1,9 @@
 import EmptyState from '@components/Shared/EmptyState';
-import React, { CSSProperties, useEffect, useState } from 'react';
+import React, { CSSProperties, useContext, useEffect, useState } from 'react';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import { FixedSizeGrid as Grid } from 'react-window';
 import InfiniteLoader from 'react-window-infinite-loader';
+import { PlaygroundAssetsContext } from 'store/PlaygroundAssets';
 import { useRecommendationsListContext } from 'store/RecommendationsList';
 import ProductCard from '../ProductCard';
 
@@ -14,10 +15,16 @@ const DesignCardRow: React.FC<{
 }> = ({ columnIndex, rowIndex, style, isScrolling }) => {
   const { data } = useRecommendationsListContext();
   const productData = data?.[rowIndex * 2 + columnIndex];
+  const { fetchProductReplacement } = useContext(PlaygroundAssetsContext);
   return (
     <div className="overflow-hidden h-full w-full pb-1 px-1 odd:pr-0.5 even:pl-0.5" style={style}>
       {productData && !isScrolling ? (
-        <ProductCard product={productData} isDraggable />
+        <ProductCard
+          product={productData}
+          isDraggable={false}
+          hasSwap
+          onClick={() => fetchProductReplacement(productData?._id, productData)}
+        />
       ) : (
         <div className="bg-white p-4 w-full h-full">
           <div className="animate-pulse">

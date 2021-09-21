@@ -64,7 +64,7 @@ const CollageCard: React.FC<{ collage: CollageType }> = ({ collage }) => {
   return (
     <div
       data-cid={collage?._id}
-      className="group bg-white p-4 rounded-sm relative"
+      className="group bg-white p-4 rounded-sm relative cursor-move"
       draggable="true"
       onDragStart={(e) =>
         setBusData({
@@ -73,8 +73,10 @@ const CollageCard: React.FC<{ collage: CollageType }> = ({ collage }) => {
           data: processedView,
         })
       }
-    > 
-      <span className="text-xs text-gray-500 absolute capitalize">{dayjs(new Date(collage?.createdAt)).fromNow(true)} ago</span>
+    >
+      <span className="text-xs text-gray-500 absolute capitalize">
+        {dayjs(new Date(collage?.createdAt)).fromNow(true)} ago
+      </span>
       <Image
         src={`https://res.cloudinary.com/spacejoy/image/upload/fl_lossy,f_auto,q_auto,w_300/${thumbnail}`}
         width="150"

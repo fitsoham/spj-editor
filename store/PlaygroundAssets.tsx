@@ -146,9 +146,9 @@ const PlaygroundAssetsContext = React.createContext<PlaygroundAssetContextType>(
     return { id: '' };
   },
   currentVerticalForRecommendations: '',
-  fetchProductReplacement: () => {
+  fetchProductReplacement: (id, product) => {
     return new Promise(() => {
-      return;
+      return { id, product };
     });
   },
 });
@@ -168,10 +168,14 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
 
   const updateCurrentVerticalForRecommendation = (selectedId) => {
     // get current Product
-    setNav('recommendations');
-    const currentProduct = [...PlaygroundAssets].filter((item) => item?.id === selectedId)[0];
-    const { vertical = '' } = currentProduct;
-    setCurrentProductVertical(vertical);
+    if (selectedId) {
+      setNav('recommendations');
+      const currentProduct = [...PlaygroundAssets].filter((item) => item?.id === selectedId)[0];
+      const { vertical = '' } = currentProduct;
+      setCurrentProductVertical(vertical);
+    } else {
+      setCurrentProductVertical('');
+    }
   };
   useEffect(() => {
     if (selectedId && nav === 'recommendations') {
