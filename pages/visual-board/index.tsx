@@ -35,7 +35,7 @@ const VisualBoard: React.FC = () => {
             <DataBusContextProvider>
               <CollageListContextProvider>
                 <div className="h-screen">
-                  <Header roomTypeTitle="Living Room" />
+                  <Header roomTypeTitle="" />
                   <div className="flex">
                     <div className="flex-shrink-0 w-16 bg-white diy-h-free">
                       <SideNav />

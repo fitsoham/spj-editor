@@ -20,10 +20,11 @@ const Header: React.FC = () => {
       >
         <div className="container px-4 mx-auto">
           <div className="h-20 flex items-center justify-between">
-            <Link href="/">
+            <Link href="https://www.spacejoy.com">
               <a
                 className="focus:ring-1 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-900 focus:outline-none inline-block rounded-md pr-1 mr-10"
                 aria-label="logo"
+                target="_blank"
               >
                 <svg height="30" width="139" viewBox="0 0 291 63" fill="none" baseProfile="full">
                   <path

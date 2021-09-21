@@ -9,8 +9,8 @@ interface HeaderInterface {
 const Header: React.FC<HeaderInterface> = ({ roomTypeId, roomTypeTitle }) => {
   return (
     <div className="h-16 bg-white flex items-center">
-      <Link href="/">
-        <a>
+      <Link href="https://www.spacejoy.com">
+        <a target="_blank">
           <div className="w-16 h-16 bg-red-500 flex items-center justify-center">
             <svg width="25" height="25">
               <path
@@ -23,7 +23,7 @@ const Header: React.FC<HeaderInterface> = ({ roomTypeId, roomTypeTitle }) => {
         </a>
       </Link>
       <div className="p-4" id={roomTypeId}>
-        <p className="font-bold text-gray-700">{roomTypeTitle} - Design canvas </p>
+        <p className="font-bold text-gray-700">{roomTypeTitle} Design canvas </p>
       </div>
       {/* <div className="flex-1 mx-4 flex items-center justify-end">
         <p className="text-gray-800 text-sm mr-1">Admin</p>
