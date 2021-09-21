@@ -33,15 +33,15 @@ const CollageCard: React.FC<CollageCardInterface> = ({ cardData, bg }) => {
             <p className="text-gray-500 text-xs capitalize">{cardData?.categoryMap?.category?.name}</p>
             <p className="text-gray-800 mt-1 transition group-hover:text-red-500 capitalize">{correctedName}</p>
           </div>
-          <div className="relative group">
+          <div className="relative">
             <a
               href={`/visual-board/${cardData?._id}`}
               target="_blank"
-              className="relative group"
+              className="relative transition opacity-0 hover:opacity-100 hover:-translate-y-8 z-10"
               rel="noopener noreferrer"
             >
               {/* TODO: Figure out a way to show the tooltip only on hover over the icon. Currently the group on the card overrides group on the anchor tag above */}
-              <span className="inline-block absolute text-white text-xs bg-gray-900 rounded px-2 py-1 z-50 whitespace-nowrap transition opacity-0 -translate-x-3/4 -translate-y-10 group-hover:opacity-100 group-hover:-translate-y-8">
+              <span className="inline-block absolute text-white text-xs bg-gray-900 rounded px-2 py-1 z-50 whitespace-nowrap -translate-x-3/4 -translate-y-7">
                 See in viewer to personalize and shop
                 <span className="absolute -bottom-1 right-1/4 translate-x-3.5 bg-gray-900 h-2 w-2 transform rotate-45" />
               </span>
