@@ -72,29 +72,26 @@ const DragImage: React.FC<DragImageInterface> = ({
 
   useEffect(() => {
     dispatch({ type: 'UPDATE_ASSET_IMAGE', payload: image });
-    trRef?.current?.forceUpdate();
   }, [image?.stitchedAssetImage]);
 
   useEffect(() => {
+    // status === 'loading' ? notify() : dismiss();
     if (status === 'loaded') {
       trRef?.current?.forceUpdate();
       if (trRef && trRef?.current && isSelected) {
-        if (trRef?.current?.nodes[0]) {
-          trRef?.current?.nodes([AssetRef?.current]);
-        }
-
+        trRef?.current?.nodes([AssetRef.current]);
         trRef?.current?.getLayer().batchDraw();
       } else {
         trRef?.current?.nodes([]);
       }
     }
-  }, [status, isSelected]);
+  }, [status]);
 
   const animations = getAnimationObject(img?.width / image.count, img?.height);
 
   useEffect(() => {
     if (trRef && trRef?.current && isSelected) {
-      trRef?.current?.nodes([AssetRef?.current]);
+      trRef?.current?.nodes([AssetRef.current]);
       trRef?.current?.getLayer().batchDraw();
     } else {
       trRef?.current?.nodes([]);

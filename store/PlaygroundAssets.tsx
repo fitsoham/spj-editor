@@ -177,6 +177,7 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
       setCurrentProductVertical('');
     }
   };
+
   useEffect(() => {
     if (selectedId && nav === 'recommendations') {
       updateCurrentVerticalForRecommendation(selectedId);
@@ -195,6 +196,7 @@ const PlaygroundAssetsContextProvider: React.FC = ({ children }) => {
     }
   };
   React.useEffect(() => {
+    console.log(PlaygroundAssets);
     const formatted = PlaygroundAssets?.map((item) => {
       if (item?.type === 'collage') {
         return item?.data;

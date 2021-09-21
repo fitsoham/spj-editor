@@ -65,6 +65,7 @@ const RecommendationsListContextProvider: React.FC = ({ children }) => {
   const [nav] = useContext(NavSelectContext);
   const verticalRef = React.useRef(null);
   useEffect(() => {
+    console.log('current ref ---', currentVerticalForRecommendations, nav, selectedId);
     if (!currentVerticalForRecommendations || !selectedId) {
       setData([]);
       setHasNextPage(false);
@@ -79,6 +80,7 @@ const RecommendationsListContextProvider: React.FC = ({ children }) => {
   useEffect(() => {
     if (!selectedId) {
       updateCurrentVerticalForRecommendation('');
+      verticalRef.current = '';
     }
   }, [selectedId]);
 
