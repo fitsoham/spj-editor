@@ -47,7 +47,7 @@ const RetailerFilter: React.FC = () => {
 
   return (
     <div className="gap-4 flex flex-col relative flex-grow">
-      <div className="sticky top-3">
+      <div className="sticky top-3 pr-4">
         <Tab.Group onChange={onTabChange}>
           <Tab.List className="w-full bg-white flex p-2 rounded-full text-sm gap-2 overflow-x-auto ">
             {Object.entries(filterRegex).map(([label]) => (

@@ -6,25 +6,25 @@ import { useProductListContext } from 'store/ProductList';
 const FilterSearchbar: React.FC = () => {
   const {
     count,
-    searchText: { value, set },
+    searchText: { value, setText },
     loading,
     data,
   } = useProductListContext();
   const [searchText, setSearchText] = useState(value);
   const debouncedSearchText = useDebounce<string>(searchText, 500);
 
-  const setValue = () => set(searchText);
+  const setValue = () => setText(searchText);
 
   const ClearValue = () => setSearchText('');
 
   const onKeyDown = (e) => {
     if (e.key === 'Enter') {
-      set(searchText);
+      setText(searchText);
     }
   };
 
   useEffect(() => {
-    set(debouncedSearchText);
+    setText(debouncedSearchText);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedSearchText]);
 
