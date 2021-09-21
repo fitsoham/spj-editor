@@ -1,5 +1,4 @@
 import { company } from '@utils/config';
-import Link from 'next/link';
 import React from 'react';
 import SocialLinks from './Footer/SocialLinks';
 
@@ -14,13 +13,16 @@ const Footer: React.FC = () => {
           <div className="col-span-2 xl:w-3/4">
             <h3 className="mb-2">About Us</h3>
             <p className="leading-relaxed text-sm text-gray-600">
-              Spacejoy is an online interior design studio. See your room designed in 3D curated with handpicked
-              products that you shop right away from our platform.
+              Spacejoy is an online shopping platform empowering you to visualize your perfect home and shop it
+              instantly. Furnish any room in your home with professionally crafted design sets or personalize them to
+              create an original look using our simple drag and drop design tool. With a powerful design canvas, a
+              catalog of 50,000+ products from the best furniture and decor brands, we're making furnishing your home
+              amazingly easy and incredibly fun.
             </p>
             <SocialLinks />
           </div>
           <div className="">
-            <h3 className="mb-2 px-1">Quick Links</h3>
+            {/* <h3 className="mb-2 px-1">Quick Links</h3>
             <ul>
               <li>
                 <Link href="/pricing">
@@ -64,10 +66,10 @@ const Footer: React.FC = () => {
                   </a>
                 </Link>
               </li>
-            </ul>
+            </ul> */}
           </div>
           <div className="">
-            <h3 className="mb-2 px-1">Blog</h3>
+            {/* <h3 className="mb-2 px-1">Blog</h3>
             <ul>
               <li>
                 <Link
@@ -160,10 +162,10 @@ const Footer: React.FC = () => {
                   </a>
                 </Link>
               </li>
-            </ul>
+            </ul> */}
           </div>
           <div className="">
-            <h3 className="mb-2 px-1">Support</h3>
+            {/* <h3 className="mb-2 px-1">Support</h3>
             <ul>
               <li>
                 <Link href="/help">
@@ -207,7 +209,7 @@ const Footer: React.FC = () => {
                   </a>
                 </Link>
               </li>
-            </ul>
+            </ul> */}
           </div>
           <div className="">
             <h3 className="mb-2 px-1">Connect with us</h3>

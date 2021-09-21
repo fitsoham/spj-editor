@@ -5,6 +5,8 @@ const SocialLinks: React.FC = () => {
   return (
     <div className="mt-6 flex space-x-3">
       <a
+        target="_blank"
+        rel="noopener noreferrer"
         href={company.social.sites.facebook}
         className="text-gray-800 bg-gray-100 p-2 hover:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none rounded"
       >
@@ -17,6 +19,8 @@ const SocialLinks: React.FC = () => {
         </svg>
       </a>
       <a
+        target="_blank"
+        rel="noopener noreferrer"
         href={company.social.sites.instagram}
         className="text-gray-800 bg-gray-100 p-2 hover:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none rounded"
       >
@@ -26,6 +30,8 @@ const SocialLinks: React.FC = () => {
         </svg>
       </a>
       <a
+        target="_blank"
+        rel="noopener noreferrer"
         href={company.social.sites.twitter}
         className="text-gray-800 bg-gray-100 p-2 hover:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none rounded"
       >
@@ -35,6 +41,8 @@ const SocialLinks: React.FC = () => {
         </svg>
       </a>
       <a
+        target="_blank"
+        rel="noopener noreferrer"
         href={company.social.sites.linkedin}
         className="text-gray-800 bg-gray-100 p-2 hover:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none rounded"
       >
@@ -44,6 +52,8 @@ const SocialLinks: React.FC = () => {
         </svg>
       </a>
       <a
+        target="_blank"
+        rel="noopener noreferrer"
         href={company.social.sites.pinterest}
         className="text-gray-800 bg-gray-100 p-2 hover:text-red-500 focus:ring-1 focus:ring-gray-500 focus:outline-none rounded"
       >

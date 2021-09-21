@@ -7,7 +7,6 @@ import { Switch } from '@headlessui/react';
 import {
   ColorSwatchIcon,
   DuplicateIcon,
-  LinkIcon,
   NewspaperIcon,
   RewindIcon,
   SortAscendingIcon,
@@ -153,7 +152,24 @@ const BottomNav: React.FC = () => {
         </div>
         <div>
           <UnitAction position="top" title="Un Group" onClick={unGroupAssets} disabled={!doesGroupedCollagedExist}>
-            <LinkIcon className="h-4 w-4" />
+            <svg
+              className="stroke-current fill-current"
+              xmlns="http://www.w3.org/2000/svg"
+              width="40"
+              height="40"
+              viewBox="0 0 40 40"
+            >
+              <g fill="none" fillRule="evenodd" stroke="auto" strokeWidth="1">
+                <g transform="translate(-335 -306)">
+                  <g transform="translate(335 306)">
+                    <path d="M10 10H18V18H10z" />
+                    <path d="M12 20H20V28H12z" />
+                    <path d="M20 12H28V20H20z" />
+                    <path d="M20 20H28V28H20z" />
+                  </g>
+                </g>
+              </g>
+            </svg>
           </UnitAction>
         </div>
         <div>

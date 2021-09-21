@@ -1,10 +1,4 @@
-import {
-  CollectionIcon,
-  PuzzleIcon,
-  ShoppingCartIcon,
-  SwitchHorizontalIcon,
-  UploadIcon,
-} from '@heroicons/react/outline';
+import { ShoppingCartIcon, SwitchHorizontalIcon, ViewGridIcon } from '@heroicons/react/outline';
 import React, { useContext } from 'react';
 import { NavSelectContext } from 'store/NavSelect';
 
@@ -14,23 +8,39 @@ const SideNav: React.FC = () => {
     <>
       <button
         className={`w-16 h-16 flex justify-center items-center transition hover:bg-gray-200 ${
-          nav === 'collages' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'
+          nav === 'collages' ? 'bg-gray-900 text-white hover:text-gray-900' : 'bg-white text-gray-900'
         }`}
         onClick={() => setNav('collages')}
       >
-        <CollectionIcon className="w-4 h-4" />
+        <ViewGridIcon className="w-5 h-5" />
       </button>
       <button
         className={`w-16 h-16 flex justify-center items-center transition hover:bg-gray-200 ${
-          nav === 'store' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'
+          nav === 'store' ? 'bg-gray-900 text-white hover:text-gray-900' : 'bg-white text-gray-900 '
         }`}
         onClick={() => setNav('store')}
       >
-        <PuzzleIcon className="w-4 h-4" />
+        <svg
+          className="stroke-current fill-current"
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+        >
+          <g fill="none" fillRule="evenodd" stroke="auto" strokeWidth="0.6">
+            <g transform="translate(-388 -306)">
+              <g transform="translate(388 306)">
+                <g fillRule="nonzero" transform="translate(12.814 9)">
+                  <path d="M12.537 10.593V3.485A3.488 3.488 0 009.053 0H5.17a3.489 3.489 0 00-3.484 3.485v7.107A2.335 2.335 0 000 12.832a2.335 2.335 0 002.332 2.333h4.401v3.658H3.26c-.21 0-.38.17-.38.379V22h.758v-2.42h3.096v2.333h.758V19.58h3.096V22h.757v-2.798c0-.209-.17-.379-.379-.379H7.491v-3.658h4.4a2.335 2.335 0 002.333-2.333 2.334 2.334 0 00-1.687-2.24zM2.444 3.485A2.73 2.73 0 015.171.758h3.882a2.73 2.73 0 012.727 2.727V10.5H2.444V3.485zm9.448 10.923h-9.56a1.577 1.577 0 01-1.574-1.576c0-.754.533-1.386 1.242-1.539a.37.37 0 00.066.007h10.093a.396.396 0 00.065-.007c.71.153 1.243.785 1.243 1.54 0 .868-.707 1.575-1.575 1.575z" />
+                </g>
+              </g>
+            </g>
+          </g>
+        </svg>
       </button>
-      <button
+      {/* <button
         className={`w-16 h-16 flex justify-center items-center transition hover:bg-gray-400 ${
-          nav === 'pinterest' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'
+          nav === 'pinterest' ? 'bg-gray-900 text-white hover:text-gray-900' : 'bg-white text-gray-900'
         }`}
         onClick={() => setNav('pinterest')}
       >
@@ -60,27 +70,27 @@ const SideNav: React.FC = () => {
       </button>
       <button
         className={`w-16 h-16 flex justify-center items-center transition hover:bg-gray-200 ${
-          nav === 'upload' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'
+          nav === 'upload' ? 'bg-gray-900 text-white hover:text-gray-900' : 'bg-white text-gray-900'
         }`}
         onClick={() => setNav('upload')}
       >
-        <UploadIcon className="w-4 h-4" />
-      </button>
+        <UploadIcon className="w-5 h-5" />
+      </button> */}
       <button
         className={`w-16 h-16 flex justify-center items-center transition hover:bg-gray-200 ${
-          nav === 'shop' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'
+          nav === 'shop' ? 'bg-gray-900 text-white hover:text-gray-900' : 'bg-white text-gray-900'
         }`}
         onClick={() => setNav('shop')}
       >
-        <ShoppingCartIcon className="w-4 h-4" />
+        <ShoppingCartIcon className="w-5 h-5" />
       </button>
       <button
         className={`w-16 h-16 flex justify-center items-center transition hover:bg-gray-200 ${
-          nav === 'recommendations' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'
+          nav === 'recommendations' ? 'bg-gray-900 text-white hover:text-gray-900' : 'bg-white text-gray-900'
         }`}
         onClick={() => setNav('recommendations')}
       >
-        <SwitchHorizontalIcon className="w-4 h-4" />
+        <SwitchHorizontalIcon className="w-5 h-5" />
       </button>
     </>
   );

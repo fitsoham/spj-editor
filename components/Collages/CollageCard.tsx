@@ -42,7 +42,7 @@ const CollageCard: React.FC<CollageCardInterface> = ({ cardData, bg }) => {
             >
               {/* TODO: Figure out a way to show the tooltip only on hover over the icon. Currently the group on the card overrides group on the anchor tag above */}
               <span className="inline-block absolute text-white text-xs bg-gray-900 rounded px-2 py-1 z-50 whitespace-nowrap -translate-x-3/4 -translate-y-7">
-                See in viewer to personalize and shop
+                Open in viewer to personalize
                 <span className="absolute -bottom-1 right-1/4 translate-x-3.5 bg-gray-900 h-2 w-2 transform rotate-45" />
               </span>
               <EyeIcon className="w-5 h-5 hover:text-spj-yellow" />

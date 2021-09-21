@@ -17,8 +17,7 @@ const CollageListView = ({ feedData }): JSX.Element => {
   return (
     <Layout>
       <Head>
-        <title>Interior-Designs | Spacejoy</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>See all design sets | Spacejoy</title>
       </Head>
       <Layout.Header />
       <Layout.Body>

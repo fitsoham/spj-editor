@@ -29,8 +29,7 @@ const CollageView: NextPage<CollageViewProps> = ({ slug, feedData }): JSX.Elemen
   return (
     <Layout>
       <Head>
-        <title>Interior-Designs | Spacejoy</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>{name} | Spacejoy</title>
       </Head>
       <Layout.Header />
       <Layout.Body>
