@@ -29,10 +29,10 @@ const VisualBoard: React.FC = () => {
   }, []);
 
   return (
-    <ViewingModeContextProvider>
-      <NavSelectContextProvider>
-        <SelectedIdContextProvider>
-          <PlaygroundAssetsContextProvider>
+    <NavSelectContextProvider>
+      <SelectedIdContextProvider>
+        <PlaygroundAssetsContextProvider>
+          <ViewingModeContextProvider>
             <DataBusContextProvider>
               <CollageListContextProvider>
                 <div className="h-screen">
@@ -63,10 +63,10 @@ const VisualBoard: React.FC = () => {
                 </div>
               </CollageListContextProvider>
             </DataBusContextProvider>
-          </PlaygroundAssetsContextProvider>
-        </SelectedIdContextProvider>
-      </NavSelectContextProvider>
-    </ViewingModeContextProvider>
+          </ViewingModeContextProvider>
+        </PlaygroundAssetsContextProvider>
+      </SelectedIdContextProvider>
+    </NavSelectContextProvider>
   );
 };
 

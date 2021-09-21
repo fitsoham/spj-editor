@@ -2,13 +2,11 @@ import BgSelector from '@components/Playground/BgSelector';
 import Drawer from '@components/Shared/Drawer';
 import InputRange from '@components/Shared/InputRange';
 import Modal from '@components/Shared/Modal';
-import PublishForm from '@components/Shared/PublishForm';
 import { Switch } from '@headlessui/react';
 import {
   ColorSwatchIcon,
   DuplicateIcon,
   LinkIcon,
-  NewspaperIcon,
   RewindIcon,
   SortAscendingIcon,
   SortDescendingIcon,
@@ -55,15 +53,15 @@ const BottomNav: React.FC = () => {
   };
 
   const [isOpen, setIsOpen] = useState(false);
-  const [isPublishFormOpen, setPublishFormOpen] = useState(false);
+  // const [isPublishFormOpen, setPublishFormOpen] = useState(false);
 
-  function closeFormDrawer() {
-    setPublishFormOpen(false);
-  }
+  // function closeFormDrawer() {
+  //   setPublishFormOpen(false);
+  // }
 
-  function openFormDrawer() {
-    setPublishFormOpen(true);
-  }
+  // function openFormDrawer() {
+  //   setPublishFormOpen(true);
+  // }
 
   function closeDrawer() {
     setIsOpen(false);
@@ -75,7 +73,7 @@ const BottomNav: React.FC = () => {
 
   return (
     <div className="p-2 bg-white rounded-full shadow-sm mx-auto flex space-x-2">
-      {selectedId && selectedId?.length && (
+      {selectedId && selectedId?.length && currentMode !== 'view' && (
         <div>
           <UnitAction position="left">
             <small className="text-xs text-gray-900 mr-4">Rotate</small>
@@ -90,57 +88,69 @@ const BottomNav: React.FC = () => {
         </div>
       )}
       <Tween from={{ opacity: 0, scale: 0 }} to={{ opacity: 1, scale: 1 }} duration={1} stagger={0.5}>
-        <div>
-          <UnitAction
-            position="top"
-            title="Push Down"
-            onClick={moveAssetLast}
-            disabled={selectedId === '' || currentMode === 'view'}
-          >
-            <SortDescendingIcon className="h-4 w-4" />
-          </UnitAction>
-        </div>
-        <div>
-          <UnitAction
-            position="top"
-            title="Step Down"
-            onClick={moveAssetBehind}
-            disabled={selectedId === '' || currentMode === 'view'}
-          >
-            <RewindIcon className="h-4 w-4 transform -rotate-90" />
-          </UnitAction>
-        </div>
-        <div>
-          <UnitAction
-            position="top"
-            title="Step Up"
-            onClick={moveAssetForward}
-            disabled={selectedId === '' || currentMode === 'view'}
-          >
-            <RewindIcon className="h-4 w-4 transform rotate-90" />
-          </UnitAction>
-        </div>
-        <div>
-          <UnitAction
-            position="top"
-            title="Pull Up"
-            onClick={moveAssetTop}
-            disabled={selectedId === '' || currentMode === 'view'}
-          >
-            <SortAscendingIcon className="h-4 w-4" />
-          </UnitAction>
-        </div>
-        <div className="border-px border-r border-dashed" />
-        <div>
-          <UnitAction
-            position="top"
-            title="Duplicate"
-            onClick={() => copyAsset(selectedId)}
-            disabled={selectedId === '' || currentMode === 'view'}
-          >
-            <DuplicateIcon className="h-4 w-4 transform rotate-90" />
-          </UnitAction>
-        </div>
+        {currentMode !== 'view' ? (
+          <div className="flex">
+            <div>
+              <UnitAction
+                position="top"
+                title="Push Down"
+                onClick={moveAssetLast}
+                disabled={selectedId === '' || currentMode === 'view'}
+              >
+                <SortDescendingIcon className="h-4 w-4" />
+              </UnitAction>
+            </div>
+            <div>
+              <UnitAction
+                position="top"
+                title="Step Down"
+                onClick={moveAssetBehind}
+                disabled={selectedId === '' || currentMode === 'view'}
+              >
+                <RewindIcon className="h-4 w-4 transform -rotate-90" />
+              </UnitAction>
+            </div>
+            <div>
+              <UnitAction
+                position="top"
+                title="Step Up"
+                onClick={moveAssetForward}
+                disabled={selectedId === '' || currentMode === 'view'}
+              >
+                <RewindIcon className="h-4 w-4 transform rotate-90" />
+              </UnitAction>
+            </div>
+            <div>
+              <UnitAction
+                position="top"
+                title="Pull Up"
+                onClick={moveAssetTop}
+                disabled={selectedId === '' || currentMode === 'view'}
+              >
+                <SortAscendingIcon className="h-4 w-4" />
+              </UnitAction>
+            </div>
+            <div className="border-px border-r border-dashed" />
+            <div>
+              <UnitAction
+                position="top"
+                title="Duplicate"
+                onClick={() => copyAsset(selectedId)}
+                disabled={selectedId === '' || currentMode === 'view'}
+              >
+                <DuplicateIcon className="h-4 w-4 transform rotate-90" />
+              </UnitAction>
+            </div>
+            <div>
+              <UnitAction position="top" title="Un Group" onClick={unGroupAssets} disabled={!doesGroupedCollagedExist}>
+                <LinkIcon className="h-4 w-4" />
+              </UnitAction>
+            </div>
+          </div>
+        ) : (
+          <></>
+        )}
+
         <div>
           <UnitAction
             position="top"
@@ -152,16 +162,12 @@ const BottomNav: React.FC = () => {
           </UnitAction>
         </div>
         <div>
-          <UnitAction position="top" title="Un Group" onClick={unGroupAssets} disabled={!doesGroupedCollagedExist}>
-            <LinkIcon className="h-4 w-4" />
-          </UnitAction>
-        </div>
-        <div>
           <UnitAction position="top" title="Delete" onClick={deleteAsset} disabled={selectedId === ''}>
             <TrashIcon className="h-4 w-4" />
           </UnitAction>
         </div>
         <div className="border-px border-r border-dashed" />
+
         <div>
           <UnitAction position="top" onClick={openDrawer} title="Room Views">
             <ColorSwatchIcon className="h-4 w-4" />
@@ -190,11 +196,12 @@ const BottomNav: React.FC = () => {
           </Modal>
         </div>
         <div className="border-px border-r border-dashed" />
-        <div>
+        {/* <div>
           <UnitAction
             position="top"
             onClick={openFormDrawer}
-            disabled={!PlaygroundAssets?.length || currentMode === 'view'}
+            // disabled={!PlaygroundAssets?.length || currentMode === 'view'}
+            disabled={false}
             title="Publish"
           >
             <NewspaperIcon className="h-4 w-4" />
@@ -205,7 +212,7 @@ const BottomNav: React.FC = () => {
               <PublishForm />
             </Drawer.Body>
           </Drawer>
-        </div>
+        </div> */}
         <div className="border-px border-r border-dashed" />
         <div className="flex items-center">
           <Switch.Group>

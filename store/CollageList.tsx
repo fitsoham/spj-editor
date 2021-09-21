@@ -1,3 +1,4 @@
+import { publicRoutes } from '@utils/constants/api';
 import fetcher from '@utils/fetcher';
 import React, { useEffect, useState } from 'react';
 
@@ -16,35 +17,30 @@ export interface CollageType {
     view: {
       _id: string;
       translation: {
-        x: {
-          $numberDecimal: string;
-        };
-        y: {
-          $numberDecimal: string;
-        };
+        x: number;
+        y: number;
       };
       id: string;
       product: string;
       imgSrc: string;
       rotation?: string;
       playgroundScale: {
-        height: {
-          $numberDecimal: string;
-        };
-        width: {
-          $numberDecimal: string;
-        };
+        height: number;
+        width: number;
       };
       scale: {
-        height: {
-          $numberDecimal: string;
-        };
-        width: {
-          $numberDecimal: string;
-        };
+        height: number;
+        width: number;
       };
     }[];
   };
+}
+
+interface CollageCategoryType {
+  _id: string;
+  name: string;
+  slug: string;
+  selected?: boolean;
 }
 interface CollageContext {
   isItemLoaded: (index: any) => boolean;
@@ -55,6 +51,8 @@ interface CollageContext {
   setData: React.Dispatch<React.SetStateAction<CollageType[]>>;
   setActiveCollages: React.Dispatch<React.SetStateAction<boolean>>;
   isActiveCollages: boolean;
+  collageCategories: CollageCategoryType[];
+  updateCategorySelections: (id: string) => void;
 }
 
 export const CollageListContext = React.createContext<CollageContext>({
@@ -72,7 +70,32 @@ export const CollageListContext = React.createContext<CollageContext>({
   setData: () => {
     return;
   },
+  collageCategories: [{ _id: '', name: '', slug: '' }],
+  updateCategorySelections: () => {
+    return;
+  },
 });
+
+interface Filter {
+  price: Array<string>;
+  isActive: boolean;
+  category?: Array<string>;
+}
+interface FilterInterface {
+  searchText: string;
+  sort: string;
+  wildcard: boolean;
+  filters: Filter;
+}
+export const defaultFilters: FilterInterface = {
+  filters: {
+    price: ['0', '500000'],
+    isActive: true,
+  },
+  searchText: '',
+  sort: 'createdAt',
+  wildcard: true,
+};
 
 const CollageListContextProvider: React.FC = ({ children }) => {
   const [data, setData] = useState<CollageType[]>([]);
@@ -80,23 +103,40 @@ const CollageListContextProvider: React.FC = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [hasNextPage, setHasNextPage] = useState<boolean>(true);
   const [isActiveCollages, setActiveCollages] = useState(false);
+  const [collageCategories, setCollageCategories] = useState([]);
+  const [filters, setFilters] = useState(defaultFilters);
+
+  const updateCategorySelections = (categoryId) => {
+    const updatedSelections = [...collageCategories].map((category) => {
+      if (category?._id === categoryId) {
+        return { ...category, selected: !category?.selected };
+      }
+      return { ...category };
+    });
+    setCollageCategories(updatedSelections);
+  };
 
   useEffect(() => {
-    setCount(10);
-    setData([]);
-    loadMoreItems(0, 50);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isActiveCollages]);
+    (async () => {
+      const categoryRes = await fetcher({ endPoint: publicRoutes?.collageCategoryRoute, method: 'GET' });
+      const { data, statusCode } = categoryRes;
+      if (statusCode < 301) {
+        const filtered = data?.map((item) => ({ _id: item?._id, name: item?.name, slug: item?.slug, selected: false }));
+        setCollageCategories(filtered);
+      }
+    })();
+  }, []);
 
   const loadMoreItems = async (startIndex: number, endIndex: number): Promise<void> => {
     if (loading) {
       return;
     }
     setLoading(true);
-    const endPoint = `/v1/collages?skip=${startIndex}&limit=${endIndex - startIndex + 1}&isActive=${isActiveCollages}`;
+    const endPoint = `/v1/collages/search?skip=${startIndex}&limit=${endIndex - startIndex + 1}`;
     const resData = await fetcher({
       endPoint,
-      method: 'GET',
+      method: 'POST',
+      body: filters,
     });
     const copyData = [...data];
     if (resData.statusCode <= 300) {
@@ -120,13 +160,53 @@ const CollageListContextProvider: React.FC = ({ children }) => {
     setLoading(false);
   };
 
+  useEffect(() => {
+    setCount(50);
+    setData([]);
+    setHasNextPage(true);
+    loadMoreItems(0, 50);
+  }, [filters]);
+
+  useEffect(() => {
+    const selectedCategories = collageCategories.filter((item) => item?.selected);
+    console.log(selectedCategories);
+    if (selectedCategories?.length) {
+      const categoryQuery = selectedCategories.map((item) => item?.name.toLowerCase());
+      const updatedFilters = {
+        ...filters,
+        filters: {
+          ...filters?.filters,
+          category: categoryQuery,
+        },
+      };
+      setFilters(updatedFilters);
+    } else {
+      const updatedFilters = { ...filters };
+      if (updatedFilters?.filters?.category) {
+        delete updatedFilters.filters.category;
+      }
+      setFilters(updatedFilters);
+    }
+  }, [collageCategories]);
+
   const isItemLoaded = (index: number): boolean => {
     return !!data[index];
   };
 
   return (
     <CollageListContext.Provider
-      value={{ isItemLoaded, loadMoreItems, hasNextPage, data, count, setData, isActiveCollages, setActiveCollages }}
+      value={{
+        isItemLoaded,
+        loadMoreItems,
+        hasNextPage,
+        data,
+        count,
+        setData,
+        isActiveCollages,
+        setActiveCollages,
+        collageCategories,
+        updateCategorySelections,
+      }}
     >
       {children}
     </CollageListContext.Provider>
